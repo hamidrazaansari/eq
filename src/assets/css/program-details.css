@@ -1,0 +1,317 @@
+.program-details{
+    padding: 120px 0 60px;
+}
+.program-details .prog-heading {
+    font-size: 32px;
+    color: #212B36;
+    font-family: boldfuturamdbt;
+    margin: 31px 65px 34px;
+}
+.program-details .prog-heading span{
+    color: #006D5A;
+}
+.program-details .img-box {
+    max-width: 603px;
+    width: 100%;
+    margin-left: 55px;
+    height: 500px;
+
+}
+.program-details .img-box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.prising-box{
+    width: 430px;
+    height: 380px;
+    border: 1px solid #0000007a;
+    border-radius: 10px;
+    padding: 40px 20px;
+    position: relative !important;
+
+}
+.prising-box p{
+    background: #EFEFEF;
+    color: #444444;
+    font-family: 'futuramdbt';
+    padding: 8px 20px;
+    font-size: 20px;
+}
+
+.prising-box .select-search-container {
+    width: unset !important;
+    height: 31px !important;
+    padding: 0 !important;
+}
+.select-search-value{
+    padding: 0 !important;
+}
+.prising-box .select-search-input {
+
+    padding: 0 60px 0 0px !important;
+    border-right: none !important;
+    height: 59px !important;
+    border-bottom: 1px solid #0000006b !important;
+    color: #0000005e !important;
+    font-size: 20px !important;
+}
+.prising-box .timelabal {
+    background-color: #FCC252;
+    border-radius: 14px !important;
+    padding: 3px 18px;
+    position: absolute;
+    display: inline;
+    top: 115px;
+    right: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'futuramdbt';
+}
+.prising-box label {
+    margin-top: 15px;
+    font-family: 'futuramdbt';
+    font-size: 20px;
+    color: #000000f2;
+}
+.prising-box h3 {
+    font-family: 'boldfuturamdbt';
+    font-size: 47px;
+    color: #0D4A3F;
+    margin: 10px 0px;
+    text-align: center;
+}
+.prising-box h3 span {
+    font-size: 25px;
+    font-family: 'futuramdbt';
+}
+.prising-box .mo{
+    font-size: 23px;
+    font-family: 'futuramdbt';
+    position: relative;
+    bottom: 5px;
+    left: -9px;
+}
+.prising-box .star{
+    position: relative;
+    bottom: 22px;
+    left: -4px;
+}
+.prising-box button{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border: none;
+    background: #006D5A;
+    color: #fff;
+    font-family: 'futuramdbt';
+    font-size: 20px;
+    padding: 6px;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+.program-info{
+    padding: 40px 0;
+}
+
+.program-info .accordion-item{
+margin: 20px 0;
+border: none !important;
+
+}
+.program-info .accordion-item:not(.collapsed){
+    background-color: #FDFFF6;
+}
+.program-info .accordion-button:focus{
+    box-shadow: unset !important;
+}
+.program-info .accordion-item:first-of-type {
+    border-radius: 0 !important;
+    border-radius: 6px !important;
+    border: none !important;
+}
+.program-info .accordion-item:last-of-type{
+    border-radius: 0 !important;
+    border-radius: 6px !important;
+    border: none !important;
+}
+.program-info .accordion-button:not(.collapsed) {
+
+    padding: 20px 50px;
+    background: #FDFFF6 !important;
+    color: #000 !important;
+    border: none !important;
+}
+.program-info .accordion-button {
+    background-color: #F6FFF6;
+    font-family: 'futuramdbt';
+    font-size: 22px;
+    padding: 20px 50px;
+    border: none !important;
+}
+.program-info .accordion-button{
+    font-size: 22px;
+    margin: 0;
+    color: #000000e7;
+}
+.program-info .accordion-button:not(.collapsed){
+    color: #000 !important;
+}
+.program-info .accordion-button:not(.collapsed) .active{
+    color: #000;
+    position: relative;
+}
+
+.program-info .accordion-button:not(.collapsed) .active::before{
+    position: absolute;
+    content: '';
+    bottom: -9px;
+    left: 0;
+    height: 2px;
+    width: 73%;
+    background-color: #000;
+}
+.program-info .about-plan p{
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: 'futuramdbt';
+
+}
+.program-info .about-plan{
+    padding: 0 30px;
+    border-right: 1px solid #0000007b;
+    position: relative;
+    height: 100%;
+}
+.program-info .about-plan ul{
+    padding: 0 !important;
+}
+.program-info .about-plan ul li{
+    font-size: 14px;
+    font-family: futuramdbt;
+    list-style: none;
+}
+.program-info .about-plan ul li::before{
+    content: '';
+    position: absolute;
+    display: block;
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    font-size: 36px;
+    line-height: 8px;
+    left: 5px;
+    margin-top: 5px;
+}
+.prog-det-testi{
+    top: 0 !important;
+    padding: 40px 0 !important;
+}
+.program-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    border: 1px solid #a8a8a8;
+    border-radius: 10px;
+    margin: 20px 0;
+    background: #F3F3F3;
+}
+.green-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: #006D5A;
+    margin: 0 50px;
+    border-radius: 10px;
+    padding-right: 30px;
+}
+.green-box button{
+    margin-left: 30px;
+    border: none;
+    background: #fff;
+    height: 44px;
+    width: 240px;
+    font-family: 'futuramdbt';
+    font-size: 20px;
+    text-transform: capitalize;
+    border-radius: 8px;
+    text-align: center;
+}
+.green-box p{
+    margin: 10px 0px;
+    color: #fff;
+    font-size: 36px;
+    font-family: 'boldfuturamdbt';
+}
+.green-box p span{
+    font-family: futuramdbt;
+}
+.floating-price{
+    padding: 0 0 40px;
+}
+.progDet .mailing , .progDet .footer{
+    top: 0;
+}
+a{
+    text-decoration: none !important;
+}
+
+.floating-price {
+    position: static;
+    transition: position 0.3s ease;
+  }
+  
+  .floating-price.floating {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .floating-price .container {
+    width: 100%;
+    margin: auto;
+  }
+  .floating-price span{
+    font-size: 19px;
+    font-family: 'futuramdbt';
+    color: #fff;
+    position: relative;
+    top: 15px;
+  }
+  .watch-btn{
+    color: #006d5a;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    font-family: 'futuramdbt';
+    font-size: 21px;
+    border: 1px solid #006d5a;
+    padding: 0 21px;
+    display: flex;
+    padding-left: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    height: 50px;
+    margin: 13px;
+  }
+  .watch-btn svg{
+    margin-left: 20px !important;
+    font-size: 23px !important;
+  }
+  .days-info h4{
+    margin: 0;
+    font-size: 18px;
+    margin-top: 14px;
+    color: #00000082;
+
+  }
+  .green-box p i{
+    font-size: 18px;
+  }

@@ -1,0 +1,285 @@
+.Cart {
+    margin-top: 100px;
+    background-color: #f3f3f3;
+}
+
+.Cart h1 {
+    font-size: 35px;
+    font-family: 'futuramdbt';
+    color: #000;
+    margin-left: 40px;
+    position: relative;
+    top: 30px;
+}
+
+.cart-info-box {
+    background: #fff;
+    padding: 30px;
+    margin: 40px 0 25px;
+}
+
+.cart-info-box h2 {
+    font-size: 23px;
+    font-family: 'futuramdbt';
+}
+
+.cart-info-box h3 {
+    font-size: 15px;
+    font-family: 'futuramdbt';
+}
+
+.cart-info-box button {
+    border: none;
+    background: transparent;
+    border: 1px solid #0000008f;
+    padding: 3px 55px 5px;
+    border-radius: 4px;
+    margin: 10px 0 30px;
+    color: #0000008c;
+}
+
+.cart-info-box .save-btn {
+    background-color: #00B090;
+    border: none;
+    color: #fff;
+    padding: 0px 35px 0px;
+    margin: 0 36px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.cart-info-box .save-btn {
+    background-color: #00B090;
+    border: none;
+    color: #fff;
+    padding: 0px 38px 0px;
+    margin: 10px 36px 0;
+    height: 33px;
+    border-radius: 20px;
+}
+
+.cart-info-box .price {
+    font-family: 'futuramdbt';
+    font-size: 30px;
+}
+
+.cart-info-box .cut-price {
+    font-size: 18px;
+    color: #666666;
+    text-decoration: line-through;
+    margin-left: 283px;
+}
+
+.cart-info-box .subscription-box {
+    background: #E8F4E9;
+    padding: 20px;
+}
+
+.cart-info-box .subscription-box .sub-heading {
+    font-size: 22px;
+}
+
+.cart-info-box .subscription-box p {
+    font-size: 18px;
+    color: #0000008a;
+}
+
+.cart-info-box .subscription-box label {
+    color: #D99374;
+    font-size: 20px;
+}
+
+.cart-info-box .subscription-box input[type="checkbox" i] {
+    height: 25px;
+    width: 25px;
+}
+
+.pricing-box {
+    background: #fff;
+    margin: 40px 0 25px;
+    padding: 30px;
+    position: relative;
+}
+
+.pricing-box h2 {
+    font-size: 19px;
+    font-family: 'futuramdbt';
+}
+
+.pricing-box p {
+    font-size: 10px;
+    font-family: futuramdbt;
+    position: relative;
+    bottom: 7px;
+}
+
+.pricing-box p span {
+    font-family: futuramdbt;
+    color: #00000080;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.pricing-box h4 {
+    font-size: 13px;
+    font-family: 'futuramdbt';
+    letter-spacing: 0.5px;
+}
+
+.pricing-box .discount {
+    font-size: 12px;
+    color: #00B090;
+}
+
+.pricing-box .cupon-box h3 {
+    font-size: 17px;
+    color: #006D5A;
+}
+
+.pricing-box .cupon-box input {
+    padding: 8px 20px;
+    margin: 10px 0;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 1px solid #0000009c;
+    width: 70%;
+}
+
+.pricing-box .cupon-box button {
+    border: none;
+    background: #6D7081;
+    color: #fff;
+    padding: 8px 20px 9px;
+    border-radius: 3px;
+    width: 27%;
+}
+
+.summary-box .cantinue {
+    width: 100%;
+    height: 42px;
+    margin: 10px 0 0;
+    border: none;
+    background: #006D5A;
+    color: #fff;
+    font-family: 'futuramdbt';
+    font-size: 18px;
+}
+
+.sub-price h4 {
+    color: #00000070;
+}
+
+.sub-price p {
+    color: #00000070;
+    font-family: futuramdbt;
+    font-size: 14px;
+}
+
+.Cart .mailing,
+.Cart .footer {
+    top: 0 !important;
+}
+
+/* Hide the default checkbox */
+.custom-checkbox {
+    display: none;
+}
+
+/* Style the custom label as a checkbox */
+.custom-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+/* Create a custom checkbox using a pseudo-element */
+.custom-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #D99374;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Change border and background when checked */
+.custom-checkbox:checked+.custom-label::before {
+    border-color: #D99374;
+    /* Border color when checked */
+    background-color: #D99374;
+    /* Background color when checked */
+}
+
+/* Add a checkmark when checked */
+.custom-checkbox:checked+.custom-label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+}
+
+.Cart .summary-box {
+    margin: 0 !important;
+    width: 100%;
+    border-radius: 0;
+}
+.Cart .profile {
+    padding: 20px 30px 40px;
+    border: none;
+    margin: 0px 0 !important;
+    border-radius: 0;
+    box-shadow:none;
+    background: #fff;
+}
+
+.cuponCode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow:0px 0px 13px 2px #006d5a26;
+    border-radius: 3px;
+    padding: 10px;
+    font-family: futuramdbt;
+    position: relative;
+}
+.cuponCode p {
+    margin: 0 !important;
+    position: absolute !important;
+    bottom: 5px;
+    left: 50px;
+    font-size: 11px;
+    color: #00000085;
+}
+.cuponCode h5{
+    margin: 0 !important;
+    color: #006D5A !important;
+
+}
+.cuponCode h5 svg{
+    font-size: 24px;
+    margin: 0 5px;
+}
+.cuponCode h5 span {
+    color: #000 !important;
+    font-size: 13px;
+    margin-left: 5px !important;
+}
+.remove-btn{
+    color: rgba(255, 0, 0, 0.774) !important;
+    background-color: transparent !important;
+    border: none  ;
+}

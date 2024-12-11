@@ -1,0 +1,119 @@
+
+.mailing{
+    position: relative;
+    top: 695px;
+    z-index: 5px;
+    background-color: #EFEFEF;
+    padding: 80px 0 ;
+}
+.mailing h2{
+    font-family: futuramdbt;
+    color: #000;
+    font-size: 35px;
+    -webkit-text-stroke: 1px  #000;
+    letter-spacing: 1.2px;
+
+}
+.mailing p{
+    font-family: lato;
+    color: #8B8B8B;
+}
+.form-control {
+    display: block;
+    width: 21% !important;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    background: transparent !important;
+    border: 1px solid #181515 !important;
+    height: 52px !important;
+    margin-right: 8px !important;
+    border-radius: 50px !important;
+    padding: 10px 25px !important;
+    color: #828282c2 !important;
+    font-family: 'latoRegular' !important;
+    font-size: 14px !important;
+}
+.form-submit {
+    outline: none;
+    border: none;
+    background: #006D5A;
+    color: #fff;
+    height: 55px;
+    text-transform: uppercase;
+    width: 178px;
+    border-radius: 50px;
+    font-family: 'latoRegular';
+    letter-spacing: 1px;
+}
+.footer{
+    position: relative;
+    top: 695px;
+    z-index: 5;
+    background-color: #181515;
+    color: #fff;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+.footer h2 {
+    font-size: 17px;
+    margin: 10px 30px;
+    font-family: openSanceSemiBold;
+    margin-bottom: 23px;
+}
+.footer li{
+    list-style: none;
+    margin-left: 20px;
+}
+.footer li .nav-link {
+    color: #ffffffbd !important;
+    font-size: 14px !important;
+    font-family: openSanceBold !important;
+    margin: 16px 11px;
+}
+.footer ul{
+    padding-left: 0 !important;
+}
+.footer ul li span svg {
+    font-size: 20px;
+    color: #ffffffbd !important;
+}
+.ssocal-icon {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    margin-left: 29px;
+}
+.ssocal-icon span {
+    display: block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    padding: 0px 5px;
+    margin: 0 5px;
+}
+.footer-bottom p{
+    font-family: openSanceBold;
+    text-align: center;
+    margin-top: 70px;
+}
+.addrss li span{
+    margin-top: -17px;
+    font-size: 14px;
+}
+.addrss .adjst {
+    margin-top: -2px;
+}

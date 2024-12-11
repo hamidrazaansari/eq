@@ -1,0 +1,695 @@
+.navbar{
+    padding: 0 !important;
+}
+.hero {
+    background-color: #F3F3F3;
+    height: 600px;
+    position: fixed;
+    top: 100px;
+    z-index: 0;
+    width: 100%;
+}
+.img{
+    position: relative;
+}
+
+.img img {
+    position: absolute;
+    right: 80px;
+    top: 0;
+    height: 600px;
+}
+.texts {
+    position: relative;
+    left: 140px;
+    top: 120px;
+}
+.heading {
+    position: absolute;
+    font-size: 80px;
+    font-weight: bold;
+    font-style: normal;
+    color: #006D5A;
+    font-family: PlayFireDisplay;
+    letter-spacing: 2px;
+}
+.heading span{
+    font-size: 86px;
+}
+.texts .para {
+    font-size: 17px;
+    font-family: futuramdbt;
+    position: absolute;
+    left: 7px;
+    width: 78%;
+    top: 226px;
+}
+.btns {
+    position: absolute;
+    top: 305px;
+}
+.btns .bookSeion{
+    background-color: #006D5A;
+    color: #fff;
+    font-family: latoRegular;
+    border: none;
+    border: none;
+    font-size: 17px;
+    padding: 11px 26px;
+    border-radius: 6px;
+    margin: 0 10px;
+}
+.btns .contactUS{
+    font-family: latoRegular;
+    border: none;
+    border: none;
+    font-size: 17px;
+    margin: 0 10px;
+    color: #006D5A;
+    font-weight: bold !important;
+}
+.btns .contactUS svg{
+    font-size: 17px;
+}
+/* about sec css */
+.about-us{
+    padding: 50px 30px;
+    position: relative;
+    top: 695px;
+    z-index: 2;
+    background-color: #fff;
+}
+.about-us img{
+    height: 572px;
+}
+
+.about-us h2 {
+    font-family: PlayFireDisplay;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 66px;
+    margin-bottom: 26px;
+}
+
+.about-us h3 {
+    font-family: futuramdbt;
+    font-size: 43px;
+    color: #006D5A;
+    margin-bottom: 20px;
+}
+.about-us p {
+    font-family: futuramdbt;
+    font-size: 13px;
+    width: 78%;
+}
+.about-us .read-more-btn {
+    background-color: #006D5A;
+    color: #fff;
+    font-family: futuramdbt;
+    border: none;
+    border: none;
+    font-size: 21px;
+    padding: 9px 32px;
+    border-radius: 5px;
+    margin: 12px 10px;
+    margin-left: 0px;
+}
+.counterup {
+    background-color: #EFEFEF;
+    padding: 60px 20px;
+    background-image: url(/src/assets/image/counterup-bg.png);
+    background-position: center;
+    position: relative;
+    z-index: 2;
+    top: 695px;
+}
+.counterup h3{
+    font-size: 45px;
+    font-family: boldfuturamdbt;
+    color: #006D5A;
+}
+.counterup .row {
+    padding: 0px 144px !important;
+}
+.counterup p{
+    margin-bottom: 0;
+    font-family: futuramdbt;
+    color: #181515;
+}
+.programs {
+    padding: 30px 0;
+    position: relative;
+    background: #fff;
+    top: 695px;
+}
+.programs .row {
+    margin-top: 55px;
+
+}
+.programs h2{
+    font-family:PlayFireDisplay ;
+    font-size: 40px;
+    color: #006D5A;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+.programs h2 span{
+    color: #181515;
+}
+.programs .img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EFEFEF;
+
+}
+
+.programs .content{
+padding: 80px;
+}
+.programs .content .num{
+    font-size: 34px;
+    color: #006D5A;
+    font-family: lato;
+}
+.programs .content h3{
+    font-family:boldfuturamdbt ;
+    color: #181515 !important;
+    font-size: 32px;
+    /* -webkit-text-stroke: 1px #181515 !important; */
+}
+.programs .content p {
+    font-size: 16px;
+    font-family: futuramdbt;
+    color: #424747;
+    margin: 20px 0;
+}
+.programs .content ul{
+    list-style: none;
+    padding: 0;
+}
+.programs .content ul li img{
+    height: 35px;
+    width: 35px;
+    margin: 10px 20px;
+    margin-left: 0;
+}
+.programs .content ul li span{
+    font-family:futuramdbt ;
+    color: #424747;
+}
+.program-btn {
+    background-color: #006D5A;
+    color: #fff;
+    font-family: futuramdbt;
+    border: none;
+    border: none;
+    font-size: 22px;
+    padding: 9px 41px;
+    border-radius: 10px;
+    margin: 12px 10px;
+    margin-left: 0px;
+}
+.arrow img {
+    height: 58px;
+    position: absolute;
+    left: 171px;
+    top: 20px;
+}
+.arrow-point img{
+    height: 20px;
+    position: absolute;
+    bottom: 13px;
+    left: 259px;
+}
+
+.xyz{
+    display: flex;
+    overflow-x: scroll;
+    width: auto;
+    background-color: #fff !important;
+    z-index: 2;
+}
+.xyz::-webkit-scrollbar{
+    display: none;
+}
+.programs .row{
+    width: 100vw;
+}
+
+.programs .img-box img {
+    height: 650px;
+    width: 500px;
+    object-fit: contain;
+    margin-top: 70px;
+}
+
+.why-choose-us{
+    position: relative;
+    z-index: 2;
+    top: 695px;
+    background-color: #fff;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.why-choose-us h2{
+    font-family: PlayFireDisplay;
+    font-weight: 700;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-left: 50px;
+    margin-bottom: 43px;
+}
+.why-choose-us h2 span{
+    color: #006D5A;
+}
+.why-choose-us .img-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.why-choose-us .img-box img {
+    height: 466px;
+    object-fit: cover;
+}
+.points{
+    margin: 0px 60px ;
+    border-left: 2px solid #bcbcbc;
+    padding: 8px 40px ;
+    width: 80%;
+}
+.points h3{
+    font-family: boldfuturamdbt;
+    font-size: 21px;
+    color: #bcbcbc;
+}
+.points p {
+    font-family: 'futuramdbt';
+    font-size: 16px;
+    color: #8d8b8b;
+}
+.plan a{
+    text-decoration: none;
+    color: #ffff;
+}
+ .active{
+    border-color: #000;
+}
+ .active h3{
+    color: #000;
+}
+ .active p{
+    color: #000;
+}
+.points-box{
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.sticky {
+    position: sticky;
+    top: 100px; /* Stick the section to the top when scrolled */
+    z-index: 100;
+    background-color: white;
+  }
+.points-box::-webkit-scrollbar{
+    display: none;
+}
+
+
+.why-choose-us .img-box{
+    background-color: #EFEFEF;
+}
+.why-choose-us .para{
+    font-family:futuramdbt ;
+    font-size: 15px;
+    color: #8d8b8b;
+    margin-top: 10px;
+    font-weight: 400;
+}
+.plan {
+    background-color: #EFEFEF;
+    position: relative;
+    z-index: 2;
+    top: 695px;
+    padding: 60px;
+    overflow: hidden;
+}
+.plan::after {
+    position: absolute;
+    content: '';
+    background: url(/src/assets/image/Vector.png);
+    top: -144px;
+    right: 0;
+    z-index: 3;
+    height: 367px;
+    width: 188px;
+    background-size: contain;
+}
+.plan::before {
+    position: absolute;
+    content: '';
+    background: url(/src/assets/image/vector2.png);
+    bottom: -112px;
+    left: 0;
+    z-index: 3;
+    height: 387px;
+    width: 230px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.plan h2{
+    font-family: PlayFireDisplay;
+    font-size: 100px;
+    font-weight: 600;
+    color: #181515;
+}
+.plan h2 span{
+    color: #006D5A;
+}
+.plan h2 p{
+    font-size: 70px;
+}
+.get-started-btn{
+    background-color: #006D5A;
+    color: #fff;
+    font-family: latoRegular;
+    border: none;
+    border: none;
+    font-size: 21px;
+    padding: 9px 41px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+.testimonials{
+    position: relative;
+    z-index: 2;
+    top: 695px;
+    background-color: #fff;
+    padding: 60px 0;
+}
+.testimonials h2{
+    text-align: center;
+    font-family: 'PlayFireDisplay';
+    font-size: 41px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #006D5A;
+}
+.xyz {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth; /* Optional for smooth scrolling */
+  }
+  
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(50px); /* Start from below */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0); /* Move to its original position */
+  }
+
+
+
+@media (max-width:1400px) and (min-width:1200px) {
+    .texts {
+        left: 94px;
+        top: 170px;
+    }
+    .heading span {
+        font-size: 84px;
+    }
+    .heading{
+        font-size: 80px;
+    }
+    .texts .para {
+        font-size: 17px;
+        left: 2px;
+    }
+    .btns .bookSeion {
+        font-size: 15px;
+        padding: 9px 21px;
+        margin-left: 0;
+    }
+    .img img {
+        right: 62px;
+    }
+}
+
+@media (max-width:1200px) and (min-width:992px) {
+    .img img {
+        right: 0px;
+        height: 600px;
+    }
+    .heading span {
+        font-size: 70px;
+    }
+    .heading{
+        font-size: 65px;
+    }
+    .texts {
+        left: 90px;
+        top: 150px;
+    }
+    .texts .para {
+        font-size: 14px;
+        left: 2px;
+        top: 171px;
+    }
+    .btns .bookSeion {
+        font-size: 14px;
+        padding: 9px 17px;
+        border-radius: 6px;
+        margin: 0 10px;
+        margin-left: 0;
+    }
+    .btns {
+        position: absolute;
+        top: 237px;
+    }
+}
+
+@media (max-width:992px) and (min-width:768px) {
+    .img img {
+        right: 0px;
+        height: 600px;
+    }
+    .heading span {
+        font-size: 50px;
+    }
+    .heading{
+        font-size: 45px;
+    }
+    .texts {
+        left: 35px;
+        top: 140px;
+        width: 50%;
+    }
+    .texts .para {
+        font-size: 13px;
+        left: 0px;
+        top: 128px;
+    }
+    .btns .bookSeion {
+        font-size: 14px;
+        padding: 9px 17px;
+        border-radius: 6px;
+        margin: 0 10px;
+        margin-left: 0;
+    }
+    .btns {
+        position: absolute;
+        top: 190px;
+    }
+    .img img {
+        right: 0px;
+        top: 19px;
+        height: 484px;
+    }
+    .btns .bookSeion {
+        font-size: 11px;
+        padding: 9px 17px;
+        border-radius: 6px;
+        margin: 0 10px;
+        margin-left: 0;
+    }
+    .btns .contactUS {
+        font-size: 15px;
+    }
+    .hero{
+        height: 566px;
+    }
+    .signup-btn {
+        background-color: #006D5A;
+        color: #fff;
+        font-family: latoRegular;
+        border: none;
+        border: none;
+        font-size: 16px;
+        padding: 4px 24px;
+        border-radius: 10px;
+        width: 120px;
+        height: 41px;
+    }
+}
+
+@media (max-width:768px) and (min-width:512px) {
+
+
+    .heading{
+        font-size: 35px;
+    }
+    .heading span {
+        font-size: 41px;
+    }
+    .texts {
+        left: 22px;
+        top: 140px;
+        width: 57%;
+    }
+    .texts .para {
+        font-size: 11px;
+        left: 0px;
+        top: 109px;
+        width: 90%;
+    }
+
+    .btns {
+        position: absolute;
+        top: 165px;
+    }
+
+    .btns .bookSeion {
+        font-size: 11px;
+        padding: 9px 17px;
+        border-radius: 6px;
+        margin: 0 10px;
+        margin-left: 0;
+    }
+    .btns .contactUS {
+        font-size: 15px;
+    }
+    .hero {
+        height: 454px;
+    }
+    .signup-btn {
+        font-size: 16px;
+        padding: 4px 24px;
+        border-radius: 10px;
+        width: 120px;
+        height: 41px;
+    }
+    .img img {
+        right: -14px;
+        top: 19px;
+        height: 400px;
+    }
+    .navbar{
+        padding: 0;
+    }
+}
+@media (max-width:512px) {
+    .img img {
+        right: 0px;
+        top: 19px;
+        height: 300px;
+    }
+    .heading{
+        font-size: 30px;
+    }
+    .heading span {
+        font-size: 33px;
+    }
+    .texts {
+        left: 26px;
+        top: 86px;
+        width: 57%;
+        z-index: 2;
+    }
+    .texts .para {
+        font-size: 10px;
+        left: 0px;
+        top: 100px;
+        width: 90%;
+    }
+
+    .btns {
+        position: absolute;
+        top: 135px;
+    }
+    .btns .bookSeion {
+        font-size: 9px;
+        padding: 6px 10px;
+        border-radius: 4px;
+        margin: 0 10px;
+        margin-left: 0;
+    }
+    .btns .contactUS{
+        font-size: 12px;
+    }
+    .navbar-brand img {
+        height: 65px;
+        width: 65px;
+        margin: 0px 0px;
+        margin-right: 50px;
+    }
+    .navbar{
+        padding: 0 !important;
+    }
+    .signup-btn {
+        font-size: 14px;
+        padding: 3px 24px;
+        border-radius: 6px;
+        width: 99px;
+        height: 38px;
+    }
+    .hero {
+        background-color: #F3F3F3;
+        height: 359px;
+    }
+}
+@media (max-width:512px){
+    .texts{
+        left: 0px;
+    }
+    .heading{
+        font-size: 23px;
+        top: 10px;
+    }
+    .heading span{
+        font-size: 25px;
+    }
+    .texts .para {
+        font-size: 9px;
+        left: 0px;
+        top: 80px;
+        width: 90%;
+    }
+    .btns{
+        top: 120px;
+    }
+    .btns .bookSeion {
+        font-size: 8px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin: 0 5px;
+        margin-left: 0;
+    }
+    .btns .contactUS {
+        font-size: 11px;
+    }
+    .btns .contactUS svg{
+        font-size: 14px !important;
+    }
+}

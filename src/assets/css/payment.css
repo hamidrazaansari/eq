@@ -1,0 +1,40 @@
+.payment-box{
+    margin-top: 126px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.payment-box img{
+    height: 700px;
+}
+.payment-main{
+    background-color: #EFEFEF;
+}
+.summary-box {
+    background: #fff;
+    margin-top: 142px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 70%;
+    margin: 142px auto 0;
+}
+.summary-box h2{
+    font-family: 'futuramdbt';
+    font-size: 20px;
+}
+.summary-box p{
+    font-family: 'futuramdbt';
+    color: #0000004e;
+}
+.summary-box span{
+    /* font-weight: bold !important; */
+}
+
+
+.payment-box p{
+    font-family: 'futuramdbt';
+    color: #000;
+}
+.payment-box span{
+    font-weight: bold;
+}

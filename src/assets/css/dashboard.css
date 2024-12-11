@@ -1,0 +1,597 @@
+.sidbar,
+.header {
+    margin-top: 130px;
+}
+
+.header {
+    background-color: #006D5A;
+    padding: 10px;
+    padding-top: 13px;
+}
+
+.header h2 {
+    color: #fff;
+    font-family: 'futuramdbt';
+    font-size: 22px;
+    margin: 0;
+}
+
+.header h2 svg {
+    font-size: 29px;
+    margin-right: 9px;
+}
+
+.sidbar ul {
+    list-style: none;
+}
+
+.sidbar ul li {
+    display: flex;
+    align-items: center;
+    border: 1px solid #6963638a;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.sidbar .active {
+    background-color: #006D5A;
+    color: #fff;
+}
+.sidbar ul li p {
+    margin: 0 !important;
+    font-family: futuramdbt;
+    color: #696363;
+    margin-left: 5px;
+}
+.sidbar  ul .active p{
+color: #fff !important;
+}
+.sidbar  ul .active img{
+    filter: invert(100%) brightness(200%) !important;
+}
+
+
+.sidbar ul li img {
+    margin-right: 10px;
+}
+
+.profile {
+    position: relative;
+}
+
+.profile .edit-button {
+    border: none;
+    background-color: transparent;
+    font-family: futuramdbt;
+    font-size: 16px;
+    color: #666666;
+    float: right;
+    /* margin: 15px 0 20px; */
+    position: absolute;
+    top: 14px;
+    right: 45px;
+}
+
+.profile , .address {
+    padding: 20px 30px 40px;
+    border: 1px solid #66666680;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px #66666699;
+}
+.address h3{
+    font-size: 12px;
+    font-family: 'futuramdbt';
+    margin: 0px 0 13px;
+    color: #0000009e;
+}
+
+.profile .edit-button svg {
+    font-size: 23px;
+    position: absolute;
+    bottom: 3px;
+    margin-left: 5px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-box input {
+    height: 46px;
+    margin: 10px 0;
+    border: 1px solid #6963639c;
+    border-radius: 4px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0 14px;
+}
+
+.input-box label,
+.input-box h6 {
+    font-family: 'futuramdbt';
+    margin: 0;
+    line-height: 11px;
+}
+
+.input-box input[type="radio"] {
+    display: flex !important;
+    position: unset !important;
+    opacity: unset !important;
+    width: 10px !important;
+    height: 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.input-box .gender {
+    display: flex;
+}
+
+.genderOpt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 20px;
+}
+
+.genderOpt label {
+    margin: 10px 0;
+}
+
+.form-check-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #666666;
+    font-family: unset !important;
+    margin-left: 5px !important;
+    font-weight: 500;
+}
+
+/* trainer Profile css */
+.trainer-banner {
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #0000003a;
+}
+
+.banner-header {
+    background-color: #4A4D56;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 130px;
+    position: relative;
+}
+
+.banner-header img {
+    position: absolute;
+    top: 21px;
+    left: 48px;
+    height: 146px;
+    width: 146px;
+}
+
+.banner-footer {
+    height: 50px;
+}
+
+.banner-footer button {
+    float: inline-end;
+    margin-top: 10px;
+    margin-right: 17px;
+    border: none;
+    background: #FCC252;
+    padding: 5px 16px;
+    font-size: 12px;
+    color: #000;
+    font-family: 'futuramdbt';
+    border-radius: 5px;
+}
+
+.banner-footer button span {
+    margin-right: 10px;
+}
+
+.banner-footer button span svg {
+    position: relative;
+    bottom: 1px;
+    font-size: 10px;
+}
+
+.banner-header h2 {
+    color: #fff;
+    font-family: 'futuramdbt';
+    font-size: 30px;
+    position: absolute;
+    left: 227px;
+    top: 48px;
+}
+
+.banner-header p {
+    color: #fff;
+    font-family: 'futuramdbt';
+    font-size: 18px;
+    position: absolute;
+    top: 84px;
+    left: 228px;
+}
+
+.about-trainer h3 {
+    font-family: futuramdbt;
+    color: #666666;
+    font-size: 25px;
+    margin: 20px;
+}
+
+.about-trainer p {
+    color: #666666c9;
+    font-family: 'futuramdbt';
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 20px;
+}
+
+.In h2 {
+    font-family: 'futuramdbt';
+    font-size: 20px;
+}
+
+.In {
+    margin: 20px 0;
+}
+
+.trainer-interest {
+    background: #FFF7E9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 12px 2px #0000001a;
+}
+
+.trainer-interest h2 {
+    color: #7A5A21;
+    margin-bottom: 20px;
+}
+
+.trainer-interest button {
+    background-color: #EDD5AC;
+    color: #666666;
+    border: none;
+    margin: 5px 10px;
+    padding: 4px 25px 6px;
+    border-radius: 20px;
+    font-family: futuramdbt;
+    font-size: 12px;
+
+}
+
+.Speciality {
+    background: #FBFFE9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 12px 2px #0000001a;
+
+}
+
+.Speciality h2 {
+    color: #606F1C;
+    margin-bottom: 20px;
+}
+
+.Speciality button {
+    background-color: #DEE9AC;
+    color: #666666;
+    border: none;
+    margin: 5px 10px;
+    padding: 4px 25px 6px;
+    border-radius: 20px;
+    font-family: futuramdbt;
+    font-size: 12px;
+
+
+}
+
+.Certifications {
+    background: #ffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 6px #0000003c;
+}
+
+.Certifications h2 {
+    color: #737679;
+    margin-bottom: 20px;
+}
+
+.Certifications button {
+    background-color: #EDEFF1;
+    color: #666666;
+    border: none;
+    margin: 5px 10px;
+    padding: 4px 25px 6px;
+    border-radius: 20px;
+    font-family: futuramdbt;
+    font-size: 12px;
+
+}
+
+.teachingExperience {
+    background: #ffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 6px #0000003c;
+}
+
+.teachingExperience h2 {
+    font-family: futuramdbt;
+    color: #4f5052;
+    font-size: 22px;
+}
+
+.teachingExperience p {
+    font-family: futuramdbt;
+    color: #666666;
+    font-size: 15px;
+}
+
+/* my boking sstyle */
+.my-booking .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px 0px #0000003c;
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #0000002e;
+    width: 100%;
+}
+
+.my-booking .header h2 {
+    font-family: futuramdbt;
+    font-size: 25px;
+    color: #414040;
+}
+
+.my-booking .header p {
+    font-size: 13px;
+    color: #0000009c;
+    font-family: 'futuramdbt';
+    margin: 5px 0;
+    width: 60%;
+}
+.my-booking .header .expire{
+    font-size: 17px;
+    margin: 0;
+    position: absolute;
+    top: 30px;
+    right: -409px;
+}
+
+.my-booking .header button {
+    background-color: #EBFFFB;
+    border: 1px solid #006D5A;
+    border-radius: 10px;
+    width: 228px;
+    padding: 8px 4px 9px;
+    font-family: 'futuramdbt';
+    color: #0000009c;
+    margin-top: 10px;
+}
+.my-booking .features-box{
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #00000052;
+    padding: 20px;
+    font-family: 'futuramdbt';
+    color: #000000a8;
+}
+.my-booking .features-box h2{
+    font-size: 16px;
+}
+.my-booking .features-box p{
+    font-size: 12px;
+}
+.my-booking .status-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #00000052;
+    padding: 20px;
+    margin: 20px 0;
+}
+.my-booking .status-box h2 , .my-booking .Trainer-box h2{
+    font-size: 15px;
+}
+.my-booking .status-box button , .my-booking .Trainer-box button{
+    background-color: #006D5A;
+    color: #fff;
+    font-family:futuramdbt ;
+    border: none;
+    padding: 3px 40px 4px;
+    border-radius: 20px;
+}
+.my-booking .Trainer-box{
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #00000052;
+    padding: 20px;
+}
+.my-booking .Trainer-box img{
+    height: 65px;
+    width: 65px;
+    margin: 20px 0;
+    margin-right: 40px;
+}
+.my-booking .Trainer-box h3, .my-booking .program-date h2{
+    font-size: 15px;
+    color: #000000be;
+    margin: 0;
+}
+.my-booking .Trainer-box p, .my-booking .program-date p{
+    font-size: 12px;
+    color: #00000087;
+    margin: 0;
+}
+.my-booking .nav-tabs{
+    border:none !important;
+}
+.my-booking .nav-tabs .nav-link {
+    border: none !important;
+    padding: 0;
+    margin: 30px 20px 10px;
+    padding-bottom: 6px;
+    font-size: 17px !important;
+    font-family:futuramdbt;
+    letter-spacing: 1px;
+    color: #000000b2 !important;
+
+}
+.my-booking .nav-tabs  .active{
+    border-bottom: 2px solid #00000075 !important;
+}
+.my-booking .prepration {
+    margin: 14px 0px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #00000052;
+    padding: 20px;
+}
+.my-booking .prepration p span{
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: #000;
+    margin: 2px;
+
+}
+
+.program-date h2{
+margin-bottom: 20px;
+}
+.my-booking .description {
+    margin: 14px 0px;
+    background: #FBFFE9;
+    padding: 20px;
+    border-radius: 5px;
+}
+.my-booking .program-date {
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #00000052;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #F1E9FF;
+}
+
+
+.description h2 {
+    font-size: 20px;
+    font-family: futuramdbt;
+    margin-bottom: 20px;
+    color: #627318;
+}
+
+.description p {
+    font-family: futuramdbt;
+    color: #666666;
+    margin: 6px !important;
+}
+
+.my-booking .Information {
+    margin: 14px 0px;
+    background: #E9F7FF;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.Information h2 {
+    font-size: 20px;
+    font-family: futuramdbt;
+    margin-bottom: 20px;
+    color: #184965;
+}
+
+.Information p {
+    font-family: futuramdbt;
+    color: #666666;
+    margin: 10px!important;
+}
+
+
+
+.prepration h2 {
+    font-size: 20px;
+    font-family: futuramdbt;
+    margin-bottom: 20px;
+    color: #745623;
+}
+
+.prepration p {
+    font-family: futuramdbt;
+    color: #666666;
+    margin: 10px!important;
+}
+
+.my-booking .pricing {
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #00000052;
+    padding: 20px;
+}
+
+
+.pricing h2 {
+    font-size: 20px;
+    font-family: futuramdbt;
+    margin-bottom: 20px;
+    color: #745623;
+}
+
+.my-booking .pricing p {
+    font-family: futuramdbt;
+    color: #666666;
+    margin: 5px !important;
+}
+.pricing h5{
+    font-size: 18px;
+    font-family: futuramdbt;
+    color: #282828;
+}
+.my-booking .accordion-body{
+    padding: 20px 0 !important;
+    border: none !important;
+}
+
+.my-booking .accordion-button:not(.collapsed) {
+	background-color:  transparent !important;
+	border: none !important;
+	box-shadow: unset !important;
+}
+.my-booking .accordion-button{
+	padding: 0 !important;
+}
+.my-booking .accordion-button::after {
+    flex-shrink: 0;
+    width: var(--bs-accordion-btn-icon-width);
+    height: var(--bs-accordion-btn-icon-width);
+    margin-left: auto;
+    content: "";
+    background-image: var(--bs-accordion-btn-icon);
+    background-repeat: no-repeat;
+    background-size: var(--bs-accordion-btn-icon-width);
+    transition: var(--bs-accordion-btn-icon-transition);
+    position: absolute !important;
+    right: 29px !important;
+    bottom: 16px !important;
+}
+.my-booking .accordion-item{
+    border: none !important;
+}
+.maincategory{
+    font-size: 17px !important;
+    width: 100% !important;
+    color: #006D5A !important;
+    font-family: futuramdbt;
+}

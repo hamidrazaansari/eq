@@ -1,0 +1,213 @@
+.signin , .signUp{
+position: relative;
+}
+.signin .logo  , .signUp .logo  , .otp .logo{
+    position: absolute;
+    top: 25px;
+    left: 45px;
+}
+
+.signin-image{
+    background: #EFEFEF;
+    padding: 50px !important;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signin-image img{
+    height: 90%;
+    width: 500px;
+}
+
+
+/* signIn modal style */
+
+ .sign-in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: futuramdbt;
+
+}
+.sign-in h2{
+    font-size: 36px;
+}
+.google-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #0000008c;
+    padding: 12px 20px;
+    width: 51%;
+    margin: 20px 0;
+    border-radius: 36px;
+    margin-bottom: 20px;
+}
+.google-box p{
+    margin: 0;
+    font-family: futuramdbt;
+    margin-left: 5px;
+    font-size: 14px;
+    color: #000000;
+}
+.or{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.or span {
+    height: 1px;
+    width: 60px;
+    background-color: #b9b3b3;
+    margin: 12px 13px;
+}
+.or p{
+    margin: 0;
+    font-family: futuramdbt;
+
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    margin: 12px 0;
+    width: 65%;
+    position: relative;
+}
+.input span svg{
+    font-size: 20px;
+    color: #0000006b;
+}
+.input label{
+    font-family: futuramdbt;
+}
+.input label span{
+    color: #F56C6C;
+}
+.input input{
+    height: 45px;
+    border-radius: 7px;
+    border: 1px solid #8d8d8d;
+    padding: 0 15px;
+
+}
+.others{
+    width: 52%;
+}
+.others label {
+    float: inline-end;
+    font-family: futuramdbt;
+    font-size: 14px;
+    color: #000000;
+}
+.others p{
+    display: inline-block;
+    font-size: 13px;
+    text-align: center;
+    margin: 15px 0;
+    font-family: futuramdbt;
+    line-height: 17px;
+    color: #00000070;
+}
+.others p a{
+    color: #000000;
+    text-decoration: underline !important;
+    font-size: 11px;
+}
+.others button{
+    display: block;
+    width: 100%;
+    background: #006D5A;
+    border: none;
+    color: #fff;
+    font-family: futuramdbt;
+    letter-spacing: 1px;
+    padding: 9px;
+    border-radius: 24px;
+    margin: 8px 0;
+}
+.others h5{
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+    font-family: futuramdbt;
+}
+.others h5 span{
+    color: #006D5A;
+}
+
+.otp .otp-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.otp .otp-container input {
+    height: 53px;
+    width: 53px;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 10px;
+    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    justify-content: center;
+}
+.sign-in .input h2{
+    font-family: 'futuramdbt';
+    font-size: 27px;
+    color: #006D5A;
+
+}
+.sign-in .input p{
+    font-size: 13px;
+    color: #00000085;
+}
+.sign-in h2{
+    font-family: 'futuramdbt';
+    font-size: 27px;
+    /* color: #006D5A; */
+}
+.sign-in svg{
+    font-size: 74px;
+    color: #006D5A;
+}
+.others .cancel-btn{
+    background-color: transparent !important;
+    border: 1px solid #000;
+    color: #000;
+}
+button:disabled {
+    background-color: #006d5b77 !important;
+    color: #006D5A;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  .reset-Pasword .input{
+    width: 100%;
+  }
+  .reset-Pasword h2{
+    font-size: 24px;
+    font-family: 'futuramdbt';
+    text-align: center;
+    color: #006D5A;
+  }
+  .reset-Pasword button{
+    border: none;
+    background: transparent;
+    font-family: 'futuramdbt';
+    color: #fff;
+    padding: 7px 28px;
+    margin-top: 10px;
+    background-color: #006D5A;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .name .input{
+    width: 100% ;
+  }
+  .mobile .input{
+    width: 100%;
+  }

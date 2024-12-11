@@ -1,0 +1,279 @@
+
+.personalize-program {
+    padding: 40px 0 0;
+    font-family: futuramdbt;
+    padding-top: 120px;
+}
+
+.personalize-program h2{
+    font-family: boldfuturamdbt;
+    font-size: 35px;
+    /* margin: 10px; */
+}
+.personalize-program h2 span{
+    color: #006D5A;
+}
+.personalize-program .breadcrumb a {
+    color: rgb(0 0 0 / 35%);
+    font-family: futuramdbt;
+    font-size: 16px;
+    text-decoration: none;
+}
+.personalize-program .breadcrumb span {
+    display: block;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: rgb(210 210 210);
+    margin: 0 10px;
+    position: relative;
+    top: 10px;
+}
+.personalize-program .navbar-brand img{
+    margin-left: 40px;
+}
+.personalize-program .program-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    border: 1px solid #a8a8a8;
+    border-radius: 10px;
+    margin: 20px 0;
+    background: #F3F3F3;
+
+
+}
+.personalize-program .program-box:hover{
+    border: 2px solid #0000006c;
+}
+.personalize-program .program-box h3{
+    font-size: 25px;
+    font-family: futuramdbt;
+}
+.personalize-program .program-box .populaty {
+    background-color: #D8D8D8;
+    display: flex;
+    padding: 9px 15px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 10px;
+}
+.personalize-program .program-box .populaty p{
+    margin: 0 !important;
+    font-size: 10px;
+}
+.rating{
+    font-size: 15px;
+    font-weight: 500;
+    border-right: 2px solid grey;
+    padding: 0 10px;
+    margin-right: 4px !important;
+}
+.time{
+    background: #006D5A;
+    color: #fff;
+    padding: 5px 25px;
+    border-radius: 32px;
+    margin-bottom: 17px;
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+.populaty p span{
+    font-family: futuramdbt;
+    margin-left: 10px !important;
+
+}
+.populaty p svg {
+    font-size: 12px;
+    position: relative;
+    bottom: 1px;
+    left: 4px;
+}
+.program-box button {
+    background: transparent;
+    padding: 8px 88px;
+    border: 1px solid grey;
+    border-radius: 6px;
+}
+.recall{
+    background-color: #F3F3F3;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 30px;
+    margin: 0 30px;
+
+}
+.recall h2{
+    font-size: 35px;
+    font-family: boldfuturamdbt;
+    color: #006D5A;
+}
+.recall p{
+    font-size: 18px;
+    font-family:futuramdbt;
+    margin: 5px 0 20px;
+
+}
+.recall button{
+    background-color: #006D5A;
+    color: #ffff;
+    border-radius: 10px;
+    padding: 5px 40px;
+    border: none;
+    font-family:futuramdbt;
+    width: 350px;
+    height: 47px;
+    font-size: 18px;
+}
+.other-plan{
+    margin-bottom: 20px;
+}
+.other-plan .other-plan-heading{
+    color: #212B36;
+    font-family:futuramdbt;
+    font-size: 35px;
+}
+.slide .program-box img {
+    height: 300px;
+    margin: 0 auto;
+}
+.slide .program-box{
+    width: 90%;
+    margin: 20px auto;
+}
+.slide .program-box h3 {
+    font-size: 17px;
+    font-family: futuramdbt;
+    margin-top: 10px;
+}
+.slide .program-box p{
+    font-size: 13px;
+    width: 80%;
+    margin: 23px auto;
+    margin-top: 6px;
+    text-align: center;
+    font-family: 'futuramdbt';
+    color: #000000a3;
+}
+.custom-prev-btn{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 110px;
+    font-size: 25px;
+    top: -34px;
+}
+.custom-next-arrow{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 70px;
+    font-size: 25px;
+    top: -34px;   
+}
+.personalize-program .mailing{
+    top: 0;
+}
+.personalize-program .footer{
+top: 0;
+}
+.personalize-program .footer h2 {
+    font-size: 17px;
+    margin: 10px 30px;
+    font-family: openSanceSemiBold;
+    margin-bottom: 23px;
+}
+.personalize-program .mailing h2 {
+    font-family: futuramdbt;
+    color: #000;
+    font-size: 35px;
+    -webkit-text-stroke: 1px #000;
+    letter-spacing: 1.2px;
+}
+.program-box .para{
+    color: #06060687;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 200;
+    font-family: 'futuramdbt';
+    line-height: 15px;
+    padding: 0 29px;
+}
+.point p{
+    margin-bottom: 0;
+    font-size: 15px;
+    font-family: 'futuramdbt';
+    color: #00000076;
+}
+.point img{
+    height: 20px;
+    margin-right: 6px;
+}
+.point{
+    width: 74%;
+}
+.point .row{
+    background: #ffff;
+}
+
+/* faq page css */
+.faq{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 44%);
+    padding: 50px 0;
+}
+.faq h1{
+    font-family: PlayFireDisplay;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+    letter-spacing: 1.5px;
+}
+.faq h2{
+    font-family: 'futuramdbt';
+    font-size: 30px !important;
+
+}
+.accordion-box{
+    padding: 0 5%;
+}
+.faq .accordion-item:first-of-type  , .accordion-item:first-of-type>.accordion-header .accordion-button{
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+.faq .accordion-item:last-of-type  , .accordion-item:last-of-type>.accordion-header .accordion-button{
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+.faq .accordion-button:not(.collapsed){
+    background-color: #ffff;
+    color: #000 !important;
+}
+
+.faq .accordion-item{
+    border: none !important;
+    border: none !important;
+    box-shadow: 1px 1px 3px #0000004c !important;
+    border-radius: 0 !important;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.faq .accordion-button:focus{
+    box-shadow: none !important;
+}
+.faq .accordion-button{
+    border-radius: 0 !important;
+    font-size: 20px !important;
+
+}
+.faq .accordion-body{
+    font-size: 15px !important;
+    color: #000000d1 !important;
+}
