@@ -55,7 +55,7 @@ function MyTrainer() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-12">
+                <div className="col-8">
                     <div className="teachingExperience">
                         <h2>Teaching Experience</h2>
                         <p className='mt-4'>Years of Experience : 08 years</p>
@@ -63,8 +63,6 @@ function MyTrainer() {
                         <p>Past Employers : Yoga studio, Organizations</p>
                     </div>
                 </div>
-            </div>
-            <div className="row mt-3">
                 <div className="col-4">
                     <div className="teachingExperience">
                         <h2>Inspirations</h2>

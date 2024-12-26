@@ -19,6 +19,15 @@ import Dashboard from './Pages/Dashboard'
 import ResetPassword from './Pages/ResetPassword'
 import Cart from './Pages/Cart'
 import ThankYou from './Pages/ThankYou'
+import Goals from './components/Goals'
+import AgeRange from './components/AgeRange'
+import Injury from './components/Injury'
+import Experience from './components/Experience'
+import TimeSlot from './components/TimeSlot'
+import Budget from './components/Budget'
+import InfoForm from './components/InfoForm'
+import BuildPlanDetails from './components/BuildPlanDetails'
+import CustomizedProgram from './components/CustomizedProgram'
 function App() {
 
   return (
@@ -96,9 +105,43 @@ function App() {
         path='/thankyou'
         element ={<ThankYou/>}
       />
+      <Route 
+        path='/goals'
+        element ={<Goals/>}
+      />
+      <Route 
+        path='/agerange'
+        element ={<AgeRange/>}
+      />
+      <Route 
+        path='/injury'
+        element ={<Injury/>}
+      />
+      <Route 
+        path='/experience'
+        element ={<Experience/>}
+      />
+      <Route 
+        path='/timeslot'
+        element ={<TimeSlot/>}
+      />
+      <Route 
+        path='/budget'
+        element ={<Budget/>}
+      />
+      <Route 
+        path='/info'
+        element ={<InfoForm/>}
+      />
+      <Route 
+        path='/build-plan-details'
+        element ={<BuildPlanDetails/>}
+      />
+      <Route 
+        path='/customized-plans'
+        element ={<CustomizedProgram/>}
+      />
 
-      
-    
 
     </Routes>
     </AuthProvider>

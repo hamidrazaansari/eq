@@ -1,5 +1,5 @@
 .plans{
-    margin-top: 150px;
+    margin-top: 170px;
 }
 .plan-card{
     border: 1px solid #006D5A;
@@ -104,3 +104,182 @@
   .plan-footer .footer{
     top: 41px;
   }
+.tab-button{
+    position: relative;
+    bottom: 60px;
+}
+.tab-button .active-tab {
+    background: #8eebdc27;
+    border: 1px solid #15a48b;
+    border-radius: 4px;
+    padding: 5px 26px;
+    font-family: 'futuramdbt';
+    text-transform: uppercase;
+    margin: 0 10px;
+    box-shadow: 0px 0px 2px #0000006e;
+}
+.tab-button button , .flow button , .rhythm button {
+    border: none;
+    background: transparent;
+    padding: 5px 25px;
+    margin: 0 10px;
+    border: 1px solid #00b09087;
+    border-radius: 4px;
+    font-family: 'futuramdbt';
+    text-transform: uppercase;
+    box-shadow: 0px 0px 2px #0000006e;
+}
+
+.modal-content .compare-button {
+    text-transform: capitalize;
+    color: #006D5A;
+    font-size: 17px;
+    margin: 15px 0px 20px;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    padding: 4px 30px !important;
+    position: unset !important;
+    line-height: unset !important;
+}
+.modal-content .cancel-btn{
+    padding: 0 !important;
+    border: none !important;
+    color: #000000ae !important;
+}
+.modal-content .cancel-btn:hover{
+color: #fff !important;
+}
+.modal-content .cantinue-button {
+    position: unset !important;
+    background: #006D5A;
+    border: none;
+    border-radius: 20px;
+    height: 32px;
+    float: inline-end;
+    margin: 20px 0;
+    padding: 6px 40px !important;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'futuramdbt';
+}
+
+/* General Styles for Comparison Section */
+.compare h2 {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0;
+    font-family: 'futuramdbt', sans-serif; /* Added fallback font */
+}
+
+/* Styling the Comparison Box */
+.compare-box {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin: 30px auto 0; /* Combined margin properties */
+    border-radius: 6px;
+    
+}
+
+/* Features Column and Non-Selected Box */
+.compare-box .features, .compare-box .rhythm {
+    border: 1px solid #00B090;
+    height: 420px;
+}
+.compare-box .features{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+/* Selected Column Borders */
+.compare-box .flow {
+    border-top: 1px solid #00B090;
+    border-bottom: 1px solid #00B090;
+    height: 420px;
+}
+.compare-box .rhythm{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Heading Styles */
+.compare-box h3 {
+    margin: 0;
+    font-family: 'boldfuturamdbt';
+    font-size: 20px;
+    border-bottom: 1px solid #19875491;
+    padding: 17px 70px 20px; /* Adjusted padding for better spacing */
+    color: #006D5A;
+}
+.compare-box h3 .save{
+display: inline-block;
+font-family:futuramdbt;
+font-size: 15px;
+color: #fff;
+background-color: #00B090;
+border-radius: 20px;
+padding: 5px 10px;
+margin-right: 10px;
+margin-top: 10px;
+}
+
+.compare-box .features h3{
+    color: #000;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Paragraph Styles for Selected and Non-Selected Columns */
+.compare-box .flow p, 
+.compare-box .rhythm p {
+    font-family: 'futuramdbt';
+    font-size: 16px;
+    padding-left: 50px;
+    color: #000000a8;
+    margin: 10px 0;
+    height: 40px;
+    line-height: 38px;
+}
+.compare-box .selected{
+    background-color: #00a78b12;
+}
+
+/* Paragraph Styles for Features Column */
+.compare-box .features p {
+    font-family: 'futuramdbt';
+    padding-left: 40px;
+    margin: 10px 10px;
+    height: 40px;
+    line-height: 38px;
+    margin-right: 0;
+    color: #000;
+    font-size: 18px !important;
+}
+
+
+.compare-box .flow p:nth-child(even), 
+.compare-box .features p:nth-child(even), 
+.compare-box .rhythm p:nth-child(even) {
+    background-color: #f5f5f55c; /* Light gray for even rows */
+}
+.bg-warn{
+    background-color: yellow !important;
+    color: #000 !important;
+    padding: 5px 20px;
+
+}
+.bg-warn svg{
+    position: relative;
+    bottom: 1px;
+}
+.modal-content {
+    width: 100% !important; 
+    margin-top: 0px !important;
+    background-color: #fff !important;
+    height: 100% !important;
+    padding: 40px !important; 
+}

@@ -49,8 +49,9 @@
     border: 2px solid #0000006c;
 }
 .personalize-program .program-box h3{
-    font-size: 25px;
+    font-size: 19px;
     font-family: futuramdbt;
+    margin: 0 28px;
 }
 .personalize-program .program-box .populaty {
     background-color: #D8D8D8;
@@ -208,7 +209,7 @@ top: 0;
 }
 .point p{
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 13px;
     font-family: 'futuramdbt';
     color: #00000076;
 }

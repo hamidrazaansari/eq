@@ -158,7 +158,7 @@ function Hero() {
                                 <h2 className='text-center'><span>Build</span> Your<p>Own Plan</p></h2>
                             </ScrollAnimation>
                             <ScrollAnimation animateIn="fadeInUp">
-                               <Link to={'/process'}> <button className='get-started-btn'>Get Started</button></Link>
+                               <Link to={'/goals'}> <button className='get-started-btn'>Get Started</button></Link>
                             </ScrollAnimation>
                         </div>
                     </div>

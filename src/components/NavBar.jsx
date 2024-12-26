@@ -29,6 +29,8 @@ function NavBar() {
       fetchData();
   }, [token]);
 
+  
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top">

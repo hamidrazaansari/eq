@@ -14,6 +14,7 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import parse from 'html-react-parser';
 import { API_URL } from '../utills/BaseUrl'
+import getImageURL from '../utills/getImageURL';
 
 
 
@@ -83,10 +84,12 @@ function Programlisting() {
                     <div className="row">
                         {
                             data && data.map((item)=>{
+                                const imageUrl = item.defaultImage ? getImageURL(item.defaultImage) : '';
+                                
                                 return(
                                     <div className="col-lg-4 col-md-6 col-12">
                                     <div className="program-box">
-                                        <img src={ProgImg} alt="Personal Training Trail" />
+                                        <img src={imageUrl} className='program-img' alt="Personal Training Trail" />
                                         <h3>{item.name}</h3>
                                         <div className='para mb-4 mt-2'>{parse(item.descriptions.slice(403,600 ) + (item.descriptions.length > 600 ? "..." : ""))}</div>
                                         <div className="point">

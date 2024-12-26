@@ -86,3 +86,7 @@ body {
     padding: 0 4px !important;
     padding-bottom: 7px !important;
 }
+.program-box .program-img{
+	height: 260px;
+    width: 250px;
+}

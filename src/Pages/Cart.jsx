@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-bootstrap';
 
 
 function Cart() {
-  const [isSubscribed, setIsSubscribed] = useState(true);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const [profile, setProfile] = useState({ firstName: '', lastName: '', email: '', mobile: '' });
   const [couponCode, setCouponCode] = useState('');
   const [cupon, setCupon] = useState('')
