@@ -74,12 +74,12 @@ color: #fff !important;
     right: 45px;
 }
 
-.profile , .address {
+.profile, .address {
     padding: 20px 30px 40px;
-    border: 1px solid #66666680;
+    /* border: 1px solid #66666680; */
     margin: 20px 0;
     border-radius: 8px;
-    box-shadow: 1px 1px 8px #66666699;
+    box-shadow: 1px 1px 14px #d9d9d970;
 }
 .address h3{
     font-size: 12px;
@@ -343,11 +343,11 @@ color: #fff !important;
     display: flex;
     justify-content: space-between;
     background-color: #fff;
-    box-shadow: 0px 0px 4px 0px #0000003c;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     margin-top: 20px;
     padding: 30px;
     border-radius: 5px;
-    border: 1px solid #0000002e;
+    /* border: 1px solid #0000002e; */
     width: 100%;
 }
 
@@ -382,9 +382,9 @@ color: #fff !important;
     color: #0000009c;
     margin-top: 10px;
 }
-.my-booking .features-box{
+.my-booking .features-box {
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px #00000052;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
     font-family: 'futuramdbt';
     color: #000000a8;
@@ -400,7 +400,7 @@ color: #fff !important;
     align-items: center;
     justify-content: space-between;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px #00000052;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
     margin: 20px 0;
 }
@@ -417,7 +417,7 @@ color: #fff !important;
 }
 .my-booking .Trainer-box{
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px #00000052;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
 }
 .my-booking .Trainer-box img{
@@ -457,7 +457,7 @@ color: #fff !important;
     margin: 14px 0px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px #00000052;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
 }
 .my-booking .prepration p span{
@@ -481,7 +481,7 @@ margin-bottom: 20px;
 }
 .my-booking .program-date {
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px #00000052;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
     margin: 20px 0;
     background-color: #F1E9FF;
@@ -538,7 +538,7 @@ margin-bottom: 20px;
 
 .my-booking .pricing {
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px #00000052;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
 }
 
