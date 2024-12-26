@@ -47,10 +47,10 @@ function NavBar() {
                 <Link className="nav-link active" aria-current="page" to={'/'} >Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={'/program'}>Yoga Plans</Link>
+                <Link className="nav-link" to={'/program'}>Our Programs</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={'/'}>Talk To Yoga Expert</Link>
+                <Link className="nav-link" to={'/'}>Talk To A Yoga Expert</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={'/faq'}>FAQ</Link>
