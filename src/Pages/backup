@@ -1,0 +1,1488 @@
+import React, { useState, useEffect } from 'react';
+import '../assets/css/process.css'
+import '../assets/css/onboarding.css'
+import { IoMdHelpCircleOutline } from "react-icons/io";
+import SelectSearch from 'react-select-search';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../utills/BaseUrl';
+import getImageURL from '../utills/getImageURL';
+
+
+const OnboardingProcess = () => {
+    const [step, setStep] = useState(1);
+    const [selectedGoals, setSelectedGoals] = useState([]);
+    const [selectedRange, setSelectedRange] = useState(null);
+    const [isActive, setIsActive] = useState('Yes');
+    const [activeExperience, setActiveExperience] = useState('Only Yoga Experience');
+    const [activeSlot, setActiveSlot] = useState('');
+    const [activeBudget, setActiveBudget] = useState('2000 - 3000');
+    const [goal, setGoal] = useState('');
+    const [ageRange, setAgeRange] = useState('');
+    const [yogaExperiences, setYogaExperiences] = useState('');
+    const [timeSlots, setTimeSlots] = useState('');
+    const [budgets, setBudgets] = useState('');
+
+
+
+    // Fetch profile data
+    useEffect(() => {
+        async function fetchGoals() {
+            try {
+                const response = await axios.get(`${API_URL}/goals`, {
+
+                });
+                setGoal(response.data.body);
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        }
+        async function fetchAgeRange() {
+            try {
+                const response = await axios.get(`${API_URL}/ageRanges?displayOrder=ASC`, {
+
+                });
+                setAgeRange(response.data.body);
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        }
+
+        async function fetchYogaExperiences() {
+            try {
+                const response = await axios.get(`${API_URL}/yogaExperiences?displayOrder=ASC`, {
+
+                });
+                setYogaExperiences(response.data.body);
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        }
+
+        async function fetchTimeSlots() {
+            try {
+                const response = await axios.get(`${API_URL}/timeSlots?displayOrder=ASC`, {
+
+                });
+                setTimeSlots(response.data.body);
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        }
+        async function fetchBudgets() {
+            try {
+                const response = await axios.get(`${API_URL}/budgets?displayOrder=ASC`, {
+
+                });
+                setBudgets(response.data.body);
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        }
+        fetchGoals();
+        fetchAgeRange();
+        fetchYogaExperiences();
+        fetchTimeSlots();
+        fetchBudgets();
+    }, []);
+
+
+
+
+    const handleSlotClick = (slot) => {
+        setActiveSlot(slot); // Set the clicked slot as active
+    };
+
+    const handleButtonClick = (experience) => {
+        setActiveExperience(experience); // Update state with the clicked button
+    };
+
+    const handleClick = (value) => {
+        setIsActive(value); // Update state based on button clicked
+    };
+
+    const handleSelect = (value) => {
+        setSelectedRange(value);
+    };
+    const options = [
+        { name: '+91 (India)', value: 'sv' },
+        { name: '+1 (USA)', value: 'e' },
+        { name: '+44 (UK)', value: 'en' },
+        { name: '+61 (Australia)', value: 'n' },
+        { name: '+81 (Japan)', value: 'een' },
+
+    ];
+
+    // Toggle goal selection
+    const toggleGoal = (id) => {
+        if (selectedGoals.includes(id)) {
+            // If already selected, remove it
+            setSelectedGoals(selectedGoals.filter(goal => goal !== id));
+        } else if (selectedGoals.length < 3) {
+            // Only add if less than 3 are selected
+            setSelectedGoals([...selectedGoals, id]);
+        }
+    };
+
+    // Move to the next step
+    const nextStep = () => {
+        setStep(prevStep => prevStep + 1);
+    };
+
+    // Move to the previous step
+    const prevStep = () => {
+        setStep(prevStep => prevStep - 1);
+    };
+
+    for(let i = 0; i< apiData ; i++ )
+
+    return (
+        <div className="process-page">
+
+            {step === 1 && (
+                <div className="step1">
+                    <div className="container">
+                        <div className="process-header">
+                            <div className="row mt-3 px-5 onboarding">
+                                <div className="col-2"><div className="step active-step"><p>1</p></div></div>
+                                <div className="col-2"><div className="step"><p>2</p></div></div>
+                                <div className="col-2"><div className="step"><p>3</p></div></div>
+                                <div className="col-2"><div className="step"><p>4</p></div></div>
+                                <div className="col-2"><div className="step"><p>5</p></div></div>
+                                <div className="col-2"><div className="step"><p>6</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container welcome-onboard">
+                        <div className="container mt-5">
+                            <div className="process-heading  mt-5">
+                                <h2 className="mb-2">Welcome Onboard ❤️</h2>
+                                <p className="text-center mb-0">Please go through the onboarding document and let me know for any questions </p>
+                                <p className="text-center">We will complete your onboarding calls within the first week. The following calls are part of the Onboarding: </p>
+                            </div>
+
+                            <div className="row mx-auto d-flex align-items-center justify-content-center px-5">
+                                <h3>CHC with our training lead to discuss your goals and expectations in detail</h3>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <Link className='button' to={'https://calendly.com/connectateq/chcwithsonali'} target='blank'>book the call</Link>
+                                    <button className='outline button'>Already booked</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="process-footer">
+                        <div className="container">
+                            <button
+                                onClick={nextStep}
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
+            {step === 2 && (
+                <div className="step2">
+                    <div className="container">
+                        <div className="position-sticky">
+                            <div className="row mt-3 px-5 onboarding">
+                                <div className="col-2"><div className="step active-step"><p>1</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>2</p></div></div>
+                                <div className="col-2"><div className="step"><p>3</p></div></div>
+                                <div className="col-2"><div className="step"><p>4</p></div></div>
+                                <div className="col-2"><div className="step"><p>5</p></div></div>
+                                <div className="col-2"><div className="step"><p>6</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container welcome-onboard">
+                        <div className="container mt-5">
+                            <div className="process-heading  mt-5">
+                                <h2 className="mb-2">Welcome call with Gunj, a quick catch-up and heart-to-heart</h2>
+                            </div>
+
+                            <div className="row mx-auto d-flex align-items-center justify-content-center px-5 mt-5">
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <Link className='button' to={'https://calendly.com/gunjaneq/call-with-gunjan-kamra'} target='blank'>book the call</Link>
+                                    <button className='outline button'>Already booked</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="process-footer">
+                        <div className="container">
+                            <div className="d-flex justify-content-between">
+                                <button className='back' onClick={prevStep}>Back</button>
+                                <button onClick={nextStep}>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {step === 3 && (
+                <div className="step2">
+                    <div className="container">
+                        <div className="position-sticky">
+                            <div className="row mt-3 px-5 onboarding">
+                                <div className="col-2"><div className="step active-step"><p>1</p></div></div>
+                                <div className="col-2"><div className="step active-step "><p>2</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>3</p></div></div>
+                                <div className="col-2"><div className="step"><p>4</p></div></div>
+                                <div className="col-2"><div className="step"><p>5</p></div></div>
+                                <div className="col-2"><div className="step"><p>6</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container welcome-onboard">
+                        <div className="container mt-5">
+                            <div className="process-heading  mt-5">
+                                <h2 className="mb-3">Please fill the registration form, <span style={{color:"#006d5a"}}>it will take just a minute.</span></h2>
+                            </div>
+                            <div className="profile">
+
+                                <h2>Basic Info </h2>
+                                <div className="row mt-5">
+                                    <div className="col-6">
+                                        <div className="input-box">
+                                            <label htmlFor="name">Month-Year of Joining EQ for the first time</label>
+                                            <input
+                                                type="text"
+                                                id="name"
+                                                name="name"
+                                                // value={profile.firstName}
+                                                // onChange={handleInputChange}
+                                                // readOnly={!isEditable}
+                                                placeholder="Enter Your Answer"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="input-box">
+                                            <label htmlFor="email">Height (Ft)</label>
+                                            <input
+                                                type="text"
+                                                id="email"
+                                                name="email"
+                                                // value={profile.email}
+                                                readOnly
+                                                placeholder="Enter your Height in (ft)"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="input-box">
+                                            <label htmlFor="phone">Weight (kg) at the time of joining EQ</label>
+                                            <input
+                                                type="text"
+                                                id="phone"
+                                                name="name"
+                                                // value={profile.lastName}
+                                                // onChange={handleInputChange}
+                                                // readOnly={!isEditable}
+                                                placeholder="Enter Your Weight (kg)"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="input-box">
+                                            <label htmlFor="dob">Current weight (kg)</label>
+                                            <input
+                                                type="text"
+                                                id="dob"
+                                                name="dob"
+                                                // value={profile.dob}
+                                                // onChange={handleInputChange}
+                                                // readOnly={!isEditable}
+                                                placeholder="Enter Your Current Weight (kg)"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="input-box">
+                                            <label htmlFor="Occupation">Occupation</label>
+                                            <input
+                                                type="text"
+                                                id="Occupation"
+                                                name="Occupation"
+                                            // value={profile.dob}
+                                            // onChange={handleInputChange}
+                                            // readOnly={!isEditable}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="input-box">
+                                            <h6>Gender</h6>
+                                            <div className="gender">
+                                                {['male', 'female', 'other'].map((option) => (
+                                                    <div className="genderOpt" key={option}>
+                                                        <input
+                                                            type="radio"
+                                                            id={option}
+                                                            name="gender"
+                                                            value={option}
+                                                        // checked={profile.gender === option}
+                                                        // onChange={handleInputChange}
+                                                        // disabled={!isEditable}
+                                                        />
+                                                        <label htmlFor={option} className="form-check-label">
+                                                            {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                        </label>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="profile">
+
+                                <h2>What all options describe you the best?  <span className='text-dark'>Check top 3 that apply</span></h2>
+
+                                <div className="row mt-5">
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="PregnancyTraining"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="PregnancyTraining" className="custom-label">
+                                            Pregnancy Training - Preparing Body to Conceive, Trying to conceive, Prenatal, Postnatal
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2 ">
+                                        <input
+                                            type="checkbox"
+                                            id="PCOS"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="PCOS" className="custom-label">
+                                            PCOS / PCOD / Hormonal Health Improvement
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Menopausal"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Menopausal" className="custom-label">
+                                            Pre / Post Menopausal Aid
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Senior"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Senior" className="custom-label">
+                                            Senior Citizen
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Injury"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Injury" className="custom-label">
+                                            Injury Recovery
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="subscribe"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Surgery" className="custom-label">
+                                            Surgery Recovery
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Cancer"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Cancer" className="custom-label">
+                                            Cancer Recovery
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Therapeutic"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Therapeutic" className="custom-label">
+                                            Therapeutic Issues Prevention - Thyroid, Migraine, Back Pain, Knee Pain, etc
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Booster"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Booster" className="custom-label">
+                                            Gut Booster - Relief from Consipation, Indigestion, Digestive Disorders, etc
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Stress"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Stress" className="custom-label">
+                                            Stress Management/ Depression Relief/ Anxiety Relief
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Lifestyle"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Lifestyle" className="custom-label">
+                                            Lifestyle Correction -De-addication from Smoking/ Drinking/ Social Media, Insomnia etc
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Sports"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Sports" className="custom-label">
+                                            Sports and Athletic Training
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Dancer"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Dancer" className="custom-label">
+                                            Dancer's Training
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Weight"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Weight" className="custom-label">
+                                            Weight Management
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Alignment"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Alignment" className="custom-label">
+                                            Alignment Correction
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Toning"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Toning" className="custom-label">
+                                            Toning and Strengthening
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Mental"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Mental" className="custom-label">
+                                            Overall Physcial and Mental Wellbeing
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Postures"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Postures" className="custom-label">
+                                            Targeted Yoga Training - Unlock Practices and Postures of Your Choice
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="AdvancePostures"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="AdvancePostures" className="custom-label">
+                                            Advance Yoga Training - Unlock 5 Advance Postures Every Month
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Bridal"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Bridal" className="custom-label">
+                                            Bridal Prep
+                                        </label>
+                                    </div>
+                                    <div className="d-flex align-items-center my-2">
+                                        <input
+                                            type="checkbox"
+                                            id="Celebrity"
+                                            className="custom-checkbox me-3"
+                                        // checked={isSubscribed}
+                                        // onChange={handleSubscriptionChange}
+                                        />
+                                        <label htmlFor="Celebrity" className="custom-label">
+                                            Celebrity Role Prep
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+                                <h2>Any existing Health issues(PCOS, Thyroid, Allergies, Digestive issues etc.)/Surgeries in past/Injuries in past/ Stress, Anxiety or Depression</h2>
+                                <div className="input-box mt-4">
+                                    <input
+                                        type="text"
+                                        name="dob"
+                                        // value={profile.dob}
+                                        // onChange={handleInputChange}
+                                        // readOnly={!isEditable}
+                                        placeholder="Enter Your Answer"
+                                    />
+                                </div>
+
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Are you currently on any medication</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['Yes', 'No', 'other'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Were you ever detected with Covid</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['Yes', 'No'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Workout frequency</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['Do not workout', 'At most 2 times a week', 'At least 3 times a week', 'Other'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Favorite workout format</h2>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Yoga"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Yoga" className="custom-label">
+                                        Yoga
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Cardio"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Cardio" className="custom-label">
+                                        Cardio/Running/Dance/HIIT
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Gym"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Gym" className="custom-label">
+                                        Gym
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Bodyweight"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor=" Bodyweight" className="custom-label">
+                                        Body weight
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Other"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Other" className="custom-label">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Fitness Goal</h2>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Weightloss"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Weightloss" className="custom-label">
+                                        Weight loss
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Strengthening"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Strengthening" className="custom-label">
+                                        Strengthening & Flexibility
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Fixinghealth"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Fixinghealth " className="custom-label">
+                                        Fixing health issues
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id=" Fixingroutine"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Fixingroutine" className="custom-label">
+                                        Fixing routine and lifestyle
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Fixingdiet"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Fixingdiet" className="custom-label">
+                                        Fixing diet
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Weightgain"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Weightgain" className="custom-label">
+                                        Weight gain
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="FixingSleep"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor=" FixingSleep" className="custom-label">
+                                        Fixing Sleep Cycle
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Other1"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor=" Other1" className="custom-label">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Food Choices</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['Vegetarian', 'Ovo-lacto Vegetarian', 'Non-Vegetarian'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2>Any Food Allergies</h2>
+
+                                <div className="input-box mt-4">
+                                    <input
+                                        type="text"
+                                        name="dob"
+                                        // value={profile.dob}
+                                        // onChange={handleInputChange}
+                                        // readOnly={!isEditable}
+                                        placeholder="Enter Your Answer"
+                                    />
+                                </div>
+
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>What is the frequency of egg and non-veg per week</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['EveryDay', '3 times a week', 'Occasionally', 'I am a vegetarian'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>What is the frequency of eating outside/junk/sugar/stress eating</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['EveryDay', '3 times a week', 'Rarely', 'Other'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>How much water you consume in a day</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['1-2l', '2-3l', 'More than 3 L'].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>What beverage do you prefer the most on a daily basis</h2>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Milk/Tea/Coffee"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Milk/Tea/Coffee" className="custom-label">
+                                        Milk/Tea/Coffee (milk base)
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Concoction"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Concoction" className="custom-label">
+                                        Tea/Coffee/Concoction (without milk)
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Colddrinks"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Colddrinks" className="custom-label">
+                                        Cold drinks
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="other2"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor=" other2" className="custom-label">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Do you Smoke</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['EveryDay', 'Occasionally', "No I don't smoke"].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+
+                                <h2 className='mb-3'>Do you consume Alcohol</h2>
+                                <div className="input-box">
+                                    <div className="d-flex align-items-start justify-content-start flex-column">
+                                        {['EveryDay', 'Occasionally', "No I don't drink"].map((option) => (
+                                            <div className="genderOpt m-1" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="gender"
+                                                    value={option}
+                                                // checked={profile.gender === option}
+                                                // onChange={handleInputChange}
+                                                // disabled={!isEditable}
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="profile">
+                                <h2>Anything specific would you like us to know</h2>
+                                <div className="input-box mt-4">
+                                    <input
+                                        type="text"
+                                        name="dob"
+                                        // value={profile.dob}
+                                        // onChange={handleInputChange}
+                                        // readOnly={!isEditable}
+                                        placeholder="Enter Your Answer"
+                                    />
+                                </div>
+                            </div>
+                            <div className="profile">
+                                <h2>Are you on Instagram? If yes, please share your Instagram Id so that we can tag you in your progress pictures :)</h2>
+                                <div className="input-box mt-4">
+                                    <input
+                                        type="text"
+                                        name="dob"
+                                        // value={profile.dob}
+                                        // onChange={handleInputChange}
+                                        // readOnly={!isEditable}
+                                        placeholder="Enter Your Answer"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="profile">
+
+                                <h2 className='mb-3'>How did you get to know about us?</h2>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Instagram"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Instagram" className="custom-label">
+                                    Instagram
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Facebook"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Facebook" className="custom-label">
+                                    Facebook
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Influencers"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Influencers" className="custom-label">
+                                        Influencers
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Acquaintance"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Acquaintance" className="custom-label">
+                                    Friends/ Family/ Acquaintance of Gunj
+                                    </label>
+                                </div>
+                                <div className="d-flex align-items-center my-2">
+                                    <input
+                                        type="checkbox"
+                                        id="Other4"
+                                        className="custom-checkbox me-3"
+                                    // checked={isSubscribed}
+                                    // onChange={handleSubscriptionChange}
+                                    />
+                                    <label htmlFor="Other4" className="custom-label">
+                                    Other
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="process-footer">
+                        <div className="container">
+                            <div className="d-flex justify-content-between">
+                                <button className='back' onClick={prevStep}>Back</button>
+                                <button onClick={nextStep}>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {step === 4 && (
+                <div className="step2">
+                    <div className="container">
+                        <div className="position-sticky">
+                            <div className="row mt-3 px-5 onboarding">
+                                <div className="col-2"><div className="step active-step"><p>1</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>2</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>3</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>4</p></div></div>
+                                <div className="col-2"><div className="step"><p>5</p></div></div>
+                                <div className="col-2"><div className="step"><p>6</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container welcome-onboard">
+                        <div className="container mt-5">
+                            <div className="process-heading  mt-5">
+                                <h2 className="mb-2">Request you to share an audio note with the below details with our Senior  Nutritionist here:</h2>
+                            </div>
+
+                            <div className="row mx-auto d-flex align-items-center justify-content-center px-5 mt-5">
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <Link className='button' to={'https://wa.me/919082094061'} target='blank'>Shere Audio Note</Link>
+                                    <button className='outline button'>Already Shered</button>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className="container mt-5">
+                            <div className="process-heading  mt-5">
+                                <h2 className="mb-2">Please book the nutritionist session once your first yoga class is done using the following link</h2>
+                            </div>
+
+                            <div className="row mx-auto d-flex align-items-center justify-content-center px-5 mt-5">
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <Link className='button' to={'https://wa.me/919082094061'} target='blank'>Shere Audio Note</Link>
+                                    <button className='outline button'>Already Shered</button>
+                                </div>
+                            </div>
+                        </div> */}
+                    </div>
+                    <div className="process-footer">
+                        <div className="container">
+                            <div className="d-flex justify-content-between">
+                                <button className='back' onClick={prevStep}>Back</button>
+                                <button onClick={nextStep}>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {step === 5 && (
+                <div className="step5">
+                    <div className="container">
+                        <div className="process-header">
+                            <div className="d-flex justify-content-between">
+                                <div></div>
+                                <button className='help-btn'><IoMdHelpCircleOutline /> Help</button>
+                            </div>
+                            <div className="row mt-3 px-5 onboarding">
+                                <div className="col-2"><div className="step active-step"><p>1</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>2</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>3</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>4</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>5</p></div></div>
+                                <div className="col-2"><div className="step"><p>6</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container">
+                        <div className="container">
+                            <div className='process-heading'>
+                                <h2 className='mb-0'>Time Slots In IST</h2>
+                                <p className='text-center mb-5'>Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                            <div className="row d-flex align-items-center justify-content-center mx-auto" style={{ width: "60%" }}>
+
+                                {
+                                    timeSlots?.map((slot) => {
+                                        const imageUrl = slot.image ? getImageURL(slot.image) : '';
+
+                                        return (
+                                            <div className="col">
+                                                <div
+                                                    className={`item ${activeSlot === slot.title ? 'active-item' : ''}`}
+                                                    onClick={() => handleSlotClick(slot.title)}
+                                                >
+                                                    <img src={imageUrl} alt={slot.title} />
+                                                    <p className='mb-0'>{slot.title}</p>
+                                                    {slot.isGroupAvailable ? <span>Group Available</span> : ''}
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="process-footer">
+                        <div className="container">
+                            <div className="d-flex justify-content-between">
+                                <button className='back' onClick={prevStep}>Back</button>
+                                <button onClick={nextStep} disabled={activeSlot === ''}>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {step === 6 && (
+                <div className="step2">
+                    <div className="container">
+                        <div className="position-sticky">
+                            <div className="d-flex justify-content-between">
+                                <div></div>
+                                <button className='help-btn'><IoMdHelpCircleOutline /> Help</button>
+                            </div>
+                            <div className="row mt-3 px-5 onboarding">
+                                <div className="col-2"><div className="step active-step"><p>1</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>2</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>3</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>4</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>5</p></div></div>
+                                <div className="col-2"><div className="step active-step"><p>6</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container">
+                        <div className="container">
+                            <div className='process-heading'>
+                                <h2 className='mb-0'>Choose Your Budget</h2>
+                                <p className='text-center mb-5'>Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                            <div className="injury-permision">
+                                {
+                                    budgets?.map((item) => {
+                                        const budgetLabel =
+                                            (item.minimum === 0 ? 'Under' : item.minimum) +
+                                            ' - ' +
+                                            (item.maximum === 0 ? 'Above' : item.maximum);
+
+                                        const isActive = activeBudget === budgetLabel;
+                                        return (
+
+                                            <button
+                                                className={`permisson-btn ${isActive ? 'active' : ''}`}
+                                                onClick={() => handleBudgetClick(budgetLabel)}
+                                            >
+                                                <p>{budgetLabel}</p>
+                                                <span style={{ fontSize: "14px" }}>{item.shortDescription}</span>
+                                            </button>
+                                        )
+                                    })
+                                }
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="process-footer">
+                        <div className="container">
+                            <div className="d-flex justify-content-between">
+                                <button className='back' onClick={prevStep}>Back</button>
+                                <button onClick={nextStep}>Show Me My Available Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {step === 7 && (
+                <div className="step7">
+                    <div className="container">
+                        <div className="position-sticky">
+                            <div className="d-flex justify-content-between">
+                                <div></div>
+                                {/* <button className='help-btn'><IoMdHelpCircleOutline /> Help</button> */}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container">
+                        <div className="container">
+                            <div className='process-heading'>
+                                <h2 className='mb-0'>Please fill out this information</h2>
+                                <p className='text-center mb-5'>Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                            <div className="age-range-form">
+                                <div className='range-box'>
+                                    <input type="text" id='name' className='input-field' placeholder='Enter Your Name' />
+                                </div>
+                                <div className='range-box'>
+                                    <input type="text" className='input-field' placeholder='Enter Your Email' />
+                                </div>
+                                <div className="range-box">
+                                    <SelectSearch
+                                        options={options}
+                                        search
+
+                                    />
+
+                                    <input
+                                        type="text"
+                                        id="phone-input"
+                                        className="phone-input"
+                                        placeholder="Type Your Whatsapp Number"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="process-footer">
+                        <div className="container">
+                            <div className="d-flex justify-content-between">
+                                <button className='back' onClick={prevStep}>Back</button>
+                                <button onClick={nextStep}>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {step === 8 && (
+                <div className="step2">
+                    <div className="container">
+                        <div className="position-sticky">
+                            <div className="d-flex justify-content-between">
+                                <div></div>
+                                <button className='help-btn'><IoMdHelpCircleOutline /> Help</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item-container">
+                        <div className="container">
+                            <div className='process-heading'>
+                                <h2 className='mb-0'>Preview</h2>
+                                <p className='text-center mb-5'>"Unlocking the Secrets: A Sneak Peek into What’s Next!"</p>
+                            </div>
+                            <div className="preview">
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Choose Your Goal</p>
+                                        <p >Weight Mangement</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Choose Your Age</p>
+                                        <p >30-39</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Do You Have Any Injury</p>
+                                        <p >Yes</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Do You Have Any Prior Yoga Experience</p>
+                                        <p >Yes</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Time Slots</p>
+                                        <p >9AM - 10 AM</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Budget</p>
+                                        <p >5000-10000</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Name</p>
+                                        <p >Rakesh Juel</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Email id</p>
+                                        <p >rakeshjueal2@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div className='range-box'>
+                                    <div className="w-100 d-flex align-items-center justify-content-between">
+                                        <p >Whatsapp Nuber</p>
+                                        <p >947682******</p>
+                                    </div>
+                                </div>
+                                <div className="d-flex align-items-center justify-content-center">
+                                    <Link to={'/program'}><button className='submit-btn mt-4 mb-4'>Show Me My Customized Plans</button></Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+        </div>
+    );
+};
+
+export default OnboardingProcess;

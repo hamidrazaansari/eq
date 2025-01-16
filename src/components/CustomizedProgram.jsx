@@ -20,7 +20,7 @@ function CustomizedProgram() {
 
   const leadData = location.state?.leadData;
 
-  // console.log(leadData);
+  console.log(data);
 
   const {goals} = leadData;
   const {ageRange} = leadData;
@@ -31,7 +31,7 @@ function CustomizedProgram() {
   
   
   const selectedGoal = Array.isArray(goals) && goals.length > 0 ? goals[0]._id : null;
-  console.log(selectedGoal);
+  // console.log(selectedGoal);
   
 
   useEffect(() => {

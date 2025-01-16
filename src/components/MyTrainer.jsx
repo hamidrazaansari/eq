@@ -1,77 +1,81 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TrainerProfile from '../assets/image/trainer-profile.png'
 import '../assets/css/dashboard.css'
 import { IoMdStar } from "react-icons/io";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../utills/BaseUrl';
+import getImageURL from '../utills/getImageURL';
+import DashboardSidebar from './DashboardSidebar';
+import { GoArrowLeft } from "react-icons/go";
+
 
 
 function MyTrainer() {
+  const [data, setData] = useState('')
+  const token = localStorage.getItem('authToken');
+
+  // Fetch profile data
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`${API_URL}/bookings/myBookings`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        setData(response.data?.body);
+      } catch (error) {
+        console.error('Error fetching profile data:', error);
+      }
+    }
+    fetchData();
+  }, []);
+
   return (
-    <div>
-        <div className="trainer-banner">
-            <div className="banner-header">
-                <img src={TrainerProfile} alt="" />
-                <h2>Gunjan Kamra</h2>
-                <p>Certified Yoga Teacher </p>
-            </div>
-            <div className="banner-footer">
-                    <button><span>5<IoMdStar/></span> 52 People Coached</button>
-            </div>
-        </div>
-        <div className="main-content">
-            <div className="about-trainer">
-                <h3>About </h3>
-                <p>Gunjan Kamra, is a celebrity yoga trainer and an advocate of yoga for great physical, mental and emotional wellbeing. 
-                Gunjan quit her 8-year-long stint with the corporate to follow her dream. She founded “Equilibrium - Mind & Yoga” in March 2020 and never looked back. </p>
-            </div>
-            <div className="row">
-                <div className="col-lg-4">
-                    <div className="trainer-interest In">
-                        <h2>Interested In</h2>
-                        <div className="btn-box">
-                            <button className='intrest-btn'>Boxing</button>
-                            <button className='intrest-btn'>Fitness</button>
-                            <button className='intrest-btn'>Fitness</button>
-                        </div>
-                    </div>
+
+    data && data.map((item) => {
+      const imageUrl = item.trainer?.profilePhoto ? getImageURL(item.trainer?.profilePhoto) : '';
+
+      if (item.trainer === null) {
+        return (' ')
+      }
+      else {
+        return (
+          <div className="myTrainer">
+            <div className="container">
+              <div className="row">
+                <div className="col-3">
+                  <DashboardSidebar />
                 </div>
-                <div className="col-lg-4">
-                    <div className="Speciality In">
-                        <h2>Speciality In</h2>
-                        <div className="btn-box">
-                        <button className='Speciality-btn'>Boxing</button>
-                            <button className='Speciality-btn'>Fitness</button>
-                            <button className='Speciality-btn'>Fitness</button>                        </div>
-                    </div>
+                <div className="col-9">
+                  <div className="header">
+                    <h2>
+                      <GoArrowLeft /> My Trainers
+                    </h2>
+                  </div>
+                  <div className="trainer-banner">
+                    <Link to={`/trainer-details/${item.trainer?._id}`}>
+                      <div className="banner-header">
+                        <img src={imageUrl} alt={item.trainer?.name} />
+                        <h2>{item.trainer?.name}</h2>
+                        <p>{item.trainer?.bio} </p>
+                      </div>
+                      <div className="banner-footer">
+                        {/* <button><span>5<IoMdStar /></span> 52 People Coached</button> */}
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <div className="col-lg-4">
-                    <div className="Certifications In">
-                        <h2>Certifications</h2>
-                        <div className="btn-box">
-                            <button>Ace certified</button>
-                            <button>CPA/AED</button>
-                            <button>ACE certification</button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-            <div className="row">
-                <div className="col-8">
-                    <div className="teachingExperience">
-                        <h2>Teaching Experience</h2>
-                        <p className='mt-4'>Years of Experience : 08 years</p>
-                        <p>Types of Classes : Group classes, Online sessions.</p>
-                        <p>Past Employers : Yoga studio, Organizations</p>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div className="teachingExperience">
-                        <h2>Inspirations</h2>
-                        <p className='mt-4'>Yoga is the journey of the self, through the self, to the self." – Bhagavad Gita This emphasizes yoga as a path of self-discovery and inner transformation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+          </div>
+
+        )
+      }
+
+    })
+
   )
 }
 

@@ -1,0 +1,104 @@
+.slotForm .container h1 {
+    font-family: boldfuturamdbt;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 20px;
+    margin-top: 68px;
+    margin-bottom: 36px;
+}
+.slotForm .container h1 span{
+    color: #006D5A !important;
+}
+.slotForm .container input[type="radio"]{
+    display: none !important;
+}
+.custom-radio-container {
+    position: relative;
+    display: flex;
+    align-items: start !important;
+  }
+  
+  .custom-radio {
+    position: absolute;
+    opacity: 0; /* Hide the native radio button */
+    cursor: pointer;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .custom-radio + .form-check-label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-size: 15px !important;
+    margin-left: 20px !important;
+    width: 250px;
+    line-height: 20px;
+}
+  
+  .custom-radio + .form-check-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #006D5A; /* Border color for the circle */
+    border-radius: 50%;
+    background-color: white; /* Background for the circle */
+    transition: all 0.3s ease;
+  }
+  
+  .custom-radio:checked + .form-check-label::before {
+    background-color: #006D5A; /* Change the background color when checked */
+    border-color: #006D5A; /* Change border color when checked */
+  }
+  
+  .custom-radio + .form-check-label::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-radio:checked + .form-check-label::after {
+    opacity: 1; 
+    background-color: white;
+  }
+  .fri-btn{
+    background: #006d5b15;
+    padding: 5px 10px;
+    border: 1px solid #006d5a;
+    color: #006d5a;
+    font-family: 'futuramdbt';
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 10px;
+    /* margin-left: 20px; */
+    border-radius: 2px;
+    width: 150px;
+  }
+  .slots{
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  .slot-booking-btn {
+    margin-left: 406px;
+    background-color: #006d5a;
+    border: none;
+    color: #fff;
+    padding: 4px 25px 5px;
+    width: 310px;
+    font-family: futuramdbt;
+    border: 1px solid #006D5A;
+    margin-top: 9px;
+    transition: all 1s ease-in-out;
+}

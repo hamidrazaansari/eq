@@ -47,10 +47,10 @@ function NavBar() {
                 <Link className="nav-link active" aria-current="page" to={'/'} >Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={'/program'}>Our Programs</Link>
+                <Link className="nav-link" to={'/'}>Our Programs</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={'/'}>Talk To A Yoga Expert</Link>
+                <Link className="nav-link" to={'/tolktoexpert'}>Talk To A Yoga Expert</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={'/faq'}>FAQ</Link>
@@ -59,7 +59,7 @@ function NavBar() {
             </ul>
           </div>
           <Link to={'/signup'}><button className={`signup-btn ${isLogin ? 'd-none' : 'd-block'} `} type="submit">Sign Up</button></Link> 
-         <Link to={'/dashboard'}><button className={`account ${isLogin ? 'd-block' : 'd-none'} `} type="submit"><img src={AccountImg} alt="usser" />  {profile.firstName}</button></Link>
+         <Link to={'/myProfile'}><button className={`account ${isLogin ? 'd-block' : 'd-none'} `} type="submit"><img src={AccountImg} alt="usser" />  {profile.firstName}</button></Link>
         </div>
       </nav>
     </div>

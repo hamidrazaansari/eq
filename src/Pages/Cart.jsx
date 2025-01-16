@@ -13,13 +13,17 @@ import { ToastContainer } from 'react-bootstrap';
 
 function Cart() {
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [profile, setProfile] = useState({ firstName: '', lastName: '', email: '', mobile: '' });
+  const [profile, setProfile] = useState({ firstName: '', lastName: '', email: '',countryCode: '' ,  mobile: '' });
   const [couponCode, setCouponCode] = useState('');
   const [cupon, setCupon] = useState('')
   const [data, setData] = useState('');
   const [cuponData, setCuponData] = useState('');
   const [selectedProgram, setSelectedProgram] = useState("myself");
-  const [formError , setFormError] = useState('')
+  const [formError, setFormError] = useState('')
+  const [discountPrice, setDisCountPrice] = useState(null);
+  const [discountPercentage, setDiscountPercentage] = useState(null);
+
+
 
 
   const { id } = useParams();
@@ -62,6 +66,9 @@ function Cart() {
     fetchData();
   }, [token, selectedProgram]);
 
+  console.log(profile);
+  
+
 
   const handleSubscriptionChange = (event) => {
     setIsSubscribed(event.target.checked);
@@ -93,34 +100,34 @@ function Cart() {
   }
   let totalSave = 0;
 
-// Convert to number and calculate subscription discount
-const subcriptionCal = parseFloat((data.salePriceInr * data.plan?.subscriptionDiscountPercentage / 100).toFixed(2)); 
-if(isSubscribed){
-  totalSave += subcriptionCal;
-}
-else{
-  totalSave
-}
-
-let subTotal = data.salePriceInr - subcriptionCal;
-
-if (cupon) {
-  const discountType = cuponData.body?.discountType;
-  const discountValue = cuponData.body?.discount || 0;
-
-  if (discountType === "AMOUNT") {
-    totalSave += discountValue;
-    subTotal -= discountValue;
-  } else if (discountType === "PERCENTAGE") {
-    const percentageDiscount = (subTotal * discountValue) / 100; // Calculate once
-    totalSave += percentageDiscount;
-    subTotal -= percentageDiscount;
+  // Convert to number and calculate subscription discount
+  const subcriptionCal = parseFloat((data.salePriceInr * data.plan?.subscriptionDiscountPercentage / 100).toFixed(2));
+  if (isSubscribed) {
+    totalSave += subcriptionCal;
   }
-}
+  else {
+    totalSave
+  }
 
-// Round final amounts for display purposes
-subTotal = parseFloat(subTotal.toFixed(2));
-totalSave = parseFloat(totalSave.toFixed(2));
+  let subTotal =discountPrice - subcriptionCal;
+
+  if (cupon) {
+    const discountType = cuponData.body?.discountType;
+    const discountValue = cuponData.body?.discount || 0;
+
+    if (discountType === "AMOUNT") {
+      totalSave += discountValue;
+      subTotal -= discountValue;
+    } else if (discountType === "PERCENTAGE") {
+      const percentageDiscount = (subTotal * discountValue) / 100; // Calculate once
+      totalSave += percentageDiscount;
+      subTotal -= percentageDiscount;
+    }
+  }
+
+  // Round final amounts for display purposes
+  subTotal = parseFloat(subTotal.toFixed(2));
+  totalSave = parseFloat(totalSave.toFixed(2));
 
   const handleRemoveCupon = () => {
     setCouponCode('')
@@ -134,33 +141,50 @@ totalSave = parseFloat(totalSave.toFixed(2));
 
 
   const handlePlaceOrder = async () => {
+
     try {
       const response = await axios.post(`${API_URL}/bookings`, {
         firstName: profile.firstName,
         lastName: profile.lastName,
+        countryCode: profile.countryCode,
         mobile: profile.mobile,
-        email : profile.email,
-        programPlan : data?._id,
+        email: profile.email,
+        programPlan: data?._id,
         category: data?.program.category,
-        currency:"INR", 
-        qty:"1",
-        subscription:data.plan?.allowSubscription
-  
-      } , {
+        currency: "INR",
+        qty: "1",
+        subscription: data.plan?.allowSubscription
+
+      }, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       })
+
+      console.log(response.data);
       
       navigate('/thankyou', { state: { order: response.data?.body } });
 
     } catch (error) {
       setFormError(error.response?.data?.errors);
+      console.log(error.response?.data);
+      
     }
   }
 
-  console.log(formError);
-  
+
+
+useEffect(() => {
+  if (data && data.mrpInr) {
+    const discountedPrice = data.mrpInr - data.salePriceInr;
+    const discountPercentage = (discountedPrice / data.mrpInr ) * 100;
+    setDisCountPrice(discountedPrice.toFixed(2)); // Round to 2 decimal places
+    setDiscountPercentage(discountPercentage.toFixed(2))
+  }
+}, [data]);
+
+totalSave += parseFloat(discountPrice)
+
   
   return (
     <div className="Cart">
@@ -181,7 +205,7 @@ totalSave = parseFloat(totalSave.toFixed(2));
                   </div>
                   <div className="col-lg-6">
                     <div className="d-flex">
-                      <button className='save-btn'>Save 20%</button>
+                      <button className='save-btn'>Save {discountPercentage}%</button>
                       <p className='price'>₹{data.salePriceInr}.00</p>
                     </div>
                     <p className='cut-price'>₹{data.mrpInr}.00</p>
@@ -249,11 +273,11 @@ totalSave = parseFloat(totalSave.toFixed(2));
                           onChange={(e) => setProfile({ ...profile, firstName: e.target.value })}
                           disabled={selectedProgram === "myself"}
                         />
-                                {formError.firstName && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
-                                        {formError.firstName}
-                                    </div>
-                                )}
+                        {formError.firstName && (
+                          <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
+                            {formError.firstName}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-6">
@@ -268,11 +292,11 @@ totalSave = parseFloat(totalSave.toFixed(2));
                           onChange={(e) => setProfile({ ...profile, lastName: e.target.value })}
                           disabled={selectedProgram === "myself"}
                         />
-                                {formError.lastName && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
-                                        {formError.lastName}
-                                    </div>
-                                )}
+                        {formError.lastName && (
+                          <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
+                            {formError.lastName}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-6">
@@ -287,14 +311,27 @@ totalSave = parseFloat(totalSave.toFixed(2));
                           onChange={(e) => setProfile({ ...profile, email: e.target.value })}
                           disabled={selectedProgram === "myself"}
                         />
-                                {formError.email && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
-                                        {formError.email}
-                                    </div>
-                                )}
+                        {formError.email && (
+                          <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
+                            {formError.email}
+                          </div>
+                        )}
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-2">
+                                        <div className="input-box">
+                                            <label htmlFor="countryCode">Country Code</label>
+                                            <input
+                                                type="text"
+                                                id="countryCode"
+                                                name="countryCode"
+                                                placeholder="+91"
+                                                value={profile.countryCode}
+                                                onChange={(e) => setProfile({ ...profile, countryCode: e.target.value })}
+                                            />
+                                        </div>
+                                    </div>
+                    <div className="col-4">
                       <div className="input-box">
                         <label htmlFor="mobile">Mobile Number</label>
                         <input
@@ -306,11 +343,11 @@ totalSave = parseFloat(totalSave.toFixed(2));
                           onChange={(e) => setProfile({ ...profile, mobile: e.target.value })}
                           disabled={selectedProgram === "myself"}
                         />
-                                {formError.mobile && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
-                                        {formError.mobile}
-                                    </div>
-                                )}
+                        {formError.mobile && (
+                          <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
+                            {formError.mobile}
+                          </div>
+                        )}
 
                       </div>
                     </div>
@@ -329,7 +366,7 @@ totalSave = parseFloat(totalSave.toFixed(2));
                     <div className="cuponCode">
                       <div>
                         <h5><FaTag /> {cupon}<span>Applied</span></h5>
-                        <p> {cuponData.body?.discountType === "AMOUNT" ? `Save ₹${cuponData.body?.discount}/- ` : `Save ${cuponData.body?.discount}%- `} </p>
+                        <p> {cuponData.body?.discountType === "AMOUNT" ? `Save ₹${cuponData.body?.discount || data.salePriceInr}/- ` : `Save ${cuponData.body?.discount}%- `} </p>
                       </div>
                       <button className='remove-btn' onClick={handleRemoveCupon}>Remove</button>
 
@@ -342,10 +379,10 @@ totalSave = parseFloat(totalSave.toFixed(2));
                 <hr />
                 <div className="d-flex align-items-center justify-content-between">
                   <p className='text-dark'>{data.program?.name}</p>
-                  <span className='fw-bold'>₹{data.salePriceInr}.00</span>
+                  <span className='fw-bold'>₹{data.salePriceInr}</span>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
-                  <p>Subscription</p>
+                  <p>Subscription Discount</p>
                   <span style={{ color: "#0000009a" }}>
                     ₹
                     {
@@ -361,7 +398,7 @@ totalSave = parseFloat(totalSave.toFixed(2));
                     <span style={{ color: "#0000009a" }}>
 
                       {
-                        cuponData.body?.discountType === "AMOUNT" ? `₹${cuponData.body?.discount}.00` : `${cuponData.body?.discount}%- `
+                        cuponData.body?.discountType === "AMOUNT" ? `₹${cuponData.body?.discount}` : `${cuponData.body?.discount}%- `
                       }
 
                     </span>
@@ -374,19 +411,23 @@ totalSave = parseFloat(totalSave.toFixed(2));
                 <hr />
                 <div className="d-flex align-items-center justify-content-between">
                   <h2>Sub Total</h2>
-                  <span className='fw-bold'>₹{isSubscribed ? subTotal : data.salePriceInr + '.00'}</span>
+                  <span className='fw-bold'>₹{data.salePriceInr}</span>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
-                  <p className='text-dark'>Tax & Fees </p>
+                  <p className='text-dark'>GST Fee (18%) </p>
+                  <span>0.00</span>
+                </div>
+                <div className="d-flex align-items-center justify-content-between">
+                  <p className='text-dark'>Processing Fee (0%) </p>
                   <span>0.00</span>
                 </div>
                 <hr />
                 <div className="d-flex align-items-center justify-content-between">
                   <h2>Total Amount</h2>
-                  <span className='fw-bold'>₹{isSubscribed ? subTotal : data.salePriceInr + '.00'}</span>
+                  <span className='fw-bold'>₹{data.salePriceInr}</span>
                 </div>
                 <hr />
-                <h5 style={{ color: "#006D5A", fontFamily: "futuramdbt" }}>You will save {totalSave} on this plan</h5>
+                <h5 style={{ color: "#006D5A", fontFamily: "futuramdbt" }}>You will save {totalSave || discountPrice} on this plan</h5>
                 <Link ><button onClick={handlePlaceOrder} className={`cantinue`}>Checkout</button></Link>
               </div>
             </div>

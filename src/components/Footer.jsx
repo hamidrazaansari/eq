@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhone } from "react-icons/fi";
@@ -8,13 +8,36 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import ScrollAnimation from 'react-animate-on-scroll';
 import '../assets/css/footer.css'
+import axios from 'axios';
+import { API_URL } from '../utills/BaseUrl';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 
 function Footer() {
+    const [email , setEmail]=useState('')
+    const token = localStorage.getItem("authToken");
+
+    const handleSubmit =async(e)=>{
+e.preventDefault()
+try {
+    const response = await axios.post(`${API_URL}/newsletters`, {email},
+        {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            }
+          }
+    )
+    toast.success(response.data?.message)
+    
+} catch (error) {
+    toast.error(error.response?.data?.message)
+}
+    }
     return (
         <div>
+            <ToastContainer/>
             <section class="mailing">
                 <div className="container">
                     <ScrollAnimation animateIn="fadeInUp">
@@ -25,8 +48,8 @@ function Footer() {
                     </ScrollAnimation>
                     {/* <ScrollAnimation animateIn="fadeInUp">   */}
                     <form action="" className='d-flex align-items-center justify-content-center'>
-                        <input type="text" placeholder='Email Address' className='form-control' />
-                        <button className='form-submit '>Subscribe</button>
+                        <input type="text" placeholder='Email Address' className='form-control' value={email} onChange={(e)=> setEmail(e.target.value)} />
+                        <button className='form-submit' onClick={handleSubmit} >Subscribe</button>
                     </form>
                     {/* </ScrollAnimation>     */}
                 </div>

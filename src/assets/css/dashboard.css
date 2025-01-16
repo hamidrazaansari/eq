@@ -213,12 +213,13 @@ color: #fff !important;
 }
 
 .banner-header p {
-    color: #fff;
+    color: #ffffffc2;
     font-family: 'futuramdbt';
-    font-size: 18px;
+    font-size: 13px;
     position: absolute;
     top: 84px;
     left: 228px;
+    line-height: 18px;
 }
 
 .about-trainer h3 {
@@ -347,7 +348,7 @@ color: #fff !important;
     margin-top: 20px;
     padding: 30px;
     border-radius: 5px;
-    /* border: 1px solid #0000002e; */
+    border: 1px solid #69636363;
     width: 100%;
 }
 
@@ -362,7 +363,6 @@ color: #fff !important;
     color: #0000009c;
     font-family: 'futuramdbt';
     margin: 5px 0;
-    width: 60%;
 }
 .my-booking .header .expire{
     font-size: 17px;
@@ -420,11 +420,11 @@ color: #fff !important;
     box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     padding: 20px;
 }
-.my-booking .Trainer-box img{
+.my-booking .Trainer-box img {
     height: 65px;
     width: 65px;
-    margin: 20px 0;
-    margin-right: 40px;
+    margin: 4px 0;
+    margin-right: 18px;
 }
 .my-booking .Trainer-box h3, .my-booking .program-date h2{
     font-size: 15px;
@@ -585,7 +585,7 @@ margin-bottom: 20px;
     transition: var(--bs-accordion-btn-icon-transition);
     position: absolute !important;
     right: 29px !important;
-    bottom: 16px !important;
+    bottom: 5px !important;
 }
 .my-booking .accordion-item{
     border: none !important;
@@ -595,4 +595,20 @@ margin-bottom: 20px;
     width: 100% !important;
     color: #006D5A !important;
     font-family: futuramdbt;
+}
+.booking-details .mailing, .trainer-details .mailing ,.trainer-details .footer ,
+.booking-details .footer {
+    top: 0 !important;
+}
+.my-booking .header h3{
+    color: #000 ;
+}
+.my-booking .header .status-button{
+    font-size: 14px;
+    font-family: 'futuramdbt';
+    padding: 2px;
+    border-radius: 5px;
+}
+.myBookingMain .mailing , .myBookingMain .footer , .profile .mailing , .profile .footer{
+    top: 40px;
 }

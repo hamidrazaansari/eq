@@ -35,6 +35,9 @@ const Program = () => {
       });
   }, []);
 
+  console.log(data);
+
+
   // Horizontal scroll setup, dependent on data loading
   useEffect(() => {
     if (!loading && data.length) {
@@ -61,19 +64,7 @@ const Program = () => {
 
   return (
     <>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
-      <div class="modal-body">
-      <div style={{ position: 'relative', paddingBottom: '56.25%', height: "100% "}}>
-      <iframe width="100%" height="500" src="https://www.youtube.com/embed/osCsxeCy5Q4?si=CsKQDesUp-nDxC8q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-      </div>
 
-    </div>
-  </div>
-</div>
       <div className="container mb-5 position-relative">
         <div className='arrow'><img src={progArrow} alt="" /></div>
         <div className='arrow-point'><img src={progArrow2} alt="" /></div>
@@ -113,6 +104,19 @@ const Program = () => {
                       <Link ><button className='watch-btn' data-bs-toggle="modal" data-bs-target="#exampleModal">Watch Video <IoPlayCircleOutline /> </button></Link>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                  <div class="modal-body">
+                    <div style={{ position: 'absolute', paddingBottom: '56.25%', height: "100% " }}>
+                      <iframe width="100%" height="500" src={program?.video } title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

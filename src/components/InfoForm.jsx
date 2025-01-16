@@ -10,7 +10,6 @@ import Reload from '../assets/image/reload.png'
 
 
 function InfoForm() {
-    const [buildePlan, setBuildedPlan] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [countryCode, setCountryCode] = useState("");
@@ -89,7 +88,8 @@ function InfoForm() {
         <div>
             <div className="step7">
                 {
-                    loading ? <>
+                    loading ?
+                     <>
                         <div className="newLoading">
                             <img src={Reload} alt="reload" />
                         </div>

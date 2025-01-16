@@ -4,6 +4,10 @@ import { LiaUserEditSolid } from "react-icons/lia";
 import { API_URL } from '../utills/BaseUrl';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import NavBar from './NavBar';
+import { GoArrowLeft } from "react-icons/go";
+import DashboardSidebar from './DashboardSidebar';
+import Footer from './Footer';
 
 function MyProfile() {
     const [profile, setProfile] = useState({
@@ -79,151 +83,168 @@ function MyProfile() {
 
 
     return (
-        <div>
-            <ToastContainer/>
-            <div className="profile">
-                <button
-                    className={`edit-button ${isEditable ? 'd-none' : 'd-block'}`}
-                    onClick={() => setIsEditable(true)}
-                >
-                    Edit <LiaUserEditSolid />
-                </button>
-                <button
-                    className={`edit-button ${isEditable ? 'd-block' : 'd-none'}`}
-                    onClick={handleUpdateProfile}
-                >
-                    Save
-                </button>
-                <div className="row mt-5">
+        <div className='my-profile'>
+            <ToastContainer />
+            <NavBar />
+            <div className="container">
+                <div className="row">
                     <div className="col-3">
-                        <div className="input-box">
-                            <label htmlFor="name">First Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={profile.firstName}
-                                onChange={handleInputChange}
-                                readOnly={!isEditable}
-                                placeholder="Enter Your Name"
-                            />
-                        </div>
+                        <DashboardSidebar isActive={"MyProfile"}/>
                     </div>
-                    <div className="col-3">
-                        <div className="input-box">
-                            <label htmlFor="name">Last Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={profile.lastName}
-                                onChange={handleInputChange}
-                                readOnly={!isEditable}
-                                placeholder="Enter Your Name"
-                            />
+                    <div className="col-9">
+                        <div className="header">
+                            <h2>
+                                <GoArrowLeft /> My Profile
+                            </h2>
                         </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="input-box">
-                            <h6>Gender</h6>
-                            <div className="gender">
-                                {['male', 'female', 'other'].map((option) => (
-                                    <div className="genderOpt" key={option}>
+
+                        <div className="profile">
+                            <button
+                                className={`edit-button ${isEditable ? 'd-none' : 'd-block'}`}
+                                onClick={() => setIsEditable(true)}
+                            >
+                                Edit <LiaUserEditSolid />
+                            </button>
+                            <button
+                                className={`edit-button ${isEditable ? 'd-block' : 'd-none'}`}
+                                onClick={handleUpdateProfile}
+                            >
+                                Save
+                            </button>
+                            <div className="row mt-5">
+                                <div className="col-3">
+                                    <div className="input-box">
+                                        <label htmlFor="name">First Name</label>
                                         <input
-                                            type="radio"
-                                            id={option}
-                                            name="gender"
-                                            value={option}
-                                            checked={profile.gender === option}
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={profile.firstName}
                                             onChange={handleInputChange}
-                                            disabled={!isEditable}
+                                            readOnly={!isEditable}
+                                            placeholder="Enter Your Name"
                                         />
-                                        <label htmlFor={option} className="form-check-label">
-                                            {option.charAt(0).toUpperCase() + option.slice(1)}
-                                        </label>
+                                    </div>
+                                </div>
+                                <div className="col-3">
+                                    <div className="input-box">
+                                        <label htmlFor="name">Last Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={profile.lastName}
+                                            onChange={handleInputChange}
+                                            readOnly={!isEditable}
+                                            placeholder="Enter Your Name"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="input-box">
+                                        <h6>Gender</h6>
+                                        <div className="gender">
+                                            {['male', 'female', 'other'].map((option) => (
+                                                <div className="genderOpt" key={option}>
+                                                    <input
+                                                        type="radio"
+                                                        id={option}
+                                                        name="gender"
+                                                        value={option}
+                                                        checked={profile.gender === option}
+                                                        onChange={handleInputChange}
+                                                        disabled={!isEditable}
+                                                    />
+                                                    <label htmlFor={option} className="form-check-label">
+                                                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="input-box">
+                                        <label htmlFor="email">Email</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={profile.email}
+                                            readOnly
+                                            placeholder="Enter your Email"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="input-box">
+                                        <label htmlFor="dob">DOB</label>
+                                        <input
+                                            type="date"
+                                            id="dob"
+                                            name="dob"
+                                            value={profile.dob}
+                                            onChange={handleInputChange}
+                                            readOnly={!isEditable}
+                                            placeholder="dd-mm-yyyy"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="input-box">
+                                        <label htmlFor="countryCode">Country Code</label>
+                                        <input
+                                            type="text"
+                                            id="countryCode"
+                                            name="countryCode"
+                                            value={profile.countryCode}
+                                            onChange={handleInputChange}
+                                            readOnly={!isEditable}
+                                            placeholder="IN +91 (India)"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="input-box">
+                                        <label htmlFor="mobile">Mobile Number</label>
+                                        <input
+                                            type="text"
+                                            id="mobile"
+                                            name="mobile"
+                                            value={profile.mobile}
+                                            onChange={handleInputChange}
+                                            readOnly={!isEditable}
+                                            placeholder="Enter Mobile Number"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="address">
+                            <h3>ADDRESS</h3>
+                            <div className="row">
+                                {['address', 'locality', 'city', 'state', 'country', 'pincode'].map((field) => (
+                                    <div className="col-6" key={field}>
+                                        <div className="input-box">
+                                            <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                                            <input
+                                                type="text"
+                                                id={field}
+                                                name={field}
+                                                value={profile[field]}
+                                                onChange={handleInputChange}
+                                                readOnly={!isEditable}
+                                                placeholder={`Enter your ${field}`}
+                                            />
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
-                    <div className="col-6">
-                        <div className="input-box">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={profile.email}
-                                readOnly
-                                placeholder="Enter your Email"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="input-box">
-                            <label htmlFor="dob">DOB</label>
-                            <input
-                                type="date"
-                                id="dob"
-                                name="dob"
-                                value={profile.dob}
-                                onChange={handleInputChange}
-                                readOnly={!isEditable}
-                                placeholder="dd-mm-yyyy"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="input-box">
-                            <label htmlFor="countryCode">Country Code</label>
-                            <input
-                                type="text"
-                                id="countryCode"
-                                name="countryCode"
-                                value={profile.countryCode}
-                                onChange={handleInputChange}
-                                readOnly={!isEditable}
-                                placeholder="IN +91 (India)"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="input-box">
-                            <label htmlFor="mobile">Mobile Number</label>
-                            <input
-                                type="text"
-                                id="mobile"
-                                name="mobile"
-                                value={profile.mobile}
-                                onChange={handleInputChange}
-                                readOnly={!isEditable}
-                                placeholder="Enter Mobile Number"
-                            />
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div className="address">
-                <h3>ADDRESS</h3>
-                <div className="row">
-                    {['address', 'locality', 'city','state' , 'country', 'pincode'].map((field) => (
-                        <div className="col-6" key={field}>
-                            <div className="input-box">
-                                <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
-                                <input
-                                    type="text"
-                                    id={field}
-                                    name={field}
-                                    value={profile[field]}
-                                    onChange={handleInputChange}
-                                    readOnly={!isEditable}
-                                    placeholder={`Enter your ${field}`}
-                                />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <Footer/>
         </div>
     );
 }

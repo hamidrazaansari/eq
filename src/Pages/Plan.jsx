@@ -103,8 +103,8 @@ function Plan() {
     <div>
 
       {/* Modal */}
-      <div className="compare-modal">
-      <Modal show={showModal} onHide={closeModal} size="lg" centered>
+      <div className="">
+      <Modal className='compare-modal' show={showModal} onHide={closeModal} size="lg" centered>
         
         <Modal.Body>
         <Button variant='success' className='cancel-btn' onClick={closeModal}><RxCross2/></Button>         

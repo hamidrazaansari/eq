@@ -1,0 +1,187 @@
+.onboarding .step{
+    position: relative;
+}
+
+.onboarding .step p{
+    position: absolute;
+    right: -25px;
+    bottom: -27px;
+    background: #006d5b63;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+}
+.onboarding .active-step p{
+    background: #006d5a;
+
+}
+.welcome-onboard .button {
+    border: none;
+    background: #006d5a;
+    margin: 10px;
+    color: #fff;
+    padding: 5px 30px;
+    border-radius: 3px;
+    border: 1px solid #006d5a;
+
+}
+.welcome-onboard .outline{
+    border: 1px solid #006d5a;
+    color: #006d5a;
+    background-color: transparent;
+}
+.welcome-onboard h2{
+    color: #000;
+}
+.welcome-onboard p{
+    color: #00000099;
+}
+.welcome-onboard h3{
+    font-size: 20px;
+    font-family: 'futuramdbt';
+    text-align: center;
+    margin-top: 30px;
+}
+.welcome-onboard {
+    margin-top: 40px !important;
+}
+.onboarding-form .input{
+    width: 100%;
+}
+.welcome-onboard .profile{
+    border: 1px solid #00000066;
+}
+.welcome-onboard .profile h2{
+    font-size: 20px;
+    font-family: 'futuramdbt';
+    margin: 0;
+    color: #006d5a;
+}
+.welcome-onboard .custom-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #006d5a;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    font-size: 20px !important;
+}
+
+/* Change border and background when checked */
+.welcome-onboard .custom-checkbox:checked+.custom-label::before {
+    border-color: #006d5a;
+    /* Border color when checked */
+    background-color: #006d5a;
+    /* Background color when checked */
+}
+.welcome-onboard .custom-checkbox:checked+.custom-label::after {
+    content: '';
+    position: absolute;
+    left: 7.5px;
+    top: 9px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 11px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+}
+.welcome-onboard .input-box input[type="radio"]{
+    height: 20px !important;
+    width: 20px !important;
+}
+.onboarding-modal .modal-content button{
+    position: unset !important;
+}
+.onboarding-modal .modal-content{
+    background-color: #fff !important;
+    padding-top: 40px;
+    margin-top: 72px !important;
+    height: 100% !important;
+}
+.onboarding-modal .process-footer {
+    position: relative !important;
+    bottom: 0px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    height: 80px;
+}
+.onboarding-modal .process-footer button, .submit-btn {
+    background-color: #006D5A;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: futuramdbt;
+    float: right;
+    height: 31px;
+    margin: 25px;
+    padding: 0 70px;
+    line-height: 30px;
+    width: 95px;
+}
+.welcome-onboard .outline {
+    border: 1px solid #006d5a;
+    color: #006d5a;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: 'futuramdbt';
+    padding: 10px 20px !important;
+}
+.onboarding-register-form .onboarding-modal .process-footer button, .submit-btn {
+    background-color: #006D5A;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: futuramdbt;
+    float: left;
+    height: 34px;
+    margin: 10px;
+    padding: 0 70px;
+    line-height: 30px;
+    width: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+._monthInputField_1ny07_1 {
+    width: var(--month-input-width);
+    min-width: 200px;
+    cursor: pointer;
+    font-size: var(--month-input-font-size);
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--month-input-padding);
+    border-radius: 5px;
+    border: 1px solid #0000005b;
+    background: var(--input-bg-color);
+    color: var(--input-text-color);
+    margin-bottom: 1rem;
+    font-size: 15px !important;
+    color: #00000094 !important;
+    /* font-family: 'futuramdbt'; */
+    padding: 12px !important;
+    width: 97% !important;
+}
+.PhoneInputInput {
+    flex: 1;
+    min-width: 460px !important;
+    height: 45px;
+    border: 1px solid #0000005e !important;
+    border-radius: 3px !important;
+}
+.css-1jqq78o-placeholder , .css-19bb58m , .css-1wy0on6{
+    height: 46px;
+}
+.css-13cymwt-control{
+    height: 49px !important;
+}

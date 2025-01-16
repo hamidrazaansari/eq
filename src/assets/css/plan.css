@@ -276,7 +276,7 @@ margin-top: 10px;
     position: relative;
     bottom: 1px;
 }
-.modal-content {
+.compare-modal .modal-content {
     width: 100% !important; 
     margin-top: 0px !important;
     background-color: #fff !important;

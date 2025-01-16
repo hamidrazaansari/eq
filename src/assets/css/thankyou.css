@@ -35,3 +35,61 @@
     font-size: 30px;
     font-weight: 500;
 }
+
+/* talk to expert sec style */
+
+.form-footer{
+    background-color: #F8F8F8;
+    color: #000;
+}
+.form-footer {
+    background-color: #F8F8F8;
+    color: #000;
+    width: 113%;
+    position: relative;
+    left: -30px;
+    height: 52px;
+    bottom: 0px;
+    display: flex;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'futuramdbt';
+    font-size: 14px;
+    color: #8d8d8d;
+}
+.form-footer img{
+    margin-right: 10px;
+}
+.tolk-to-expert h2{
+    font-family: 'boldfuturamdbt';
+    font-size: 25px;
+    color: #0A0A0A;
+    margin-top: 0;
+}
+.tolk-to-expert .profile{
+    box-shadow: unset;
+    border: 2px solid #0000004f;
+    margin-top: 40px;
+    padding-bottom: 0;
+}
+.tolk-to-expert .profile p{
+    font-family: 'futuramdbt';
+    font-size: 15px;
+    opacity: 0.6;
+}
+.tolk-to-expert .profile .range-box{
+    margin: 30px 0;
+}
+.tolk-to-expert button {
+    width: 40%;
+    height: 70px;
+    margin: 20px 0;
+    border: none;
+    background: #006D5A;
+    color: #fff;
+    font-family: 'futuramdbt';
+    font-size: 22px;
+    border-radius: 6px;
+}

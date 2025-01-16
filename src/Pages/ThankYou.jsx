@@ -9,7 +9,7 @@ function ThankYou() {
   const navigate = useNavigate();
 
   const handleGotoMyBooking =() =>{
-    navigate('/dashboard', { state: { section: 'My Bookings' } });
+    navigate('/mybooking');
 
   }
 

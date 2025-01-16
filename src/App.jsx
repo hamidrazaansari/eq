@@ -28,6 +28,15 @@ import Budget from './components/Budget'
 import InfoForm from './components/InfoForm'
 import BuildPlanDetails from './components/BuildPlanDetails'
 import CustomizedProgram from './components/CustomizedProgram'
+import OnboardingProcess from './Pages/OnboardingProces'
+import TolkToExpert from './Pages/TolkToExpert'
+import MyBookingDetails from './components/myBookingDetails'
+import MyTrainerDetails from './components/MyTrainerDetails'
+import MyBooking from './components/MyBooking'
+import MyTrainer from './components/MyTrainer'
+import MyProfile from './components/MyProfile'
+import OnboardingRegisterForm from './components/OnboardingRegisterForm'
+import SlotForm from './components/SlotForm'
 function App() {
 
   return (
@@ -55,7 +64,6 @@ function App() {
         element ={<ProgramDetails />}
       />
     
-
       <Route 
         path='/signin'
         element ={<Signin />}
@@ -141,7 +149,42 @@ function App() {
         path='/customized-plans'
         element ={<CustomizedProgram/>}
       />
-
+      <Route 
+        path='/onboarding'
+        element ={<OnboardingProcess/>}
+      />
+      <Route 
+        path='/tolktoexpert'
+        element ={<TolkToExpert/>}
+      />
+      <Route 
+        path='/mybooking/booking-details/:id'
+        element ={<MyBookingDetails/>}
+      />
+      <Route 
+        path='/trainer-details/:id'
+        element ={<MyTrainerDetails/>}
+      />
+      <Route 
+        path='/mybooking'
+        element ={<MyBooking/>}
+      />
+      <Route 
+        path='/myTrainer'
+        element ={<MyTrainer/>}
+      />
+      <Route 
+        path='/myProfile'
+        element ={<MyProfile/>}
+      />
+      <Route 
+        path='/onboarding-registration'
+        element ={<OnboardingRegisterForm/>}
+      />
+      <Route 
+        path='/booking-time-slot'
+        element ={<SlotForm/>}
+      />
 
     </Routes>
     </AuthProvider>
