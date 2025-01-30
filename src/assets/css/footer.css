@@ -80,7 +80,7 @@
 }
 .footer li .nav-link {
     color: #ffffffbd !important;
-    font-size: 14px !important;
+    font-size: 12px !important ;
     font-family: openSanceBold !important;
     margin: 16px 11px;
 }
@@ -119,4 +119,8 @@
 }
 .addrss .adjst {
     margin-top: -2px;
+}
+.footer li .email-link{
+    font-size: 11px !important;
+    margin-right: 0px !important;
 }

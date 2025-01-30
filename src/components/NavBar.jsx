@@ -61,7 +61,7 @@ function NavBar() {
 
             </ul>
           </div>
-          <Link to={'/signup'}><button className={`signup-btn ${isLogin ? 'd-none' : 'd-block'} `} type="submit">Sign Up</button></Link> 
+          <Link to={'/signup'}><button className={`signup-btn ${isLogin ? 'd-none' : 'd-block'} me-0`} type="submit">Sign Up</button></Link> 
          <Link to={'/myProfile'}><button className={`account ${isLogin ? 'd-block' : 'd-none'} `} type="submit"><img src={AccountImg} alt="usser" />  {profile.firstName}</button></Link>
         </div>
       </nav>

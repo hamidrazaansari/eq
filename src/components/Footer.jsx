@@ -84,7 +84,7 @@ try {
                                         </li>
                                         <li className='d-flex align-items-center'>
                                             <span className='adjst'><GoMail /></span>
-                                            <a href="javascript:void()" className='nav-link my-1'>gunjan@eqyoga.in, enquiry@eqyoga.in </a>
+                                            <a href="javascript:void()" className='nav-link my-1 email-link' >gunjan@eqyoga.in, enquiry@eqyoga.in </a>
                                         </li>
                                     </ul>
                                 </ScrollAnimation>

@@ -51,7 +51,14 @@ function OnboardingRegisterForm() {
         lastName: '',
         countryCode: '',
         mobile: '',
-        gender: ''
+        gender: '',
+        wholeDayRoutine: '',
+        wakeUpTime: '',
+        wholeDayRoutine: '',
+        sleepTime: '',
+        sleepQuality: '',
+        meals: '',
+        energyLevel: '',
     });
 
     useEffect(() => {
@@ -103,6 +110,13 @@ function OnboardingRegisterForm() {
         personalNotes: '',
         instagramId: '',
         sourceChanel: '',
+        wholeDayRoutine: '',
+        wakeUpTime: '',
+        wholeDayRoutine: '',
+        sleepTime: '',
+        sleepQuality: '',
+        meals: '',
+        energyLevel: '',
     });
 
 
@@ -266,6 +280,7 @@ function OnboardingRegisterForm() {
         });
     };
 
+
     const token = localStorage.getItem('authToken');
 
     const handleSubmitData = async (e) => {
@@ -283,7 +298,7 @@ function OnboardingRegisterForm() {
 
             );
             if (resp.status === 200) {
-                toast.success('Form Submitted')
+                toast.success('Form Submitted..')
             }
         } catch (error) {
             console.error(error.response?.data?.errors);
@@ -315,6 +330,13 @@ function OnboardingRegisterForm() {
                 lastName: errorData.lastName || '',
                 mobile: errorData.mobile || '',
                 countryCode: errorData.countryCode || '',
+                wholeDayRoutine: errorData.wholeDayRoutine || '',
+                wakeUpTime: errorData.wakeUpTime || '',
+                wholeDayRoutine: errorData.wholeDayRoutine || '',
+                sleepTime: errorData.sleepTime || '',
+                sleepQuality: errorData.sleepQuality || '',
+                meals: errorData.meals || '',
+                energyLevel: errorData.energyLevel || '',
             });
         }
     };
@@ -1196,41 +1218,50 @@ function OnboardingRegisterForm() {
                     <div className="profile">
                         <h2>Required Details for your <span>Nutrition Consultation</span></h2>
                         <div className="input-box mt-4 ">
-                            <label htmlFor="AllDaySchedule">Your routine from the time you get up to the time you sleep</label>
+                            <label htmlFor="wholeDayRoutine">Your routine from the time you get up to the time you sleep</label>
                             <input
                                 type="text"
-                                name="instagramId"
-                                value={profile.instagramId}
+                                name="wholeDayRoutine"
+                                value={profile.wholeDayRoutine}
                                 onChange={handleInputChange}
-                                // readOnly={!isEditable}
                                 placeholder="Enter Your Answer"
                             />
+                             {errors.wholeDayRoutine && (
+                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                    {errors.wholeDayRoutine}
+                                </div>
+                            )}
                         </div>
                         <div className="row">
                             <div className="col-6">
                                 <div className="mt-1">
                                     <label htmlFor="AllDaySchedule">Wake-Up Time</label>
-                                    <TimePicker />
+                                    <TimePicker wakeUpTime={profile.wakeUpTime} />
                                 </div>
                             </div>
                             <div className="col-6">
                                 <div className="mt-1">
                                     <label htmlFor="AllDaySchedule">Sleep Time</label>
-                                    <TimePicker />
+                                    <TimePicker sleepTime={profile.sleepTime} />
                                 </div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-12">
                                 <div className="input-box mt-4">
-                                    <label htmlFor="AllDaySchedule">Meal times and what all you eat in meals</label>
+                                    <label htmlFor="meals">Meal times and what all you eat in meals</label>
                                     <input
                                         type="text"
-                                        name="instagramId"
-                                        value={profile.instagramId}
+                                        name="meals"
+                                        value={profile.meals}
                                         onChange={handleInputChange}
                                         placeholder="Enter Your Answer"
                                     />
+                                                                {errors.meals && (
+                                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                                                {errors.meals}
+                                                            </div>
+                                                        )}
                                 </div>
                             </div>
                         </div>
@@ -1242,10 +1273,10 @@ function OnboardingRegisterForm() {
                                         <input
                                             type="radio"
                                             id={option}
-                                            name="gender"
+                                            name="sleepQuality"
                                             value={option}
-                                        // checked={profile.gender === option}
-                                        // onChange={handleInputChange}
+                                            checked={profile.sleepQuality === option}
+                                            onChange={handleInputChange}
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -1253,11 +1284,11 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {/* {errors.gender && (
+                            {errors.sleepQuality && (
                                                             <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                                                {errors.gender}
+                                                                {errors.sleepQuality}
                                                             </div>
-                                                        )} */}
+                                                        )}
                         </div>
 
                         <div className="input-box mt-3">
@@ -1268,10 +1299,11 @@ function OnboardingRegisterForm() {
                                         <input
                                             type="radio"
                                             id={option}
-                                            name="gender"
+                                            name="energyLevel"
                                             value={option}
-                                        // checked={profile.gender === option}
-                                        // onChange={handleInputChange}
+                                        checked={profile.energyLevel === option}
+                                        onChange={handleInputChange}
+
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -1279,11 +1311,11 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {/* {errors.gender && (
+                            {errors.energyLevel && (
                                                             <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                                                {errors.gender}
+                                                                {errors.energyLevel}
                                                             </div>
-                                                        )} */}
+                                                        )}
                         </div>
                     </div>
                 </div>
