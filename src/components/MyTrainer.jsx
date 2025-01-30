@@ -8,6 +8,8 @@ import { API_URL } from '../utills/BaseUrl';
 import getImageURL from '../utills/getImageURL';
 import DashboardSidebar from './DashboardSidebar';
 import { GoArrowLeft } from "react-icons/go";
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 
 
@@ -42,6 +44,8 @@ function MyTrainer() {
       }
       else {
         return (
+          <div className='trainer'>
+            <NavBar/>
           <div className="myTrainer">
             <div className="container">
               <div className="row">
@@ -69,6 +73,8 @@ function MyTrainer() {
                 </div>
               </div>
             </div>
+          </div>
+          <Footer/>
           </div>
 
         )

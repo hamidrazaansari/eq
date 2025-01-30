@@ -24,7 +24,6 @@ function MyBookingDetails() {
         setNeedRefresh((old)=> !old)
     }
 
-    console.log(needRefresh);
     
     // Fetch profile data
     useEffect(() => {
@@ -126,7 +125,6 @@ function MyBookingDetails() {
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             }
 
                                             <div className="program-date">

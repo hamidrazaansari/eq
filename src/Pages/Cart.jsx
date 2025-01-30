@@ -3,17 +3,25 @@ import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import '../assets/css/cart.css'
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FaRegTrashAlt } from "react-icons/fa";
 import axios from 'axios';
 import { API_URL } from '../utills/BaseUrl';
 import { FaTag } from "react-icons/fa6";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-bootstrap';
+import PhoneNumberInput from '../components/PhoneNumberInput';
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Modal } from 'react-bootstrap';
+import TextField from "@mui/material/TextField";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import moment from 'moment';
+
 
 
 function Cart() {
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [profile, setProfile] = useState({ firstName: '', lastName: '', email: '',countryCode: '' ,  mobile: '' });
+  const [profile, setProfile] = useState({ firstName: '', lastName: '', email: '', countryCode: '', mobile: '', dob: '', gender: '' });
   const [couponCode, setCouponCode] = useState('');
   const [cupon, setCupon] = useState('')
   const [data, setData] = useState('');
@@ -22,6 +30,12 @@ function Cart() {
   const [formError, setFormError] = useState('')
   const [discountPrice, setDisCountPrice] = useState(null);
   const [discountPercentage, setDiscountPercentage] = useState(null);
+  const [show, setShow] = useState(false);
+  
+
+  // Handlers for showing and hiding the modal
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
 
@@ -66,13 +80,14 @@ function Cart() {
     fetchData();
   }, [token, selectedProgram]);
 
-  console.log(profile);
-  
-
-
   const handleSubscriptionChange = (event) => {
-    setIsSubscribed(event.target.checked);
+    handleShow()
   };
+
+  const handletermchange = (e) => {
+    setIsSubscribed(e.target.checked);
+    handleClose()
+  }
 
   const handleCuponChange = (event) => {
     setCouponCode(event.target.value);
@@ -109,7 +124,7 @@ function Cart() {
     totalSave
   }
 
-  let subTotal =discountPrice - subcriptionCal;
+  let subTotal = discountPrice - subcriptionCal;
 
   if (cupon) {
     const discountType = cuponData.body?.discountType;
@@ -139,6 +154,10 @@ function Cart() {
     }
   }
 
+  const handleInputChange = (e) => {
+    setProfile({ ...profile, gender: e.target.value })
+  }
+
 
   const handlePlaceOrder = async () => {
 
@@ -149,6 +168,8 @@ function Cart() {
         countryCode: profile.countryCode,
         mobile: profile.mobile,
         email: profile.email,
+        dob: profile.dob,
+        gender: profile.gender,
         programPlan: data?._id,
         category: data?.program.category,
         currency: "INR",
@@ -161,31 +182,40 @@ function Cart() {
         },
       })
 
-      console.log(response.data);
-      
       navigate('/thankyou', { state: { order: response.data?.body } });
 
     } catch (error) {
       setFormError(error.response?.data?.errors);
       console.log(error.response?.data);
-      
+
     }
   }
 
+  useEffect(() => {
+    if (data && data.mrpInr) {
+      const discountedPrice = data.mrpInr - data.salePriceInr;
+      const discountPercentage = (discountedPrice / data.mrpInr) * 100;
+      setDisCountPrice(discountedPrice.toFixed(2)); // Round to 2 decimal places
+      setDiscountPercentage(discountPercentage.toFixed(2))
+    }
+  }, [data]);
+
+  totalSave += parseFloat(discountPrice)
 
 
-useEffect(() => {
-  if (data && data.mrpInr) {
-    const discountedPrice = data.mrpInr - data.salePriceInr;
-    const discountPercentage = (discountedPrice / data.mrpInr ) * 100;
-    setDisCountPrice(discountedPrice.toFixed(2)); // Round to 2 decimal places
-    setDiscountPercentage(discountPercentage.toFixed(2))
-  }
-}, [data]);
+  const totalPrice = data.mrpInr - totalSave
+  const gstprice = totalPrice * 1.18
+  const gstAmount = totalPrice * 0.18
 
-totalSave += parseFloat(discountPrice)
 
-  
+  const handleCodeChange = (code) => {
+    setProfile({ ...profile, countryCode: code })
+  };
+
+    const handleDateChange = (name) => {
+        const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
+        setProfile({ ...profile, dob: formatedeDate })
+      };
   return (
     <div className="Cart">
       <ToastContainer />
@@ -318,39 +348,88 @@ totalSave += parseFloat(discountPrice)
                         )}
                       </div>
                     </div>
-                    <div className="col-2">
-                                        <div className="input-box">
-                                            <label htmlFor="countryCode">Country Code</label>
-                                            <input
-                                                type="text"
-                                                id="countryCode"
-                                                name="countryCode"
-                                                placeholder="+91"
-                                                value={profile.countryCode}
-                                                onChange={(e) => setProfile({ ...profile, countryCode: e.target.value })}
-                                            />
-                                        </div>
-                                    </div>
-                    <div className="col-4">
+
+                    <div className="col-6">
                       <div className="input-box">
-                        <label htmlFor="mobile">Mobile Number</label>
-                        <input
-                          type="text"
-                          id="mobile"
-                          name="mobile"
-                          placeholder="Enter Mobile Number"
-                          value={profile.mobile}
-                          onChange={(e) => setProfile({ ...profile, mobile: e.target.value })}
-                          disabled={selectedProgram === "myself"}
-                        />
-                        {formError.mobile && (
-                          <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
-                            {formError.mobile}
-                          </div>
-                        )}
+                        <label htmlFor="countryCode">Mobile Number</label>
+                        <div className="mobile-input">
+                          <PhoneNumberInput onCodeChange={handleCodeChange} />
+                          <input
+                            type="text"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Enter Mobile Number"
+                            value={profile.mobile}
+                            onChange={(e) => setProfile({ ...profile, mobile: e.target.value })}
+                            disabled={selectedProgram === "myself"}
+                          />
+                          {formError.mobile && (
+                            <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
+                              {formError.mobile}
+                            </div>
+                          )}
+
+                        </div>
 
                       </div>
                     </div>
+                    <div className="col-6 p-0">
+                      <div className="">
+                      <label htmlFor="date" className='dob-labal'>DOB</label>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DatePicker
+                            label="Select Date"
+                            inputFormat="dd/MM/yyyy"
+
+                            // value={moment('MM/DD/YYYY').format(dob)}
+                            onChange={handleDateChange}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                fullWidth
+                                placeholder="Select Date"
+                                variant="outlined" 
+                                hiddenLabel // Prevent label space reservation
+                                sx={{ '& .MuiInputBase-root': { padding: 0 } }} // Customize padding if needed
+                              />
+                            )}
+                          />
+                        </LocalizationProvider>
+                        {formError.dob && (
+                          <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "327px" , left:"31px" }}>
+                            {formError.dob}
+                          </div>
+                        )} 
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="input-box">
+                        <h6>Gender</h6>
+                        <div className="gender">
+                          {['MALE', 'FEMALE', 'OTHER'].map((option) => (
+                            <div className="genderOpt" key={option}>
+                              <input
+                                type="radio"
+                                id={option}
+                                name="gender"
+                                value={option}
+                                checked={profile.gender === option}
+                                onChange={handleInputChange}
+                              />
+                              <label htmlFor={option} className="form-check-label">
+                                {option.charAt(0).toUpperCase() + option.slice(1)}
+                              </label>
+                            </div>
+                          ))}
+                        </div>
+                        {formError.gender && (
+                          <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "65px" }}>
+                            {formError.gender}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -384,7 +463,7 @@ totalSave += parseFloat(discountPrice)
                 <div className="d-flex align-items-center justify-content-between">
                   <p>Subscription Discount</p>
                   <span style={{ color: "#0000009a" }}>
-                    ₹
+                    -₹
                     {
                       isSubscribed
                         ? subcriptionCal
@@ -397,25 +476,25 @@ totalSave += parseFloat(discountPrice)
                     <p>Coupon Discount</p>
                     <span style={{ color: "#0000009a" }}>
 
-                      {
+                      -{
                         cuponData.body?.discountType === "AMOUNT" ? `₹${cuponData.body?.discount}` : `${cuponData.body?.discount}%- `
                       }
 
                     </span>
                   </div> : ''}
 
-                {/* <div className="d-flex align-items-center justify-content-between">
+                <div className="d-flex align-items-center justify-content-between">
                   <p>Discount</p>
-                  <span style={{ color: "#006D5A" }}>- ₹2,799.00</span>
-                </div> */}
+                  <span>-{discountPrice}</span>
+                </div>
                 <hr />
                 <div className="d-flex align-items-center justify-content-between">
                   <h2>Sub Total</h2>
-                  <span className='fw-bold'>₹{data.salePriceInr}</span>
+                  <span className='fw-bold'>₹{totalPrice}</span>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
                   <p className='text-dark'>GST Fee (18%) </p>
-                  <span>0.00</span>
+                  <span style={{ color: "#006D5A" }}>+{gstAmount}</span>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
                   <p className='text-dark'>Processing Fee (0%) </p>
@@ -424,7 +503,7 @@ totalSave += parseFloat(discountPrice)
                 <hr />
                 <div className="d-flex align-items-center justify-content-between">
                   <h2>Total Amount</h2>
-                  <span className='fw-bold'>₹{data.salePriceInr}</span>
+                  <span className='fw-bold'>₹{gstprice}</span>
                 </div>
                 <hr />
                 <h5 style={{ color: "#006D5A", fontFamily: "futuramdbt" }}>You will save {totalSave || discountPrice} on this plan</h5>
@@ -435,6 +514,58 @@ totalSave += parseFloat(discountPrice)
         </div>
       </div>
       <Footer />
+
+      <Modal show={show} onHide={handleClose} className='termConditionModal' centered>
+        <Modal.Body>
+          <h1 className='text-center'>Terms And <span>Conditions</span></h1>
+          <p> These Subscription Terms and Conditions ("Terms") govern your subscription to Equilibrium our services, including but not limited to online yoga classes, workshops, and digital content.
+            By subscribing, you confirm that you are at least 18 years old or have the consent of a legal guardian.</p>
+
+          <h2>Subscription Plans</h2>
+          <h3>Types of Plans</h3>
+          <p>We offer multiple subscription plans, including monthly, quarterly, and annual memberships. Details of each plan, including pricing, are listed on our website.
+          </p>
+          <h3>Changes to Plans</h3>
+          <p>We reserve the right to change subscription pricing or features. Any changes will be communicated to subscribers at least 30 days in advance.
+          </p>
+          <h2>Billing and Payments</h2>
+          <h3> Payment Methods</h3>
+          <p>We accept payments via [Credit/Debit Cards, PayPal, or any other methods]. All transactions are secure and processed through trusted payment gateways.
+          </p>
+          <h3>Auto-Renewal</h3>
+          <p>Subscriptions are automatically renewed at the end of the billing cycle unless canceled by you. You authorize us to charge your selected payment method for recurring fees.
+          </p>
+          <h3>Failed Payments</h3>
+          <p>If a payment fails, we will notify you. Access to our services may be suspended until the payment is successfully processed.
+          </p>
+          <h3>Refund Policy</h3>
+          <p>All subscription fees are non-refundable unless otherwise stated. Refunds may be issued at our discretion in cases of technical issues or errors.
+          </p>
+          <h2>Cancellation Policy</h2>
+          <p>You may cancel your subscription at any time by visiting your account settings or contacting our support team.
+          </p>
+          <p>Cancellations will take effect at the end of the current billing cycle. You will not be charged for subsequent cycles but will retain access to the services until the current cycle ends.
+          </p>
+          <h3>Use of Services</h3>
+          <p>Subscriptions are for personal, non-commercial use only. Sharing your account or content with others is strictly prohibited.</p>
+          <p>We reserve the right to suspend or terminate your subscription if you violate these terms or misuse our services.</p>
+          <h2>Privacy Policy</h2>
+          <p>Your personal information is handled in accordance with our [Privacy Policy Link]. By subscribing, you consent to the collection and use of your data as described in the policy.</p>
+          <div className="d-flex align-items-center justify-content-center">
+            <input
+              type="checkbox"
+              id="term"
+              className="custom-checkbox me-3"
+              checked={isSubscribed}
+              onChange={handletermchange}
+            />
+            <label htmlFor="term" className="custom-label">
+              I accept term and conditions
+            </label>
+          </div>
+
+        </Modal.Body>
+      </Modal>
     </div>
   )
 }

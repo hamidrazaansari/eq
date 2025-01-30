@@ -102,3 +102,73 @@
     margin-top: 9px;
     transition: all 1s ease-in-out;
 }
+
+/* nutrition form dessign */
+.nutrition{
+  padding:20px 80px;
+  margin: 40px;
+}
+.nutrition h1{
+  font-family: 'boldfuturamdbt';
+  text-align: center;
+  font-size: 39px;
+  margin: 20px;
+}
+.nutrition h1 span{
+  color: #006D5A;
+}
+.nutrition textarea{
+  width: 98%;
+  margin: 10px 0 20px; 
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #a8a8a8;
+}
+.nutrition .form-check-label {
+  font-size: 14px;
+  color: #5c5b5b !important;
+}
+.nutrition h6{
+  font-size: 18px !important;
+  margin: 10px 0 !important;
+}
+.nutrition .time-picker input {
+  border: none !important;
+  height: 35px;
+margin: 0 !important;
+padding: 0  !important;
+}
+.time-picker-input-group{
+  border: 1px solid #a8a8a8 !important;
+  margin-top: 10px;
+}
+.time-picker-input-group:has(:focus), .time-picker.show .time-picker-input-group{
+  border: 1px solid #000 !important;
+  box-shadow: none !important;
+}
+.time-picker-roll-cell.selected{
+  background-color: #006D5A !important;
+}
+ .btn-primary{
+  background-color: #006D5A !important;
+}
+.form-check-input:checked {
+  background-color: #006D5A !important;
+  border-color: #006D5A !important;
+}
+.add-booking .select-search-input{
+  height: 40px !important;
+  border: 1px solid #5c5b5b !important;
+}
+.select-search-container {
+  width: 280px !important;
+  height: 40px !important;
+}
+.add-booking h3{
+  font-size: 15px !important;
+
+}
+.add-booking .input-box input{
+  width: 300px !important;
+  height: 40px !important;
+}

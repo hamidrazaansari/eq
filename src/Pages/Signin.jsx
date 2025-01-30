@@ -79,8 +79,8 @@ function Signin() {
           <div className="col-6 p-0 signin-image">
             <img src={SignImage} alt="signin" />
           </div>
-          <div className="col-6 p-0 d-flex align-items-center justify-content-center">
-            <div className="sign-in">
+          <div className="col-6 px-5 d-flex align-items-center justify-content-center">
+            <div className="sign-in newSignInStyle">
               <h2>Sign In</h2>
               <div className="google-box">
                 <img src={google} alt="google" />

@@ -23,7 +23,7 @@ body {
 
 .horizontal-section .prog {
     width: 100%;
-    max-width: 1497px;
+    max-width: 1650px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -37,16 +37,16 @@ body {
 	height: auto; /* Maintain aspect ratio */
 }
 
-.prog .content svg{
-	color: #006D5A;
-    font-size: 28px;
+.prog .content svg {
+    color: #006D5A;
+    font-size: 14px;
     margin: 10px;
     margin-left: 0;
-	font-weight: 300;
-	font-family: futuramdbt;
-	width: 35px;
-	height: 35px;
-	margin-right: 15px;
+    font-weight: 300;
+    font-family: futuramdbt;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
 }
 .prog .content li{
 	display: flex;
@@ -56,7 +56,7 @@ body {
 }
 .programs .content {
     padding: 80px;
-    margin-top: 75px;
+    /* margin-top: 75px; */
 }
 .modal-dialog{
 	max-width: 1200px !important;

@@ -9,6 +9,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API_URL } from '../utills/BaseUrl';
+import PhoneNumberInput from '../components/PhoneNumberInput';
+import TextField from "@mui/material/TextField";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import moment from 'moment';
 
 function SignUp() {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -16,9 +22,11 @@ function SignUp() {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
+    const [dob, setDob] = useState('');
+    const [gender, setGender] = useState('');
     const [countryCode, setCountryCode] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({ email: '', firstName: '', lastName:'', countryCode:'', mobile:'',  password: '' });
+    const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', countryCode: '', mobile: '', password: '', dob: '', gender: '' });
     const [loading, setLoading] = useState(false); // Loading state
 
 
@@ -34,7 +42,7 @@ function SignUp() {
         setLoading(true); // Start loading
 
         try {
-            const response = await axios.post(`${API_URL}/users/register`, { firstName, lastName, email, countryCode, mobile, password });
+            const response = await axios.post(`${API_URL}/users/register`, { firstName, lastName, email, countryCode, mobile, password, dob, gender });
             toast.success(response.data.message);
             const token = response.data.body.token;
             if (token) {
@@ -49,9 +57,11 @@ function SignUp() {
                 setErrors({
                     email: errorData.email || '',
                     firstName: errorData.firstName || '',
-                    lastName: errorData.LastName || '',
+                    lastName: errorData.lastName || '',
                     mobile: errorData.mobile || '',
                     countryCode: errorData.countryCode || '',
+                    dob: errorData.dob || '',
+                    gender: errorData.gender || '',
                     password: errorData.password || '',
                 });
             } else {
@@ -62,6 +72,26 @@ function SignUp() {
         }
     };
 
+    const handleInputChange = (e) => {
+        setGender(e.target.value);
+
+    };
+
+    const handleCodeChange  = (code) =>{
+        setCountryCode(code)  
+    }
+    
+    const handleDateChange = (name) => {
+        const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
+        setDob(formatedeDate)
+      };
+
+
+      console.log( countryCode);
+      
+
+      
+    
     return (
         <div className='signUp'>
             <ToastContainer />
@@ -86,23 +116,9 @@ function SignUp() {
                                 <p>OR Continue With Email</p>
                                 <span></span>
                             </div>
-                            <div className="input">
-                                <label htmlFor="email">Email Address <span>*</span></label>
-                                <input
-                                    type="email"
-                                    id='email'
-                                    className='input-field'
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                {errors.email && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
-                                        {errors.email}
-                                    </div>
-                                )}
-                            </div>
-                            <div className="row name">
-                                <div className="col-6  d-flex align-items-center justify-content-end">
+
+                            <div className="row name"> 
+                                <div className="col-6   d-flex align-items-center justify-content-end">
                                     <div className="input">
                                         <label htmlFor="firstname">First Name <span>*</span></label>
                                         <input
@@ -113,7 +129,7 @@ function SignUp() {
                                             onChange={(e) => setFirtName(e.target.value)}
                                         />
                                         {errors.firstName && (
-                                            <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
+                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                                 {errors.firstName}
                                             </div>
                                         )}
@@ -130,53 +146,105 @@ function SignUp() {
                                             onChange={(e) => setLastName(e.target.value)}
                                         />
                                         {errors.lastName && (
-                                            <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
+                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                                 {errors.lastName}
                                             </div>
                                         )}
                                     </div>
                                 </div>
                             </div>
-                            <div className="row mobile">
-                                <div className="col-4">
-                                    <div className="input">
-                                        <label htmlFor="Countrycode">Country Code <span>*</span></label>
-                                        <input
-                                            type="text"
-                                            id='Countrycode'
-                                            className='input-field'
-                                            value={countryCode}
-                                            onChange={(e) => setCountryCode(e.target.value)}
-                                            placeholder='+91'
+
+                            <div className="input">
+                                <label htmlFor="email">Email Address <span>*</span></label>
+                                <input
+                                    type="email"
+                                    id='email'
+                                    className='input-field'
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                {errors.email && (
+                                    <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "-112px" }}>
+                                        {errors.email}
+                                    </div>
+                                )}
+                            </div>
+                            <div className="row dob">
+                                <div className="col-6 p-0">
+                                    <div className="">
+                                        <label htmlFor="dob" className='dobLabal'>DOB</label>
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            label="Select Date"
+
+                                            // value={moment('MM/DD/YYYY').format(dob)}
+                                            onChange={handleDateChange}
+                                            renderInput={(params) => <TextField {...params} fullWidth />}
                                         />
-                                        {errors.countryCode && (
-                                            <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
-                                                {errors.countryCode}
+                                    </LocalizationProvider>
+                                        {errors.dob && (
+                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "411px" }}>
+                                                {errors.dob}
                                             </div>
                                         )}
                                     </div>
                                 </div>
-                                <div className="col-8">
-                                    <div className="input">
-                                        <label htmlFor="mobile">Mobile <span>*</span></label>
-                                        <input
-                                            type="text"
-                                            id='mobile'
-                                            className='input-field'
-                                            value={mobile}
-                                            onChange={(e) => setMobile(e.target.value)}
-                                        />
-                                        {errors.mobile && (
-                                            <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
-                                                {errors.mobile}
+                                <div className="col-6 sign-up">
+                                    <div className="input-box mt-3">
+                                        <h6>Gender</h6>
+                                        <div className="gender">
+                                            {['Male', 'Female', 'Other'].map((option) => (
+                                                <div className="genderOpt" key={option}>
+                                                    <input
+                                                        type="radio"
+                                                        id={option}
+                                                        name="gender"
+                                                        value={option}
+                                                        checked={gender === option}
+                                                        onChange={handleInputChange}
+                                                    />
+                                                    <label htmlFor={option} className="form-check-label">
+                                                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        {errors.gender && (
+                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                                {errors.gender}
                                             </div>
                                         )}
                                     </div>
                                 </div>
                             </div>
+                            <div className="input-box w-100 mt-4">
+                                <label htmlFor="mobile">Mobile Number</label>
+                                <div className="mobile-input w-100">
+                                    <PhoneNumberInput errors={errors} onCodeChange={handleCodeChange} />
+                                    <input
+                                        type="text"
+                                        id="mobile"
+                                        className=' ps-4'
+                                        name="mobile"
+                                        value={mobile}
+                                        onChange={(e) => {
+                                            // Validate that the input contains only digits
+                                            const value = e.target.value;
+                                            if (/^\d*$/.test(value)) {
+                                                setMobile(value); // Update the state only if the input is valid
+                                            }
+                                        }}
+                                        placeholder="Enter Mobile Number"
+                                    />
+                                    {errors.mobile && (
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            {errors.mobile}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
 
-
-                            <div className="input mt-3">
+                            <div className="input ">
                                 <label htmlFor="pass">Password <span>*</span></label>
                                 <input
                                     type={passwordVisible ? 'text' : 'password'}
@@ -197,16 +265,16 @@ function SignUp() {
                                     {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                                 </span>
                                 {errors.password && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
+                                    <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                         {errors.password}
                                     </div>
                                 )}
                             </div>
 
                             <div className="others">
-                                <p>By creating an account you agree with our <a href=""> Terms of service, Privacy Policy,</a>
+                                {/* <p>By creating an account you agree with our <a href=""> Terms of service, Privacy Policy,</a>
                                     and our default <a href=""> Notification Settings. </a>
-                                </p>
+                                </p> */}
                                 <button onClick={handleRegisterNewUser} disabled={loading}>
                                     {loading ?
                                         <div className='d-flex align-items-center justify-content-center'>

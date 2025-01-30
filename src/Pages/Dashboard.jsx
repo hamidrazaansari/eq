@@ -42,7 +42,7 @@ function Dashboard() {
               />
             </div>
             <div className="col-9">
-              <div className="header">
+              <div className="main-header">
                 <h2>
                   <GoArrowLeft /> {activeSection}
                 </h2>

@@ -26,7 +26,7 @@
 }
 .heading {
     position: absolute;
-    font-size: 80px;
+    font-size: 70px;
     font-weight: bold;
     font-style: normal;
     color: #006D5A;
@@ -34,7 +34,7 @@
     letter-spacing: 2px;
 }
 .heading span{
-    font-size: 86px;
+    font-size: 70px;
 }
 .texts .para {
     font-size: 17px;
@@ -283,7 +283,7 @@ padding: 80px;
 .points h3{
     font-family: boldfuturamdbt;
     font-size: 21px;
-    color: #bcbcbc;
+    color: #000000a8;
 }
 .points p {
     font-family: 'futuramdbt';
@@ -693,3 +693,27 @@ padding: 80px;
         font-size: 14px !important;
     }
 }
+
+
+/* about modal Design */
+.aboutVideo .modal-content{
+    background-color: #fff !important;
+    max-width: 30% !important;
+    margin: 50px auto 0 !important;
+    height: 500px !important;
+}
+.aboutVideo .modal-content video{
+    object-fit: contain !important;
+    border-radius: 10px !important;
+}
+.modleCBtn{
+    border: none !important;
+    right: -17px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px !important;
+    background: transparent !important;
+    top: 5px !important;
+}
+

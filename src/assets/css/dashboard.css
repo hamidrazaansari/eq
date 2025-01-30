@@ -4,10 +4,13 @@
 }
 
 .header {
-    background-color: #006D5A;
+    background-color: #006D5A !important;
     padding: 10px;
     padding-top: 13px;
     border-radius: 8px;
+}
+.accordion-header .header{
+    background-color: #fff !important;
 }
 
 .header h2 {
@@ -343,7 +346,7 @@ color: #fff !important;
 .my-booking .header {
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
+    background-color: #fff !important;
     box-shadow: 1px 1px 5px 0px #d9d6d6ae;
     margin-top: 20px;
     padding: 30px;
@@ -609,6 +612,6 @@ margin-bottom: 20px;
     padding: 2px;
     border-radius: 5px;
 }
-.myBookingMain .mailing , .myBookingMain .footer , .profile .mailing , .profile .footer{
+.myBookingMain .mailing , .myBookingMain .footer , .profile .mailing , .profile .footer , .trainer .mailing , .trainer .footer{
     top: 40px;
 }

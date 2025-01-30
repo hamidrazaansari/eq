@@ -14,8 +14,8 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
     const [currenIndex, setCurrentIndex] = useState(-1)
 
 
+    
     const {id} = useParams();
-    console.log(id);
 
     const navigate = useNavigate();
     
@@ -121,7 +121,7 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
 
                             <div className="row mx-auto d-flex align-items-center justify-content-center px-5">
                                 <div className="d-flex align-items-center justify-content-center">
-                                    {currentItem.linkText ? <Link className="button"  to={`${currentItem.linkUrl}?id=${id}`} target='_blank' >
+                                    {currentItem.linkText ? <Link className="button"  to={`${currentItem.linkUrl}?id=${id}`} >
                                         {currentItem.linkText}
                                     </Link> : ''}
                                     <button className='outline button' onClick={() => handleGoToNextStep(currentItem._id, currentItem.isCompleted)}>{currentItem?.submitButtonText}</button>

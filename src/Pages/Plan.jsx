@@ -51,7 +51,7 @@ function Plan() {
   }, [activeId]);
 
 
-  // console.log(data);
+  console.log(data);
 
 
   // Fetch program data for the initial ID
@@ -82,17 +82,17 @@ function Plan() {
           setLoading(false);
         });
 
-        setShowModal(true)
+      setShowModal(true)
     } catch (error) {
 
     }
   };
 
-  const handleGoToCart =(programid)=>{
-    if(token){
+  const handleGoToCart = (programid) => {
+    if (token) {
       navigate(`/cart/${programid}`)
     }
-    else{
+    else {
       navigate('/signup')
     }
 
@@ -104,68 +104,69 @@ function Plan() {
 
       {/* Modal */}
       <div className="">
-      <Modal className='compare-modal' show={showModal} onHide={closeModal} size="lg" centered>
-        
-        <Modal.Body>
-        <Button variant='success' className='cancel-btn' onClick={closeModal}><RxCross2/></Button>         
-        <div className="compare">
-            <h2>Choosing the Right Plan: A Comparative Review</h2>
-            <div className="compare-box">
-              <div className="features">
-                <h3>Features</h3>
-                <p>Price In INR</p>
-                <p>PT Sessions</p>
-                <p>Price In  Doler</p>
-                <p>Groupe Session</p>
-                <p>Plan Duration</p>
+        <Modal className='compare-modal' show={showModal} onHide={closeModal} size="lg" centered>
 
-              </div>
-              <div
-                className={`flow ${selectedComparePlan === 'flow' ? 'selected' : ''}`}
-                onClick={() => handlePlanClick('flow')}
-              >
-                <h3>{main.plan?.name}(Flow)
-                  <br />
-                  <span className='save'>Save 20%</span>
-                  <span className='save bg-warn'><ImFire/> Most Popular</span>
-                </h3>
-                <p>{main.mrpInr} INR </p>
-                <p>{main.ptSession} Session  </p>
-                <p>{main.mrpDollar}$  </p>
-                <p>{main.groupSession} Sesion</p>
-                <p>{main.planDuration} Days  </p>
-
-                <button className='compare-button'>{selectedComparePlan === 'flow' ? 'Selected' : 'Choose Plan'}</button>
-              </div>
-
-
-              {compare && compare.map((item) => {
-                return(
-                <div
-                  key={item._id}
-                  className={`rhythm ${selectedComparePlan === 'rhythm' ? 'selected' : ''}`}
-                  onClick={() => handlePlanClick('rhythm')}
-                >
-                  <h3>{item.plan?.name}(Rhythm)
-                    <br />
-                    <span className='save'>Save 20%</span>
-                    
-                  </h3>
-                  <p>{item.mrpInr} INR</p>
-                  <p>{item.ptSession} Session</p>
-                  <p>{item.mrpDollar}$ </p>
-                  <p>{item.groupSession} Sesion</p>
-                  <p>{item.planDuration} Days</p>
-                  <button className='compare-button'>{selectedComparePlan === 'rhythm' ? 'Selected' : 'Choose Plan'} </button>
+          <Modal.Body>
+            <Button variant='success' className='cancel-btn' onClick={closeModal}><RxCross2 /></Button>
+            <div className="compare">
+              <h2>Choosing the Right Plan: A Comparative Review</h2>
+              <div className="compare-box">
+                <div className="features">
+                  <h3>Features</h3>
+                  <p>Price In INR</p>
+                  <p>PT Sessions</p>
+                  <p>Price In  Doler</p>
+                  <p>Groupe Session</p>
+                  <p>Plan Duration</p>
 
                 </div>
-              )})}
+                <div
+                  className={`flow ${selectedComparePlan === 'flow' ? 'selected' : ''}`}
+                  onClick={() => handlePlanClick('flow')}
+                >
+                  <h3>{main.plan?.name}(Flow)
+                    <br />
+                    <span className='save'>Save 20%</span>
+                    <span className='save bg-warn'><ImFire /> Most Popular</span>
+                  </h3>
+                  <p>{main.mrpInr} INR </p>
+                  <p>{main.ptSession} Session  </p>
+                  <p>{main.mrpDollar}$  </p>
+                  <p>{main.groupSession} Sesion</p>
+                  <p>{main.planDuration} Days  </p>
 
+                  <button className='compare-button'>{selectedComparePlan === 'flow' ? 'Selected' : 'Choose Plan'}</button>
+                </div>
+
+
+                {compare && compare.map((item) => {
+                  return (
+                    <div
+                      key={item._id}
+                      className={`rhythm ${selectedComparePlan === 'rhythm' ? 'selected' : ''}`}
+                      onClick={() => handlePlanClick('rhythm')}
+                    >
+                      <h3>{item.plan?.name}(Rhythm)
+                        <br />
+                        <span className='save'>Save 20%</span>
+
+                      </h3>
+                      <p>{item.mrpInr} INR</p>
+                      <p>{item.ptSession} Session</p>
+                      <p>{item.mrpDollar}$ </p>
+                      <p>{item.groupSession} Sesion</p>
+                      <p>{item.planDuration} Days</p>
+                      <button className='compare-button'>{selectedComparePlan === 'rhythm' ? 'Selected' : 'Choose Plan'} </button>
+
+                    </div>
+                  )
+                })}
+
+              </div>
+              <button className='cantinue-button' onClick={() => { handleGoToCart(selectedComparePlan === 'flow' ? main._id : selectedComparePlan === 'rhythm' ? compare[0].plan?._id : '') }}>Cantinue</button>
             </div>
-              <button className='cantinue-button' onClick={()=>{handleGoToCart(selectedComparePlan === 'flow'? main._id :selectedComparePlan === 'rhythm'? compare[0].plan?._id: '')}}>Cantinue</button>
-          </div>
-        </Modal.Body>
-      </Modal>
+          </Modal.Body>
+        </Modal>
       </div>
       <NavBar />
       <section className="plans">
@@ -190,8 +191,12 @@ function Plan() {
               return (
                 <div className="col-lg-3">
                   <div
-                    className={`plan-card ${selectedPlan === program ? 'active' : '' && program.isDefault ? 'active' : ''}`}
-                    onClick={() => handleSelectPlan(program)} >
+                    className={`plan-card ${selectedPlan === program
+                        ? 'active'
+                        : program.isDefault && !selectedPlan 
+                          ? 'active'
+                          : ''
+                      }`} onClick={() => handleSelectPlan(program)} >
                     {!program.isDefault ? '' : <div className='tag text-center'>Most Popular Plan</div>}
                     <h3>{program && program.plan.name}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur</p>

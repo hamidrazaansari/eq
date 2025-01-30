@@ -37,6 +37,8 @@ import MyTrainer from './components/MyTrainer'
 import MyProfile from './components/MyProfile'
 import OnboardingRegisterForm from './components/OnboardingRegisterForm'
 import SlotForm from './components/SlotForm'
+import NutritionConsultation from './components/NutritionConsultation'
+import AddBookingTimeSlot from './components/AddBookingTimeSlot'
 function App() {
 
   return (
@@ -184,6 +186,14 @@ function App() {
       <Route 
         path='/booking-time-slot'
         element ={<SlotForm/>}
+      />
+      <Route 
+        path='/nutritionConsultation'
+        element ={<NutritionConsultation/>}
+      />
+      <Route 
+        path='/addBookingTimeslot'
+        element ={<AddBookingTimeSlot/>}
       />
 
     </Routes>

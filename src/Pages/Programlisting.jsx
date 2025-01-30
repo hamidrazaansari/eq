@@ -106,7 +106,7 @@ function Programlisting() {
                                             </div>
                                         </div>
                                         <span className='time'>{ item.subCategory ? item.subCategory && item.subCategory.name : 'Trail Program'}</span>
-                                       <Link to={`/program/${item._id}`}><button className='BookNowBtn '>Book Now</button></Link> 
+                                            <Link to={`/program/${item._id}`}><button className='BookNowBtn '>Book Now</button></Link> 
         
                                     </div>
                                 </div>

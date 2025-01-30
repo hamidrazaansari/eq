@@ -94,11 +94,12 @@ function Otp() {
 
         } catch (error) {
           // Log full error details
-          console.error('Error:', error);
+          
           if (error.response) {
+            toast.error('OTP not Valid')
             console.error('Server responded with status:', error.response.status);
             console.error('Response data:', error.response.data);
-            setIsLogin(false)
+            setLoading(false)
           }
         }
       };

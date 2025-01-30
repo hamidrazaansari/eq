@@ -13,33 +13,40 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import CircularSlider from '../components/CircularSlider';
 import Program from '../components/Program';
 import { Link } from 'react-router-dom';
+import { IoPlayCircleOutline } from "react-icons/io5";
+import YogaVid from '../assets/image/yoga-testi-8.mp4'
+import { Modal } from 'react-bootstrap';
+import { ImCancelCircle } from "react-icons/im";
 
 
 
 function Hero() {
     const [inView, setInView] = useState(false);
+    const [show, setShow] = useState(false);
 
-    const scrollContainerRef = useRef(null);
-
+    // Handlers for showing and hiding the modal
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const handleEnterViewport = () => {
         setInView(true); // Trigger the counter up when the section enters view
     };
 
     const handleExitViewport = () => {
-        setInView(false); 
+        setInView(false);
     };
 
     return (
         <div>
+
             <NavBar />
             <section className="hero">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="texts">
-                                <h1 className='heading'>Equilibrium <span>Mind & Yoga</span></h1>
-                                <p className='para'>Online Yoga Classes, Diet Mentoring & Lifestyle Correction</p>
+                                <h1 className='heading'>Equilibrium Yoga <span>By Gunjan Kamra</span></h1>
+                                <p className='para'>Holistic Wellness Solutions For Individuals And Corporates                                </p>
                                 <div className="btns">
                                     <button className='bookSeion'>Book A Session</button>
                                     <button className='contactUS'>Contact Us <AiOutlineRightCircle className='ms-2 mb-1' /> </button>
@@ -55,14 +62,14 @@ function Hero() {
                     </div>
                 </div>
             </section>
-            
+
             <section className='about-us'>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
-                        <ScrollAnimation 
-                            animateIn="fadeInUp" 
-                        >
+                            <ScrollAnimation
+                                animateIn="fadeInUp"
+                            >
                                 <img src={AboutImg} alt="yoga image for about" />
                             </ScrollAnimation>
                         </div>
@@ -70,29 +77,32 @@ function Hero() {
                             <ScrollAnimation animateIn="fadeInUp">
                                 <h2>About Us</h2>
                             </ScrollAnimation>
-                                <ScrollAnimation animateIn="fadeInUp">
+                            <ScrollAnimation animateIn="fadeInUp">
                                 <h3>Gunjan Kamra</h3>
-                                </ScrollAnimation>
+                            </ScrollAnimation>
 
-                                <ScrollAnimation animateIn="fadeInUp">
-                                <p>(also addressed as GUNJ by her clients), is a celebrity yoga trainer and an advocate of yoga for great physical, mental and emotional wellbeing. </p>
-                                </ScrollAnimation>
+                            <ScrollAnimation animateIn="fadeInUp">
+                                <p>Meet Gunjan Kamra, a highly respected yoga instructor and the Founder & CEO of Equilibrium Yoga by Gunjan Kamra (@eqmindandyoga), based in Mumbai. Gunjan is recognized as a top-ranked celebrity yoga instructor and has helped thousands of individuals worldwide embrace healthier, more balanced lives</p>
+                            </ScrollAnimation>
 
-                                <ScrollAnimation animateIn="fadeInUp">
-                                <p>Gunjan quit her 8-year-long stint with the corporate to follow her dream. She founded “Equilibrium - Mind & Yoga” in March 2020 and never looked back. </p>
-                                </ScrollAnimation>
+                            <ScrollAnimation animateIn="fadeInUp">
+                                <p>In March 2020, she launched ‘Equilibrium Yoga by Gunjan Kamra’, an establishment dedicated to offering holistic wellness solutions for both individuals and corporates, through customized yoga sessions, diet consultations, and lifestyle correction services, all aimed at creating successful and sustainable health and happiness journeys for our members. </p>
+                            </ScrollAnimation>
 
-                                <ScrollAnimation animateIn="fadeInUp">
-                                <p>Through the power of Yoga, she helps people get fitter physically and emotionally and helps them live harmonious, peaceful, and healthy life. </p>
-                                </ScrollAnimation>
+                            {/* <ScrollAnimation animateIn="fadeInUp">
+                                <p>With over 15 years of experience in yoga practice and 5 years of teaching, Gunjan has trained over 10,000 individuals, 80+ influencers and celebrities, and 100+ corporate clients. Some of the high-profile clients she’s worked with include Ekta Kapoor, Sanya Malhotra, Priya Mani, and Mrunal Thakur. Equilibrium Yoga is also proud to have partnered with leading organizations like Adobe, Abbott, Indigo, and Reliance to foster workplace wellness.</p>
+                            </ScrollAnimation>
 
-                                <ScrollAnimation animateIn="fadeInUp">
-                                <p>According to Gunjan, yoga is not just limited to achieving a certain posture. It is about the journey to that posture - being one-minded and conscious of every breath in that journey.</p>
-                                </ScrollAnimation>   
-                                
-                                <ScrollAnimation animateIn="fadeInUp">
-                                <button className='read-more-btn'>Read More</button>
-                                </ScrollAnimation>
+                            <ScrollAnimation animateIn="fadeInUp">
+                                <p>Gunjan's journey into wellness began after a successful 8-year career as a business analyst. Today, she combines her expertise as an advanced yoga practitioner, long-distance runner, and Latin dance trainer to create programs that are as unique as each individual.She is also a GS 10K-Women Alumni from IIM- Bangalore</p>
+                            </ScrollAnimation> */}
+
+                            <ScrollAnimation animateIn="fadeInUp">
+                                <div className="d-flex">
+                                    <button className='read-more-btn'>Read More</button>
+                                    <Link ><button className='watch-btn' onClick={handleShow} >Watch Video <IoPlayCircleOutline /> </button></Link>
+                                </div>
+                            </ScrollAnimation>
                         </div>
                     </div>
                 </div>
@@ -109,16 +119,16 @@ function Hero() {
                                         {inView && (
                                             <CountUp end={10000} />
                                         )} +</h3>
-                                    <p>Successfully served </p>
-                                    <p> the client’s needs</p>
+                                    <p>Individuals Trained  </p>
+                                    <p> </p>
                                 </div>
                                 <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
                                     <h3>
                                         {inView && (
-                                            <CountUp end={80} />
+                                            <CountUp end={100} />
                                         )} +</h3>
-                                    <p>Celebrities and </p>
-                                    <p>Influencers Trained </p>
+                                    <p>Influencers and  </p>
+                                    <p>Celebrities Transformed </p>
                                 </div>
                                 <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
                                     <h3>
@@ -144,7 +154,7 @@ function Hero() {
             </section>
 
             <section className={`programs`} >
-                <Program/>
+                <Program />
             </section>
 
 
@@ -158,7 +168,7 @@ function Hero() {
                                 <h2 className='text-center'><span>Build</span> Your<p>Own Plan</p></h2>
                             </ScrollAnimation>
                             <ScrollAnimation animateIn="fadeInUp">
-                               <Link to={'/goals'}> <button className='get-started-btn'>Get Started</button></Link>
+                                <Link to={'/goals'}> <button className='get-started-btn'>Get Started</button></Link>
                             </ScrollAnimation>
                         </div>
                     </div>
@@ -167,7 +177,7 @@ function Hero() {
 
             <section className='testimonials'>
                 <ScrollAnimation animateIn="fadeInUp">
-                    <h2>Testimonials</h2>
+                    <h2>Customer Stories</h2>
                 </ScrollAnimation>
                 <div className="slider-container">
                     <div className="container">
@@ -178,7 +188,14 @@ function Hero() {
             <section className="community">
                 <Community />
             </section>
-            <Footer/>
+            <Footer />
+
+            <Modal show={show} className='aboutVideo' onHide={handleClose} centered>
+                <Modal.Body>
+                    <button className='modleCBtn' onClick={handleClose}><ImCancelCircle/> </button>
+                    <video src={YogaVid} controls autoPlay></video>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

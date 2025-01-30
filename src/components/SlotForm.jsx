@@ -106,6 +106,7 @@ const handleSubmit = async() =>{
                 )
               })}
           </div>
+          
               <button className={`slot-booking-btn ${visible ? 'd-block' : 'd-none'}`} onClick={handleSubmit}>Submit</button>
         </div>
       </div>

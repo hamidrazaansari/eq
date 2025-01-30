@@ -156,8 +156,7 @@
     min-width: 200px;
     cursor: pointer;
     font-size: var(--month-input-font-size);
-    display: flex
-;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--month-input-padding);
@@ -184,4 +183,153 @@
 }
 .css-13cymwt-control{
     height: 49px !important;
+}
+.css-1jqq78o-placeholder{
+    position: absolute !important;
+    top: 8px !important;
+}
+.css-19bb58m input{
+    position: relative !important;
+    bottom: 8px !important;
+}
+.css-t3ipsp-control{
+    border:none !important;
+    box-shadow: none !important;
+    height: 49px !important;
+}
+.error-field{
+    border-color:red !important ;
+}
+.onboarding-register-form label{
+    margin-top: 3px;
+}
+.onboarding-register-form .green-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #006D5A;
+    margin: 0 50px;
+    border-radius: 10px;
+    padding-right: 30px;
+    transition: all .5s linear !important ;
+}
+
+.onboarding-register-form .green-box button {
+    margin-left: 30px;
+    border: none;
+    background: #fff;
+    height: 34px;
+    width: unset !important;
+    font-family: 'futuramdbt';
+    font-size: 13px;
+    text-transform: capitalize;
+    border-radius: 8px;
+    text-align: center;
+    padding: 0 26px;
+}
+.onboarding-register-form .submit{
+    border: 1px solid #fff !important;
+    background: transparent !important;   
+    color: #fff !important;
+}
+.onboarding-register-form .green-box p{
+    font-size: 12px;
+    font-family: futuramdbt;
+    margin-left: 30px;
+}
+.onboarding-register-form .floating-price{
+    transition: all 1s linear !important ;
+}
+ .mobile-input{
+    display: flex;
+    border: 1px solid #6963639c;
+    height: 46px;
+    padding: 0;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 98%;
+}
+ .mobile-input .css-b62m3t-container {
+    width: 80px !important;
+    margin-top: 0 !important;
+}
+
+ .mobile-input .css-13cymwt-control ,  
+ .mobile-input .css-t3ipsp-control{
+    border: none !important;
+    /* border-bottom: 1px solid #6963639c !important ; */
+    height: 44px !important;
+    font-size: 12px !important;
+
+
+}
+.css-t3ipsp-control{
+    width: 100px !important;
+    font-size: 12px !important;
+}
+.css-1nmdiq5-menu{
+    background-color: #fff !important;
+}
+ .mobile-input input{
+    width: 100%;
+    border: none !important;
+    margin: 0 !important;
+    height: 40px !important;
+}
+ .mobile-input input:focus-visible{
+    border: none !important;
+    outline: none !important;
+}
+ .mobile-input .css-1xc3v61-indicatorContainer{
+    display: none !important;
+}
+ .mobile-input .css-t3ipsp-control .css-1xc3v61-indicatorContainer{
+    display: none !important;
+}
+ .css-1nmdiq5-menu{
+    width: 200px !important;
+}
+.onboarding-register-form .form-check-label{
+    margin-bottom: 4px;
+    text-transform: unset !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    padding-left: 7px;
+}
+.onboarding-register-form .dobLabal {
+    position: relative;
+    top: -10px !important;
+    font-family: 'futuramdbt';
+}
+.onboarding-register-form .MuiFormControl-root {
+    margin-top: -22px !important;
+    width: 98%;
+
+}
+.onboarding-register-form .form-check-label {
+    margin-bottom: 4px;
+    text-transform: capitalize !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000ef;
+    padding-left: 7px;
+    font-family: futuramdbt !important;
+}
+.onboarding-register-form .time-picker-input-group{
+    height: 46px !important;
+    width: 97%;
+}
+.onboarding-register-form label {
+    margin-top: 3px;
+    font-family: 'futuramdbt';
+}
+.onboarding-register-form .Other-Input{
+    width: 100%;
+    margin-top: 10px;
+    /* border: none;
+    border-bottom: 1px solid #00000085; */
+    /* border-radius: 0 ; */
+
 }

@@ -8,6 +8,13 @@ import NavBar from './NavBar';
 import { GoArrowLeft } from "react-icons/go";
 import DashboardSidebar from './DashboardSidebar';
 import Footer from './Footer';
+import 'react-phone-number-input/style.css'
+import PhoneNumberInput from './PhoneNumberInput';
+import TextField from "@mui/material/TextField";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import moment from 'moment';
 
 function MyProfile() {
     const [profile, setProfile] = useState({
@@ -26,6 +33,17 @@ function MyProfile() {
         state: ''
     });
     const [isEditable, setIsEditable] = useState(false);
+
+    const [errors , setErrors] = useState({
+        firstName:'',
+        lastName:'',
+        email:'',
+        countryCode:'',
+        mobile:'',
+        gender:'',
+        dob:'',
+
+    })
 
     const token = localStorage.getItem('authToken');
 
@@ -54,7 +72,16 @@ function MyProfile() {
             [name]: value
         }));
     };
+    const handleInputNumChange = (e) => {
+        const { name, value } = e.target;
 
+        setProfile((prevState) => ({
+            ...prevState,
+            [name]: value.replace(/[^0-9+-.]/g, ""),
+
+        }));
+    };
+    
     // Update profile data
     const handleUpdateProfile = async () => {
         const { countryCode, createdAt, email, facebook, instagram, linkedin, mobile, status, updatedAt, x, youtube, _id, ...filteredProfile } = profile;
@@ -70,17 +97,33 @@ function MyProfile() {
                     },
                 }
             );
+            setProfile(response.data.body)
             if (response.status === 200) {
+
                 toast.success('Profile updated successfully!');
-                setIsEditable(false);
                 // Optionally refetch the profile data to ensure the UI shows updated values
             }
         } catch (error) {
             console.error('Error updating profile:', error.response);
             toast.error('Failed to update profile. Please try again.');
+            setErrors(error.response.data?.message)
         }
     };
 
+        const handleDateChange = (name) => {
+            const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
+            setProfile((prevState) => ({
+                ...prevState,
+                dob: formatedeDate,
+            }));
+        };
+    
+        const handleCodeChange = (code) => {
+            setProfile((prevState) => ({
+                ...prevState,
+                countryCode: code,
+            }));
+        }
 
     return (
         <div className='my-profile'>
@@ -89,7 +132,7 @@ function MyProfile() {
             <div className="container">
                 <div className="row">
                     <div className="col-3">
-                        <DashboardSidebar isActive={"MyProfile"}/>
+                        <DashboardSidebar isActive={"MyProfile"} />
                     </div>
                     <div className="col-9">
                         <div className="header">
@@ -112,7 +155,7 @@ function MyProfile() {
                                 Save
                             </button>
                             <div className="row mt-5">
-                                <div className="col-3">
+                                <div className="col-6">
                                     <div className="input-box">
                                         <label htmlFor="name">First Name</label>
                                         <input
@@ -126,7 +169,7 @@ function MyProfile() {
                                         />
                                     </div>
                                 </div>
-                                <div className="col-3">
+                                <div className="col-6">
                                     <div className="input-box">
                                         <label htmlFor="name">Last Name</label>
                                         <input
@@ -142,29 +185,6 @@ function MyProfile() {
                                 </div>
                                 <div className="col-6">
                                     <div className="input-box">
-                                        <h6>Gender</h6>
-                                        <div className="gender">
-                                            {['male', 'female', 'other'].map((option) => (
-                                                <div className="genderOpt" key={option}>
-                                                    <input
-                                                        type="radio"
-                                                        id={option}
-                                                        name="gender"
-                                                        value={option}
-                                                        checked={profile.gender === option}
-                                                        onChange={handleInputChange}
-                                                        disabled={!isEditable}
-                                                    />
-                                                    <label htmlFor={option} className="form-check-label">
-                                                        {option.charAt(0).toUpperCase() + option.slice(1)}
-                                                    </label>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="input-box">
                                         <label htmlFor="email">Email</label>
                                         <input
                                             type="email"
@@ -176,46 +196,76 @@ function MyProfile() {
                                         />
                                     </div>
                                 </div>
-                                <div className="col-6">
-                                    <div className="input-box">
-                                        <label htmlFor="dob">DOB</label>
-                                        <input
-                                            type="date"
-                                            id="dob"
-                                            name="dob"
-                                            value={profile.dob}
-                                            onChange={handleInputChange}
-                                            readOnly={!isEditable}
-                                            placeholder="dd-mm-yyyy"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="input-box">
-                                        <label htmlFor="countryCode">Country Code</label>
-                                        <input
-                                            type="text"
-                                            id="countryCode"
-                                            name="countryCode"
-                                            value={profile.countryCode}
-                                            onChange={handleInputChange}
-                                            readOnly={!isEditable}
-                                            placeholder="IN +91 (India)"
-                                        />
-                                    </div>
-                                </div>
+                                {/* Country Code and Mobile */}
                                 <div className="col-6">
                                     <div className="input-box">
                                         <label htmlFor="mobile">Mobile Number</label>
-                                        <input
-                                            type="text"
-                                            id="mobile"
-                                            name="mobile"
-                                            value={profile.mobile}
-                                            onChange={handleInputChange}
-                                            readOnly={!isEditable}
-                                            placeholder="Enter Mobile Number"
-                                        />
+                                        <div className="mobile-input">
+                                            <PhoneNumberInput errors={errors} onCodeChange={handleCodeChange} />
+                                            <input
+                                                type="text"
+                                                id="mobile"
+                                                name="mobile"
+                                                value={profile.mobile}
+                                                onChange={handleInputNumChange}
+                                                readOnly={!isEditable}
+                                                placeholder="Enter Mobile Number"
+                                            />
+                                            {errors.mobile && (
+                                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                                    {errors.mobile}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-6 dob">
+                                    <div className="d-flex flex-column">
+                                        <label htmlFor="dob" className='dobLabal'>DOB</label>
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DatePicker
+                                                label={moment(profile.dob).format('MM/DD/YYYY')}
+
+                                                onChange={handleDateChange}
+                                                renderInput={(params) => <TextField {...params} fullWidth  />}
+                                            />
+                                        </LocalizationProvider>
+                                    </div>
+                                    {errors.dob && (
+                                        <div style={{ color: 'red', fontSize: "9px", position: "absolute", top: "335px" }}>
+                                            {errors.dob}
+                                        </div>
+                                    )}
+                                </div>
+
+
+                                {/* Gender */}
+                                <div className="col-6">
+                                    <div className="input-box">
+                                        <h6 className='mt-3'>Gender</h6>
+                                        <div className="gender ">
+                                            {['Male', 'Female', 'Other'].map((option) => (
+                                                <div className="genderOpt" key={option}>
+                                                    <input
+                                                        type="radio"
+                                                        id={option}
+                                                        name="gender"
+                                                        value={option}
+                                                        checked={profile.gender === option}
+                                                        onChange={handleInputChange}
+                                                    />
+                                                    <label htmlFor={option} className="form-check-label">
+                                                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        {errors.gender && (
+                                            <div style={{ color: 'red', fontSize: "9px", position: "absolute", top: "53px" }}>
+                                                {errors.gender}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +294,7 @@ function MyProfile() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }

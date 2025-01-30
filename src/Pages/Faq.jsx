@@ -134,65 +134,6 @@ function Faq() {
                         </Accordion>
                     </div>
                 </div>
-
-
-            </section>
-            <div className="container">
-            <div className="row my-5">
-                <div className="col-12 p-3">
-                    <div className="recall">
-                        <h2>Need help finding the right plans?</h2>
-                        <p>Request a callback to get your quires answered</p>
-                        <button>Request a call</button>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <section >
-                <div className="container px-5">
-                    <div className="other-plan">
-                        <h2 className='other-plan-heading'>See Others plans</h2>
-
-                        <Slider {...settings}>
-                            <div className="slide">
-                                <div className="program-box">
-                                    <img src={ProgImg} alt="Personal Training Trail" />
-                                    <h3>Hybrid Training Program</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur hjgg adipiscing elit, sed do eiusmod tempor lorem </p>
-                                    <button className='BookNowBtn '>Explore plan</button>
-
-                                </div>
-                            </div>
-                            <div className="slide">
-                                <div className="program-box">
-                                    <img src={ProgImg} alt="Personal Training Trail" />
-                                    <h3>Corporate Wellness Program</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur hjgg adipiscing elit, sed do eiusmod tempor lorem </p>
-                                    <button className='BookNowBtn '>Explore plan</button>
-
-                                </div>
-                            </div>
-                            <div className="slide">
-                                <div className="program-box">
-                                    <img src={ProgImg} alt="Personal Training Trail" />
-                                    <h3>Group Training Program</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur hjgg adipiscing elit, sed do eiusmod tempor lorem </p>
-                                    <button className='BookNowBtn '>Explore plan</button>
-
-                                </div>
-                            </div>
-                            <div className="slide">
-                                <div className="program-box">
-                                    <img src={ProgImg} alt="Personal Training Trail" />
-                                    <h3>Hybrid Training Program</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur hjgg adipiscing elit, sed do eiusmod tempor lorem </p>
-                                    <button className='BookNowBtn '>Explore plan</button>
-
-                                </div>
-                            </div>
-                        </Slider>
-                    </div>
-                </div>
             </section>
             <Footer />
         </div>

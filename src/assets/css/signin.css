@@ -1,13 +1,17 @@
-.signin , .signUp{
-position: relative;
+.signin,
+.signUp {
+    position: relative;
 }
-.signin .logo  , .signUp .logo  , .otp .logo{
+
+.signin .logo,
+.signUp .logo,
+.otp .logo {
     position: absolute;
     top: 25px;
     left: 45px;
 }
 
-.signin-image{
+.signin-image {
     background: #EFEFEF;
     padding: 50px !important;
     height: 100vh;
@@ -15,7 +19,8 @@ position: relative;
     align-items: center;
     justify-content: center;
 }
-.signin-image img{
+
+.signin-image img {
     height: 90%;
     width: 500px;
 }
@@ -23,7 +28,7 @@ position: relative;
 
 /* signIn modal style */
 
- .sign-in{
+.sign-in {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,77 +36,93 @@ position: relative;
     font-family: futuramdbt;
 
 }
-.sign-in h2{
+
+.sign-in h2 {
     font-size: 36px;
 }
-.google-box{
+
+.google-box {
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #0000008c;
     padding: 12px 20px;
-    width: 51%;
-    margin: 20px 0;
+    width: 100%;
+    margin: 10px 0 20px;
     border-radius: 36px;
     margin-bottom: 20px;
 }
-.google-box p{
+
+.google-box p {
     margin: 0;
     font-family: futuramdbt;
     margin-left: 5px;
     font-size: 14px;
     color: #000000;
 }
-.or{
+
+.or {
     display: flex;
     align-self: center;
     justify-content: center;
 }
+
 .or span {
     height: 1px;
     width: 60px;
     background-color: #b9b3b3;
     margin: 12px 13px;
 }
-.or p{
+
+.or p {
     margin: 0;
     font-family: futuramdbt;
 
 }
-.input{
+
+.input {
     display: flex;
     flex-direction: column;
     margin: 12px 0;
-    width: 65%;
+    width: 100%;
     position: relative;
 }
-.input span svg{
+
+.input span svg {
     font-size: 20px;
     color: #0000006b;
 }
-.input label{
+
+.input label {
     font-family: futuramdbt;
 }
-.input label span{
+
+.input label span {
     color: #F56C6C;
 }
-.input input{
+
+.input input {
     height: 45px;
     border-radius: 7px;
     border: 1px solid #8d8d8d;
     padding: 0 15px;
+}
+.name .input input{
+    padding: 0 30px !important;
+}
 
+.others {
+    width: 100%;
 }
-.others{
-    width: 52%;
-}
+
 .others label {
     float: inline-end;
     font-family: futuramdbt;
     font-size: 14px;
     color: #000000;
 }
-.others p{
+
+.others p {
     display: inline-block;
     font-size: 13px;
     text-align: center;
@@ -110,12 +131,14 @@ position: relative;
     line-height: 17px;
     color: #00000070;
 }
-.others p a{
+
+.others p a {
     color: #000000;
     text-decoration: underline !important;
     font-size: 11px;
 }
-.others button{
+
+.others button {
     display: block;
     width: 100%;
     background: #006D5A;
@@ -127,21 +150,24 @@ position: relative;
     border-radius: 24px;
     margin: 8px 0;
 }
-.others h5{
+
+.others h5 {
     font-size: 14px;
     text-align: center;
     margin: 15px 0;
     font-family: futuramdbt;
 }
-.others h5 span{
+
+.others h5 span {
     color: #006D5A;
 }
 
-.otp .otp-container{
+.otp .otp-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .otp .otp-container input {
     height: 53px;
     width: 53px;
@@ -154,46 +180,55 @@ position: relative;
     font-size: 20px;
     justify-content: center;
 }
-.sign-in .input h2{
+
+.sign-in .input h2 {
     font-family: 'futuramdbt';
     font-size: 27px;
     color: #006D5A;
 
 }
-.sign-in .input p{
+
+.sign-in .input p {
     font-size: 13px;
     color: #00000085;
 }
-.sign-in h2{
+
+.sign-in h2 {
     font-family: 'futuramdbt';
     font-size: 27px;
     /* color: #006D5A; */
 }
-.sign-in svg{
+
+.sign-in svg {
     font-size: 74px;
     color: #006D5A;
 }
-.others .cancel-btn{
+
+.others .cancel-btn {
     background-color: transparent !important;
     border: 1px solid #000;
     color: #000;
 }
+
 button:disabled {
     background-color: #006d5b77 !important;
     color: #006D5A;
     cursor: not-allowed;
     opacity: 0.6;
-  }
-  .reset-Pasword .input{
+}
+
+.reset-Pasword .input {
     width: 100%;
-  }
-  .reset-Pasword h2{
+}
+
+.reset-Pasword h2 {
     font-size: 24px;
     font-family: 'futuramdbt';
     text-align: center;
     color: #006D5A;
-  }
-  .reset-Pasword button{
+}
+
+.reset-Pasword button {
     border: none;
     background: transparent;
     font-family: 'futuramdbt';
@@ -203,11 +238,109 @@ button:disabled {
     background-color: #006D5A;
     width: 100%;
     border-radius: 20px;
-  }
+}
 
-  .name .input{
-    width: 100% ;
-  }
-  .mobile .input{
+.name .input {
     width: 100%;
-  }
+}
+
+.mobile .input {
+    width: 100%;
+}
+
+.dob {
+    width: 100%;
+}
+
+.dob .input {
+    width: 100%;
+}
+
+.sign-up .genderOpt {
+    margin: 15px 10px;
+    margin-right: 6px;
+}
+
+.sign-up .genderOpt label {
+    text-transform: capitalize !important;
+    font-size: 13px;
+}
+
+.css-19bb58m {
+    margin: -2px !important;
+}
+
+.sign-up .gender {
+    border: 1px solid #8d8d8d;
+    width: 107%;
+    height: 43px;
+    padding: 5px 10px;
+    margin-top: 9px;
+    border-radius: 7px;
+}
+.sign-up .css-13cymwt-control{
+    border-radius: 7px !important;
+    height: 46px !important;
+    border: 1px solid #8d8d8d !important;
+}
+.newSignInStyle{
+    padding: 0 100px;
+}
+.sign-in .MuiSvgIcon-root{
+    font-size: 24px !important;
+}
+
+.css-jupps9-MuiInputBase-root-MuiOutlinedInput-root {
+    font-size: 13px !important;
+    height: 44px !important;
+    margin-top: 13px !important;
+    border-radius: 6px !important;
+}
+ .css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root  {
+    /* display: none !important; */
+    padding-top: 0 !important;
+    top: 5px !important; 
+}
+ .css-113d811-MuiFormLabel-root-MuiInputLabel-root{
+    display: none !important;
+    padding-top: 0 !important;
+    top: 12px !important;
+    left: -5px !important;
+    color: #000 !important;
+
+}
+
+.css-jupps9-MuiInputBase-root-MuiOutlinedInput-root{
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid #8d8d8d !important;
+    padding-top: 0 !important;
+
+    
+}
+.Mui-focused{
+    outline: none !important;
+    box-shadow: none !important;
+    padding-top: 0 !important;
+    border: 1px solid #000 !important;
+
+}
+.MuiOutlinedInput-notchedOutline{
+    border: none !important;
+}
+.dobLabal{
+    position: relative;
+    top: 10px;
+}
+.css-1ll44ll-MuiOutlinedInput-notchedOutline{
+    border-color: #8d8d8d !important;
+}
+.name{
+    width: 105%;
+}
+.css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root {
+    font-family: 'futuramdbt';
+    color: #00000080;
+    font-size: 14px;
+
+}

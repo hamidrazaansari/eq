@@ -16,7 +16,7 @@
 }
 .mailing p{
     font-family: lato;
-    color: #8B8B8B;
+    color: #000;
 }
 .form-control {
     display: block;
@@ -57,19 +57,22 @@
     letter-spacing: 1px;
 }
 .footer{
-    position: relative;
-    top: 695px;
-    z-index: 5;
-    background-color: #181515;
-    color: #fff;
-    padding-top: 60px;
-    padding-bottom: 30px;
+    position: relative !important;
+    top: 695px ;
+    z-index: 5 !important;
+    background-color: #181515  !important;
+    color: #fff !important;
+    padding-top: 60px !important;
+    padding-bottom: 30px !important;
+    display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
 }
 .footer h2 {
-    font-size: 17px;
-    margin: 10px 30px;
-    font-family: openSanceSemiBold;
-    margin-bottom: 23px;
+    font-size: 17px !important;
+    margin: 10px 30px !important;
+    font-family: openSanceSemiBold !important;
+    margin-bottom: 23px !important;
 }
 .footer li{
     list-style: none;

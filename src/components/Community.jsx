@@ -22,9 +22,9 @@ const Community = () => {
   const [currentText, setCurrentText] = useState("Bollywood Celebrity");
 
   const textArray = [
-    "Bollywood Celebrity",
-    "Meet the team",
-    "Brand Collaboration",
+    "Celebrity Spotlight",
+    "Meet #EQTeam",
+    "Creative Partnerships",
     "Corporate Synergies "
   ];
 
@@ -46,7 +46,7 @@ const Community = () => {
         <div className="container">
         <ScrollAnimation animateIn="fadeInUp">
         <div className="community-heading">
-            <h2>community <br /> <span>section</span></h2>
+            <h2>EQ Wellness  <br /> <span>Circle</span></h2>
             <h4>{currentText}</h4>
         </div>
         </ScrollAnimation>
