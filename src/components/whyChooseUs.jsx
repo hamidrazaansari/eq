@@ -19,7 +19,7 @@ const WhyChooseUs = () => {
     // Points data
     const points = [
       { 
-        title: 'Universal Platform', 
+        title: 'Unified Platform', 
         description: 'Organized platform for all goals, ages, genders, and budgets.', 
         img: whychooseus1,
         para1: 'We provide a unified platform that bridges the gap in an unorganized market. Offering solutions for all health needs and goals, across all ages, levels, and budgets—from beginners to advanced practitioners—in group or personalized formats, workshops, and regular 45- or 60-minute sessions.',

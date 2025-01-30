@@ -333,3 +333,15 @@
     /* border-radius: 0 ; */
 
 }
+.onboarding-register-form .input-box input[type="radio"]{
+    display: none !important;
+}
+.onboarding-register-form .custom-radio + .form-check-label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-size: 15px !important;
+    margin-left: 0px !important;
+    width: 261px;
+    line-height: 20px;
+}

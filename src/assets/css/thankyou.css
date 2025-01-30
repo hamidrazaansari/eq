@@ -93,3 +93,33 @@
     font-size: 22px;
     border-radius: 6px;
 }
+
+.tolk-to-expert .select-search {
+    border: 1px solid #0000005c;
+    height: 71px;
+    margin-bottom: 28px;
+    border-radius: 8px;
+    display: flex
+;
+    align-items: center;
+    justify-content: start;
+}
+.tolk-to-expert .select-search .select-search-container {
+    border: none !important;
+    width: 22% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #3838388a !important;
+    border-radius: 0 !important;
+}
+.tolk-to-expert .select-search .mobileInput{
+    width: 80%;
+}
+.tolk-to-expert .select-search .phone-input{
+    width: 100%;
+}
+.tolk-to-expert .select-search .phone-input::placeholder{
+    color: #000;
+    font-family: futuramdbt;
+}

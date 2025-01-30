@@ -125,6 +125,7 @@ function SignUp() {
                                             type="text"
                                             id='firstname'
                                             className='input-field'
+                                            placeholder='Enter Your First Name'
                                             value={firstName}
                                             onChange={(e) => setFirtName(e.target.value)}
                                         />
@@ -142,6 +143,7 @@ function SignUp() {
                                             type="text"
                                             id='lastname'
                                             className='input-field'
+                                            placeholder='Enter Your Last Name'
                                             value={lastName}
                                             onChange={(e) => setLastName(e.target.value)}
                                         />
@@ -160,6 +162,7 @@ function SignUp() {
                                     type="email"
                                     id='email'
                                     className='input-field'
+                                    placeholder='Enter Your Email'
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
@@ -221,11 +224,18 @@ function SignUp() {
                                 <label htmlFor="mobile">Mobile Number</label>
                                 <div className="mobile-input w-100">
                                     <PhoneNumberInput errors={errors} onCodeChange={handleCodeChange} />
+                                    {errors.countryCode && (
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            {errors.countryCode}
+                                        </div>
+                                    )}
                                     <input
                                         type="text"
                                         id="mobile"
                                         className=' ps-4'
                                         name="mobile"
+                                        placeholder='Enter Your Mobile Number'
+
                                         value={mobile}
                                         onChange={(e) => {
                                             // Validate that the input contains only digits
@@ -234,10 +244,9 @@ function SignUp() {
                                                 setMobile(value); // Update the state only if the input is valid
                                             }
                                         }}
-                                        placeholder="Enter Mobile Number"
                                     />
                                     {errors.mobile && (
-                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" , left:"218px" }}>
                                             {errors.mobile}
                                         </div>
                                     )}
@@ -250,6 +259,8 @@ function SignUp() {
                                     type={passwordVisible ? 'text' : 'password'}
                                     id='pass'
                                     className='input-field'
+                                    placeholder='Enter Your Password'
+
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />

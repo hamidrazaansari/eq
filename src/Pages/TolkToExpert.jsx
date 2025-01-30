@@ -1,6 +1,8 @@
 import React , {useState} from 'react'
 import SelectSearch from 'react-select-search';
 import CallBack from '../assets/image/callback.png'
+import axios from 'axios';
+import {API_URL} from '../utills/BaseUrl'
 function TolkToExpert() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -22,13 +24,6 @@ function TolkToExpert() {
         setCountryCode(value);
     };
 
-    const prevStep = () => {
-        navigate('/budget')
-    }
-
-    const nextStep = () => {
-        navigate('/budget', { state: { goals, ageRange, isInjured, yogaExperience, timeSlot, budget } })
-    }
 
     const handleLeadProcess = async (e) => {
         e.preventDefault();
@@ -93,7 +88,7 @@ function TolkToExpert() {
                                                                 </div>
                                                             )}
                                                         </div>
-                                                        <div className="d-flex select-search">
+                                                        <div className="select-search">
                                                             <SelectSearch
                                                                 options={options}
                                                                 search
@@ -106,7 +101,7 @@ function TolkToExpert() {
                                                                     {error.countryCode}
                                                                 </div>
                                                             )}
-                                                            <div className="range-box mt-0">
+                                                            <div className="mobileInput mt-0">
                                                                 <input
                                                                     type="text"
                                                                     id="phone-input"
@@ -130,7 +125,7 @@ function TolkToExpert() {
                                                         <div className="form-footer"><img src={CallBack} alt="" height={"20px"} /> Receive a response within one business day.</div>
                             
                                                     </div>
-                                                    <button className='collback-btn'>Request a call</button>
+                                                    <button className='collback-btn' onClick={handleLeadProcess}>Request a call</button>
                         </div>
                     </div>
                 </div>

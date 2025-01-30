@@ -513,8 +513,10 @@ function OnboardingRegisterForm() {
                                                     value={option}
                                                     checked={profile.gender === option}
                                                     onChange={handleInputChange}
+                                                    className='custom-radio'
                                                 />
-                                                <label htmlFor={option} className="form-check-label">
+
+                                                <label htmlFor={option} className="form-check-label" style={{width:"85px"}}>
                                                     {option.charAt(0).toUpperCase() + option.slice(1)}
                                                 </label>
                                             </div>
@@ -538,11 +540,11 @@ function OnboardingRegisterForm() {
                                         onChange={handleInputChange}
                                         placeholder="Enter your Location"
                                     />
-                                    {/* {errors.height && (
+                                    {errors.location && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                            {errors.height}
+                                            {errors.location}
                                         </div>
-                                    )} */}
+                                    )}
                                 </div>
                             </div>
                             {/* Height */}
@@ -685,6 +687,7 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="currentMedication"
+                                            className='custom-radio'
                                             value={option}
                                             checked={profile.currentMedication === option}
                                             onChange={handleInputChange}
@@ -727,6 +730,7 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="covidDetected"
+                                             className='custom-radio'
                                             value={option}
                                             checked={profile.covidDetected === option}
                                             onChange={handleInputChange}
@@ -756,6 +760,7 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="workoutFrequency"
+                                             className='custom-radio'
                                             value={option}
                                             checked={profile.workoutFrequency === option}
                                             onChange={handleInputChange}
@@ -895,6 +900,7 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.foodChoice === option}
                                             onChange={handleInputChange}
+                                             className='custom-radio'
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option + ind} className="form-check-label">
@@ -947,6 +953,7 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.eggAndNonVegFrequency === option}
                                             onChange={handleInputChange}
+                                             className='custom-radio'
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option + 1} className="form-check-label">
@@ -974,6 +981,7 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="junkSugarStressFrequency"
+                                            className='custom-radio'
                                             value={option}
                                             checked={profile.junkSugarStressFrequency === option}
                                             onChange={handleInputChange}
@@ -1019,6 +1027,7 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.dailyWaterConsumption === option}
                                             onChange={handleInputChange}
+                                             className='custom-radio'
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1049,6 +1058,7 @@ function OnboardingRegisterForm() {
                                     type="checkbox"
                                     id={`beverage-${beverage.id}`} // Unique ID for each checkbox
                                     className="custom-checkbox me-3"
+                                    
                                     value={beverage.label}
                                     onChange={handleBeverageChange} // Beverage-specific handler
                                     checked={Array.isArray(profile.dailyBeverage) && profile.dailyBeverage.includes(beverage.label)}
@@ -1088,6 +1098,7 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.smoke === option}
                                             onChange={handleInputChange}
+                                             className='custom-radio'
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1118,6 +1129,7 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.alcohol === option}
                                             onChange={handleInputChange}
+                                             className='custom-radio'
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1184,6 +1196,7 @@ function OnboardingRegisterForm() {
                                             id={option}
                                             name="sourceChanel"
                                             value={option}
+                                             className='custom-radio'
                                             checked={profile.sourceChanel === option}
                                             onChange={handleInputChange}
                                         />
@@ -1275,6 +1288,7 @@ function OnboardingRegisterForm() {
                                             id={option}
                                             name="sleepQuality"
                                             value={option}
+                                             className='custom-radio'
                                             checked={profile.sleepQuality === option}
                                             onChange={handleInputChange}
                                         />
@@ -1300,6 +1314,7 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="energyLevel"
+                                             className='custom-radio'
                                             value={option}
                                         checked={profile.energyLevel === option}
                                         onChange={handleInputChange}

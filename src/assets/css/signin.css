@@ -344,3 +344,7 @@ button:disabled {
     font-size: 14px;
 
 }
+.genderOpt label {
+    margin: 10px 0;
+    text-transform: capitalize;
+}

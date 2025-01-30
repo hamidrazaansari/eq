@@ -23,6 +23,11 @@ import { ImCancelCircle } from "react-icons/im";
 function Hero() {
     const [inView, setInView] = useState(false);
     const [show, setShow] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleContent = () => {
+        setIsExpanded((prev) => !prev);
+    };
 
     // Handlers for showing and hiding the modal
     const handleClose = () => setShow(false);
@@ -81,31 +86,61 @@ function Hero() {
                                 <h3>Gunjan Kamra</h3>
                             </ScrollAnimation>
 
+                            {/* Always Visible Content */}
                             <ScrollAnimation animateIn="fadeInUp">
-                                <p>Meet Gunjan Kamra, a highly respected yoga instructor and the Founder & CEO of Equilibrium Yoga by Gunjan Kamra (@eqmindandyoga), based in Mumbai. Gunjan is recognized as a top-ranked celebrity yoga instructor and has helped thousands of individuals worldwide embrace healthier, more balanced lives</p>
+                                <p>
+                                    Meet Gunjan Kamra, a highly respected yoga instructor and the Founder
+                                    & CEO of Equilibrium Yoga by Gunjan Kamra (@eqmindandyoga), based in
+                                    Mumbai. Gunjan is recognized as a top-ranked celebrity yoga instructor
+                                    and has helped thousands of individuals worldwide embrace healthier,
+                                    more balanced lives.
+                                </p>
                             </ScrollAnimation>
 
                             <ScrollAnimation animateIn="fadeInUp">
-                                <p>In March 2020, she launched ‘Equilibrium Yoga by Gunjan Kamra’, an establishment dedicated to offering holistic wellness solutions for both individuals and corporates, through customized yoga sessions, diet consultations, and lifestyle correction services, all aimed at creating successful and sustainable health and happiness journeys for our members. </p>
+                                <p>
+                                    In March 2020, she launched ‘Equilibrium Yoga by Gunjan Kamra’, an
+                                    establishment dedicated to offering holistic wellness solutions for
+                                    both individuals and corporates, through customized yoga sessions,
+                                    diet consultations, and lifestyle correction services, all aimed at
+                                    creating successful and sustainable health and happiness journeys for
+                                    our members.
+                                </p>
                             </ScrollAnimation>
 
-                            {/* <ScrollAnimation animateIn="fadeInUp">
-                                <p>With over 15 years of experience in yoga practice and 5 years of teaching, Gunjan has trained over 10,000 individuals, 80+ influencers and celebrities, and 100+ corporate clients. Some of the high-profile clients she’s worked with include Ekta Kapoor, Sanya Malhotra, Priya Mani, and Mrunal Thakur. Equilibrium Yoga is also proud to have partnered with leading organizations like Adobe, Abbott, Indigo, and Reliance to foster workplace wellness.</p>
-                            </ScrollAnimation>
+                            {/* Conditionally Rendered Content */}
+                            {isExpanded && (
+                                <>
+                                        <p>
+                                            With over 15 years of experience in yoga practice and 5 years of
+                                            teaching, Gunjan has trained over 10,000 individuals, 80+
+                                            influencers and celebrities, and 100+ corporate clients. Some of
+                                            the high-profile clients she’s worked with include Ekta Kapoor,
+                                            Sanya Malhotra, Priya Mani, and Mrunal Thakur. Equilibrium Yoga is
+                                            also proud to have partnered with leading organizations like
+                                            Adobe, Abbott, Indigo, and Reliance to foster workplace wellness.
+                                        </p>
 
-                            <ScrollAnimation animateIn="fadeInUp">
-                                <p>Gunjan's journey into wellness began after a successful 8-year career as a business analyst. Today, she combines her expertise as an advanced yoga practitioner, long-distance runner, and Latin dance trainer to create programs that are as unique as each individual.She is also a GS 10K-Women Alumni from IIM- Bangalore</p>
-                            </ScrollAnimation> */}
+                                        <p>
+                                            Gunjan's journey into wellness began after a successful 8-year
+                                            career as a business analyst. Today, she combines her expertise as
+                                            an advanced yoga practitioner, long-distance runner, and Latin
+                                            dance trainer to create programs that are as unique as each
+                                            individual. She is also a GS 10K-Women Alumni from IIM-Bangalore.
+                                        </p>
+                                    </>
 
-                            <ScrollAnimation animateIn="fadeInUp">
-                                <div className="d-flex">
-                                    <button className='read-more-btn'>Read More</button>
-                                    <Link ><button className='watch-btn' onClick={handleShow} >Watch Video <IoPlayCircleOutline /> </button></Link>
+                            )}
+
+                                    <ScrollAnimation animateIn="fadeInUp">
+                                        <div className="d-flex">
+                                            <button className='read-more-btn' onClick={toggleContent}> {isExpanded ? "Read Less" : "Read More"}</button>
+                                            <Link ><button className='watch-btn' onClick={handleShow} >Watch The Video <IoPlayCircleOutline /> </button></Link>
+                                        </div>
+                                    </ScrollAnimation>
                                 </div>
-                            </ScrollAnimation>
                         </div>
                     </div>
-                </div>
             </section>
 
             <section className='counterup'>
@@ -119,7 +154,7 @@ function Hero() {
                                         {inView && (
                                             <CountUp end={10000} />
                                         )} +</h3>
-                                    <p>Individuals Trained  </p>
+                                    <p style={{marginRight: "22px"}}>Individuals Trained  </p>
                                     <p> </p>
                                 </div>
                                 <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
@@ -136,7 +171,7 @@ function Hero() {
                                             <CountUp end={1000} />
                                         )} +</h3>
                                     <p>Corporate </p>
-                                    <p>Session Conducted </p>
+                                    <p>Sessions Conducted </p>
                                 </div>
                                 <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
                                     <h3>
@@ -192,7 +227,7 @@ function Hero() {
 
             <Modal show={show} className='aboutVideo' onHide={handleClose} centered>
                 <Modal.Body>
-                    <button className='modleCBtn' onClick={handleClose}><ImCancelCircle/> </button>
+                    <button className='modleCBtn' onClick={handleClose}><ImCancelCircle /> </button>
                     <video src={YogaVid} controls autoPlay></video>
                 </Modal.Body>
             </Modal>

@@ -47,7 +47,7 @@ function Programlisting() {
     const {id} = useParams();
 
     useEffect(() => {
-        axios.get(`${API_URL}/programs?category=${id}`)
+        axios.get(`${API_URL}/programs?category=${id}&displayOrder=ASC`)
           .then(response => {
             setData(response.data.body);
             setLoading(false);

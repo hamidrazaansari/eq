@@ -378,7 +378,7 @@ function Cart() {
                       <label htmlFor="date" className='dob-labal'>DOB</label>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <DatePicker
-                            label="Select Date"
+                            label={moment(profile.dob).format('MM/DD/YYYY')}
                             inputFormat="dd/MM/yyyy"
 
                             // value={moment('MM/DD/YYYY').format(dob)}
@@ -406,7 +406,7 @@ function Cart() {
                       <div className="input-box">
                         <h6>Gender</h6>
                         <div className="gender">
-                          {['MALE', 'FEMALE', 'OTHER'].map((option) => (
+                          {['Male', 'Female', 'Other'].map((option) => (
                             <div className="genderOpt" key={option}>
                               <input
                                 type="radio"
