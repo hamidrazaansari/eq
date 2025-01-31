@@ -39,6 +39,8 @@ import OnboardingRegisterForm from './components/OnboardingRegisterForm'
 import SlotForm from './components/SlotForm'
 import NutritionConsultation from './components/NutritionConsultation'
 import AddBookingTimeSlot from './components/AddBookingTimeSlot'
+import ImportantLinks from './components/ImportantLinks'
+import OnboardingStep from './components/OnboardingStep'
 function App() {
 
   return (
@@ -194,6 +196,14 @@ function App() {
       <Route 
         path='/addBookingTimeslot'
         element ={<AddBookingTimeSlot/>}
+      />
+      <Route 
+        path='/myLinks'
+        element ={<ImportantLinks/>}
+      />
+      <Route 
+        path='/onboarding-step'
+        element ={<OnboardingStep/>}
       />
 
     </Routes>

@@ -81,8 +81,13 @@ function Cart() {
   }, [token, selectedProgram]);
 
   const handleSubscriptionChange = (event) => {
-    handleShow()
-  };
+    if (event.target.checked) {
+      handleShow();
+    }
+    else{
+      handletermchange(event)
+        }
+    };
 
   const handletermchange = (e) => {
     setIsSubscribed(e.target.checked);

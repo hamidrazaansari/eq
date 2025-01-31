@@ -92,6 +92,32 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
 
     }, [step, apiData]);
 
+
+    const handleDownload = (e ,  url) => {
+        e.preventDefault()
+        
+        // Extract the file ID dynamically
+        const match = url.match(/\/d\/(.+?)\//);
+        const fileId = match ? match[1] : null;
+    
+        if (fileId) {
+            const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    
+            // Create a temporary anchor element
+            const a = document.createElement("a");
+            a.href = downloadUrl;
+            a.setAttribute("download", ""); // Instructs browser to download
+            document.body.appendChild(a);
+            a.click(); // Trigger download
+            document.body.removeChild(a); // Clean up
+
+        } else {
+            console.error("Invalid Google Drive URL");
+        }
+    };
+    
+      
+
     return (
         <div className="process-page">
             {currentItem && (
@@ -121,10 +147,14 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
 
                             <div className="row mx-auto d-flex align-items-center justify-content-center px-5">
                                 <div className="d-flex align-items-center justify-content-center">
-                                    {currentItem.linkText ? <Link className="button"  to={`${currentItem.linkUrl}?id=${id}`} >
+                                    {currentItem.isDownloadable == 'true' ?  <Link className='button' onClick={(e)=> handleDownload( e, currentItem.linkUrl)}>{currentItem.linkText}</Link> :currentItem.linkText ? <Link className="button"  to={`${currentItem.linkUrl}?id=${id}`} >
                                         {currentItem.linkText}
                                     </Link> : ''}
+
+                                    {currentItem?.submitButtonText ? 
                                     <button className='outline button' onClick={() => handleGoToNextStep(currentItem._id, currentItem.isCompleted)}>{currentItem?.submitButtonText}</button>
+                                    : ''
+ }
                                 </div>
                             </div>
                         </div>

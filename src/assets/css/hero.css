@@ -108,9 +108,9 @@
     font-family: futuramdbt;
     border: none;
     border: none;
-    font-size: 21px;
+    font-size: 14px;
     padding: 9px 32px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 12px 10px;
     margin-left: 0px;
 }
@@ -173,17 +173,18 @@ padding: 80px;
     color: #006D5A;
     font-family: lato;
 }
-.programs .content h3{
-    font-family:boldfuturamdbt ;
+.programs .content h3 {
+    font-family: boldfuturamdbt;
     color: #181515 !important;
-    font-size: 32px;
-    /* -webkit-text-stroke: 1px #181515 !important; */
+    font-size: 30px;
+    margin-top: 30px;
 }
 .programs .content p {
-    font-size: 16px;
+    font-size: 14px;
     font-family: futuramdbt;
-    color: #424747;
+    color: #595959;
     margin: 20px 0;
+    letter-spacing: 0px;
 }
 .programs .content ul{
     list-style: none;
@@ -205,7 +206,7 @@ padding: 80px;
     font-family: futuramdbt;
     border: none;
     border: none;
-    font-size: 22px;
+    font-size: 15px;
     padding: 9px 41px;
     border-radius: 10px;
     margin: 12px 10px;
@@ -239,10 +240,10 @@ padding: 80px;
 }
 
 .programs .img-box img {
-    height: 650px;
+    height: 550px;
     width: 500px;
     object-fit: contain;
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 .why-choose-us{
@@ -254,13 +255,15 @@ padding: 80px;
     padding-bottom: 70px;
 }
 
-.why-choose-us h2{
+.why-choose-us h2 {
     font-family: PlayFireDisplay;
     font-weight: 700;
     font-size: 40px;
     text-transform: uppercase;
     margin-left: 50px;
     margin-bottom: 43px;
+    position: absolute;
+    top: -111px;
 }
 .why-choose-us h2 span{
     color: #006D5A;
@@ -269,6 +272,10 @@ padding: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
+}
+.why-choose-us .points-box{
+    margin-top: 30px;
 }
 .why-choose-us .img-box img {
     height: 466px;
@@ -303,11 +310,7 @@ padding: 80px;
  .active p{
     color: #000;
 }
-.points-box{
-    height: 400px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
+
 .sticky {
     position: sticky;
     top: 100px; /* Stick the section to the top when scrolled */
@@ -322,10 +325,10 @@ padding: 80px;
 .why-choose-us .img-box{
     background-color: #EFEFEF;
 }
-.why-choose-us .para{
-    font-family:futuramdbt ;
+.why-choose-us .para {
+    font-family: futuramdbt;
     font-size: 15px;
-    color: #8d8b8b;
+    color: #000000bf;
     margin-top: 10px;
     font-weight: 400;
 }

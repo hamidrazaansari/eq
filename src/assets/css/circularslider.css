@@ -279,13 +279,14 @@
   animation: moveToRightPrev 0.5s forwards;
 }
 .dots-container {
-  display: flex;
+  display: flex
+;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   position: absolute;
   bottom: 200px;
-  left: 37%;
+  left: 46%;
 }
 .dots-container .dot {
   display: flex;

@@ -10,6 +10,7 @@ import DashboardSidebar from './DashboardSidebar';
 import { GoArrowLeft } from "react-icons/go";
 import NavBar from './NavBar';
 import Footer from './Footer';
+import { FaUserSlash } from "react-icons/fa";
 
 
 
@@ -35,18 +36,12 @@ function MyTrainer() {
   }, []);
 
   return (
+    <>
 
-    data && data.map((item) => {
-      const imageUrl = item.trainer?.profilePhoto ? getImageURL(item.trainer?.profilePhoto) : '';
-
-      if (item.trainer === null) {
-        return (' ')
-      }
-      else {
-        return (
-          <div className='trainer'>
-            <NavBar/>
-          <div className="myTrainer">
+      {data && data.every(item => item.trainer === null) ? (
+        <div className='trainer'>
+          <NavBar />
+          <div className='myTrainer'>
             <div className="container">
               <div className="row">
                 <div className="col-3">
@@ -58,30 +53,60 @@ function MyTrainer() {
                       <GoArrowLeft /> My Trainers
                     </h2>
                   </div>
-                  <div className="trainer-banner">
-                    <Link to={`/trainer-details/${item.trainer?._id}`}>
-                      <div className="banner-header">
-                        <img src={imageUrl} alt={item.trainer?.name} />
-                        <h2>{item.trainer?.name}</h2>
-                        <p>{item.trainer?.bio} </p>
-                      </div>
-                      <div className="banner-footer">
-                        {/* <button><span>5<IoMdStar /></span> 52 People Coached</button> */}
-                      </div>
-                    </Link>
+                  <div className="noTrainer">
+                    <FaUserSlash />
+                    <h2>Trainer Not Assigned Yet</h2>
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
-          <Footer/>
-          </div>
+          <Footer />
+        </div>
+      ) : (
+        data && data.map((item) => {
+          const imageUrl = item.trainer?.profilePhoto ? getImageURL(item.trainer?.profilePhoto) : '';
 
-        )
-      }
-
-    })
-
+          return (
+            item.trainer && (
+              <div className='trainer'>
+                <NavBar />
+                <div className="myTrainer">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-3">
+                        <DashboardSidebar />
+                      </div>
+                      <div className="col-9">
+                        <div className="header">
+                          <h2>
+                            <GoArrowLeft /> My Trainers
+                          </h2>
+                        </div>
+                        <div className="trainer-banner">
+                          <Link to={`/trainer-details/${item.trainer?._id}`}>
+                            <div className="banner-header">
+                              <img src={imageUrl} alt={item.trainer?.name} />
+                              <h2>{item.trainer?.name}</h2>
+                              <p>{item.trainer?.bio} </p>
+                            </div>
+                            <div className="banner-footer">
+                              {/* <button><span>5<IoMdStar /></span> 52 People Coached</button> */}
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <Footer />
+              </div>
+            )
+          );
+        })
+      )}
+    </>
   )
 }
 

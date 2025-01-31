@@ -42,6 +42,8 @@ function MyBookingDetails() {
         fetchData();
     }, [needRefresh]);
     
+    console.log('booking ', data);
+    
 
     return (
         <div className='booking-details'>
@@ -135,7 +137,7 @@ function MyBookingDetails() {
                                                     </div>
                                                     <div style={{ textAlign: "center" }} >
                                                         <h2>Activation Date </h2>
-                                                        <p>{data.activatioDate === null ? 'Not Set' : moment(data.activatioDate).format('DD-MM-YYYY')}</p>
+                                                        <p>{data.activationDate === null ? 'Not Set' : moment(data.activatioDate).format('DD-MM-YYYY')}</p>
                                                     </div>
                                                 </div>
                                             </div>

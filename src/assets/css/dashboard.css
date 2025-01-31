@@ -90,7 +90,9 @@ color: #fff !important;
     margin: 0px 0 13px;
     color: #0000009e;
 }
-
+.address{
+    margin: 20px 0 !important;
+}
 .profile .edit-button svg {
     font-size: 23px;
     position: absolute;
@@ -614,4 +616,37 @@ margin-bottom: 20px;
 }
 .myBookingMain .mailing , .myBookingMain .footer , .profile .mailing , .profile .footer , .trainer .mailing , .trainer .footer{
     top: 40px;
+}
+.noTrainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    flex-direction: column;
+}
+.noTrainer h2{
+    font-family: futuramdbt;
+    color: #000;
+    font-size: 25px;
+    text-align: center;
+}
+.noTrainer svg{
+    font-size: 100px;
+    color: #006D5A;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.my-Links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-Links button{
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 0px #d9d6d6ae;
+    padding: 20px 50px;
+    font-family: 'futuramdbt';
+    color: #000000a8;
+    margin: 20px;
+    border: none;
 }

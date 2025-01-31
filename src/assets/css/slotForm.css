@@ -1,10 +1,10 @@
 .slotForm .container h1 {
-    font-family: boldfuturamdbt;
-    font-size: 30px;
-    text-align: center;
-    margin: 0 20px;
-    margin-top: 68px;
-    margin-bottom: 36px;
+  font-family: boldfuturamdbt;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 20px;
+  margin-top: 10px;
+  margin-bottom: 36px;
 }
 .slotForm .container h1 span{
     color: #006D5A !important;
@@ -156,9 +156,26 @@ padding: 0  !important;
   background-color: #006D5A !important;
   border-color: #006D5A !important;
 }
-.add-booking .select-search-input{
-  height: 40px !important;
-  border: 1px solid #5c5b5b !important;
+.add-booking .select-search-input , .add-booking input[type="text"] {
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  padding-right: 0 !important;
+  padding-left: 60px !important;
+  height: 50px !important;
+  border: none !important;
+  background: #E9EEF6 !important;
+  border-radius: 5px !important;
+  width: 80%;
+  font-family: 'futuramdbt';
+}
+.add-booking .select-search-input , .add-booking input[type="text"]:active{
+  border: none !important;
+  outline: none !important;
+}
+.add-booking .select-search-input , .add-booking input::placeholder{
+  font-family:futuramdbt ;
+  color: #000 !important;
 }
 .select-search-container {
   width: 280px !important;
@@ -166,9 +183,40 @@ padding: 0  !important;
 }
 .add-booking h3{
   font-size: 15px !important;
-
 }
-.add-booking .input-box input{
-  width: 300px !important;
-  height: 40px !important;
+.days-btn{
+  height: 50px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    box-shadow: 0px 0px 5px 1px #cccccc85;
+    font-size: 17px;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    font-family: futuramdbt;
+    border: none;
+}
+.add-booking .select-search-is-selected{
+  background: #E9EEF6 !important;
+}
+.add-booking .profile, .address {
+  padding: 20px 69px 40px;
+  margin: 17px 110px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 14px #d9d9d970;
+}
+.add-booking .form-switch .form-check-input{
+  margin-left: 40px !important;
+}
+.time-to{
+  position: relative;
+}
+.time-to::before{
+  position: absolute;
+  content: 'To';
+  top: 15px;
+  left: -24px;
+  font-family:futuramdbt ;
 }

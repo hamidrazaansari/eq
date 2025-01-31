@@ -43,9 +43,9 @@ function DashboardSidebar() {
         <p>My Trainer</p>
         </li>
         </Link>
-        <Link to={'/'}>
-        <li className=''>
-        <img src={Coach} alt="" />
+        <Link to={'/myLinks'}>
+        <li className={location.pathname === '/myLinks' ? 'active' : ''}>
+        <img src={Booking} alt="" />
         <p>My Links</p>
         </li>
         </Link>

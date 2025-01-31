@@ -80,13 +80,12 @@ const Goals = () => {
                     </div>
                 </div>
                 <div className="process-footer">
-                    <div className="container">
-                        <button
-                            onClick={nextStep}
-                            disabled={selectedGoals.length === 0}
-                        >
-                            Next
-                        </button>
+                        
+                        <div className="container">
+                        <div className="d-flex justify-content-between">
+                            <button className='back' onClick={()=> navigate('/')}>Back</button>
+                            <button onClick={nextStep} disabled={selectedGoals.length === 0}>Next</button>
+                        </div>
                     </div>
                 </div>
             </div>

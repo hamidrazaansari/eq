@@ -24,7 +24,7 @@ function SignUp() {
     const [mobile, setMobile] = useState('');
     const [dob, setDob] = useState('');
     const [gender, setGender] = useState('');
-    const [countryCode, setCountryCode] = useState('');
+    const [countryCode, setCountryCode] = useState('+91');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', countryCode: '', mobile: '', password: '', dob: '', gender: '' });
     const [loading, setLoading] = useState(false); // Loading state
@@ -85,9 +85,6 @@ function SignUp() {
         const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
         setDob(formatedeDate)
       };
-
-
-      console.log( countryCode);
       
 
       
@@ -107,10 +104,10 @@ function SignUp() {
                     <div className="col-6 p-0 d-flex align-items-center justify-content-center">
                         <div className="sign-in">
                             <h2>Sign Up</h2>
-                            <div className="google-box">
+                            {/* <div className="google-box">
                                 <img src={google} alt="" />
                                 <p>Sign in with Google</p>
-                            </div>
+                            </div> */}
                             <div className='or'>
                                 <span></span>
                                 <p>OR Continue With Email</p>
@@ -167,7 +164,7 @@ function SignUp() {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 {errors.email && (
-                                    <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "-112px" }}>
+                                    <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                         {errors.email}
                                     </div>
                                 )}
@@ -186,14 +183,14 @@ function SignUp() {
                                         />
                                     </LocalizationProvider>
                                         {errors.dob && (
-                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "411px" }}>
+                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "365px" }}>
                                                 {errors.dob}
                                             </div>
                                         )}
                                     </div>
                                 </div>
                                 <div className="col-6 sign-up">
-                                    <div className="input-box mt-3">
+                                    <div className="input-box mt-4">
                                         <h6>Gender</h6>
                                         <div className="gender">
                                             {['Male', 'Female', 'Other'].map((option) => (
@@ -213,7 +210,7 @@ function SignUp() {
                                             ))}
                                         </div>
                                         {errors.gender && (
-                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "65px" }}>
                                                 {errors.gender}
                                             </div>
                                         )}
@@ -246,7 +243,7 @@ function SignUp() {
                                         }}
                                     />
                                     {errors.mobile && (
-                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" , left:"218px" }}>
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "69px" , left:"3px" }}>
                                             {errors.mobile}
                                         </div>
                                     )}
@@ -286,7 +283,7 @@ function SignUp() {
                                 {/* <p>By creating an account you agree with our <a href=""> Terms of service, Privacy Policy,</a>
                                     and our default <a href=""> Notification Settings. </a>
                                 </p> */}
-                                <button onClick={handleRegisterNewUser} disabled={loading}>
+                                <button onClick={handleRegisterNewUser} className='mt-4' disabled={loading}>
                                     {loading ?
                                         <div className='d-flex align-items-center justify-content-center'>
                                             <div class="spinner-border spinner-border-sm text-Light" role="status" >

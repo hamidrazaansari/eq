@@ -51,8 +51,6 @@ function Plan() {
   }, [activeId]);
 
 
-  console.log(data);
-
 
   // Fetch program data for the initial ID
   useEffect(() => {
@@ -97,7 +95,7 @@ function Plan() {
     }
 
   }
-
+  
 
   return (
     <div>
@@ -126,8 +124,8 @@ function Plan() {
                 >
                   <h3>{main.plan?.name}(Flow)
                     <br />
-                    <span className='save'>Save 20%</span>
-                    <span className='save bg-warn'><ImFire /> Most Popular</span>
+                    {/* <span className='save'>Save 20%</span> */}
+                    {/* <span className='save bg-warn'><ImFire /> Most Popular</span> */}
                   </h3>
                   <p>{main.mrpInr} INR </p>
                   <p>{main.ptSession} Session  </p>
@@ -148,7 +146,7 @@ function Plan() {
                     >
                       <h3>{item.plan?.name}(Rhythm)
                         <br />
-                        <span className='save'>Save 20%</span>
+                        {/* <span className='save'>Save 20%</span> */}
 
                       </h3>
                       <p>{item.mrpInr} INR</p>
@@ -163,7 +161,7 @@ function Plan() {
                 })}
 
               </div>
-              <button className='cantinue-button' onClick={() => { handleGoToCart(selectedComparePlan === 'flow' ? main._id : selectedComparePlan === 'rhythm' ? compare[0].plan?._id : '') }}>Cantinue</button>
+              <button className='cantinue-button' onClick={() => { handleGoToCart(selectedComparePlan === 'flow' ? main._id : selectedComparePlan === 'rhythm' ? compare[0]._id : '') }}>Cantinue</button>
             </div>
           </Modal.Body>
         </Modal>

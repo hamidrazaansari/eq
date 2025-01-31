@@ -6,7 +6,6 @@ import '../assets/css/program.css';
 import program2 from '../assets/image/program-1.png';
 import progArrow from '../assets/image/arrow1.png';
 import progArrow2 from '../assets/image/arrow-2.png';
-import ScrollAnimation from 'react-animate-on-scroll';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../utills/BaseUrl';
@@ -39,7 +38,6 @@ const Program = () => {
       });
   }, []);
 
-  console.log(data);
 
 
   // Horizontal scroll setup, dependent on data loading
@@ -54,9 +52,9 @@ const Program = () => {
           ease: 'none',
           scrollTrigger: {
             trigger: '#container',
+            start: 'top+=330 center', 
             pin: true,
-            scrub: 1,
-            snap: 1 / (horizontalSections.length - 1),
+            scrub: 2,
             end: () => '+=' + document.querySelector('#container').offsetWidth,
           },
         });
@@ -69,14 +67,12 @@ const Program = () => {
   return (
     <>
 
-      <div className="container mb-5 position-relative">
-        <div className='arrow'><img src={progArrow} alt="" /></div>
-        <div className='arrow-point'><img src={progArrow2} alt="" /></div>
-        <ScrollAnimation animateIn="fadeInUp">
+      <div className="container programtitle ">
+        <div className='arrow'><img src={progArrow} alt="arrow" /></div>
+        <div className='arrow-point'><img src={progArrow2} alt="arrow2" /></div>
           <h2>Our <br />
             <span>Programs</span>
           </h2>
-        </ScrollAnimation>
       </div>
 
       <main id="container">

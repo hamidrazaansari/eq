@@ -19,7 +19,7 @@ import { TimePicker } from './TimePicker'
 function OnboardingRegisterForm() {
 
     const [showSection, setShowSection] = useState(false);
-    const [data , setData] = useState('')
+    const [data, setData] = useState('')
     const [openInputs, setOpenInputs] = useState({
         currentMedication: false,
         workoutFrequency: false,
@@ -63,9 +63,9 @@ function OnboardingRegisterForm() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setShowSection(true); 
-        }, 5000); 
-        return () => clearTimeout(timer); 
+            setShowSection(true);
+        }, 5000);
+        return () => clearTimeout(timer);
     }, []);
 
     const location = useLocation();
@@ -85,7 +85,7 @@ function OnboardingRegisterForm() {
         gender: '',
         countryCode: "",
         mobile: '',
-        location:'',
+        location: '',
         height: '',
         // weightAtJoining: '',
         currentWeight: '',
@@ -124,13 +124,16 @@ function OnboardingRegisterForm() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-            setProfile((prevState) => ({
-                ...prevState,
-                [name]: value,
-            }));
+        setProfile((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
 
 
-        if (value === 'Other') {
+        console.log(value);
+        
+        if (value == 'Other') {
+            
             setOpenInputs((prevOpenInputs) => ({
                 ...prevOpenInputs,
                 [name]: true, // Set the specific field's additional input to true
@@ -170,22 +173,13 @@ function OnboardingRegisterForm() {
 
         setProfile((prev) => ({
             ...prev,
-            preferences: checked
-                ? [...prev.preferences, value] // Add to preferences if checked
-                : prev.preferences.filter((preference) => preference !== value), // Remove if unchecked
+            preferences: Array.isArray(prev.preferences)
+                ? (checked
+                    ? [...prev.preferences, value] // Add the selected goal
+                    : prev.preferences.filter((goal) => goal !== value) // Remove if unchecked
+                )
+                : [value],
         }));
-
-        if (value === 'Other') {
-            setOpenInputs((prevOpenInputs) => ({
-                ...prevOpenInputs,
-                [name]: true, // Set the specific field's additional input to true
-            }));
-        } else {
-            setOpenInputs((prevOpenInputs) => ({
-                ...prevOpenInputs,
-                [name]: false, // Hide additional input for fields not set to "Other"
-            }));
-        }
     };
 
     // Favorite Workout 
@@ -229,7 +223,7 @@ function OnboardingRegisterForm() {
                     ? [...prev.fitnessGoals, value] // Add the selected goal
                     : prev.fitnessGoals.filter((goal) => goal !== value) // Remove if unchecked
                 )
-                : [value], 
+                : [value],
         }));
     };
 
@@ -261,7 +255,7 @@ function OnboardingRegisterForm() {
                     ? [...prev.dailyBeverage, value] // Add the selected goal
                     : prev.dailyBeverage.filter((dailyBeverage) => dailyBeverage !== value) // Remove if unchecked
                 )
-                : [value], 
+                : [value],
         }));
     };
 
@@ -375,7 +369,7 @@ function OnboardingRegisterForm() {
                 delete data.status
                 delete data.updatedAt
                 delete data.user
-                data.covidDetected = `${ data.covidDetected}`
+                data.covidDetected = `${data.covidDetected}`
                 setProfile(data);
             } catch (error) {
                 console.error('Error fetching profile data:', error);
@@ -410,6 +404,8 @@ function OnboardingRegisterForm() {
                                         value={profile.firstName}
                                         onChange={handleInputNameChange}
                                         placeholder="Enter First Name"
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.firstName && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -429,6 +425,8 @@ function OnboardingRegisterForm() {
                                         value={profile.lastName}
                                         onChange={handleInputNameChange}
                                         placeholder="Enter Last Name"
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.lastName && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -448,6 +446,8 @@ function OnboardingRegisterForm() {
                                         value={profile.email}
                                         onChange={handleInputChange}
                                         placeholder="Enter Your Email"
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.email && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -469,6 +469,8 @@ function OnboardingRegisterForm() {
                                             value={profile.mobile}
                                             onChange={handleInputNumChange}
                                             placeholder="Enter Mobile Number"
+                                            onBlur={handleSubmitData}
+
                                         />
                                         {errors.mobile && (
                                             <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -487,6 +489,7 @@ function OnboardingRegisterForm() {
                                             label={moment(profile.dob).format('MM/DD/YYYY')}
 
                                             onChange={handleDateChange}
+                                            onBlur={handleSubmitData}
                                             renderInput={(params) => <TextField {...params} fullWidth />}
                                         />
                                     </LocalizationProvider>
@@ -514,9 +517,11 @@ function OnboardingRegisterForm() {
                                                     checked={profile.gender === option}
                                                     onChange={handleInputChange}
                                                     className='custom-radio'
+                                                    onBlur={handleSubmitData}
+
                                                 />
 
-                                                <label htmlFor={option} className="form-check-label" style={{width:"85px"}}>
+                                                <label htmlFor={option} className="form-check-label" style={{ width: "85px" }}>
                                                     {option.charAt(0).toUpperCase() + option.slice(1)}
                                                 </label>
                                             </div>
@@ -539,6 +544,8 @@ function OnboardingRegisterForm() {
                                         value={profile.location}
                                         onChange={handleInputChange}
                                         placeholder="Enter your Location"
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.location && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -558,6 +565,8 @@ function OnboardingRegisterForm() {
                                         value={profile.height}
                                         onChange={handleInputNumChange}
                                         placeholder="Enter your Height in (Cm)"
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.height && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -578,6 +587,8 @@ function OnboardingRegisterForm() {
                                         value={profile.currentWeight}
                                         onChange={handleInputNumChange}
                                         placeholder="Enter Your Current Weight (kg)"
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.currentWeight && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -596,6 +607,8 @@ function OnboardingRegisterForm() {
                                         name="occupation"
                                         value={profile.occupation}
                                         onChange={handleInputChange}
+                                        onBlur={handleSubmitData}
+
                                     />
                                     {errors.occupation && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -643,6 +656,8 @@ function OnboardingRegisterForm() {
                                         className="custom-checkbox me-3"
                                         value={option}
                                         onChange={handleCheckboxChange}
+                                        checked={Array.isArray(profile.preferences) && profile.preferences.includes(option)}
+                                        onBlur={handleSubmitData}
                                     />
                                     {errors.preferences && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -668,6 +683,7 @@ function OnboardingRegisterForm() {
                                 value={profile.existingHealthIssues}
                                 onChange={handleInputChange}
                                 placeholder="Enter Your Answer"
+                                onBlur={handleSubmitData}
                             />
                             {errors.existingHealthIssues && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -691,6 +707,8 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.currentMedication === option}
                                             onChange={handleInputChange}
+                                            onBlur={handleSubmitData}
+
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -707,6 +725,8 @@ function OnboardingRegisterForm() {
                                         className="Other-Input"
                                         value={profile.currentMedication === 'Other' ? '' : profile.currentMedication}
                                         onChange={(e) => setProfile((prev) => ({ ...prev, currentMedication: e.target.value }))}
+                                        onBlur={handleSubmitData}
+
                                     />
                                 </div>
                             )}
@@ -730,10 +750,12 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="covidDetected"
-                                             className='custom-radio'
+                                            className='custom-radio'
                                             value={option}
                                             checked={profile.covidDetected === option}
                                             onChange={handleInputChange}
+                                            onBlur={handleSubmitData}
+
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -760,10 +782,11 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="workoutFrequency"
-                                             className='custom-radio'
+                                            className='custom-radio'
                                             value={option}
                                             checked={profile.workoutFrequency === option}
                                             onChange={handleInputChange}
+
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -780,6 +803,7 @@ function OnboardingRegisterForm() {
                                         className="Other-Input"
                                         value={profile.workoutFrequency === 'Other' ? '' : profile.workoutFrequency}
                                         onChange={(e) => setProfile((prev) => ({ ...prev, workoutFrequency: e.target.value }))}
+
                                     />
                                 </div>
                             )}
@@ -810,6 +834,8 @@ function OnboardingRegisterForm() {
                                         value={option}
                                         checked={Array.isArray(profile.favoriteWorkouts) && profile.favoriteWorkouts.includes(option)}
                                         onChange={handleFavoriteWorkoutChange}
+                                        onBlur={handleSubmitData}
+
                                     />
                                     <label htmlFor={`favorite-${option}`} className="custom-label">
                                         {option}
@@ -828,6 +854,7 @@ function OnboardingRegisterForm() {
                                     value={profile.favoriteWorkouts.find((workout) => workout !== "Other") || ""}
                                     onChange={handleOtherWorkoutChange}
                                     style={{ height: "50px", padding: "10px" }}
+
                                 />
                             </div>
                         )}
@@ -859,6 +886,8 @@ function OnboardingRegisterForm() {
                                     value={goal}
                                     checked={Array.isArray(profile.fitnessGoals) && profile.fitnessGoals.includes(goal)}
                                     onChange={handleFitnessGoalChange}
+                                    onBlur={handleSubmitData}
+
                                 />
                                 <label htmlFor={`goal-${goal}`} className="custom-label">
                                     {goal}
@@ -876,6 +905,7 @@ function OnboardingRegisterForm() {
                                     value={profile.fitnessGoals.find((goal) => goal !== "Other") || ""}
                                     onChange={handleOtherGoalChange}
                                     style={{ height: "50px", padding: "10px" }}
+
                                 />
                             </div>
                         )}
@@ -900,7 +930,9 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.foodChoice === option}
                                             onChange={handleInputChange}
-                                             className='custom-radio'
+                                            className='custom-radio'
+                                            onBlur={handleSubmitData}
+
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option + ind} className="form-check-label">
@@ -929,6 +961,7 @@ function OnboardingRegisterForm() {
                                 onChange={handleInputChange}
                                 // readOnly={!isEditable}
                                 placeholder="Enter Your Answer"
+
                             />
                             {errors.foodAllergies && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -953,7 +986,9 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.eggAndNonVegFrequency === option}
                                             onChange={handleInputChange}
-                                             className='custom-radio'
+                                            className='custom-radio'
+                                            onBlur={handleSubmitData}
+
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option + 1} className="form-check-label">
@@ -985,6 +1020,8 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.junkSugarStressFrequency === option}
                                             onChange={handleInputChange}
+                                            onBlur={handleSubmitData}
+
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1002,6 +1039,7 @@ function OnboardingRegisterForm() {
                                         className="Other-Input"
                                         value={profile.junkSugarStressFrequency === 'Other' ? '' : profile.junkSugarStressFrequency}
                                         onChange={(e) => setProfile((prev) => ({ ...prev, junkSugarStressFrequency: e.target.value }))}
+
                                     />
                                 </div>
                             )}
@@ -1027,7 +1065,9 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.dailyWaterConsumption === option}
                                             onChange={handleInputChange}
-                                             className='custom-radio'
+                                            className='custom-radio'
+                                            onBlur={handleSubmitData}
+
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1058,7 +1098,7 @@ function OnboardingRegisterForm() {
                                     type="checkbox"
                                     id={`beverage-${beverage.id}`} // Unique ID for each checkbox
                                     className="custom-checkbox me-3"
-                                    
+                                    onBlur={handleSubmitData}
                                     value={beverage.label}
                                     onChange={handleBeverageChange} // Beverage-specific handler
                                     checked={Array.isArray(profile.dailyBeverage) && profile.dailyBeverage.includes(beverage.label)}
@@ -1079,6 +1119,8 @@ function OnboardingRegisterForm() {
                                     value={profile.dailyBeverage.find((goal) => goal !== "Other") || ""}
                                     onChange={handleOtherBraverageChange}
                                     style={{ height: "50px", padding: "10px" }}
+                                    onBlur={handleSubmitData}
+
                                 />
                             </div>
                         )}
@@ -1098,7 +1140,8 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.smoke === option}
                                             onChange={handleInputChange}
-                                             className='custom-radio'
+                                            className='custom-radio'
+                                            onBlur={handleSubmitData}
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1129,7 +1172,9 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.alcohol === option}
                                             onChange={handleInputChange}
-                                             className='custom-radio'
+                                            className='custom-radio'
+                                            onBlur={handleSubmitData}
+
                                         // disabled={!isEditable}
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1156,6 +1201,8 @@ function OnboardingRegisterForm() {
                                 onChange={handleInputChange}
                                 // readOnly={!isEditable}
                                 placeholder="Enter Your Answer"
+                                onBlur={handleSubmitData}
+
                             />
                             {errors.personalNotes && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -1174,6 +1221,8 @@ function OnboardingRegisterForm() {
                                 onChange={handleInputChange}
                                 // readOnly={!isEditable}
                                 placeholder="Enter Your Answer"
+                                onBlur={handleSubmitData}
+
                             />
                             {errors.instagramId && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
@@ -1196,9 +1245,11 @@ function OnboardingRegisterForm() {
                                             id={option}
                                             name="sourceChanel"
                                             value={option}
-                                             className='custom-radio'
+                                            className='custom-radio'
                                             checked={profile.sourceChanel === option}
                                             onChange={handleInputChange}
+                                            onBlur={handleSubmitData}
+
                                         />
 
                                         <label htmlFor={option} className="form-check-label">
@@ -1217,6 +1268,8 @@ function OnboardingRegisterForm() {
                                         className="Other-Input"
                                         value={profile.sourceChanel === 'Other' ? '' : profile.sourceChanel}
                                         onChange={(e) => setProfile((prev) => ({ ...prev, sourceChanel: e.target.value }))}
+                                        onBlur={handleSubmitData}
+
                                     />
                                 </div>
                             )}
@@ -1238,8 +1291,10 @@ function OnboardingRegisterForm() {
                                 value={profile.wholeDayRoutine}
                                 onChange={handleInputChange}
                                 placeholder="Enter Your Answer"
+                                onBlur={handleSubmitData}
+
                             />
-                             {errors.wholeDayRoutine && (
+                            {errors.wholeDayRoutine && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                     {errors.wholeDayRoutine}
                                 </div>
@@ -1269,12 +1324,14 @@ function OnboardingRegisterForm() {
                                         value={profile.meals}
                                         onChange={handleInputChange}
                                         placeholder="Enter Your Answer"
+                                        onBlur={handleSubmitData}
+
                                     />
-                                                                {errors.meals && (
-                                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                                                {errors.meals}
-                                                            </div>
-                                                        )}
+                                    {errors.meals && (
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            {errors.meals}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -1288,9 +1345,11 @@ function OnboardingRegisterForm() {
                                             id={option}
                                             name="sleepQuality"
                                             value={option}
-                                             className='custom-radio'
+                                            className='custom-radio'
                                             checked={profile.sleepQuality === option}
                                             onChange={handleInputChange}
+                                            onBlur={handleSubmitData}
+
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -1299,10 +1358,10 @@ function OnboardingRegisterForm() {
                                 ))}
                             </div>
                             {errors.sleepQuality && (
-                                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                                                {errors.sleepQuality}
-                                                            </div>
-                                                        )}
+                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                    {errors.sleepQuality}
+                                </div>
+                            )}
                         </div>
 
                         <div className="input-box mt-3">
@@ -1314,10 +1373,12 @@ function OnboardingRegisterForm() {
                                             type="radio"
                                             id={option}
                                             name="energyLevel"
-                                             className='custom-radio'
+                                            className='custom-radio'
                                             value={option}
-                                        checked={profile.energyLevel === option}
-                                        onChange={handleInputChange}
+                                            checked={profile.energyLevel === option}
+                                            onChange={handleInputChange}
+                                            onBlur={handleSubmitData}
+
 
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -1327,10 +1388,10 @@ function OnboardingRegisterForm() {
                                 ))}
                             </div>
                             {errors.energyLevel && (
-                                                            <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                                                {errors.energyLevel}
-                                                            </div>
-                                                        )}
+                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                    {errors.energyLevel}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

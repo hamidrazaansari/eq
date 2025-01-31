@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import SelectSearch from "react-select-search";
 import "react-select-search/style.css";
 
@@ -26,12 +26,15 @@ const generateTimeOptions = () => {
   return times;
 };
 
-const TimeDropdown = ({handleSelect}) => {
+const TimeDropdown = ({handleSelectTime}) => {
   const timeOptions = generateTimeOptions();
+  const [selectedTime, setSelectedTime] = useState("");
+
 
   const handleTimeChange = (selectedTime) => {
     console.log("Selected Time:", selectedTime);
-    handleSelect(selectedTime)
+    setSelectedTime(selectedTime)
+    handleSelectTime(selectedTime)
   };
 
   return (
@@ -41,6 +44,7 @@ const TimeDropdown = ({handleSelect}) => {
         onChange={handleTimeChange}
         search={true}
         placeholder="Choose a time"
+        value={selectedTime}
       />
     </div>
   );

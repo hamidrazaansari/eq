@@ -21,7 +21,7 @@ function ThankYou() {
           return prev - 1;
         } else {
           clearInterval(timer); 
-          navigate('/dashboard', { state: { section: 'My Bookings' } });
+          navigate('/mybooking', { state: { section: 'My Bookings' } });
           return 0; 
         }
       });

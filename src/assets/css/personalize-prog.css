@@ -7,11 +7,15 @@
 
 .personalize-program h2{
     font-family: boldfuturamdbt;
-    font-size: 35px;
+    font-size: 30px;
     /* margin: 10px; */
 }
+
 .personalize-program h2 span{
     color: #006D5A;
+}
+.personalize-program .breadcrumb{
+    margin-bottom: 0px !important;
 }
 .personalize-program .breadcrumb a {
     color: rgb(0 0 0 / 35%);
@@ -40,10 +44,9 @@
     padding: 20px 0;
     border: 1px solid #a8a8a8;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 10px 0;
     background: #F3F3F3;
-
-
+    height: 510px;
 }
 .personalize-program .program-box:hover{
     border: 2px solid #0000006c;
@@ -212,6 +215,9 @@ top: 0;
     font-size: 13px;
     font-family: 'futuramdbt';
     color: #00000076;
+}
+.personalize-program .point p{
+    font-size: 10px;
 }
 .point img{
     height: 20px;

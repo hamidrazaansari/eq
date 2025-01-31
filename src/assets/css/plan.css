@@ -155,14 +155,17 @@ color: #fff !important;
     position: unset !important;
     background: #006D5A;
     border: none;
-    border-radius: 20px;
-    height: 32px;
+    border-radius: 5px;
+    height: 38px;
     float: inline-end;
     margin: 20px 0;
-    padding: 6px 40px !important;
+    padding: 6px 36px !important;
     color: #fff;
     font-size: 16px;
     font-family: 'futuramdbt';
+    position: relative !important;
+    right: 100px;
+    top: 14px;
 }
 
 /* General Styles for Comparison Section */
@@ -226,7 +229,6 @@ margin-top: 10px;
 
 .compare-box .features h3{
     color: #000;
-    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
