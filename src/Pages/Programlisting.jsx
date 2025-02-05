@@ -16,9 +16,6 @@ import parse from 'html-react-parser';
 import { API_URL } from '../utills/BaseUrl'
 import getImageURL from '../utills/getImageURL';
 
-
-
-
 // Custom Prev Arrow
 const PrevArrow = (props) => {
     const { onClick } = props;
@@ -91,7 +88,7 @@ function Programlisting() {
                                     <div className="program-box">
                                         <img src={imageUrl} className='program-img' alt="Personal Training Trail" />
                                         <h3>{item.name}</h3>
-                                        <div className='para mb-4 mt-2'>{parse(item.descriptions.slice(403,600 ) + (item.descriptions.length > 600 ? "..." : ""))}</div>
+                                        <div className='para mb-4 mt-2'>{parse(item.descriptions.slice(0,200 ))}</div>
                                         <div className="point">
                                             <div className="row  mb-3 px-3">
                                                 {item.usp && item.usp.map((usp)=>(
@@ -105,8 +102,7 @@ function Programlisting() {
 
                                             </div>
                                         </div>
-                                        <span className='time'>{ item.subCategory ? item.subCategory && item.subCategory.name : 'Trail Program'}</span>
-                                            <Link to={`/program/${item._id}`}><button className='BookNowBtn '>Book Now</button></Link> 
+                                        <Link to={`/program/${item._id}`}><button className='BookNowBtn '>Book Now</button></Link> 
         
                                     </div>
                                 </div>
@@ -145,7 +141,6 @@ function Programlisting() {
                                 <h3>Corporate Wellness Program</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur hjgg adipiscing elit, sed do eiusmod tempor lorem </p>
                                 <button className='BookNowBtn '>Explore plan</button>
-
                             </div>
                             </div>
                             <div className="slide">

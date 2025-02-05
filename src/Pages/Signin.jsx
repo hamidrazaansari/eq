@@ -18,13 +18,14 @@ function Signin() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const { setIsLogin } = useIsLogin();
+  const { setIsLogin , login } = useIsLogin();
 
   const navigate = useNavigate()
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
 
   // Handle user login
   const handleLoginUser = async (e) => {
@@ -36,10 +37,8 @@ function Signin() {
       const userToken = response.data.body.token;
 
       toast.success(response.data.message)
-      // Store token in localStorage and state
-      localStorage.setItem("authToken", userToken);
-      setIsLogin(true);
 
+      login(userToken)
       // Success alert and navigation
       setTimeout(() => {
         navigate(-2 , {replace: true} );

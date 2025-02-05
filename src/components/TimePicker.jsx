@@ -7,7 +7,7 @@ import '@coreui/coreui-pro/dist/css/coreui.min.css'
 
 export const TimePicker = () => {
   const [time, setTime] = useState(null);
-  console.log(time);
+  // console.log(time);
   
 
   return (

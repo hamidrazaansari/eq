@@ -19,13 +19,9 @@ import { TimePicker } from './TimePicker'
 function OnboardingRegisterForm() {
 
     const [showSection, setShowSection] = useState(false);
-    const [data, setData] = useState('')
-    const [openInputs, setOpenInputs] = useState({
-        currentMedication: false,
-        workoutFrequency: false,
-        junkSugarStressFrequency: false,
-        sourceChanel: false,
-    });
+    const [otherFavWorkout, setOtherFavWorkout] = useState("");
+    const [otherGoal, setOtherGoal] = useState("");
+    const [otherBraverage, setOtherBraverage] = useState("");
     const [errors, setErrors] = useState({
         alcohol: '',
         covidDetected: '',
@@ -119,33 +115,20 @@ function OnboardingRegisterForm() {
         energyLevel: '',
     });
 
+    console.log(profile);
+
+
 
     // Handle input changes for all fields
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
+        // Update profile state
         setProfile((prevState) => ({
             ...prevState,
             [name]: value,
         }));
-
-
-        console.log(value);
-        
-        if (value == 'Other') {
-            
-            setOpenInputs((prevOpenInputs) => ({
-                ...prevOpenInputs,
-                [name]: true, // Set the specific field's additional input to true
-            }));
-        } else {
-            setOpenInputs((prevOpenInputs) => ({
-                ...prevOpenInputs,
-                [name]: false, // Hide additional input for fields not set to "Other"
-            }));
-        }
-
-
+        console.log(name);
 
     };
     const handleInputNameChange = (e) => {
@@ -156,6 +139,7 @@ function OnboardingRegisterForm() {
             ...prevState,
             [name]: filteredValue,
         }));
+
     };
     const handleInputNumChange = (e) => {
         const { name, value } = e.target;
@@ -166,8 +150,6 @@ function OnboardingRegisterForm() {
 
         }));
     };
-
-
     const handleCheckboxChange = (event) => {
         const { checked, value } = event.target;
 
@@ -181,99 +163,155 @@ function OnboardingRegisterForm() {
                 : [value],
         }));
     };
-
-    // Favorite Workout 
     const handleFavoriteWorkoutChange = (event) => {
         const { checked, value } = event.target;
 
-        setProfile((prev) => ({
-            ...prev,
-            favoriteWorkouts: Array.isArray(prev.favoriteWorkouts)
-                ? (checked
-                    ? [...prev.favoriteWorkouts, value] // Add selected workout
-                    : prev.favoriteWorkouts.filter((workout) => workout !== value) // Remove if unchecked
-                )
-                : [value], // If undefined, initialize as an array
-        }));
-    };
+        setProfile((prev) => {
+            // Ensure `fitnessGoals` is always an array
+            const updatedGoals = Array.isArray(prev.favoriteWorkouts) ? [...prev.favoriteWorkouts] : [];
 
+            if (checked) {
+                if (!updatedGoals.includes(value)) {
+                    updatedGoals.push(value); // Add the selected goal
+                }
+            } else {
+                return {
+                    ...prev,
+                    favoriteWorkouts: updatedGoals.filter((goal) => goal !== value) // Remove unchecked goal
+                };
+            }
+
+            return { ...prev, favoriteWorkouts: updatedGoals };
+        });
+
+        // Clear "Other" input when unchecked
+        if (value === "Other") {
+            setOtherFavWorkout(checked ? "" : ""); // Reset when checked, clear when unchecked
+        }
+    };
     const handleOtherWorkoutChange = (event) => {
-        const otherText = event.target.value;
+        const inputValue = event.target.value;
+        setOtherFavWorkout(inputValue);
 
         setProfile((prev) => {
-            const updatedWorkouts = Array.isArray(prev.favoriteWorkouts)
-                ? prev.favoriteWorkouts.filter((workout) => workout !== "Other")
-                : []; // Ensure it's always an array
+            // Ensure `fitnessGoals` is always an array
+            let updatedGoals = Array.isArray(prev.favoriteWorkouts) ? [...prev.favoriteWorkouts] : [];
 
-            return {
-                ...prev,
-                favoriteWorkouts: otherText.trim() ? [...updatedWorkouts, otherText] : updatedWorkouts,
-            };
+            // If "Other" was checked, keep it in the array
+            if (!updatedGoals.includes("Other")) {
+                updatedGoals.push("Other");
+            }
+
+            updatedGoals = updatedGoals.filter((goal) => goal !== otherFavWorkout); // Remove "Other" label
+
+            if (inputValue.trim() !== "") {
+                updatedGoals.push(inputValue); // Add user input
+            } else {
+                updatedGoals.push("Other"); // Keep "Other" label if input is empty
+            }
+
+            return { ...prev, favoriteWorkouts: updatedGoals };
         });
     };
-
-
     const handleFitnessGoalChange = (event) => {
         const { checked, value } = event.target;
 
-        setProfile((prev) => ({
-            ...prev,
-            fitnessGoals: Array.isArray(prev.fitnessGoals)
-                ? (checked
-                    ? [...prev.fitnessGoals, value] // Add the selected goal
-                    : prev.fitnessGoals.filter((goal) => goal !== value) // Remove if unchecked
-                )
-                : [value],
-        }));
+        setProfile((prev) => {
+            // Ensure `fitnessGoals` is always an array
+            const updatedGoals = Array.isArray(prev.fitnessGoals) ? [...prev.fitnessGoals] : [];
+
+            if (checked) {
+                if (!updatedGoals.includes(value)) {
+                    updatedGoals.push(value); // Add the selected goal
+                }
+            } else {
+                return {
+                    ...prev,
+                    fitnessGoals: updatedGoals.filter((goal) => goal !== value) // Remove unchecked goal
+                };
+            }
+
+            return { ...prev, fitnessGoals: updatedGoals };
+        });
+
+        // Clear "Other" input when unchecked
+        if (value === "Other" && !checked) {
+            setOtherGoal("");
+        }
     };
-
-
     const handleOtherGoalChange = (event) => {
-        const otherText = event.target.value;
+        const inputValue = event.target.value;
+        setOtherGoal(inputValue);
 
         setProfile((prev) => {
-            const updatedGoals = Array.isArray(prev.fitnessGoals)
-                ? prev.fitnessGoals.filter((goal) => goal !== "Other")
-                : [];
+            // Ensure `fitnessGoals` is always an array
+            let updatedGoals = Array.isArray(prev.fitnessGoals) ? [...prev.fitnessGoals] : [];
 
-            return {
-                ...prev,
-                fitnessGoals: otherText.trim() ? [...updatedGoals, otherText] : updatedGoals,
-            };
+            // If "Other" was checked, keep it in the array
+            if (!updatedGoals.includes("Other")) {
+                updatedGoals.push("Other");
+            }
+
+            updatedGoals = updatedGoals.filter((goal) => goal !== otherGoal); // Remove "Other" label
+
+            if (inputValue.trim() !== "") {
+                updatedGoals.push(inputValue); // Add user input
+            } else {
+                updatedGoals.push("Other"); // Keep "Other" label if input is empty
+            }
+
+            return { ...prev, fitnessGoals: updatedGoals };
         });
     };
-
-
-
     const handleBeverageChange = (event) => {
         const { checked, value } = event.target;
 
-        setProfile((prev) => ({
-            ...prev,
-            dailyBeverage: Array.isArray(prev.dailyBeverage)
-                ? (checked
-                    ? [...prev.dailyBeverage, value] // Add the selected goal
-                    : prev.dailyBeverage.filter((dailyBeverage) => dailyBeverage !== value) // Remove if unchecked
-                )
-                : [value],
-        }));
-    };
+        setProfile((prev) => {
+            // Ensure `fitnessGoals` is always an array
+            const updatedGoals = Array.isArray(prev.dailyBeverage) ? [...prev.dailyBeverage] : [];
 
-    const handleOtherBraverageChange = (event) => {
-        const otherText = event.target.value;
+            if (checked) {
+                if (!updatedGoals.includes(value)) {
+                    updatedGoals.push(value); // Add the selected goal
+                }
+            } else {
+                return {
+                    ...prev,
+                    dailyBeverage: updatedGoals.filter((goal) => goal !== value) // Remove unchecked goal
+                };
+            }
+
+            return { ...prev, dailyBeverage: updatedGoals };
+        });
+
+        // Clear "Other" input when unchecked
+        if (value === "Other" && !checked) {
+            setOtherBraverage("");
+        }
+    };
+    const handleOtherBeverageChange = (event) => {
+        const inputValue = event.target.value;
+        setOtherBraverage(inputValue);
 
         setProfile((prev) => {
-            const updatedGoals = Array.isArray(prev.dailyBeverage)
-                ? prev.dailyBeverage.filter((goal) => goal !== "Other")
-                : [];
+            let updatedBeverages = Array.isArray(prev.dailyBeverage) ? [...prev.dailyBeverage] : [];
 
-            return {
-                ...prev,
-                dailyBeverage: otherText.trim() ? [...updatedGoals, otherText] : updatedGoals,
-            };
+            // If "Other" was checked, keep it in the array
+            if (!updatedBeverages.includes("Other")) {
+                updatedBeverages.push("Other");
+            }
+
+            // Remove any previously added custom value
+            updatedBeverages = updatedBeverages.filter((bev) => bev !== otherBraverage);
+
+            // Add the new input value if not empty
+            if (inputValue.trim() !== "") {
+                updatedBeverages.push(inputValue);
+            }
+
+            return { ...prev, dailyBeverage: updatedBeverages };
         });
     };
-
 
     const token = localStorage.getItem('authToken');
 
@@ -293,6 +331,7 @@ function OnboardingRegisterForm() {
             );
             if (resp.status === 200) {
                 toast.success('Form Submitted..')
+
             }
         } catch (error) {
             console.error(error.response?.data?.errors);
@@ -379,7 +418,6 @@ function OnboardingRegisterForm() {
         fetchData();
     }, [token]);
 
-    console.log(data);
 
 
     return (
@@ -534,26 +572,6 @@ function OnboardingRegisterForm() {
                                     )}
                                 </div>
                             </div>
-                            <div className="col-6 mt-2">
-                                <div className="input-box">
-                                    <label htmlFor="location">Location</label>
-                                    <input
-                                        type="text"
-                                        id="location"
-                                        name="location"
-                                        value={profile.location}
-                                        onChange={handleInputChange}
-                                        placeholder="Enter your Location"
-                                        onBlur={handleSubmitData}
-
-                                    />
-                                    {errors.location && (
-                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                            {errors.location}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
                             {/* Height */}
                             <div className="col-6 mt-2">
                                 <div className="input-box">
@@ -593,6 +611,26 @@ function OnboardingRegisterForm() {
                                     {errors.currentWeight && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                             {errors.currentWeight}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="col-6 mt-2">
+                                <div className="input-box">
+                                    <label htmlFor="location">Location</label>
+                                    <input
+                                        type="text"
+                                        id="location"
+                                        name="location"
+                                        value={profile.location}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter your Location"
+                                        onBlur={handleSubmitData}
+
+                                    />
+                                    {errors.location && (
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            {errors.location}
                                         </div>
                                     )}
                                 </div>
@@ -697,7 +735,7 @@ function OnboardingRegisterForm() {
                         <h2 className='mb-3'>Are you currently on any medication</h2>
                         <div className="input-box">
                             <div className="d-flex align-items-start justify-content-start flex-column">
-                                {['Yes', 'No', 'Other'].map((option) => (
+                                {['Yes', 'No', 'other'].map((option) => (
                                     <div className="genderOpt m-1" key={option}>
                                         <input
                                             type="radio"
@@ -707,7 +745,6 @@ function OnboardingRegisterForm() {
                                             value={option}
                                             checked={profile.currentMedication === option}
                                             onChange={handleInputChange}
-                                            onBlur={handleSubmitData}
 
                                         />
                                         <label htmlFor={option} className="form-check-label">
@@ -716,17 +753,15 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {openInputs.currentMedication && (
+                            {profile.currentMedication === "other" && (
                                 <div className="mt-2">
                                     <input
                                         type="text"
-                                        name="currentMedication"
+                                        name="customMedication"
                                         placeholder="Please specify"
                                         className="Other-Input"
-                                        value={profile.currentMedication === 'Other' ? '' : profile.currentMedication}
-                                        onChange={(e) => setProfile((prev) => ({ ...prev, currentMedication: e.target.value }))}
-                                        onBlur={handleSubmitData}
-
+                                        value={profile.customMedication || ""}
+                                        onChange={(e) => setProfile((prev) => ({ ...prev, customMedication: e.target.value }))}
                                     />
                                 </div>
                             )}
@@ -763,30 +798,33 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {errors.covidDetected && (
+                            {/* {errors.covidDetected && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                     {errors.covidDetected}
                                 </div>
-                            )}
+                            )} */}
                         </div>
 
                     </div>
                     <div className="profile">
-
-                        <h2 className='mb-3'>Workout frequency</h2>
+                        <h2 className="mb-3">Workout frequency</h2>
                         <div className="input-box">
                             <div className="d-flex align-items-start justify-content-start flex-column">
-                                {['Do not workout', 'At most 2 times a week', 'At least 3 times a week', 'Other'].map((option) => (
+                                {['Do not workout', 'At most 2 times a week', 'At least 3 times a week', 'Other.'].map((option) => (
                                     <div className="genderOpt m-1" key={option}>
                                         <input
                                             type="radio"
                                             id={option}
                                             name="workoutFrequency"
-                                            className='custom-radio'
+                                            className="custom-radio"
                                             value={option}
                                             checked={profile.workoutFrequency === option}
-                                            onChange={handleInputChange}
-
+                                            onChange={(e) => {
+                                                handleInputChange(e);
+                                                if (e.target.value === "Other") {
+                                                    setProfile((prev) => ({ ...prev, customWorkoutFrequency: "" }));
+                                                }
+                                            }}
                                         />
                                         <label htmlFor={option} className="form-check-label">
                                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -794,27 +832,31 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {openInputs.workoutFrequency && (
+
+                            {/* Show input only when "other" is selected */}
+                            {profile.workoutFrequency === "Other." && (
                                 <div className="mt-2">
                                     <input
                                         type="text"
-                                        name="workoutFrequencyOther"
+                                        name="customWorkoutFrequency"
                                         placeholder="Please specify"
                                         className="Other-Input"
-                                        value={profile.workoutFrequency === 'Other' ? '' : profile.workoutFrequency}
-                                        onChange={(e) => setProfile((prev) => ({ ...prev, workoutFrequency: e.target.value }))}
-
+                                        value={profile.workoutFrequency || ""}
+                                        onChange={(e) =>
+                                            setProfile((prev) => ({ ...prev, workoutFrequency: e.target.value }))
+                                        }
                                     />
                                 </div>
                             )}
+
                             {errors.workoutFrequency && (
-                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "132px" }}>
+                                <div style={{ color: "red", fontSize: "10px", position: "absolute", top: "132px" }}>
                                     {errors.workoutFrequency}
                                 </div>
                             )}
                         </div>
-
                     </div>
+
                     <div className="profile">
                         <h2 className="mb-3">Favorite Workout Format</h2>
 
@@ -835,7 +877,6 @@ function OnboardingRegisterForm() {
                                         checked={Array.isArray(profile.favoriteWorkouts) && profile.favoriteWorkouts.includes(option)}
                                         onChange={handleFavoriteWorkoutChange}
                                         onBlur={handleSubmitData}
-
                                     />
                                     <label htmlFor={`favorite-${option}`} className="custom-label">
                                         {option}
@@ -844,17 +885,15 @@ function OnboardingRegisterForm() {
                             ))}
                         </div>
 
-                        {/* Show input field when "Other" is selected */}
-                        {Array.isArray(profile.favoriteWorkouts) && profile.favoriteWorkouts.includes("Other") && (
+                        {profile.favoriteWorkouts?.includes("Other") && (
                             <div className="mt-2">
                                 <input
                                     type="text"
                                     placeholder="Please specify"
                                     className="Other-Input"
-                                    value={profile.favoriteWorkouts.find((workout) => workout !== "Other") || ""}
+                                    value={otherFavWorkout}
                                     onChange={handleOtherWorkoutChange}
                                     style={{ height: "50px", padding: "10px" }}
-
                                 />
                             </div>
                         )}
@@ -865,6 +904,7 @@ function OnboardingRegisterForm() {
                             </div>
                         )}
                     </div>
+
                     <div className="profile">
                         <h2 className="mb-3">Fitness Goal</h2>
 
@@ -896,20 +936,18 @@ function OnboardingRegisterForm() {
                         ))}
 
                         {/* Show input field when "Other" is selected */}
-                        {Array.isArray(profile.fitnessGoals) && profile.fitnessGoals.includes("Other") && (
+                        {profile.fitnessGoals?.includes("Other") &&(
                             <div className="mt-2">
                                 <input
                                     type="text"
                                     placeholder="Please specify"
                                     className="Other-Input"
-                                    value={profile.fitnessGoals.find((goal) => goal !== "Other") || ""}
+                                    value={otherGoal}
                                     onChange={handleOtherGoalChange}
                                     style={{ height: "50px", padding: "10px" }}
-
                                 />
                             </div>
                         )}
-
                         {errors.fitnessGoals && (
                             <div style={{ color: "red", fontSize: "10px", position: "absolute", top: "72px" }}>
                                 {errors.fitnessGoals}
@@ -1010,7 +1048,7 @@ function OnboardingRegisterForm() {
                         <h2 className='mb-3'>What is the frequency of eating outside/junk/sugar/stress eating</h2>
                         <div className="input-box">
                             <div className="d-flex align-items-start justify-content-start flex-column">
-                                {['EveryDay', '3 times a week', 'Rarely', 'Other'].map((option) => (
+                                {['EveryDay', '3 times a week', 'Rarely'].map((option) => (
                                     <div className="genderOpt m-1" key={option}>
                                         <input
                                             type="radio"
@@ -1030,7 +1068,7 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {openInputs.junkSugarStressFrequency && (
+                            {/* {openInputs.junkSugarStressFrequency && (
                                 <div className="mt-2">
                                     <input
                                         type="text"
@@ -1042,7 +1080,7 @@ function OnboardingRegisterForm() {
 
                                     />
                                 </div>
-                            )}
+                            )} */}
                             {errors.junkSugarStressFrequency && (
                                 <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "132px" }}>
                                     {errors.junkSugarStressFrequency}
@@ -1110,17 +1148,15 @@ function OnboardingRegisterForm() {
                             </div>
                         ))}
                         {/* Show input field when "Other" is selected */}
-                        {Array.isArray(profile.dailyBeverage) && profile.dailyBeverage.includes("Other") && (
+                        {profile.dailyBeverage?.includes("Other") &&(
                             <div className="mt-2">
                                 <input
                                     type="text"
                                     placeholder="Please specify"
                                     className="Other-Input"
-                                    value={profile.dailyBeverage.find((goal) => goal !== "Other") || ""}
-                                    onChange={handleOtherBraverageChange}
+                                    value={otherBraverage}
+                                    onChange={handleOtherBeverageChange}
                                     style={{ height: "50px", padding: "10px" }}
-                                    onBlur={handleSubmitData}
-
                                 />
                             </div>
                         )}
@@ -1237,7 +1273,7 @@ function OnboardingRegisterForm() {
                         <h2 className='mb-3'>How did you get to know about us?</h2>
                         <div className="input-box">
                             <div className="d-flex align-items-start justify-content-start flex-column">
-                                {['Instagram', 'Facebook', "Influencers", "Friends/ Family/ Acquaintance of Gunj", "Other"].map((option) => (
+                                {['Instagram', 'Facebook', "Influencers", "Friends/ Family/ Acquaintance of Gunj", "others"].map((option) => (
                                     <div className="option m-1 d-flex" key={option}>
 
                                         <input
@@ -1248,7 +1284,6 @@ function OnboardingRegisterForm() {
                                             className='custom-radio'
                                             checked={profile.sourceChanel === option}
                                             onChange={handleInputChange}
-                                            onBlur={handleSubmitData}
 
                                         />
 
@@ -1259,7 +1294,7 @@ function OnboardingRegisterForm() {
                                     </div>
                                 ))}
                             </div>
-                            {openInputs.sourceChanel && (
+                            {profile.sourceChanel === 'others' && (
                                 <div className="mt-2">
                                     <input
                                         type="text"
@@ -1283,6 +1318,20 @@ function OnboardingRegisterForm() {
                     </div>
                     <div className="profile">
                         <h2>Required Details for your <span>Nutrition Consultation</span></h2>
+                        <div className="row">
+                            <div className="col-6">
+                                <div className="mt-1">
+                                    <label htmlFor="AllDaySchedule">Wake-Up Time</label>
+                                    <TimePicker wakeUpTime={profile.wakeUpTime} />
+                                </div>
+                            </div>
+                            <div className="col-6">
+                                <div className="mt-1">
+                                    <label htmlFor="AllDaySchedule">Sleep Time</label>
+                                    <TimePicker sleepTime={profile.sleepTime} />
+                                </div>
+                            </div>
+                        </div>
                         <div className="input-box mt-4 ">
                             <label htmlFor="wholeDayRoutine">Your routine from the time you get up to the time you sleep</label>
                             <input
@@ -1299,20 +1348,6 @@ function OnboardingRegisterForm() {
                                     {errors.wholeDayRoutine}
                                 </div>
                             )}
-                        </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <div className="mt-1">
-                                    <label htmlFor="AllDaySchedule">Wake-Up Time</label>
-                                    <TimePicker wakeUpTime={profile.wakeUpTime} />
-                                </div>
-                            </div>
-                            <div className="col-6">
-                                <div className="mt-1">
-                                    <label htmlFor="AllDaySchedule">Sleep Time</label>
-                                    <TimePicker sleepTime={profile.sleepTime} />
-                                </div>
-                            </div>
                         </div>
                         <div className="row">
                             <div className="col-12">
@@ -1335,63 +1370,68 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
                         </div>
-                        <div className="input-box mt-1">
-                            <h6 className='mb-3'>Sleep Quality</h6>
-                            <div className="gender flex-column ">
-                                {['Excellent', 'Good', 'Average', 'Poor', 'Terrible'].map((option) => (
-                                    <div className="option m-1 d-flex" key={option}>
-                                        <input
-                                            type="radio"
-                                            id={option}
-                                            name="sleepQuality"
-                                            value={option}
-                                            className='custom-radio'
-                                            checked={profile.sleepQuality === option}
-                                            onChange={handleInputChange}
-                                            onBlur={handleSubmitData}
+                        <div className="row">
+                            <div className="col-6">
+                                <div className="input-box mt-1">
+                                    <h6 className='mb-3'>Sleep Quality</h6>
+                                    <div className="gender flex-column ">
+                                        {['Excellent', 'Good', 'Average', 'Poor', 'Terrible'].map((option) => (
+                                            <div className="option m-1 d-flex" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="sleepQuality"
+                                                    value={option}
+                                                    className='custom-radio'
+                                                    checked={profile.sleepQuality === option}
+                                                    onChange={handleInputChange}
+                                                    onBlur={handleSubmitData}
 
-                                        />
-                                        <label htmlFor={option} className="form-check-label">
-                                            {option.charAt(0).toUpperCase() + option.slice(1)}
-                                        </label>
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                            {errors.sleepQuality && (
-                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                    {errors.sleepQuality}
+                                    {errors.sleepQuality && (
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            {errors.sleepQuality}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                            <div className="col-6">
+                                <div className="input-box mt-3">
+                                    <h6 className='mb-3'>Energy Level</h6>
+                                    <div className="gender flex-column ">
+                                        {['very-high', 'High', 'moderate', 'Low', 'Very-Low'].map((option) => (
+                                            <div className="option m-1 d-flex" key={option}>
+                                                <input
+                                                    type="radio"
+                                                    id={option}
+                                                    name="energyLevel"
+                                                    className='custom-radio'
+                                                    value={option}
+                                                    checked={profile.energyLevel === option}
+                                                    onChange={handleInputChange}
+                                                    onBlur={handleSubmitData}
 
-                        <div className="input-box mt-3">
-                            <h6 className='mb-3'>Energy Level</h6>
-                            <div className="gender flex-column ">
-                                {['very-high', 'High', 'moderate', 'Low', 'Very-Low'].map((option) => (
-                                    <div className="option m-1 d-flex" key={option}>
-                                        <input
-                                            type="radio"
-                                            id={option}
-                                            name="energyLevel"
-                                            className='custom-radio'
-                                            value={option}
-                                            checked={profile.energyLevel === option}
-                                            onChange={handleInputChange}
-                                            onBlur={handleSubmitData}
 
-
-                                        />
-                                        <label htmlFor={option} className="form-check-label">
-                                            {option.charAt(0).toUpperCase() + option.slice(1)}
-                                        </label>
+                                                />
+                                                <label htmlFor={option} className="form-check-label">
+                                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                                </label>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                            {errors.energyLevel && (
-                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                    {errors.energyLevel}
+                                    {errors.energyLevel && (
+                                        <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
+                                            {errors.energyLevel}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+                            </div>
                         </div>
                     </div>
                 </div>
