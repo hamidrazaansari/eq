@@ -15,6 +15,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from 'moment';
+import dayjs from 'dayjs';
+
 
 function MyProfile() {
     const [profile, setProfile] = useState({
@@ -34,14 +36,14 @@ function MyProfile() {
     });
     const [isEditable, setIsEditable] = useState(false);
 
-    const [errors , setErrors] = useState({
-        firstName:'',
-        lastName:'',
-        email:'',
-        countryCode:'',
-        mobile:'',
-        gender:'',
-        dob:'',
+    const [errors, setErrors] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        countryCode: '',
+        mobile: '',
+        gender: '',
+        dob: '',
 
     })
 
@@ -81,7 +83,7 @@ function MyProfile() {
 
         }));
     };
-    
+
     // Update profile data
     const handleUpdateProfile = async () => {
         const { countryCode, createdAt, email, facebook, instagram, linkedin, mobile, status, updatedAt, x, youtube, _id, ...filteredProfile } = profile;
@@ -110,20 +112,20 @@ function MyProfile() {
         }
     };
 
-        const handleDateChange = (name) => {
-            const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
-            setProfile((prevState) => ({
-                ...prevState,
-                dob: formatedeDate,
-            }));
-        };
-    
-        const handleCodeChange = (code) => {
-            setProfile((prevState) => ({
-                ...prevState,
-                countryCode: code,
-            }));
-        }
+    const handleDateChange = (name) => {
+        const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
+        setProfile((prevState) => ({
+            ...prevState,
+            dob: formatedeDate,
+        }));
+    };
+
+    const handleCodeChange = (code) => {
+        setProfile((prevState) => ({
+            ...prevState,
+            countryCode: code,
+        }));
+    }
 
     return (
         <div className='my-profile'>
@@ -225,10 +227,19 @@ function MyProfile() {
                                         <label htmlFor="dob" className='dobLabal'>DOB</label>
                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                                             <DatePicker
-                                                label={moment(profile.dob).format('MM/DD/YYYY')}
-
+                                                value={profile.dob ? dayjs(profile.dob) : null} // Convert profile.dob to Day.js object
                                                 onChange={handleDateChange}
-                                                renderInput={(params) => <TextField {...params} fullWidth  />}
+                                                format="DD/MM/YYYY"
+                                                renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        fullWidth
+                                                        placeholder="Select Date"
+                                                        variant="outlined"
+                                                        hiddenLabel
+                                                        sx={{ '& .MuiInputBase-root': { padding: 0 } }}
+                                                    />
+                                                )}
                                             />
                                         </LocalizationProvider>
                                     </div>

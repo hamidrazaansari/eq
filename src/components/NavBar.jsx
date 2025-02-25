@@ -31,7 +31,6 @@ function NavBar() {
   }, [token]);
 
 
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top">
@@ -54,7 +53,7 @@ function NavBar() {
                 <Link className="nav-link" to={'/tolktoexpert'}>Talk To A Yoga Expert</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={'/tolktoexpert'}>Corporate Wellness</Link>
+                <Link className="nav-link" to={'/'}>Corporate Wellness</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={'/faq'}>FAQ</Link>

@@ -7,35 +7,57 @@ import axios from 'axios';
 import { API_URL } from '../utills/BaseUrl';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import AddBookingTimeSlot from './AddBookingTimeSlot';
 
 function SlotForm() {
   const [visible , setVisible] = useState(false);
   const [data, setData] = useState('');
   const [bookingTimeSlotId, setBookingTimeSlotId] = useState('');
+  const [category, setCategory] = useState('');
   const navigate = useNavigate();
+
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${API_URL}/bookingTimeSlots?displayOrder=ASC`)
+      const token = localStorage.getItem('authToken');
+
+      const response = await axios.get(`${API_URL}/bookings/myBookings/${id}` , {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+      },
+      })
+      setCategory(response.data?.body)
+    }
+    fetchData()
+  }, [])
+
+  
+
+  
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(`${API_URL}/bookingTimeSlots?displayOrder=ASC&category=${category?.category._id}`)
       setData(response.data?.body)
     }
     fetchData()
   }, [])
 
+  console.log( 'data',  data);
+  
       const location = useLocation();
     
       // Parse the query parameters
       const queryParams = new URLSearchParams(location.search);
       const id = queryParams.get("id");
 
-      console.log(id);
-
   const handleChange = (_id)=>{
 
     setBookingTimeSlotId(_id);
     setVisible(true); 
   }
-console.log(bookingTimeSlotId);
+
+
 const handleSubmit = async() =>{
    const token = localStorage.getItem('authToken');
 
@@ -60,7 +82,12 @@ const handleSubmit = async() =>{
 }
 
   return (
-    <div className='slotForm'>
+    <>
+    {
+      (!data || data.length === 0)  ? 
+      <AddBookingTimeSlot category={category} id={id}/>
+      :
+      <div className='slotForm'>
       <ToastContainer/>
       <div className="container">
         <div className="profile">
@@ -111,6 +138,9 @@ const handleSubmit = async() =>{
         </div>
       </div>
     </div>
+    }
+
+    </>
   )
 }
 

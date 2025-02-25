@@ -17,6 +17,7 @@ import { IoPlayCircleOutline } from "react-icons/io5";
 import YogaVid from '../assets/image/yoga-testi-8.mp4'
 import { Modal } from 'react-bootstrap';
 import { ImCancelCircle } from "react-icons/im";
+import { UrlContainer } from '../context/UrlContainer';
 
 
 
@@ -24,6 +25,10 @@ function Hero() {
     const [inView, setInView] = useState(false);
     const [show, setShow] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+
+    // const { previous, current } = useUrlHistory();
+
+    console.log(localStorage.getItem('urlHistory'));
 
     const toggleContent = () => {
         setIsExpanded((prev) => !prev);
@@ -43,6 +48,7 @@ function Hero() {
 
     return (
         <div>
+            <UrlContainer/>
 
             <NavBar />
             <section className="hero">

@@ -77,8 +77,9 @@ color: #fff !important;
     right: 45px;
 }
 
+
 .profile, .address {
-    padding: 20px 30px 40px;
+    padding: 20px 30px 40px !important;
     /* border: 1px solid #66666680; */
     margin: 20px 0;
     border-radius: 8px;
@@ -649,4 +650,12 @@ margin-bottom: 20px;
     color: #000000a8;
     margin: 20px;
     border: none;
+}
+.profile .MuiFormControl-root{
+    width: 97% !important;
+    bottom: 10px;
+}
+.dob .dobLabal{
+    font-family: futuramdbt;
+    top: 0px;
 }

@@ -471,3 +471,17 @@ input[type="radio"]:checked+.custom-radio::after {
     position: relative;
     z-index: 1; /* Ensure it's below the loading screen */
 }
+
+.slotSubmitBtn{
+    float: right;
+    background-color: #006D5A;
+    border: none;
+    color: #fff;
+    padding: 5px 30px;
+    margin-bottom: 10px;
+    position: relative;
+    bottom: 20px;
+    border-radius: 5px;
+    font-family: futuramdbt !important;
+
+}

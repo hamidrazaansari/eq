@@ -17,6 +17,7 @@ import { useParams  ,Link } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser'
 import { API_URL } from '../utills/BaseUrl';
+import { UrlContainer } from '../context/UrlContainer';
 
 // Custom Prev Arrow
 const PrevArrow = (props) => {
@@ -45,6 +46,8 @@ function ProgramDetails() {
     const [loading , setLoading] = useState(true);
 
     const {id} = useParams();
+
+    console.log(localStorage.getItem('urlHistory'));
 
     useEffect(() => {
         axios.get(`${API_URL}/programs/${id}`)
@@ -108,6 +111,7 @@ function ProgramDetails() {
   ];
   return (
     <div>
+      <UrlContainer/>
       <NavBar />
       <section className='program-details' ref={programDetailsRef} >
         <div className="container">
@@ -141,31 +145,51 @@ function ProgramDetails() {
             <Accordion.Item eventKey="0">
               <Accordion.Header>
                 <div className="row w-100">
-                  <div className="col-4 d-flex align-items-center justify-content-start">
+                  <div className="col-12 d-flex align-items-center justify-content-start">
                     <h4 className='active'>About the Plans</h4>
-                  </div>
-                  <div className="col-4 d-flex align-items-center justify-content-center">
-                    <h4>Highlights</h4>
-                  </div>
-                  <div className="col-4 d-flex align-items-center justify-content-center">
-                    <h4>Requirments</h4>
                   </div>
                 </div>
               </Accordion.Header>
               <Accordion.Body>
                 <div className="row w-100">
-                  <div className="col-4 ">
+                  <div className="col-12 ">
                     <div className="about-plan ">
                       {parse(data && data.descriptions) }
                     </div>
 
                   </div>
-                  <div className="col-4">
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>
+                <div className="row w-100">
+                  <div className="col-12 d-flex align-items-center justify-content-start">
+                    <h4 className='active'>Conclusion</h4>
+                  </div>
+                </div>
+              </Accordion.Header>
+              <Accordion.Body>
+                <div className="row w-100">
+               <div className="col-4">
                     <div className="about-plan ">
                       {parse(data && data.highlights)}
                     </div>
                   </div>
-                  <div className="col-4 ">
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>
+                <div className="row w-100">
+                  <div className="col-12 d-flex align-items-center justify-content-start">
+                    <h4 className='active'>Requirements</h4>
+                  </div>
+                </div>
+              </Accordion.Header>
+              <Accordion.Body>
+                <div className="row w-100">
+                <div className="col-4 ">
                     <div className="about-plan border-0 ">
                       {
                         data.requirements && data.requirements.map((req)=>{

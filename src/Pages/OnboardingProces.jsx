@@ -12,8 +12,10 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
     const [apiData, setApiData] = useState(myData)
     const [currentItem, setCurrentItem] = useState(null)
     const [currenIndex, setCurrentIndex] = useState(-1)
+    const [isLoading, setIsLoading] = useState(false)
 
-
+    console.log(apiData);
+    
 
     const { id } = useParams();
 
@@ -50,9 +52,6 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
     }
 
 
-    console.log(currenIndex);
-
-
     const handleGoToNextStep = async (id, isCompleted) => {
         try {
             const response = await axios.put(`${API_URL}/bookings/myBookings/updateOnboardingStep/${programId}`, {
@@ -80,10 +79,10 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
 
     //  currentItem = apiData[step]; 
 
-    const handleOpenLinks = (link) => {
-        console.log(link);
-        navigate(`/${link}`, { state: { id } })
-    }
+    // const handleOpenLinks = (link) => {
+    //     console.log(link);
+    //     navigate(`/${link}`, { state: { id } })
+    // }
 
     useEffect(() => {
         if (step >= apiData.length) {
@@ -93,30 +92,34 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
     }, [step, apiData]);
 
 
-    const handleDownload = (e, url) => {
-        e.preventDefault()
+    const handleDownload = async (e, url) => {
+        e.preventDefault();
+        setIsLoading(true); // Start loading
 
-        // Extract the file ID dynamically
-        const match = url.match(/\/d\/(.+?)\//);
-        const fileId = match ? match[1] : null;
+        try {
+            // Extract the file ID dynamically
+            const match = url.match(/\/d\/(.+?)\//);
+            const fileId = match ? match[1] : null;
 
-        if (fileId) {
-            const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+            if (fileId) {
+                const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
-            // Create a temporary anchor element
-            const a = document.createElement("a");
-            a.href = downloadUrl;
-            a.setAttribute("download", ""); // Instructs browser to download
-            document.body.appendChild(a);
-            a.click(); // Trigger download
-            document.body.removeChild(a); // Clean up
-
-        } else {
-            console.error("Invalid Google Drive URL");
+                // Create a temporary anchor element
+                const a = document.createElement("a");
+                a.href = downloadUrl;
+                a.setAttribute("download", ""); // Instructs browser to download
+                document.body.appendChild(a);
+                a.click(); // Trigger download
+                document.body.removeChild(a); // Clean up
+            } else {
+                console.error("Invalid Google Drive URL");
+            }
+        } catch (error) {
+            console.error("Error downloading file:", error);
+        } finally {
+            setTimeout(() => setIsLoading(false), 2000); // Stop loading after delay
         }
     };
-
-
 
     return (
         <div className="process-page">
@@ -149,18 +152,21 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
                                 <div className="d-flex align-items-center justify-content-center">
                                     {currentItem.linkUrl?.includes('calendly.com') ? (
                                         <div className='w-100'>
-                                        <Calendally
-                                            url={currentItem.linkUrl}
-                                            handleGoToNextStep={handleGoToNextStep}
-                                            currentItemId={currentItem._id}
-                                            currentItemIsComp={currentItem.isCompleted}
-                                        />
+                                            <Calendally
+                                                url={currentItem.linkUrl}
+                                                handleGoToNextStep={handleGoToNextStep}
+                                                currentItemId={currentItem._id}
+                                                currentItemIsComp={currentItem.isCompleted}
+                                            />
                                         </div>
                                     ) : (
                                         <>
                                             {currentItem.isDownloadable === 'true' ? (
-                                                <Link className="button" onClick={(e) => handleDownload(e, currentItem.linkUrl)}>
+                                                <Link className="button d-flex align-items-center justify-content-center" onClick={(e) => handleDownload(e, currentItem.linkUrl)}>
                                                     {currentItem.linkText}
+                                                    {isLoading ? <div class="spinner-border text-light ms-3 spinner-border-sm" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>: '' }
                                                 </Link>
                                             ) : currentItem.linkText ? (
                                                 <Link className="button" to={`${currentItem.linkUrl}?id=${id}`}>

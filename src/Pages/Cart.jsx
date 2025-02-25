@@ -16,6 +16,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from 'moment';
+import dayjs from 'dayjs';
+
 
 
 
@@ -31,18 +33,25 @@ function Cart() {
   const [discountPrice, setDisCountPrice] = useState(null);
   const [discountPercentage, setDiscountPercentage] = useState(null);
   const [show, setShow] = useState(false);
-  
+
 
   // Handlers for showing and hiding the modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
-
-
   const { id } = useParams();
   const token = localStorage.getItem('authToken');
   const navigate = useNavigate()
+
+  useEffect(()=>{
+    if (token) {
+      navigate(`/cart/${id}`)
+    }
+    else {
+      navigate('/signup')
+    }
+  } , [])
 
   const handleProgramChange = (value) => {
     setSelectedProgram(value);
@@ -84,10 +93,10 @@ function Cart() {
     if (event.target.checked) {
       handleShow();
     }
-    else{
+    else {
       handletermchange(event)
-        }
-    };
+    }
+  };
 
   const handletermchange = (e) => {
     setIsSubscribed(e.target.checked);
@@ -217,10 +226,10 @@ function Cart() {
     setProfile({ ...profile, countryCode: code })
   };
 
-    const handleDateChange = (name) => {
-        const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
-        setProfile({ ...profile, dob: formatedeDate })
-      };
+  const handleDateChange = (name) => {
+    const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
+    setProfile({ ...profile, dob: formatedeDate })
+  };
   return (
     <div className="Cart">
       <ToastContainer />
@@ -241,9 +250,9 @@ function Cart() {
                   <div className="col-lg-6">
                     <div className="d-flex">
                       <button className='save-btn'>Save {discountPercentage}%</button>
-                      <p className='price'>₹{data.salePriceInr}.00</p>
+                      <p className='price'>₹{data.salePriceInr}</p>
                     </div>
-                    <p className='cut-price'>₹{data.mrpInr}.00</p>
+                    <p className='cut-price'>₹{data.mrpInr}</p>
                   </div>
                 </div>
                 {data.plan?.allowSubscription && (
@@ -380,31 +389,29 @@ function Cart() {
                     </div>
                     <div className="col-6 p-0">
                       <div className="">
-                      <label htmlFor="date" className='dob-labal'>DOB</label>
+                        <label htmlFor="date" className="dob-label">DOB</label>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <DatePicker
-                            label={moment(profile.dob).format('MM/DD/YYYY')}
-                            inputFormat="dd/MM/yyyy"
-
-                            // value={moment('MM/DD/YYYY').format(dob)}
+                            value={profile.dob ? dayjs(profile.dob) : null} // Convert profile.dob to Day.js object
                             onChange={handleDateChange}
+                            format="DD/MM/YYYY"
                             renderInput={(params) => (
                               <TextField
                                 {...params}
                                 fullWidth
                                 placeholder="Select Date"
-                                variant="outlined" 
-                                hiddenLabel // Prevent label space reservation
-                                sx={{ '& .MuiInputBase-root': { padding: 0 } }} // Customize padding if needed
+                                variant="outlined"
+                                hiddenLabel
+                                sx={{ '& .MuiInputBase-root': { padding: 0 } }}
                               />
                             )}
                           />
                         </LocalizationProvider>
                         {formError.dob && (
-                          <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "327px" , left:"31px" }}>
+                          <div style={{ color: 'red', fontSize: '10px', position: 'absolute', top: '327px', left: '31px' }}>
                             {formError.dob}
                           </div>
-                        )} 
+                        )}
                       </div>
                     </div>
                     <div className="col-6">
@@ -434,7 +441,6 @@ function Cart() {
                         )}
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -472,7 +478,7 @@ function Cart() {
                     {
                       isSubscribed
                         ? subcriptionCal
-                        : '0.00'
+                        : '0'
                     }
                   </span>
                 </div>

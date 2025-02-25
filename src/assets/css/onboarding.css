@@ -35,9 +35,13 @@
 .welcome-onboard h2{
     color: #000;
 }
-.welcome-onboard p{
+.welcome-onboard p {
     color: #00000099;
-    line-height: 10px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.welcome-onboard h4 strong{
+    color: #000 !important;
 }
 .welcome-onboard h3{
     font-size: 20px;

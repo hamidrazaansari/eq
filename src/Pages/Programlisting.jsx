@@ -15,6 +15,7 @@ import axios from 'axios'
 import parse from 'html-react-parser';
 import { API_URL } from '../utills/BaseUrl'
 import getImageURL from '../utills/getImageURL';
+import { UrlContainer } from '../context/UrlContainer'
 
 // Custom Prev Arrow
 const PrevArrow = (props) => {
@@ -40,6 +41,9 @@ const PrevArrow = (props) => {
 function Programlisting() {
     const [data , setData] = useState('')
     const [loading , setLoading] = useState(true);
+
+    console.log(localStorage.getItem('urlHistory'));
+
 
     const {id} = useParams();
 
@@ -68,6 +72,7 @@ function Programlisting() {
     
     return (
         <div className='personalize-program' >
+            <UrlContainer/>
             <NavBar />
             <section >
                 <div className="container px-5">

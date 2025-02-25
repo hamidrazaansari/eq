@@ -41,6 +41,8 @@ import NutritionConsultation from './components/NutritionConsultation'
 import AddBookingTimeSlot from './components/AddBookingTimeSlot'
 import ImportantLinks from './components/ImportantLinks'
 import OnboardingStep from './components/OnboardingStep'
+import NewBackup from './components/NewBackup'
+import { TimePicker } from './components/TimePicker'
 function App() {
 
   return (
@@ -193,10 +195,7 @@ function App() {
         path='/nutritionConsultation'
         element ={<NutritionConsultation/>}
       />
-      <Route 
-        path='/addBookingTimeslot'
-        element ={<AddBookingTimeSlot/>}
-      />
+
       <Route 
         path='/myLinks'
         element ={<ImportantLinks/>}
@@ -204,6 +203,14 @@ function App() {
       <Route 
         path='/onboarding-step'
         element ={<OnboardingStep/>}
+      />
+      <Route 
+        path='/test'
+        element ={<NewBackup/>}
+      />
+      <Route 
+        path='/time'
+        element ={<TimePicker/>}
       />
 
     </Routes>

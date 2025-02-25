@@ -307,10 +307,7 @@
 .termConditionModal .modal-content h1 span{
     color: #000;
 }
-.Cart .css-1b1fjlj-MuiFormControl-root-MuiTextField-root{
-    width: 90%;
-    margin-left: 12px;
-}
+
 .MuiFormLabel-root{
     top: 8px !important;
 }
@@ -318,4 +315,17 @@
     color: #000;
     font-family: 'futuramdbt';
     margin-left: 15px;
+}
+.Cart .dob-labal {
+    color: #000;
+    font-family: futuramdbt;
+    margin-left: 15px;
+    position: relative;
+    bottom: 9px;
+}
+.MuiFormLabel-root{
+    width: 90%;
+    position: relative;
+    bottom: 10px;
+    margin-left: 10px;
 }

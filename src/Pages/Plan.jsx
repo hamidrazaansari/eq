@@ -10,6 +10,7 @@ import parse from 'html-react-parser'
 import { ImFire } from "react-icons/im";
 import { Modal, Button } from "react-bootstrap";
 import { RxCross2 } from "react-icons/rx";
+import { UrlContainer } from '../context/UrlContainer';
 
 
 
@@ -69,6 +70,9 @@ function Plan() {
     setActiveTab(tab);
   };
 
+  console.log(localStorage.getItem('urlHistory'));
+
+
   const handleCompare = (programId, program) => {
     setMain(program);
 
@@ -87,18 +91,13 @@ function Plan() {
   };
 
   const handleGoToCart = (programid) => {
-    if (token) {
       navigate(`/cart/${programid}`)
-    }
-    else {
-      navigate('/signup')
-    }
-
   }
   
 
   return (
     <div>
+      <UrlContainer/>
 
       {/* Modal */}
       <div className="">

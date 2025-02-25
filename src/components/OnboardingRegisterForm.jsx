@@ -13,6 +13,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from 'moment';
 import { TimePicker } from './TimePicker'
+import dayjs from 'dayjs';
+
 
 
 
@@ -115,20 +117,18 @@ function OnboardingRegisterForm() {
         energyLevel: '',
     });
 
-    console.log(profile);
-
-
+    const isProfileIncomplete = () => {
+        return Object.values(profile).some(value => value === "" || value === []);
+    };
 
     // Handle input changes for all fields
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-
         // Update profile state
         setProfile((prevState) => ({
             ...prevState,
             [name]: value,
         }));
-        console.log(name);
 
     };
     const handleInputNameChange = (e) => {
@@ -177,7 +177,7 @@ function OnboardingRegisterForm() {
             } else {
                 return {
                     ...prev,
-                    favoriteWorkouts: updatedGoals.filter((goal) => goal !== value) // Remove unchecked goal
+                    favoriteWorkouts: updatedGoals.filter((goal) => goal !== value)
                 };
             }
 
@@ -186,7 +186,7 @@ function OnboardingRegisterForm() {
 
         // Clear "Other" input when unchecked
         if (value === "Other") {
-            setOtherFavWorkout(checked ? "" : ""); // Reset when checked, clear when unchecked
+            setOtherFavWorkout(checked ? "" : ""); 
         }
     };
     const handleOtherWorkoutChange = (event) => {
@@ -330,7 +330,7 @@ function OnboardingRegisterForm() {
 
             );
             if (resp.status === 200) {
-                toast.success('Form Submitted..')
+                toast.success('Data Saved in Draft..')
 
             }
         } catch (error) {
@@ -524,11 +524,19 @@ function OnboardingRegisterForm() {
                                     <label htmlFor="dob" className='dobLabal'>DOB</label>
                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                                         <DatePicker
-                                            label={moment(profile.dob).format('MM/DD/YYYY')}
-
+                                            value={profile.dob ? dayjs(profile.dob) : null} // Convert profile.dob to Day.js object
                                             onChange={handleDateChange}
-                                            onBlur={handleSubmitData}
-                                            renderInput={(params) => <TextField {...params} fullWidth />}
+                                            format="DD/MM/YYYY"
+                                            renderInput={(params) => (
+                                                <TextField
+                                                    {...params}
+                                                    fullWidth
+                                                    placeholder="Select Date"
+                                                    variant="outlined"
+                                                    hiddenLabel
+                                                    sx={{ '& .MuiInputBase-root': { padding: 0 } }}
+                                                />
+                                            )}
                                         />
                                     </LocalizationProvider>
                                 </div>
@@ -775,36 +783,37 @@ function OnboardingRegisterForm() {
 
                     </div>
                     <div className="profile">
-
                         <h2 className='mb-3'>Were you ever detected with Covid</h2>
                         <div className="input-box">
                             <div className="d-flex align-items-start justify-content-start flex-column">
-                                {['Yes', 'No'].map((option) => (
-                                    <div className="genderOpt m-1" key={option}>
-                                        <input
-                                            type="radio"
-                                            id={option}
-                                            name="covidDetected"
-                                            className='custom-radio'
-                                            value={option}
-                                            checked={profile.covidDetected === option}
-                                            onChange={handleInputChange}
-                                            onBlur={handleSubmitData}
-
-                                        />
-                                        <label htmlFor={option} className="form-check-label">
-                                            {option.charAt(0).toUpperCase() + option.slice(1)}
-                                        </label>
-                                    </div>
-                                ))}
-                            </div>
-                            {/* {errors.covidDetected && (
-                                <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
-                                    {errors.covidDetected}
+                                <div className="genderOpt m-1">
+                                    <input
+                                        type="radio"
+                                        id="true"
+                                        name="covidDetected"
+                                        className="custom-radio"
+                                        value={true}  // ✅ Pass Boolean value
+                                        checked={profile.covidDetected} // ✅ Compare as Boolean
+                                        onChange={handleInputChange}
+                                        onBlur={handleSubmitData}
+                                    />
+                                    <label htmlFor="true" className="form-check-label">Yes</label>
                                 </div>
-                            )} */}
+                                <div className="genderOpt m-1">
+                                    <input
+                                        type="radio"
+                                        id="false"
+                                        name="covidDetected"
+                                        className="custom-radio"
+                                        value={false}  // ✅ Pass Boolean value
+                                        checked={profile.covidDetected} // ✅ Compare as Boolean
+                                        onChange={handleInputChange}
+                                        onBlur={handleSubmitData}
+                                    />
+                                    <label htmlFor="false" className="form-check-label">No</label>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                     <div className="profile">
                         <h2 className="mb-3">Workout frequency</h2>
@@ -856,7 +865,6 @@ function OnboardingRegisterForm() {
                             )}
                         </div>
                     </div>
-
                     <div className="profile">
                         <h2 className="mb-3">Favorite Workout Format</h2>
 
@@ -904,7 +912,6 @@ function OnboardingRegisterForm() {
                             </div>
                         )}
                     </div>
-
                     <div className="profile">
                         <h2 className="mb-3">Fitness Goal</h2>
 
@@ -936,7 +943,7 @@ function OnboardingRegisterForm() {
                         ))}
 
                         {/* Show input field when "Other" is selected */}
-                        {profile.fitnessGoals?.includes("Other") &&(
+                        {profile.fitnessGoals?.includes("Other") && (
                             <div className="mt-2">
                                 <input
                                     type="text"
@@ -1148,7 +1155,7 @@ function OnboardingRegisterForm() {
                             </div>
                         ))}
                         {/* Show input field when "Other" is selected */}
-                        {profile.dailyBeverage?.includes("Other") &&(
+                        {profile.dailyBeverage?.includes("Other") && (
                             <div className="mt-2">
                                 <input
                                     type="text"
@@ -1267,7 +1274,6 @@ function OnboardingRegisterForm() {
                             )}
                         </div>
                     </div>
-
                     <div className="profile">
 
                         <h2 className='mb-3'>How did you get to know about us?</h2>
@@ -1444,7 +1450,7 @@ function OnboardingRegisterForm() {
                                 {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, placeat.</p>F */}
                             </div>
                             <div>
-                                <button className='submit' onClick={handleSubmitData}>Submit</button>
+                                <button className='submit' onClick={handleSubmitData} disabled={isProfileIncomplete()}>Submit</button>
                                 <button onClick={handleIwilDOLater}>I will do this later</button>
                             </div>
                         </div>

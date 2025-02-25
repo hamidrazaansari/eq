@@ -66,7 +66,7 @@ function MyBookingDetails() {
                                         {/* <p >Expire in: <span className='text-danger'> 20Days</span></p> */}
                                         <div className="d-flex align-items-center">
                                             <p className='me-1'>Status: </p>
-                                            {data.bookingStatus === "BOOKED" ? <span className='text-success  status-button'>Booked</span> : data.bookingStatus === "CANCELLED" ? <span className=' text-danger'>Cancelled</span> : data.bookingStatus === "EXPIRED" ? <span className=' text-secondary'>Expired</span> : data.bookingStatus === "ACTIVE" ? <span >Active</span> : ''}
+                                            {data.bookingStatus === "BOOKED" ? <span className='text-success  status-button'>Booked</span> : data.bookingStatus === "CANCELLED" ? <span className=' text-danger'>Cancelled</span> : data.bookingStatus === "EXPIRED" ? <span className=' text-secondary'>Expired</span> : data.bookingStatus === "ACTIVE" ? <span  style={{color:"#f9b115"}} >Active</span> : ''}
                                         </div>
 
                                     </div>

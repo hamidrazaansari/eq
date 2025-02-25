@@ -25,8 +25,8 @@ function ImportantLinks() {
                                 </div>
                                 <div className="my-Links">
                                     <button onClick={()=> navigate('/onboarding-registration')} style={{ backgroundColor: "#FBFFE9" }}>Onboarding Registration Form</button>
-                                    <button onClick={()=> navigate('/booking-time-slot')}  style={{ backgroundColor: "#E9F7FF" }}>Booking Time Slot</button>
-                                    <button onClick={()=> navigate('/onboarding-step')} style={{ backgroundColor: "#FFF7E9" }}>Onboarding Steps</button>
+                                    {/* <button onClick={()=> navigate('/booking-time-slot')}  style={{ backgroundColor: "#E9F7FF" }}>Booking Time Slot</button>
+                                    <button onClick={()=> navigate('/onboarding-step')} style={{ backgroundColor: "#FFF7E9" }}>Onboarding Steps</button> */}
                                 </div>
                             </div>
                         </div>

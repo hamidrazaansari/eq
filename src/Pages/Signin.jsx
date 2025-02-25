@@ -41,7 +41,7 @@ function Signin() {
       login(userToken)
       // Success alert and navigation
       setTimeout(() => {
-        navigate(-2 , {replace: true} );
+        navigate(-3 , {replace:true} );
       }, 800)
     } catch (error) {
       setIsLogin(false);

@@ -312,13 +312,23 @@ button:disabled {
     padding: 0 !important;
 }
 
-.MuiInputBase-root{
+ .MuiInputBase-root{
     outline: none !important;
     box-shadow: none !important;
     border: 1px solid #8d8d8d !important;
     padding-top: 0 !important;  
     margin-top: 20px !important;  
     border-radius: 6px !important;
+
+}
+.Cart  .MuiInputBase-root{
+    width: 93% !important;
+    left: 12px !important;
+}
+
+.dob-label {
+    font-family: futuramdbt;
+    margin-left: 12px;
 }
 .Mui-focused{
     outline: none !important;
@@ -353,4 +363,7 @@ button:disabled {
 .MuiInputBase-input {
     padding: 10px !important;
     margin-top: 20px;
+}
+.sign-in .dob .dobLabal{
+    top: 18px;
 }
