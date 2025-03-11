@@ -51,11 +51,10 @@ function MyBookingDetails() {
             <NavBar />
             <div className="container">
                 <div className="row">
-                    <div className="col-3">
-                        <DashboardSidebar
-                        />
+                    <div className="col-lg-3">
+                        <DashboardSidebar/>
                     </div>
-                    <div className="col-9">
+                    <div className="col-lg-9">
                         <div className='my-booking mt-5 py-5'>
                             <div className="container ">
                                 <div className="header my-3 mt-4" >
@@ -68,7 +67,6 @@ function MyBookingDetails() {
                                             <p className='me-1'>Status: </p>
                                             {data.bookingStatus === "BOOKED" ? <span className='text-success  status-button'>Booked</span> : data.bookingStatus === "CANCELLED" ? <span className=' text-danger'>Cancelled</span> : data.bookingStatus === "EXPIRED" ? <span className=' text-secondary'>Expired</span> : data.bookingStatus === "ACTIVE" ? <span  style={{color:"#f9b115"}} >Active</span> : ''}
                                         </div>
-
                                     </div>
                                     <div className='d-flex align-items-end justify-content-end flex-column '>
                                         <h3>₹{data.totalAmount}</h3>
@@ -102,7 +100,7 @@ function MyBookingDetails() {
                                             </div>
                                         </div>
 
-                                        <div className="col-4">
+                                        <div className="col-lg-4">
                                             <div className="status-box">
                                                 <h2>Status</h2>
                                                 {data.bookingStatus === "BOOKED" ? <button>Booked</button> : data.bookingStatus === "CANCELLED" ? <button className='bg-danger text-light'>Cancelled</button> : data.bookingStatus === "EXPIRED" ? <button className='bg-secondary text-light'>Expired</button> : data.bookingStatus === "ACTIVE" ? <button >Active</button> : ''}
@@ -142,7 +140,7 @@ function MyBookingDetails() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-8">
+                                        <div className="col-lg-8">
                                             <Tabs
                                                 defaultActiveKey="profile"
                                                 id="uncontrolled-tab-example"

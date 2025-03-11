@@ -54,7 +54,7 @@ function TimeSlot() {
                             <div></div>
                             <button className='help-btn'><IoMdHelpCircleOutline /> Help</button>
                         </div>
-                        <div className="row mt-3 px-5">
+                        <div className="row mt-3 px-5 mobile-padding">
                             <div className="col-2"><div className="step"></div></div>
                             <div className="col-2"><div className="step"></div></div>
                             <div className="col-2"><div className="step"></div></div>
@@ -70,7 +70,7 @@ function TimeSlot() {
                             <h2 className='mb-0'>Time Slots In IST</h2>
                             <p className='text-center mb-5'>Lorem ipsum dolor sit amet, consectetur</p>
                         </div>
-                        <div className="row d-flex align-items-center justify-content-center mx-auto" style={{ width: "60%" }}>
+                        <div className="row d-flex align-items-center justify-content-center mx-auto custome-width" style={{ width: "60%" }}>
 
                             {
                                timeSlots && timeSlots.map((slot) => {

@@ -54,7 +54,7 @@ function Hero() {
             <section className="hero">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 col-12">
                             <div className="texts">
                                 <h1 className='heading'>Equilibrium Yoga <span>By Gunjan Kamra</span></h1>
                                 <p className='para'>Holistic Wellness Solutions For Individuals And Corporates                                </p>
@@ -65,7 +65,7 @@ function Hero() {
                             </div>
 
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 col-12">
                             <div className="img">
                                 <img src={YogaImg} alt="yoga image" />
                             </div>
@@ -78,11 +78,9 @@ function Hero() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
-                            <ScrollAnimation
-                                animateIn="fadeInUp"
-                            >
-                                <img src={AboutImg} alt="yoga image for about" />
-                            </ScrollAnimation>
+                        <ScrollAnimation animateIn="fadeInUp">
+                            <img src={AboutImg} alt="yoga image for about" />
+                        </ScrollAnimation>
                         </div>
                         <div className="col-lg-6">
                             <ScrollAnimation animateIn="fadeInUp">
@@ -155,7 +153,7 @@ function Hero() {
                     <div className="container">
                         <ScrollAnimation animateIn="fadeIn">
                             <div className="row px-5">
-                                <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
+                                <div className="col-lg-3 d-flex align-items-start align-items-lg-center justify-content-lg-center justify-content-start flex-column">
                                     <h3>
                                         {inView && (
                                             <CountUp end={10000} />
@@ -163,7 +161,7 @@ function Hero() {
                                     <p style={{marginRight: "22px"}}>Individuals Trained  </p>
                                     <p> </p>
                                 </div>
-                                <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
+                                <div className="col-lg-3 d-flex align-items-start align-items-lg-center justify-content-lg-center justify-content-start flex-column">
                                     <h3>
                                         {inView && (
                                             <CountUp end={100} />
@@ -171,7 +169,7 @@ function Hero() {
                                     <p>Influencers and  </p>
                                     <p>Celebrities Transformed </p>
                                 </div>
-                                <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
+                                <div className="col-lg-3 d-flex align-items-start align-items-lg-center justify-content-lg-center justify-content-start flex-column">
                                     <h3>
                                         {inView && (
                                             <CountUp end={1000} />
@@ -179,7 +177,7 @@ function Hero() {
                                     <p>Corporate </p>
                                     <p>Sessions Conducted </p>
                                 </div>
-                                <div className="col-lg-3 d-flex align-items-center justify-content-center flex-column">
+                                <div className="col-lg-3 d-flex align-items-start align-items-lg-center justify-content-start flex-column">
                                     <h3>
                                         {inView && (
                                             <CountUp end={100} />

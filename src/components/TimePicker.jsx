@@ -1,37 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CTimePicker } from "@coreui/react-pro";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import "@coreui/coreui-pro/dist/css/coreui.min.css";
 
-export const TimePicker = () => {
-  const [time, setTime] = useState("");
+export const TimePicker = ({ value, onTimeChange }) => {
+  const [time, setTime] = useState(value || ""); // Ensure state initializes correctly
 
-  const handleTimeChange = (timeObj) => {
-    if (!timeObj) return; 
-
-    let formattedTime;
-
-    if (typeof timeObj === "string") {
-        const match = timeObj.match(/\d{2}:\d{2}/); 
-
-        formattedTime = match ? match[0] : "Invalid Time";
-    } else if (timeObj instanceof Date) {
-        // Convert Date object to HH:mm format
-        formattedTime = timeObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    } else {
-        formattedTime = "Invalid Time";
+  useEffect(() => {
+    if (value) {
+      setTime(value); // Update state if parent value changes
     }
+  }, [value]);
+
+  const handleTimeChange = (time) => {
+    if (!time) return;
+
+    // Convert time to HH:mm format
+    const formattedTime = typeof time === "string" ? time.slice(0, 5) : "";
+
     setTime(formattedTime);
-};
+    onTimeChange(formattedTime); // Send formatted time to parent
+  };
 
   return (
-    <div className="mb-3 mb-sm-0">
-      <CTimePicker
-        locale="en-US"
-        seconds={false}
-        value={time}
-        onTimeChange={handleTimeChange} 
-      />
+    <div className="mb-3">
+      <CTimePicker time={time} seconds={false} onTimeChange={handleTimeChange} />
     </div>
   );
 };

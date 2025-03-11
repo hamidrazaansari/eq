@@ -1,24 +1,26 @@
-
 body {
-	overflow-y: visible;
-	overflow-x: hidden;
+    overflow-y: visible;
+    overflow-x: hidden;
 }
 
 
 #container {
-	height: 100vh;
-	width: 400%; /* Set width based on sections */
-	display: flex;
-	flex-wrap: nowrap;
+    height: 100vh;
+    width: 400%;
+    /* Set width based on sections */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
 }
 
 .horizontal-section {
-	height: 100vh;
-	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column; /* Ensure content stacks vertically */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Ensure content stacks vertically */
 }
 
 .horizontal-section .prog {
@@ -28,7 +30,7 @@ body {
     padding: 20px;
 }
 
-.arrow-point{
+.arrow-point {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,8 +38,10 @@ body {
 }
 
 .img-box img {
-	width: 100%; /* Ensure images are responsive */
-	height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    /* Ensure images are responsive */
+    height: auto;
+    /* Maintain aspect ratio */
 }
 
 .prog .content svg {
@@ -51,31 +55,36 @@ body {
     height: 25px;
     margin-right: 15px;
 }
-.prog .content li{
-	display: flex;
-	align-items: center;
-	justify-content: start;
-	font-family: lightfuturamdbt;
+
+.prog .content li {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-family: lightfuturamdbt;
     font-size: 16px !important;
 }
+
 .programs .content {
     padding: 20px 60px;
     /* margin-top: 75px; */
 }
-.modal-dialog{
-	max-width: 1200px !important;
+
+.modal-dialog {
+    max-width: 1200px !important;
 }
 
-.modal-content{
-	width: 100% !important;
-	margin-top: 100px !important;
-	background-color: #000 !important;
-	height: 500px !important;
+.modal-content {
+    width: 100% !important;
+    margin-top: 100px !important;
+    background-color: #000 !important;
+    height: 500px !important;
 }
-.modal-body{
-	padding: 0 !important;
+
+.modal-body {
+    padding: 0 !important;
 }
-.modal-content button{
+
+.modal-content button {
     position: absolute;
     z-index: 7;
     top: -15px;
@@ -90,7 +99,221 @@ body {
     padding: 0 4px !important;
     padding-bottom: 7px !important;
 }
+
 .program-box .program-img {
     height: 220px;
     width: 170px;
+}
+.pin-spacer {
+    width: 100% !important;
+    padding-bottom: 0 !important;
+}
+
+@media (max-width:992px) {
+    .programs {
+        top: 90vh;
+    }
+
+    .pin-spacer {
+        width: 100% !important;
+        padding-bottom: 0 !important;
+    }
+
+    .programs h2 {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+
+    .arrow img {
+        height: 28px;
+        position: absolute;
+        left: 64px;
+        top: 34px;
+    }
+
+    .arrow-point img {
+        height: 10px;
+        position: absolute;
+        bottom: 29px;
+        left: 106px;
+    }
+
+    .programs .img-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 226px !important;
+
+    }
+
+    .programs .img-box img {
+        height: 100%;
+        width: 300px;
+        object-fit: contain;
+        margin-top: 12px;
+    }
+
+    .programs .content {
+        padding: 0px 9px;
+        width: 100%;
+    }
+
+    .programs .content h3 {
+        font-size: 15px;
+        margin-top: 15px;
+    }
+
+    .programs .content p {
+        font-size: 15px;
+        margin: 5px 0;
+    }
+
+    .programs .content ul li span {
+        font-family: futuramdbt;
+        color: #424747;
+        font-size: 13px;
+    }
+
+    .prog .content svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+    }
+
+    .program-btn {
+        font-size: 12px;
+        padding: 8px 0px !important;
+        border-radius: 6px;
+        margin: 0px 10px;
+        margin-left: 0px;
+        width: 120px;
+    }
+
+    .horizontal-section .prog {
+        height: 100vh !important;
+    }
+
+    .programs .row {
+        margin-top: 0;
+    }
+    .prog .content svg {
+
+        margin-left:5px  !important;
+    }
+    .watch-btn {
+        font-size: 11px !important;
+        padding: 0px 3px !important;
+        margin: 0px 10px !important;
+        width: 145px;
+        border-radius: 6px !important;
+        height: 35px !important;
+    
+    }
+}
+
+@media (max-width:768px) {
+    .programs h2 {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .programs {
+        top: 90vh;
+    }
+
+    .pin-spacer {
+        width: 100% !important;
+        padding-bottom: 0 !important;
+    }
+
+    .programs h2 {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+
+    .arrow img {
+        height: 28px;
+        position: absolute;
+        left: 64px;
+        top: 34px;
+    }
+
+    .arrow-point img {
+        height: 10px;
+        position: absolute;
+        bottom: 29px;
+        left: 106px;
+    }
+
+    .programs .img-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 226px !important;
+
+    }
+
+    .programs .img-box img {
+        height: 100%;
+        width: 300px;
+        object-fit: contain;
+        margin-top: 12px;
+    }
+
+    .programs .content {
+        padding: 0px 9px;
+        width: 100%;
+    }
+
+    .programs .content h3 {
+        font-size: 15px;
+        margin-top: 15px;
+    }
+
+    .programs .content p {
+        font-size: 12px;
+        margin: 5px 0;
+    }
+
+    .programs .content ul li span {
+        font-family: futuramdbt;
+        color: #424747;
+        font-size: 13px;
+    }
+
+    .prog .content svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+    }
+
+    .program-btn {
+        font-size: 12px;
+        padding: 8px 0px !important;
+        border-radius: 6px;
+        margin: 0px 10px;
+        margin-left: 0px;
+        width: 120px;
+    }
+
+    .horizontal-section .prog {
+        height: 100vh !important;
+    }
+
+    .programs .row {
+        margin-top: 0;
+    }
+    .prog .content svg {
+
+        margin-left:5px  !important;
+    }
+    .watch-btn {
+        font-size: 11px !important;
+        padding: 0px 3px !important;
+        margin: 0px 10px !important;
+        width: 145px;
+        border-radius: 6px !important;
+        height: 35px !important;
+    
+    }
+    
 }

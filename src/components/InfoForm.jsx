@@ -6,6 +6,7 @@ import { API_URL } from '../utills/BaseUrl';
 import '../assets/css/process.css'
 import { FaArrowRotateRight } from "react-icons/fa6";
 import Reload from '../assets/image/reload.png'
+import CountryCode from './CountryCode';
 
 
 
@@ -67,11 +68,11 @@ function InfoForm() {
                 });
 
 
-            setTimeout(()=>{
-                navigate('/build-plan-details', { state: { buildePlan:response.data.body } })
-            },1000)
+            setTimeout(() => {
+                navigate('/build-plan-details', { state: { buildePlan: response.data.body } })
+            }, 1000)
 
-            
+
             setLoading(false)
 
         } catch (error) {
@@ -83,17 +84,21 @@ function InfoForm() {
         }
     }
 
+    const CountryCodeChange = (countryCode) => {
+        setCountryCode(countryCode)
+    }
+
 
     return (
         <div>
             <div className="step7">
                 {
                     loading ?
-                     <>
-                        <div className="newLoading">
-                            <img src={Reload} alt="reload" />
-                        </div>
-                    </>
+                        <>
+                            <div className="newLoading">
+                                <img src={Reload} alt="reload" />
+                            </div>
+                        </>
                         :
                         ''
                 }
@@ -116,7 +121,7 @@ function InfoForm() {
 
                                 <input type="text" id='name' className='input-field' placeholder='Enter Your Name' value={name} onChange={(e) => setName(e.target.value)} />
                                 {error.name && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" , left:"0px"  }}>
+                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px", left: "0px" }}>
                                         {error.name}
                                     </div>
                                 )}
@@ -124,21 +129,18 @@ function InfoForm() {
                             <div className='range-box'>
                                 <input type="email" className='input-field' placeholder='Enter Your Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                                 {error.email && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" , left:"0px" }}>
+                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px", left: "0px" }}>
                                         {error.email}
                                     </div>
                                 )}
                             </div>
                             <div className="d-flex select-search">
-                                <SelectSearch
-                                    options={options}
-                                    search
-                                    value={countryCode}
-                                    onChange={handleChange}
-
+                                <CountryCode
+                                    CountryCodeChange={CountryCodeChange}
+                                    defaultCountryCode={countryCode}
                                 />
                                 {error.countryCode && (
-                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "472px" , width:"100px" }}>
+                                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "402px", width: "100px" }}>
                                         {error.countryCode}
                                     </div>
                                 )}
@@ -156,7 +158,7 @@ function InfoForm() {
                                         onChange={(e) => setMobile(e.target.value)}
                                     />
                                     {error.mobile && (
-                                        <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" , left:"0px" }}>
+                                        <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px", left: "0px" }}>
                                             {error.mobile}
                                         </div>
                                     )}

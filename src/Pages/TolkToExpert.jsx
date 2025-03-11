@@ -3,6 +3,7 @@ import SelectSearch from 'react-select-search';
 import CallBack from '../assets/image/callback.png'
 import axios from 'axios';
 import {API_URL} from '../utills/BaseUrl'
+import CountryCode from '../components/CountryCode';
 function TolkToExpert() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -11,18 +12,10 @@ function TolkToExpert() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('')
 
-    const options = [
-        { name: '+91', value: '+91' },
-        { name: '+1', value: '+1' },
-        { name: '+44', value: '+44' },
-        { name: '+61', value: '+61' },
-        { name: '+81', value: '+81' },
-    ];
 
-
-    const handleChange = (value) => {
-        setCountryCode(value);
-    };
+    const CountryCodeChange = (countryCode) => {
+        setCountryCode(countryCode);
+    }
 
 
     const handleLeadProcess = async (e) => {
@@ -89,13 +82,10 @@ function TolkToExpert() {
                                                             )}
                                                         </div>
                                                         <div className="select-search">
-                                                            <SelectSearch
-                                                                options={options}
-                                                                search
-                                                                value={countryCode}
-                                                                onChange={handleChange}
-                            
-                                                            />
+                                                                                 <CountryCode
+                                                                                     CountryCodeChange={CountryCodeChange}
+                                                                                     defaultCountryCode={countryCode}
+                                                                                 />
                                                             {error.countryCode && (
                                                                 <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "472px" , width:"100px" }}>
                                                                     {error.countryCode}

@@ -45,7 +45,7 @@ function AgeRange() {
                         <div></div>
                         <button className='help-btn'><IoMdHelpCircleOutline /> Help</button>
                     </div>
-                    <div className="row mt-3 px-5">
+                    <div className="row mt-3 px-5 mobile-padding">
                         <div className="col-2"><div className="step "></div></div>
                         <div className="col-2"><div className="step active-step"></div></div>
                         <div className="col-2"><div className="step"></div></div>
@@ -63,7 +63,7 @@ function AgeRange() {
                     <div className="age-range-form">
                         {ageRange && ageRange.map((age, ind) => {
                             return (
-                                <div className="range-box" onClick={() => handleSelect(age._id)} key={ind}>
+                                <div className="age-box" onClick={() => handleSelect(age._id)} key={ind}>
                                     <input
                                         type="radio"
                                         id={`age${ind + 1}`}
@@ -71,7 +71,7 @@ function AgeRange() {
                                         checked={selectedRange === age._id}
                                         onChange={() => handleSelect(age._id)}
                                     />
-                                    <span className="custom-radio"></span>
+                                    <span className="custom-radio-btn"></span>
                                     <label htmlFor={`age${ind + 1}`}>{age.title}</label>
                                 </div>
                             );

@@ -100,7 +100,7 @@ function Plan() {
       <UrlContainer/>
 
       {/* Modal */}
-      <div className="">
+      <div>
         <Modal className='compare-modal' show={showModal} onHide={closeModal} size="lg" centered>
 
           <Modal.Body>
@@ -186,7 +186,7 @@ function Plan() {
           <div className="row">
             {data && data.map((program) => {
               return (
-                <div className="col-lg-3">
+                <div className="col-lg-3 col-6 column">
                   <div
                     className={`plan-card ${selectedPlan === program
                         ? 'active'

@@ -9,12 +9,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API_URL } from '../utills/BaseUrl';
-import PhoneNumberInput from '../components/PhoneNumberInput';
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from 'moment';
+import CountryCode from '../components/CountryCode';
 
 function SignUp() {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -24,7 +24,7 @@ function SignUp() {
     const [mobile, setMobile] = useState('');
     const [dob, setDob] = useState('');
     const [gender, setGender] = useState('');
-    const [countryCode, setCountryCode] = useState('+91');
+    const [countryCode, setCountryCode] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', countryCode: '', mobile: '', password: '', dob: '', gender: '' });
     const [loading, setLoading] = useState(false); // Loading state
@@ -77,9 +77,6 @@ function SignUp() {
 
     };
 
-    const handleCodeChange  = (code) =>{
-        setCountryCode(code)  
-    }
     
     const handleDateChange = (name) => {
         const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
@@ -87,8 +84,10 @@ function SignUp() {
       };
       
 
-      
-    
+    const CountryCodeChange = (countryCode) => {
+        setCountryCode(countryCode)  
+    }
+        
     return (
         <div className='signUp'>
             <ToastContainer />
@@ -98,10 +97,10 @@ function SignUp() {
             </div>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-6 p-0 signin-image">
+                    <div className="col-lg-6 p-0 signin-image">
                         <img src={SignImage} alt="yoga imag" />
                     </div>
-                    <div className="col-6 p-0 d-flex align-items-center justify-content-center">
+                    <div className="col-lg-6 p-0 d-flex align-items-center justify-content-center">
                         <div className="sign-in">
                             <h2>Sign Up</h2>
                             {/* <div className="google-box">
@@ -115,7 +114,7 @@ function SignUp() {
                             </div>
 
                             <div className="row name"> 
-                                <div className="col-6   d-flex align-items-center justify-content-end">
+                                <div className="col-sm-6   d-flex align-items-center justify-content-end">
                                     <div className="input">
                                         <label htmlFor="firstname">First Name <span>*</span></label>
                                         <input
@@ -133,7 +132,7 @@ function SignUp() {
                                         )}
                                     </div>
                                 </div>
-                                <div className="col-6  d-flex align-items-center justify-content-start">
+                                <div className="col-sm-6  d-flex align-items-center justify-content-start">
                                     <div className="input">
                                         <label htmlFor="lastname">Last Name <span>*</span></label>
                                         <input
@@ -170,8 +169,8 @@ function SignUp() {
                                 )}
                             </div>
                             <div className="row dob">
-                                <div className="col-6 p-0">
-                                    <div className="">
+                                <div className="col-sm-6 p-0">
+                                    <div className="dobflex">
                                         <label htmlFor="dob" className='dobLabal'>DOB</label>
                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                                         <DatePicker
@@ -189,9 +188,9 @@ function SignUp() {
                                         )}
                                     </div>
                                 </div>
-                                <div className="col-6 sign-up">
+                                <div className="col-sm-6 sign-up">
                                     <div className="input-box mt-4">
-                                        <h6>Gender</h6>
+                                        <h6 className='genderlabal'>Gender</h6>
                                         <div className="gender">
                                             {['Male', 'Female', 'Other'].map((option) => (
                                                 <div className="genderOpt" key={option}>
@@ -220,8 +219,10 @@ function SignUp() {
                             <div className="input-box w-100 mt-4">
                                 <label htmlFor="mobile">Mobile Number</label>
                                 <div className="mobile-input w-100">
-                                    <PhoneNumberInput errors={errors} onCodeChange={handleCodeChange} />
-                                    {errors.countryCode && (
+                                        <CountryCode
+                                            CountryCodeChange={CountryCodeChange}
+                                            defaultCountryCode={countryCode}
+                                        />                                     {errors.countryCode && (
                                         <div style={{ color: 'red', fontSize: "10px", position: "absolute", top: "72px" }}>
                                             {errors.countryCode}
                                         </div>

@@ -14,6 +14,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from 'moment';
 import { TimePicker } from './TimePicker'
 import dayjs from 'dayjs';
+import CountryCode from './CountryCode';
 
 
 
@@ -117,9 +118,9 @@ function OnboardingRegisterForm() {
         energyLevel: '',
     });
 
-    const isProfileIncomplete = () => {
-        return Object.values(profile).some(value => value === "" || value === []);
-    };
+
+
+
 
     // Handle input changes for all fields
     const handleInputChange = (e) => {
@@ -186,7 +187,7 @@ function OnboardingRegisterForm() {
 
         // Clear "Other" input when unchecked
         if (value === "Other") {
-            setOtherFavWorkout(checked ? "" : ""); 
+            setOtherFavWorkout(checked ? "" : "");
         }
     };
     const handleOtherWorkoutChange = (event) => {
@@ -316,7 +317,7 @@ function OnboardingRegisterForm() {
     const token = localStorage.getItem('authToken');
 
     const handleSubmitData = async (e) => {
-        e.preventDefault();
+        if (e) e.preventDefault();
         try {
             const resp = await axios.post(
                 `${API_URL}/onboardingRegistrations`,
@@ -329,10 +330,7 @@ function OnboardingRegisterForm() {
                 },
 
             );
-            if (resp.status === 200) {
-                toast.success('Data Saved in Draft..')
 
-            }
         } catch (error) {
             console.error(error.response?.data?.errors);
             const errorData = error.response.data.errors;
@@ -373,6 +371,12 @@ function OnboardingRegisterForm() {
             });
         }
     };
+    useEffect(() => {
+        if (profile.wakeUpTime && profile.sleepTime) {
+            console.log("Calling Submit after Time Selection...");
+            handleSubmitData(); // Call submit after wakeupTime & sleepTime are updated
+        }
+    }, [profile.wakeUpTime, profile.sleepTime , profile.countryCode]);
 
     const handleIwilDOLater = () => {
         navigate(-1)
@@ -386,12 +390,7 @@ function OnboardingRegisterForm() {
         }));
     };
 
-    const handleCodeChange = (code) => {
-        setProfile((prevState) => ({
-            ...prevState,
-            countryCode: code,
-        }));
-    }
+
     // fetching user Data for display
 
     useEffect(() => {
@@ -418,7 +417,15 @@ function OnboardingRegisterForm() {
         fetchData();
     }, [token]);
 
+    const CountryCodeChange = (countryCode) => {
+        setProfile((prevState) => ({
+            ...prevState,
+            countryCode: countryCode,
+        }));
 
+        handleSubmitData()
+
+    }
 
     return (
         <div className='onboarding-register-form'>
@@ -432,7 +439,7 @@ function OnboardingRegisterForm() {
                         <h2>Basic Information</h2>
                         <div className="row mt-5">
                             {/* First Name */}
-                            <div className="col-6">
+                            <div className="col-lg-6">
                                 <div className="input-box">
                                     <label htmlFor="firstName">First Name</label>
                                     <input
@@ -453,7 +460,7 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
                             {/* Last Name */}
-                            <div className="col-6">
+                            <div className="col-lg-6">
                                 <div className="input-box">
                                     <label htmlFor="lastName">Last Name</label>
                                     <input
@@ -474,7 +481,7 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
                             {/* Email */}
-                            <div className="col-6">
+                            <div className="col-lg-6">
                                 <div className="input-box">
                                     <label htmlFor="email">Email</label>
                                     <input
@@ -495,11 +502,15 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
                             {/* Country Code and Mobile */}
-                            <div className="col-6">
+                            <div className="col-lg-6">
                                 <div className="input-box">
                                     <label htmlFor="mobile">Mobile Number</label>
                                     <div className="mobile-input">
-                                        <PhoneNumberInput errors={errors} onCodeChange={handleCodeChange} />
+                                        {/* <PhoneNumberInput errors={errors} onCodeChange={handleCodeChange} /> */}
+                                        <CountryCode
+                                            CountryCodeChange={CountryCodeChange}
+                                            defaultCountryCode={profile.countryCode}
+                                        /> 
                                         <input
                                             type="text"
                                             id="mobile"
@@ -519,7 +530,7 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
 
-                            <div className="col-6 dob">
+                            <div className="col-lg-6 dob">
                                 <div className="d-flex flex-column">
                                     <label htmlFor="dob" className='dobLabal'>DOB</label>
                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -547,9 +558,8 @@ function OnboardingRegisterForm() {
                                 )}
                             </div>
 
-
                             {/* Gender */}
-                            <div className="col-6">
+                            <div className="col-lg-6">
                                 <div className="input-box">
                                     <h6 className='mt-3'>Gender</h6>
                                     <div className="gender ">
@@ -581,7 +591,7 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
                             {/* Height */}
-                            <div className="col-6 mt-2">
+                            <div className="col-lg-6 mt-2">
                                 <div className="input-box">
                                     <label htmlFor="height">Height In (Cm)</label>
                                     <input
@@ -603,7 +613,7 @@ function OnboardingRegisterForm() {
                             </div>
 
                             {/* Current Weight */}
-                            <div className="col-6 mt-2">
+                            <div className="col-lg-6 mt-2">
                                 <div className="input-box">
                                     <label htmlFor="currentWeight">Current Weight In (kg)</label>
                                     <input
@@ -623,7 +633,7 @@ function OnboardingRegisterForm() {
                                     )}
                                 </div>
                             </div>
-                            <div className="col-6 mt-2">
+                            <div className="col-lg-6 mt-2">
                                 <div className="input-box">
                                     <label htmlFor="location">Location</label>
                                     <input
@@ -644,7 +654,7 @@ function OnboardingRegisterForm() {
                                 </div>
                             </div>
                             {/* Occupation */}
-                            <div className="col-6">
+                            <div className="col-lg-6">
                                 <div className="input-box mt-2">
                                     <label htmlFor="occupation">Occupation</label>
                                     <input
@@ -1325,19 +1335,30 @@ function OnboardingRegisterForm() {
                     <div className="profile">
                         <h2>Required Details for your <span>Nutrition Consultation</span></h2>
                         <div className="row">
+                            {/* Wake-Up Time */}
                             <div className="col-6">
                                 <div className="mt-1">
-                                    <label htmlFor="AllDaySchedule">Wake-Up Time</label>
-                                    <TimePicker wakeUpTime={profile.wakeUpTime} />
+                                    <label htmlFor="wakeUpTime">Wake-Up Time</label>
+                                    <TimePicker
+                                        value={profile.wakeUpTime} // Show existing value
+                                        onTimeChange={(time) => setProfile((prev) => ({ ...prev, wakeUpTime: time }))}
+                                    />
                                 </div>
                             </div>
+
+                            {/* Sleep Time */}
                             <div className="col-6">
                                 <div className="mt-1">
-                                    <label htmlFor="AllDaySchedule">Sleep Time</label>
-                                    <TimePicker sleepTime={profile.sleepTime} />
+                                    <label htmlFor="sleepTime">Sleep Time</label>
+                                    <TimePicker
+                                        value={profile.sleepTime} // Show existing value
+                                        onTimeChange={(time) => setProfile((prev) => ({ ...prev, sleepTime: time }))}
+                                    />
                                 </div>
                             </div>
                         </div>
+
+
                         <div className="input-box mt-4 ">
                             <label htmlFor="wholeDayRoutine">Your routine from the time you get up to the time you sleep</label>
                             <input
@@ -1450,8 +1471,22 @@ function OnboardingRegisterForm() {
                                 {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, placeat.</p>F */}
                             </div>
                             <div>
-                                <button className='submit' onClick={handleSubmitData} disabled={isProfileIncomplete()}>Submit</button>
-                                <button onClick={handleIwilDOLater}>I will do this later</button>
+                                <button
+                                    className='submit'
+                                    onClick={handleSubmitData}
+                                    // disabled={Object.values(profile).some(value => value === '' || (Array.isArray(value) && value.length === 0))}
+                                    title="Please fill all fields"
+                                >
+                                    Submit
+                                </button>
+
+                                <button
+                                    onClick={handleIwilDOLater}
+                                    disabled={!profile.occupation || !profile.smoke || !profile.alcohol || !profile.personalNotes || !profile.instagramId}
+                                    title="Please fill in Occupation, Smoke, Alcohol, Personal Notes, and Instagram ID"
+                                >
+                                    I will do this later
+                                </button>
                             </div>
                         </div>
                     </section>

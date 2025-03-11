@@ -367,3 +367,93 @@ button:disabled {
 .sign-in .dob .dobLabal{
     top: 18px;
 }
+
+@media (max-width:992px) {
+    .signin-image{
+        display: none;
+    }
+    .sign-in {
+        margin-top: 100px;
+    }
+    .signin .logo, .signUp .logo, .otp .logo {
+        position: absolute;
+        top: 20px;
+        left: 47%;
+    }
+    
+    .signUp .logo img{
+        height: 60px;
+    }
+    .signin .logo img{
+        height: 60px;
+    }
+    .texts {
+        top: 40px;
+    }
+
+
+}
+
+@media (max-width:520px) {
+    .sign-in {
+        margin-top: 88px;
+        padding: 4px 26px;
+    }
+    .sign-in .dob .dobLabal {
+        top: 0px;
+        font-size: 14px;
+        font-family: inter;
+        color: #000;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .MuiInputBase-root {
+        margin-top: 0px !important;
+    }
+    .sign-up .gender {
+        border: 1px solid #8d8d8d;
+        width: 108% !important;
+        height: 43px;
+        padding: 5px 10px;
+        margin-top: 9px;
+        border-radius: 7px;
+        position: relative;
+        right: 10px;
+    }
+    .dobflex{
+        display: flex;
+        flex-direction: column;
+    }
+    .genderlabal{
+        margin-left: -10px !important ;
+    }
+    .signin .logo, .signUp .logo, .otp .logo {
+        position: absolute;
+        top: 20px;
+        left: 41%;
+    }
+    .sign-in h2 {
+        font-family: 'futuramdbt';
+        font-size: 18px;
+        /* color: #006D5A; */
+    }
+    .or p {
+        margin: 0;
+        font-family: futuramdbt;
+        font-size: 11px;
+    }
+    .input label {
+        font-family: futuramdbt;
+        font-size: 13px;
+    }
+    .name .input input {
+        padding: 0 20px !important;
+        font-size: 13px;
+    }
+    .sign-in .dob .dobLabal {
+        font-size: 13px;
+    }
+    .input-box label, .input-box h6 {
+        font-size: 13px;
+    }
+}

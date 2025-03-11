@@ -253,7 +253,7 @@
     padding: 0;
     margin-top: 10px;
     border-radius: 5px;
-    width: 98%;
+    width: 97%;
 }
  .mobile-input .css-b62m3t-container {
     width: 80px !important;
@@ -361,4 +361,131 @@
 }
 .iLlmw9nvWQp6MsANxMu_.XXKN9NWALj8Xe4ed0s7r._lrzLkVHHVwPQ4AFxtPK {
     color: #006D5A !important ;
+}
+.onboarding-register-form button:disabled {
+    background-color: #ffffff63 !important;
+    color: unse !important;
+    opacity: 0.8 !important;
+}
+.onboarding-register-form .submit:disabled {
+    background-color: unset !important;
+    color: unse !important;
+    opacity: 0.5 !important;
+}
+
+.mobile-input input {
+    width: 70%;
+    border: none !important;
+    margin: 0 !important;
+    height: 40px !important;
+    position: absolute;
+    left: 54px;
+    right: x;
+    z-index: 222;
+    background: #fff;
+}
+@media (max-width:520px) {
+    .process-heading h2 {
+        font-size: 20px ;
+        margin-top: 0px;
+        width: 90%;
+    }
+    .welcome-onboard{
+        margin-top: 0 !important;
+    }
+    .welcome-onboard .container{
+        margin-top: 0 !important;
+    }
+    .genderOpt {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0px;
+    }
+    .profile .dob .MuiInputBase-root{
+        margin-top: 10px !important;
+    }
+    .welcome-onboard .profile h2 {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    .profile .input-box input {
+        margin: 10px 0;
+        margin-bottom: 12px;
+        font-size: 13px;
+        padding: 0 14px;
+    }
+    .onboarding-register-form label {
+        margin-top: 3px;
+        font-family: 'futuramdbt';
+        font-size: 13px;
+    }
+    .welcome-onboard .custom-checkbox:checked+.custom-label::after{
+        top: 10px;
+    }
+    .process-page .onboarding{
+        padding: 0 !important;
+        padding-right: 20px !important;
+    }
+    .onboarding .step p {
+        position: absolute;
+        right: -19px;
+        bottom: -24px;
+        background: #006d5b63;
+        height: 18px;
+        width: 18px;
+        font-size: 11px;
+    }
+    .onboarding .step{
+        width: 120%;
+        height: 1px;
+    }
+    .process-heading h2 {
+        font-size: 15px;
+    }
+    .welcome-onboard p {
+        line-height: 14px;
+        font-size: 12px;
+    }
+    .welcome-onboard .button {
+        padding: 4px 30px;
+        font-size: 12px;
+    }
+    .welcome-onboard .outline {
+        border: 1px solid #006d5a;
+        color: #006d5a;
+        background-color: transparent;
+        font-size: 16px;
+        font-family: 'futuramdbt';
+        padding: 6px 8px !important;
+        width: 60%;
+        font-size: 12px !important;
+    }
+    .onboarding-modal .process-footer button, .submit-btn {
+        border: none;
+        border-radius: 5px;
+        font-size: 13px;
+        font-family: futuramdbt;
+        float: right;
+        height: 26px;
+        margin: 15px;
+        padding: 0 70px;
+        line-height: 23px;
+        width: 84px;
+    }
+    .onboarding-modal .process-footer {
+        position: relative !important;
+        bottom: 0px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        height: 56px;
+    }
+    .onboarding .active-step p {
+        background: #006d5a;
+    }
+    
+    .welcome-onboard h4 strong {
+        font-size: 13px;
+        margin: 0;
+    }
 }

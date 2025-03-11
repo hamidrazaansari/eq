@@ -41,7 +41,7 @@ function Signin() {
       login(userToken)
       // Success alert and navigation
       setTimeout(() => {
-        navigate(-3 , {replace:true} );
+        navigate(-2 , {replace:true} );
       }, 800)
     } catch (error) {
       setIsLogin(false);
@@ -59,8 +59,6 @@ function Signin() {
     }
   };
 
-
-
   const HandleReplaceRoute = (e) => {
     e.preventDefault()
     navigate('/signup', { replace: true });
@@ -75,10 +73,10 @@ function Signin() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-6 p-0 signin-image">
+          <div className="col-lg-6 p-0 signin-image">
             <img src={SignImage} alt="signin" />
           </div>
-          <div className="col-6 px-5 d-flex align-items-center justify-content-center">
+          <div className="col-lg-6 px-0 d-flex align-items-center justify-content-center sign-resp">
             <div className="sign-in newSignInStyle">
               <h2>Sign In</h2>
               <div className="google-box">

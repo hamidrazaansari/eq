@@ -14,8 +14,6 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
     const [currenIndex, setCurrentIndex] = useState(-1)
     const [isLoading, setIsLoading] = useState(false)
 
-    console.log(apiData);
-    
 
     const { id } = useParams();
 
@@ -77,12 +75,6 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
         }
     };
 
-    //  currentItem = apiData[step]; 
-
-    // const handleOpenLinks = (link) => {
-    //     console.log(link);
-    //     navigate(`/${link}`, { state: { id } })
-    // }
 
     useEffect(() => {
         if (step >= apiData.length) {
@@ -148,8 +140,8 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
                                 <p className="text-center">{parse(currentItem.content)}</p>
                             </div>
 
-                            <div className="row mx-auto d-flex align-items-center justify-content-center px-5">
-                                <div className="d-flex align-items-center justify-content-center">
+                            <div className="row mx-auto d-flex align-items-center justify-content-center px-md-5 px-0">
+                                <div className="d-flex align-items-center justify-content-center flex-lg-row flex-column">
                                     {currentItem.linkUrl?.includes('calendly.com') ? (
                                         <div className='w-100'>
                                             <Calendally
@@ -166,7 +158,7 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
                                                     {currentItem.linkText}
                                                     {isLoading ? <div class="spinner-border text-light ms-3 spinner-border-sm" role="status">
                                                         <span class="sr-only">Loading...</span>
-                                                    </div>: '' }
+                                                    </div> : ''}
                                                 </Link>
                                             ) : currentItem.linkText ? (
                                                 <Link className="button" to={`${currentItem.linkUrl}?id=${id}`}>

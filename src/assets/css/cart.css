@@ -329,3 +329,118 @@
     bottom: 10px;
     margin-left: 10px;
 }
+@media (max-width:992px) {
+    .Cart h1 {
+        font-size: 19px;
+        margin-left: 6px;
+        position: relative;
+        top: 23px;
+        margin-bottom: 0;
+    }
+    .cart-info-box h2{
+        font-size: 15px;
+    }
+    .cart-info-box button {
+        border: none;
+        background: transparent;
+        border: 1px solid #0000008f;
+        padding: 3px 23px 4px;
+        border-radius: 4px;
+        margin: 10px 0 17px;
+        color: #0000008c;
+        font-size: 13px;
+    }
+    .cart-info-box .save-btn {
+        padding: 0px 10px 0px;
+        margin: 10px 79px 0;
+        height: 27px;
+        border-radius: 20px;
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .cart-info-box .price {
+        font-size: 28px;
+        margin-left: 20px;
+    }
+    .cart-info-box .d-flex{
+        justify-content: space-between;
+        align-items: center;
+    }
+    .cart-info-box .cut-price {
+        position: relative;
+        left: 74%;
+        font-size: 20px;
+        margin: 0;
+        bottom: 15px;
+        text-align: right;
+        width: 80px;
+    }
+    .cart-info-box .subscription-box .sub-heading {
+        font-size: 18px;
+    }
+    .cart-info-box .subscription-box p {
+        font-size: 14px;
+    }
+    .cart-info-box .subscription-box label {
+        color: #D99374;
+        font-size: 15px;
+    }
+    .Cart .custom-label {
+        padding-left: 31px;
+        font-size: 11px;
+        margin-top: 20px;
+    }
+    .Cart .input-box label , .Cart .input-box h6 {
+        font-family: 'futuramdbt';
+        margin: 0;
+        line-height: 11px;
+        font-size: 13px;
+    }
+    .Cart .dob-label {
+        font-family: futuramdbt;
+        margin-left: 12px;
+        margin-bottom: 13px;
+        margin-top: 5px;
+        font-size: 13px;
+    }
+    .pricing-box .cupon-box h3 {
+        font-size: 15px;
+    }
+    .pricing-box .cupon-box input {
+        padding: 7px 10px;
+        margin: 10px 0;
+        margin-right: 9px;
+        border-radius: 3px;
+        border: 1px solid #0000009c;
+        width: 68%;
+        font-size: 13px;
+    }
+    .pricing-box .cupon-box button {
+        border: none;
+        background: #6D7081;
+        color: #fff;
+        padding: 5px 20px 6px;
+        border-radius: 3px;
+        width: 27%;
+    }
+    .termConditionModal .modal-content {
+        width: 95% !important;
+        padding: 20px !important;
+    }
+    .termConditionModal .modal-content h1 {
+        font-size: 15px;
+        color: #006D5A;
+        margin-bottom: 4px;
+    }
+    .termConditionModal .modal-content p{
+        font-size: 13px;
+    }
+    .termConditionModal .modal-content h2 {
+        font-size: 15px;
+    }
+    .custom-label {
+        padding-left: 25px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+}

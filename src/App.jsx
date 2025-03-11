@@ -43,6 +43,8 @@ import ImportantLinks from './components/ImportantLinks'
 import OnboardingStep from './components/OnboardingStep'
 import NewBackup from './components/NewBackup'
 import { TimePicker } from './components/TimePicker'
+import PhoneInput from 'react-phone-input-2'
+import CountryCode from './components/CountryCode'
 function App() {
 
   return (
@@ -209,8 +211,8 @@ function App() {
         element ={<NewBackup/>}
       />
       <Route 
-        path='/time'
-        element ={<TimePicker/>}
+        path='/phone-input'
+        element ={<CountryCode/>}
       />
 
     </Routes>

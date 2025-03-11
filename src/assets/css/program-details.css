@@ -323,3 +323,143 @@ a{
     color: #000 !important;
     background: #fff !important;
 }
+.slider-container{
+    position: relative;
+}
+
+@media (max-width:992px) {
+    .program-details .prog-heading {
+        font-size: 16px;
+        margin: 4px 10px 15px;
+    }
+    .program-details .img-box {
+        max-width: 603px;
+        width: 100%;
+        margin-left: 15px;
+    }
+    .program-details .img-box {
+        max-width: 603px;
+        width: 100%;
+        margin-left: 0px;
+        height: 287px;
+        margin-bottom: 20px;
+    }
+    .prising-box h3 {
+        font-family: 'boldfuturamdbt';
+        font-size: 35px;
+    }
+    .prising-box p {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    .prising-box .timelabal {
+        font-weight: 600;
+        top: 86px;
+        font-size: 13px;
+    }
+    .prising-box {
+        width: 430px;
+        height: 307px;
+        border: 1px solid #0000007a;
+        border-radius: 10px;
+        padding: 26px 20px;
+        position: relative !important;
+    }
+    .days-info h4 {
+        margin: 0;
+        font-size: 13px;
+        margin-top: 24px;
+        color: #00000082;
+    }
+    .program-info .accordion-button {
+        font-size: 14px !important;
+    }
+    .program-details {
+        padding: 80px 0px 0px !important;
+    }
+    .prising-box button {
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        display: block;
+        border: none;
+        background: #006D5A;
+        color: #fff;
+        font-family: 'futuramdbt';
+        font-size: 15px;
+        padding: 6px;
+        margin: 10px 0;
+        border-radius: 6px;
+    }
+    .programDetails .mailing , .programDetails .footer{
+        top: 0 !important;
+    }
+    .programDetails .dots-container {
+        bottom: 47px;
+        left: 36%;
+    }
+    .custome-accordion button{
+        padding: 20px 20px !important;
+    }
+    .custome-body{
+        font-size: 13px !important;
+    }
+    .floating-price {
+        position: static;
+        transition: position 0.3sease;
+        display: none;
+    }
+    .progDet .mailing , .progDet .footer{
+        top: 0 !important;
+    }
+   .progrmDetails .dots-container {
+        bottom: 46px;
+        left: 36%;
+    }
+    .tab-button .active-tab{
+        font-size: 10px;
+        width: 184px !important;
+        padding: 0;
+    }
+    .tab-button button, .flow button, .rhythm button {
+        border: none;
+        background: transparent;
+        padding: 5px 0px;
+        margin: 0 10px;
+        border: 1px solid #00b09087;
+        border-radius: 4px;
+        font-family: 'futuramdbt';
+        text-transform: uppercase;
+        box-shadow: 0px 0px 2px #0000006e;
+        font-size: 10px;
+        width: 183px;
+    }
+    .plan-card {
+        border: 1px solid #006D5A;
+        padding: 25px;
+        border-radius: 10px;
+        font-family: futuramdbt;
+        position: relative;
+        margin-bottom: 38px;
+    }
+    .accordion-box button{
+        padding: 20px !important;
+    }
+    .accordion-box .accordion-body {
+        font-size: 13px !important;
+        color: #000000d1 !important;
+    }
+    .faq{
+        padding-top: 0 !important;
+    }
+    .program-info h4{
+        font-size: 15px !important;
+    }
+    .program-info p{
+        font-size: 12px !important;
+    }
+    .program-info .about-plan ul li {
+        font-size: 13px;
+    }
+
+}

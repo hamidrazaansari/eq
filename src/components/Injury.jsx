@@ -9,6 +9,8 @@ function Injury() {
     const goals = location.state?.goalIds
     const ageRange = location.state?.selectedRange
 
+    
+
     const navigate = useNavigate()
     
     const prevStep = ()=>{
@@ -31,7 +33,7 @@ function Injury() {
                             <div></div>
                             <button className='help-btn'><IoMdHelpCircleOutline /> Help</button>
                         </div>
-                        <div className="row mt-3 px-5">
+                        <div className="row mt-3 px-5 mobile-padding">
                             <div className="col-2"><div className="step "></div></div>
                             <div className="col-2"><div className="step"></div></div>
                             <div className="col-2"><div className="step active-step"></div></div>

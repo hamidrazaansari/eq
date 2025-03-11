@@ -88,7 +88,8 @@ function AddBookingTimeSlot({ category, id }) {
     setEndTimes((prev) => ({ ...prev, [day]: newTime }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     const token = localStorage.getItem("authToken");
 
     const requestData = {
@@ -115,6 +116,8 @@ function AddBookingTimeSlot({ category, id }) {
       sundayEndTime: endTimes.Sunday,
       bookingTimeSlotId: id,
     };
+    console.log(requestData);
+    
 
     try {
       const response = await axios.put(

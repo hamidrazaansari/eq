@@ -251,7 +251,7 @@ padding: 80px;
     z-index: 2;
     top: 695px;
     background-color: #fff;
-    padding-top: 70px;
+    padding-top: 125px;
     padding-bottom: 70px;
 }
 
@@ -423,281 +423,7 @@ padding: 80px;
     transform: translateY(0); /* Move to its original position */
   }
 
-
-
-@media (max-width:1400px) and (min-width:1200px) {
-    .texts {
-        left: 94px;
-        top: 170px;
-    }
-    .heading span {
-        font-size: 84px;
-    }
-    .heading{
-        font-size: 80px;
-    }
-    .texts .para {
-        font-size: 17px;
-        left: 2px;
-    }
-    .btns .bookSeion {
-        font-size: 15px;
-        padding: 9px 21px;
-        margin-left: 0;
-    }
-    .img img {
-        right: 62px;
-    }
-}
-
-@media (max-width:1200px) and (min-width:992px) {
-    .img img {
-        right: 0px;
-        height: 600px;
-    }
-    .heading span {
-        font-size: 70px;
-    }
-    .heading{
-        font-size: 65px;
-    }
-    .texts {
-        left: 90px;
-        top: 150px;
-    }
-    .texts .para {
-        font-size: 14px;
-        left: 2px;
-        top: 171px;
-    }
-    .btns .bookSeion {
-        font-size: 14px;
-        padding: 9px 17px;
-        border-radius: 6px;
-        margin: 0 10px;
-        margin-left: 0;
-    }
-    .btns {
-        position: absolute;
-        top: 237px;
-    }
-}
-
-@media (max-width:992px) and (min-width:768px) {
-    .img img {
-        right: 0px;
-        height: 600px;
-    }
-    .heading span {
-        font-size: 50px;
-    }
-    .heading{
-        font-size: 45px;
-    }
-    .texts {
-        left: 35px;
-        top: 140px;
-        width: 50%;
-    }
-    .texts .para {
-        font-size: 13px;
-        left: 0px;
-        top: 128px;
-    }
-    .btns .bookSeion {
-        font-size: 14px;
-        padding: 9px 17px;
-        border-radius: 6px;
-        margin: 0 10px;
-        margin-left: 0;
-    }
-    .btns {
-        position: absolute;
-        top: 190px;
-    }
-    .img img {
-        right: 0px;
-        top: 19px;
-        height: 484px;
-    }
-    .btns .bookSeion {
-        font-size: 11px;
-        padding: 9px 17px;
-        border-radius: 6px;
-        margin: 0 10px;
-        margin-left: 0;
-    }
-    .btns .contactUS {
-        font-size: 15px;
-    }
-    .hero{
-        height: 566px;
-    }
-    .signup-btn {
-        background-color: #006D5A;
-        color: #fff;
-        font-family: latoRegular;
-        border: none;
-        border: none;
-        font-size: 16px;
-        padding: 4px 24px;
-        border-radius: 10px;
-        width: 120px;
-        height: 41px;
-    }
-}
-
-@media (max-width:768px) and (min-width:512px) {
-
-
-    .heading{
-        font-size: 35px;
-    }
-    .heading span {
-        font-size: 41px;
-    }
-    .texts {
-        left: 22px;
-        top: 140px;
-        width: 57%;
-    }
-    .texts .para {
-        font-size: 11px;
-        left: 0px;
-        top: 109px;
-        width: 90%;
-    }
-
-    .btns {
-        position: absolute;
-        top: 165px;
-    }
-
-    .btns .bookSeion {
-        font-size: 11px;
-        padding: 9px 17px;
-        border-radius: 6px;
-        margin: 0 10px;
-        margin-left: 0;
-    }
-    .btns .contactUS {
-        font-size: 15px;
-    }
-    .hero {
-        height: 454px;
-    }
-    .signup-btn {
-        font-size: 16px;
-        padding: 4px 24px;
-        border-radius: 10px;
-        width: 120px;
-        height: 41px;
-    }
-    .img img {
-        right: -14px;
-        top: 19px;
-        height: 400px;
-    }
-    .navbar{
-        padding: 0;
-    }
-}
-@media (max-width:512px) {
-    .img img {
-        right: 0px;
-        top: 19px;
-        height: 300px;
-    }
-    .heading{
-        font-size: 30px;
-    }
-    .heading span {
-        font-size: 33px;
-    }
-    .texts {
-        left: 26px;
-        top: 86px;
-        width: 57%;
-        z-index: 2;
-    }
-    .texts .para {
-        font-size: 10px;
-        left: 0px;
-        top: 100px;
-        width: 90%;
-    }
-
-    .btns {
-        position: absolute;
-        top: 135px;
-    }
-    .btns .bookSeion {
-        font-size: 9px;
-        padding: 6px 10px;
-        border-radius: 4px;
-        margin: 0 10px;
-        margin-left: 0;
-    }
-    .btns .contactUS{
-        font-size: 12px;
-    }
-    .navbar-brand img {
-        height: 65px;
-        width: 65px;
-        margin: 0px 0px;
-        margin-right: 50px;
-    }
-    .navbar{
-        padding: 0 !important;
-    }
-    .signup-btn {
-        font-size: 14px;
-        padding: 3px 24px;
-        border-radius: 6px;
-        width: 99px;
-        height: 38px;
-    }
-    .hero {
-        background-color: #F3F3F3;
-        height: 359px;
-    }
-}
-@media (max-width:512px){
-    .texts{
-        left: 0px;
-    }
-    .heading{
-        font-size: 23px;
-        top: 10px;
-    }
-    .heading span{
-        font-size: 25px;
-    }
-    .texts .para {
-        font-size: 9px;
-        left: 0px;
-        top: 80px;
-        width: 90%;
-    }
-    .btns{
-        top: 120px;
-    }
-    .btns .bookSeion {
-        font-size: 8px;
-        padding: 4px 8px;
-        border-radius: 4px;
-        margin: 0 5px;
-        margin-left: 0;
-    }
-    .btns .contactUS {
-        font-size: 11px;
-    }
-    .btns .contactUS svg{
-        font-size: 14px !important;
-    }
-}
-
-
+  
 /* about modal Design */
 .aboutVideo .modal-content{
     background-color: #fff !important;
@@ -719,4 +445,497 @@ padding: 80px;
     background: transparent !important;
     top: 5px !important;
 }
+.talk-to-expert .select-search .form-control{
+    border: none !important;
+    border-radius: 0 !important;
+    border-right: 1px solid #b9b9b9 !important;
+}
+
+@media (max-width:1024px) {
+    .navbar-brand img {
+        height: 90px;
+        width: 90px;
+        margin: 0px 0px;
+        margin-right: 10px;
+    }
+    .texts {
+        left: 30px;
+        top: 71px;
+        width: 85%;
+        z-index: 2;
+    }
+
+    .heading {
+        font-size: 54px !important;
+        top: 20px;
+    }
+    .heading span {
+        font-size: 56px !important;
+    }
+
+    .texts .para {
+        font-size: 13px;
+        left: 0px;
+        top: 102px;
+        width: 100%;
+    }
+
+    .btns {
+        top: 223px;
+    }
+    .btns button {
+        padding: 5px 10px;
+        font-size: 12px !important;
+    }
+    
+    .btns .bookSeion {
+        font-size: 8px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin: 0 5px;
+        margin-left: 0;
+    }
+    .btns .contactUS {
+        font-size: 11px;
+    }
+    .btns .contactUS svg{
+        font-size: 14px !important;
+    }
+    .counterup .row{
+        padding: 0 !important;
+        padding-left: 0px !important;
+    }
+    .about-us img {
+        height: 100%;
+        width: 100%;
+    }
+    .hero {
+        background-color: #F3F3F3;
+        height: 90vh;
+        top: 60px !important;
+    }
+    .about-us {
+        padding: 20px 0px !important;
+        position: relative;
+        top: 90vh !important;
+        z-index: 2;
+        background-color: #fff;
+    }
+    /* .fadeInUp{
+        animation: none !important;
+    } */
+
+    .about-us h2 {
+        font-family: PlayFireDisplay;
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 40px;
+        margin-bottom: 10px;
+    }
+    .about-us h3 {
+        font-family: futuramdbt;
+        font-size: 30px;
+        color: #006D5A;
+        margin-bottom: 10px;
+    }
+    .about-us p {
+        font-family: futuramdbt;
+        font-size: 13px;
+        width: 100%;
+    }
+    .about-us .read-more-btn {
+        background-color: #006D5A;
+        color: #fff;
+        font-family: futuramdbt;
+        border: none;
+        border: none;
+        font-size: 13px !important;
+        padding: 0px 15px !important;
+        border-radius: 6px;
+        margin: 0px 10px;
+        margin-left: 0px;
+        height: 35px;
+    }
+    .watch-btn {
+        font-size: 13px !important;
+        padding: 2px 15px !important;
+        margin: 20px 10px !important;
+    }
+    .counterup {
+        background-color: #EFEFEF;
+        padding: 30px 15px;
+        background-image: url(/src/assets/image/counterup-bg.png);
+        background-position: center;
+        position: relative;
+        z-index: 2;
+        top: 90vh;
+        padding-left: 40px;
+    }
+    .counterup h3 {
+        font-size: 30px !important;
+        white-space: nowrap !important;
+        margin-top: 20px;
+
+    }
+    .counterup p{
+        margin-right: 0px;
+        font-size: 13px;
+        white-space: nowrap !important;
+    }
+    .why-choose-us h2 {
+        font-family: PlayFireDisplay;
+        font-weight: 700;
+        font-size: 25px;
+        text-transform: uppercase;
+        margin-left: 10px;
+        margin-bottom: 0px;
+        position: absolute;
+        top: -55px;
+    }
+    .why-choose-us {
+        top: 90vh !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+    }
+    .points {
+        margin: 0px 8px;
+        border-left: 2px solid #bcbcbc;
+        padding: 8px 20px;
+        width: 100%;
+    }
+    .points h3{
+        font-size: 15px;
+    }
+    .points p {
+        font-family: 'futuramdbt';
+        font-size: 13px;
+        color: #8d8b8b;
+    }
+    .why-choose-us .img-box img {
+        height: 341px;
+        object-fit: contain;
+    }
+    .why-choose-us .para{
+        font-size: 13px;
+    }
+    .plan {
+        background-color: #EFEFEF;
+        position: relative;
+        z-index: 2;
+        top: 90vh;
+        padding: 100px 0;
+        overflow: hidden;
+    }
+    .plan::after {
+        position: absolute;
+        content: '';
+        background: url(/src/assets/image/Vector.png);
+        top: -65px;
+        right: 0px;
+        z-index: 3;
+        height: 200px;
+        width: 100px;
+        background-size: contain;
+    }
+    .plan::before {
+        height: 241px;
+        width: 94px;    
+    }
+    .plan h2 {
+        font-size: 55px;
+    }
+    .plan h2 p {
+        font-size: 40px;
+    }
+    .get-started-btn {
+        background-color: #006D5A;
+        color: #fff;
+        font-family: latoRegular;
+        border: none;
+        border: none;
+        font-size: 14px;
+        padding: 7px 22px;
+        border-radius: 7px;
+        display: block;
+        margin: 0 auto;
+    }
+    .testimonials {
+        position: relative;
+        z-index: 2;
+        top: 90vh;
+        background-color: #fff;
+        padding: 30px 0;
+    }
+    .testimonials h2 {
+        text-align: center;
+        font-family: 'PlayFireDisplay';
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #006D5A;
+    }
+    .slider-container {
+        background: url(/src/assets/image/bg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 500px;
+        padding: 5px 0 0px;
+        background-position: center;
+        overflow-x: hidden;
+    }
+    .box {
+        height: 225px;
+        width: 169px;
+    }
+    .center {
+        top: 17px;
+    }
+    .right {
+        z-index: 1;
+        background-color: transparent;
+        position: absolute;
+        top: 65px;
+        right: 21ypx;
+    }
+
+    .left {
+        top: 65px;
+        left: 217px;
+    }
+    .mailing {
+        position: relative;
+        top: 90vh !important;
+        z-index: 5px;
+        background-color: #EFEFEF;
+        padding: 30px 0;
+    }
+    .mailing h2 {
+        font-size: 25px !important;
+    }
+    .form-submit{
+        height: 43px !important;
+    }
+    .mailing form{
+        flex-direction: column;
+    }
+    .mailing form .form-control{
+        width: 90% !important;
+        height: 45px !important;
+        margin-bottom: 10px;
+    }
+    .mailing p{
+        font-size: 13px !important;
+    }
+    .footer{
+        top: 90vh !important;
+        padding: 0 !important;
+        padding-top: 30px !important;
+
+    }
+    .footer .row{
+        margin-left: unset !important;
+        margin-right: unset !important;
+    }
+    .footer h2 {
+        margin: 10px 0px !important;
+        margin-bottom: 23px !important;
+        text-align: left !important;
+    }
+    .footer li{
+        margin-left: 0 !important;
+    }
+    .nav-btn {
+        top: 50%;
+    }
+    .dots-container {
+        bottom: 60px;
+        left: 42%;
+    }
+    .dots-container .dot{
+        height: 15px;
+        width: 15px;
+    }
+
+    .next-btn {
+        right: 26px !important;
+    }
+    .prev-btn {
+        left: 2px;
+    }
+
+    .aboutVideo .modal-content {
+        background-color: #fff !important;
+        max-width: 100% !important;
+        margin: 0px -10px 0 !important;
+        height: 445px !important;
+    }
+    .modleCBtn{
+        top: 10px !important;
+        right: 0px !important;
+    }
+    .texts{
+        top: 60px;
+    }
+
+    .texts .para {
+        top: 174px;
+        font-size: 15px;
+    }
+    .img img {
+        position: absolute;
+        right: 32px;
+        top: 295px;
+        height: 475px;
+    }
+    .talk-to-expert .range-box {
+        height: 50px !important;
+        padding: 10px !important;
+    }
+    .talk-to-expert .range-box .input-field{
+        font-size: 13px !important;
+    }
+    .tolk-to-expert .select-search{
+        font-size: 13px !important;
+        height: 50% !important;
+    }
+    .tolk-to-expert .profile p {
+        font-family: 'futuramdbt';
+        font-size: 12px !important;
+        opacity: 0.6;
+        text-align: center;
+        margin-top: 10px !important;
+    }
+    .tolk-to-expert .profile{
+        margin-top: 20px !important;
+    }
+    .tolk-to-expert h2{
+        font-size: 20px !important;
+    }
+    .tolk-to-expert button {
+        width: 40%;
+        height: 40px !important;
+        margin: 0px 0 !important;
+        font-size: 15px !important;
+    }
+    .form-footer {
+        width: 100% !important;
+        left: 0px !important;
+        font-size: 10px !important;
+    }
+    .talk-to-expert .phone-input{
+        font-size: 11px;
+    }
+}
+@media (max-width:768px) {
+    .img img {
+        position: absolute;
+        right: 23px;
+        top: 295px;
+        height: 392px;
+    }
+    .heading {
+        font-size: 29px !important;
+        top: 20px;
+    }
+    .heading span {
+        font-size: 36px !important;
+    }
+    .btns {
+        top: 150px;
+    }
+    .texts .para{
+        top: 200px;
+    }
+    .slider-container {
+        height: 358px;
+    }
+    .box {
+        height: 140px;
+        width: 100px;
+    }
+    .center{
+        top: 0;
+    }
+    .left {
+        top: 36px;
+        left: 231px;
+    }
+    .right {
+        z-index: 1;
+        background-color: transparent;
+        position: absolute;
+        top: 36px;
+        right: 231px;
+    }
+}
+
+@media (max-width:512px) {
+    .img img {
+        right: 20px;
+        top: 313px;
+        height: 335px !important;
+    }
+    .dots-container {
+        bottom: 47px;
+        left: 36%;
+    }
+    .nav-btn{
+        top: 75%;
+    }
+
+    .next-btn{
+        right: 48px !important;
+    }
+
+    .prev-btn {
+        left: 38px;
+    }
+
+    .btns .bookSeion {
+        font-size: 9px;
+        padding: 6px 10px;
+        border-radius: 4px;
+        margin: 0 10px;
+        margin-left: 0;
+    }
+    .btns .contactUS{
+        font-size: 12px;
+    }
+    .navbar-brand img {
+        height: 65px;
+        width: 65px;
+        margin: 0px 0px;
+        margin-right: 50px;
+    }
+    .navbar{
+        padding: 0 !important;
+    }
+    .signup-btn {
+        font-size: 12px;
+        padding: 2px 19px 2px;
+        border-radius: 6px;
+        width: 80px;
+        margin-left: 100px;
+        height: 29px;
+    }
+
+    .counterup .row{
+        padding: 0 !important;
+        padding-left: 70px !important;
+    }
+    .personalize-program .mobile-padding .program-box {
+        height: 450px !important;
+    }
+    .mobilePadding{
+        padding-right: 0 !important;
+    }
+}
+@media (max-width:400px) {
+    .img img {
+        height: 295px !important;
+    }
+}
+
 

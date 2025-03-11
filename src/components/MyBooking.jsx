@@ -9,11 +9,19 @@ import DashboardSidebar from './DashboardSidebar';
 import { GoArrowLeft } from "react-icons/go";
 import Footer from './Footer';
 import NavBar from './NavBar';
+import { useNavigate } from 'react-router-dom';
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 function MyBooking() {
     const [data, setData] = useState('')
     const token = localStorage.getItem('authToken');
+        const [show, setShow] = useState(false);
+    
+        const handleShow = () => setShow(true);
+        const handleClose = () => setShow(false);
+    
+        const navigate = useNavigate()
 
     // Fetch profile data
     useEffect(() => {
@@ -38,14 +46,15 @@ function MyBooking() {
             <NavBar/>
             <div className="container">
                 <div className="row">
-                    <div className="col-3">
-                        <DashboardSidebar />
+                <div className="col-lg-3 ">
+                        <DashboardSidebar isActive={"MyProfile"} handleClose={handleClose} show={show} />
                     </div>
-                    <div className="col-9">
-                        <div className="header">
+                    <div className="col-lg-9">
+                        <div className="header d-flex justify-content-between align-items-center">
                             <h2>
-                                <GoArrowLeft /> My Bookings
+                                <GoArrowLeft onClick={()=>navigate(-1)} /> My Booking
                             </h2>
+                            <button onClick={handleShow} className='sidebar-menu'><BsThreeDotsVertical/></button>
                         </div>
                         <div className="my-booking">
                             {data && data.map((order, index) => {
@@ -72,7 +81,7 @@ function MyBooking() {
                                                     </div>
 
                                                 </div>
-                                                <div className='d-flex align-items-end justify-content-end flex-column '>
+                                                <div className='d-flex align-items-end justify-content-lg-end  flex-column '>
                                                     <h3>₹{order.totalAmount}</h3>
 
                                                     <button className='mb-2'>View Details</button>

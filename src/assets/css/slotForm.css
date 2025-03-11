@@ -220,3 +220,119 @@ padding: 0  !important;
   left: -24px;
   font-family:futuramdbt ;
 }
+
+@media (max-width:1024px) {
+  .slotForm .container h1 {
+    font-family: boldfuturamdbt;
+    font-size: 17px;
+    text-align: center;
+    margin: 10px 20px 36px;
+}
+.slotForm .slotForm .container h1 {
+  font-family: boldfuturamdbt;
+  font-size: 17px;
+  text-align: center;
+  margin: 10px 20px 36px;
+}
+.days-btn {
+  height: 35px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 0 5px 1px #cccccc85;
+  font-size: 11px;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  font-family: futuramdbt;
+  border: none;
+}
+.add-booking .form-switch .form-check-input {
+  margin-left: 8px !important;
+}
+.add-booking .select-search-input, .add-booking input[type="text"] {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-right: 0 !important;
+  padding-left: 10px !important;
+  height: 35px !important;
+  border: none !important;
+  background: #E9EEF6 !important;
+  border-radius: 5px !important;
+  width: 45%;
+  font-family: 'futuramdbt';
+  font-size: 10px;
+  margin-left: 9px;
+}
+
+.add-booking .form-switch {
+  padding-left: 0em !important;
+}
+.time-to::before {
+  position: absolute;
+  content: 'To';
+  top: 8px;
+  left: -12px;
+  font-family: futuramdbt;
+  font-size: 12px;
+}
+.time-to input {
+  width: 106px !important;
+  padding-left: 5px !important;
+}
+.select-search-container {
+  width: 200px !important;
+  height: 40px !important;
+}
+.select-search-select{
+  width: 200px !important;
+}
+
+}
+
+@media (max-width:400px) {
+  .add-booking .form-switch .form-check-input {
+    margin-left: 8px !important;
+  }
+  .add-booking .select-search-input, .add-booking input[type="text"] {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    padding-right: 0 !important;
+    padding-left: 10px !important;
+    height: 35px !important;
+    border: none !important;
+    background: #E9EEF6 !important;
+    border-radius: 5px !important;
+    width: 42%;
+    font-family: 'futuramdbt';
+    font-size: 10px;
+    margin-left: 9px;
+  }
+  
+  .add-booking .form-switch {
+    padding-left: 0em !important;
+  }
+  .time-to::before {
+    position: absolute;
+    content: 'To';
+    top: 8px;
+    left: 0px;
+    font-family: futuramdbt;
+    font-size: 13px;
+  }
+  .time-to input{
+    width: 70px !important;
+    padding-left: 5px !important;
+  }
+  .select-search-container {
+    width: 200px !important;
+    height: 40px !important;
+  }
+  .select-search-select{
+    width: 150px !important;
+    top: -10px !important;
+  }
+}

@@ -84,7 +84,7 @@ const WhyChooseUs = () => {
               </div>
 
             </div>
-            <div className="col-lg-7 pe-4">
+            <div className="col-lg-7 mobilePadding">
               <div className="img-box">
                 <img src={activeContent.img} alt="why choose us" />
               </div>

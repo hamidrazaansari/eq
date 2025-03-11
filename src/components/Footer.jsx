@@ -89,7 +89,7 @@ try {
                                     </ul>
                                 </ScrollAnimation>
                             </div>
-                            <div className="col-lg-3 d-flex flex-column align-items-center ">
+                            <div className="col-lg-3 col-6 d-flex flex-column align-items-center ">
                                 <ScrollAnimation animateIn="fadeInUp">
                                     <h2>Useful Links</h2>
                                 </ScrollAnimation>
@@ -107,7 +107,7 @@ try {
                                     </ul>
                                 </ScrollAnimation>
                             </div>
-                            <div className="col-lg-3 d-flex flex-column align-items-center">
+                            <div className="col-lg-3 col-6 d-flex flex-column align-items-center">
                                 <ScrollAnimation animateIn="fadeInUp">
                                     <h2>Information</h2>
                                 </ScrollAnimation>

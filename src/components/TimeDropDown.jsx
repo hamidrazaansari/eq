@@ -27,17 +27,17 @@ const generateTimeOptions = () => {
 };
 
 const TimeDropdown = ({ handleSelectTime, selectedTime }) => {
-  const timeOptions = generateTimeOptions();
+  const timeOptions = generateTimeOptions();  
 
   return (
-    <div style={{ width: "300px", margin: "0 auto" }}>
-      <SelectSearch
-        options={timeOptions}
-        onChange={(selected) => handleSelectTime(selected)}
-        search={true}
-        value={selectedTime} // This ensures the selected value is displayed
-        placeholder="Choose a time"
-      />
+    <div className="">
+<SelectSearch
+  options={timeOptions}
+  onChange={(selected) => handleSelectTime(selected)}
+  search={true} // Disables typing to prevent keyboard opening
+  value={selectedTime}
+  placeholder="Choose a time"
+/>
     </div>
   );
 };

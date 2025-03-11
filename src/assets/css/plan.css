@@ -1,18 +1,21 @@
-.plans{
+.plans {
     margin-top: 170px;
 }
-.plan-card{
+
+.plan-card {
     border: 1px solid #006D5A;
     padding: 25px;
     border-radius: 10px;
-    font-family:futuramdbt;
+    font-family: futuramdbt;
     position: relative;
 }
-.plan-card p{
+
+.plan-card p {
     font-size: 13px;
     color: #00000085;
 }
-.plan-card .offer{
+
+.plan-card .offer {
     background-color: #00B090;
     color: #fff;
     text-transform: uppercase;
@@ -21,21 +24,24 @@
     margin: 20px 0;
     border-radius: 14px;
 }
-.plan-card h2{
+
+.plan-card h2 {
     font-family: futuramdbt;
     /* font-weight: 600; */
     margin: 20px 0;
     font-size: 33px;
-    color:#006D5A ;
+    color: #006D5A;
 
 }
-.plan-card h2 span{
+
+.plan-card h2 span {
     font-size: 20px;
     position: relative;
     font-family: 'futuramdbt';
-    color:#006D5A ;
+    color: #006D5A;
 }
-.plan-card button{
+
+.plan-card button {
     border: 1px solid #006D5A;
     color: #006D5A;
     border-radius: 3px;
@@ -47,35 +53,41 @@
     margin-bottom: 20px;
     transition: all .5s ease
 }
-.plan-card button:hover{
+
+.plan-card button:hover {
     background-color: #006D5A;
     color: #fff;
 }
-.plan-card ul{
+
+.plan-card ul {
     padding: 0;
     list-style: none;
     font-size: 14px;
     margin: 0;
     padding-left: 20px;
 }
-.plan-card ul li{
+
+.plan-card ul li {
     color: #00000080;
     margin: 6px 5px;
     font-size: 13px;
 }
-.plan-card ul li::before{
+
+.plan-card ul li::before {
     content: "\f00c";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    display: block;    
+    display: block;
     position: absolute;
     color: #00B090;
     left: 30px;
 }
-.plan-card ul li svg{
+
+.plan-card ul li svg {
     color: #006D5A;
     margin-right: 8px;
 }
+
 .plan-card .tag {
     background-color: #E5F5F3;
     color: #006D5A;
@@ -89,25 +101,31 @@
     border: 1px solid #006D5A;
     border-bottom: none;
 }
+
 .plan-card.active {
     border: 2px solid #006D5A;
-  }
-  .plan-card.active .tag{
+}
+
+.plan-card.active .tag {
     border: 2px solid #006D5A;
     border-bottom: 0;
     width: 101.2%;
     left: -1.5px;
-  }
-  .plan-footer .mailing{
+}
+
+.plan-footer .mailing {
     top: 41px;
-  }
-  .plan-footer .footer{
+}
+
+.plan-footer .footer {
     top: 41px;
-  }
-.tab-button{
+}
+
+.tab-button {
     position: relative;
     bottom: 60px;
 }
+
 .tab-button .active-tab {
     background: #8eebdc27;
     border: 1px solid #15a48b;
@@ -118,7 +136,10 @@
     margin: 0 10px;
     box-shadow: 0px 0px 2px #0000006e;
 }
-.tab-button button , .flow button , .rhythm button {
+
+.tab-button button,
+.flow button,
+.rhythm button {
     border: none;
     background: transparent;
     padding: 5px 25px;
@@ -143,14 +164,17 @@
     position: unset !important;
     line-height: unset !important;
 }
-.modal-content .cancel-btn{
+
+.modal-content .cancel-btn {
     padding: 0 !important;
     border: none !important;
     color: #000000ae !important;
 }
-.modal-content .cancel-btn:hover{
-color: #fff !important;
+
+.modal-content .cancel-btn:hover {
+    color: #fff !important;
 }
+
 .modal-content .cantinue-button {
     position: unset !important;
     background: #006D5A;
@@ -173,7 +197,8 @@ color: #fff !important;
     font-size: 20px;
     text-align: center;
     margin: 10px 0;
-    font-family: 'futuramdbt', sans-serif; /* Added fallback font */
+    font-family: 'futuramdbt', sans-serif;
+    /* Added fallback font */
 }
 
 /* Styling the Comparison Box */
@@ -181,27 +206,32 @@ color: #fff !important;
     display: flex;
     align-items: start;
     justify-content: center;
-    margin: 30px auto 0; /* Combined margin properties */
+    margin: 30px auto 0;
+    /* Combined margin properties */
     border-radius: 6px;
-    
+
 }
 
 /* Features Column and Non-Selected Box */
-.compare-box .features, .compare-box .rhythm {
+.compare-box .features,
+.compare-box .rhythm {
     border: 1px solid #00B090;
     height: 420px;
 }
-.compare-box .features{
+
+.compare-box .features {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
 }
+
 /* Selected Column Borders */
 .compare-box .flow {
     border-top: 1px solid #00B090;
     border-bottom: 1px solid #00B090;
     height: 420px;
 }
-.compare-box .rhythm{
+
+.compare-box .rhythm {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
 }
@@ -212,22 +242,24 @@ color: #fff !important;
     font-family: 'boldfuturamdbt';
     font-size: 20px;
     border-bottom: 1px solid #19875491;
-    padding: 17px 70px 20px; /* Adjusted padding for better spacing */
+    padding: 17px 70px 20px;
+    /* Adjusted padding for better spacing */
     color: #006D5A;
 }
-.compare-box h3 .save{
-display: inline-block;
-font-family:futuramdbt;
-font-size: 15px;
-color: #fff;
-background-color: #00B090;
-border-radius: 20px;
-padding: 5px 10px;
-margin-right: 10px;
-margin-top: 10px;
+
+.compare-box h3 .save {
+    display: inline-block;
+    font-family: futuramdbt;
+    font-size: 15px;
+    color: #fff;
+    background-color: #00B090;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
-.compare-box .features h3{
+.compare-box .features h3 {
     color: #000;
     display: flex;
     align-items: center;
@@ -236,7 +268,7 @@ margin-top: 10px;
 }
 
 /* Paragraph Styles for Selected and Non-Selected Columns */
-.compare-box .flow p, 
+.compare-box .flow p,
 .compare-box .rhythm p {
     font-family: 'futuramdbt';
     font-size: 16px;
@@ -246,7 +278,8 @@ margin-top: 10px;
     height: 40px;
     line-height: 38px;
 }
-.compare-box .selected{
+
+.compare-box .selected {
     background-color: #00a78b12;
 }
 
@@ -263,25 +296,157 @@ margin-top: 10px;
 }
 
 
-.compare-box .flow p:nth-child(even), 
-.compare-box .features p:nth-child(even), 
+.compare-box .flow p:nth-child(even),
+.compare-box .features p:nth-child(even),
 .compare-box .rhythm p:nth-child(even) {
-    background-color: #f5f5f55c; /* Light gray for even rows */
+    background-color: #f5f5f55c;
+    /* Light gray for even rows */
 }
-.bg-warn{
+
+.bg-warn {
     background-color: yellow !important;
     color: #000 !important;
     padding: 5px 20px;
 
 }
-.bg-warn svg{
+
+.bg-warn svg {
     position: relative;
     bottom: 1px;
 }
+
 .compare-modal .modal-content {
-    width: 100% !important; 
+    width: 100% !important;
     margin-top: 0px !important;
     background-color: #fff !important;
     height: 100% !important;
-    padding: 40px !important; 
+    padding: 40px !important;
+}
+
+@media (max-width:992px) {
+
+    .plan-footer .mailing,
+    .plan-footer .footer {
+        top: 0 !important;
+    }
+
+    .tab-button button,
+    .flow button,
+    .rhythm button {
+        padding: 5px 0 !important;
+    }
+
+    .compare-box h3 {
+        margin: 0;
+        font-family: 'boldfuturamdbt';
+        font-size: 12px;
+        border-bottom: 1px solid #19875491;
+        padding: 10px 8px 12px;
+        color: #006D5A;
+    }
+
+    .modal-content .compare-button {
+        display: block;
+        padding: 3px 1px !important;
+        width: 90px;
+        text-align: center !important;
+        font-size: 12px;
+    }
+
+    .compare-box .features p {
+        font-size: 12px !important;
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+
+    .compare-box .flow p,
+    .compare-box .rhythm p {
+        padding-left: 10px;
+        font-size: 12px;
+    }
+
+    .compare-box .features,
+    .compare-box .rhythm,
+    .compare-box .flow {
+        border: 1px solid #00B090;
+        height: 369px;
+    }
+
+    .add-booking .profile,
+    .address {
+        padding: 20px 10px 40px !important;
+        margin: 37px 0px 17px !important;
+        width: 100% !important;
+    }
+
+    .slotForm .process-footer button,
+    .submit-btn {
+        font-size: 16px;
+        float: right;
+        height: 39px;
+        margin: 18px;
+        padding: 0 25px;
+    }
+
+    .process-footer {
+        height: 74px;
+    }
+
+    .plans .column {
+        padding: 0px 5px !important;
+    }
+    .plan-card h3{
+        font-size: 13px;
+    }
+     .tag {
+        border: 2px solid #006D5A;
+        font-size: 12px !important;
+        display: none;
+    }
+    .plan-card{
+        padding: 15px ;
+        margin: 10px 0;
+        height: 520px;
+    }
+    .plan-card p {
+        font-size: 10px;
+        color: #00000085;
+        line-height: 11px;
+        margin-bottom: 0;
+    }
+    .plan-card .offer {
+        background-color: #00B090;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 8px;
+        padding: 3px 10px 3px;
+        margin: 2px 0;
+        border-radius: 14px;
+    }
+    .plan-card h2 , .plan-card h2 span{
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    .plan-card button {
+        height: 20px;
+        margin-bottom: 4px;
+        font-size: 9px;
+    }
+    .plan-card ul{
+        padding-left: 13px !important;
+    }
+    
+    .plan-card ul li {
+        color: #00000080;
+        margin: 6px 5px;
+        font-size: 11px;
+        margin-bottom: 0;
+    }
+    .plan-card ul li::before {
+        left: 17px;
+    }
+    .compare h2 {
+        font-size: 15px;
+    }
 }

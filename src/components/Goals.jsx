@@ -45,7 +45,7 @@ const Goals = () => {
                                 <IoMdHelpCircleOutline /> Help
                             </button>
                         </div>
-                        <div className="row mt-3 px-5">
+                        <div className="row mt-3 px-5 mobile-padding">
                             <div className="col-2"><div className="step active-step"></div></div>
                             <div className="col-2"><div className="step"></div></div>
                             <div className="col-2"><div className="step"></div></div>

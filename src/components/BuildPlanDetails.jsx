@@ -34,7 +34,7 @@ function BuildPlanDetails() {
                             <div className='range-box'>
                                 <div className="w-100 d-flex align-items-center justify-content-between">
                                     <p >Choose Your Goal</p>
-                                    <p >{leadData.goals?.map((item)=>(
+                                    <p >{leadData?.goals?.map((item)=>(
                                         <>
                                         {item.title}
                                         </>

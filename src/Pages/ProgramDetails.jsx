@@ -91,16 +91,45 @@ function ProgramDetails() {
         };
       }, []);
 
-  const settings = {
-    dots: false, 
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3, 
-    slidesToScroll: 3,
-    initialSlide: 0,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />
-  };
+      const settings = {
+        dots: true, 
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3, 
+        slidesToScroll: 3,
+        initialSlide: 0,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+        responsive: [
+            {
+              breakpoint: 1024, // Large tablets & small desktops
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 768, // Tablets
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 480, // Mobile devices
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+              }
+            }
+          ]
+
+      };
+    
 
   const options = [
     { name: '1 Month ', value: 'sv' },
@@ -110,7 +139,7 @@ function ProgramDetails() {
 
   ];
   return (
-    <div>
+    <div className='progrmDetails'>
       <UrlContainer/>
       <NavBar />
       <section className='program-details' ref={programDetailsRef} >
@@ -171,7 +200,7 @@ function ProgramDetails() {
               </Accordion.Header>
               <Accordion.Body>
                 <div className="row w-100">
-               <div className="col-4">
+               <div className="col-lg-4">
                     <div className="about-plan ">
                       {parse(data && data.highlights)}
                     </div>
@@ -189,7 +218,7 @@ function ProgramDetails() {
               </Accordion.Header>
               <Accordion.Body>
                 <div className="row w-100">
-                <div className="col-4 ">
+                <div className="col-lg-4 ">
                     <div className="about-plan border-0 ">
                       {
                         data.requirements && data.requirements.map((req)=>{
@@ -211,11 +240,11 @@ function ProgramDetails() {
                     <div className="accordion-box">
                         <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>Who all can benefit from this offering?</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>Who all can benefit from this offering?</Accordion.Header>
                                 <Accordion.Body>Anyone can join. Whether you are at a beginner or advanced level, we will customize the sessions for you to make them relevant.</Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
-                                <Accordion.Header>What are the payment options available?</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>What are the payment options available?</Accordion.Header>
                                 <Accordion.Body>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -227,7 +256,7 @@ function ProgramDetails() {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
-                                <Accordion.Header>If you have any major pre-existing health conditions,can i purchase this plan</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>If you have any major pre-existing health conditions,can i purchase this plan</Accordion.Header>
                                 <Accordion.Body>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -239,7 +268,7 @@ function ProgramDetails() {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="3">
-                                <Accordion.Header>what if i`ve never done yoga before? can i still join these sessions?</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>what if i`ve never done yoga before? can i still join these sessions?</Accordion.Header>
                                 <Accordion.Body>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -251,7 +280,7 @@ function ProgramDetails() {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
-                                <Accordion.Header>Will there be a community?</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>Will there be a community?</Accordion.Header>
                                 <Accordion.Body>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -263,7 +292,7 @@ function ProgramDetails() {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="5">
-                                <Accordion.Header>Who is going to assist with queries?</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>Who is going to assist with queries?</Accordion.Header>
                                 <Accordion.Body>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -275,7 +304,7 @@ function ProgramDetails() {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="6">
-                                <Accordion.Header>what if i`ve never done yoga before? can i still join these sessions?</Accordion.Header>
+                                <Accordion.Header className='accordion-btn'>what if i`ve never done yoga before? can i still join these sessions?</Accordion.Header>
                                 <Accordion.Body>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

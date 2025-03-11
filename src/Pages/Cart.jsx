@@ -17,6 +17,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from 'moment';
 import dayjs from 'dayjs';
+import CountryCode from '../components/CountryCode';
 
 
 
@@ -69,6 +70,10 @@ function Cart() {
       });
   }, [id]);
 
+  const CountryCodeChange = (countryCode) => {
+    setProfile({ ...profile, countryCode: countryCode })
+}
+
   // Fetch profile data
   useEffect(() => {
     async function fetchData() {
@@ -88,6 +93,7 @@ function Cart() {
     }
     fetchData();
   }, [token, selectedProgram]);
+
 
   const handleSubscriptionChange = (event) => {
     if (event.target.checked) {
@@ -216,20 +222,18 @@ function Cart() {
 
   totalSave += parseFloat(discountPrice)
 
-
   const totalPrice = data.mrpInr - totalSave
   const gstprice = totalPrice * 1.18
   const gstAmount = totalPrice * 0.18
 
 
-  const handleCodeChange = (code) => {
-    setProfile({ ...profile, countryCode: code })
-  };
-
   const handleDateChange = (name) => {
     const formatedeDate = moment(name.$d).format('MM/DD/YYYY')
     setProfile({ ...profile, dob: formatedeDate })
   };
+
+  console.log(profile);
+  
   return (
     <div className="Cart">
       <ToastContainer />
@@ -305,7 +309,7 @@ function Cart() {
                   </div>
 
                   <div className="row mt-5">
-                    <div className="col-6">
+                    <div className="col-lg-6">
                       <div className="input-box">
                         <label htmlFor="firstName">First Name</label>
                         <input
@@ -324,7 +328,7 @@ function Cart() {
                         )}
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-lg-6">
                       <div className="input-box">
                         <label htmlFor="lastName">Last Name</label>
                         <input
@@ -343,7 +347,7 @@ function Cart() {
                         )}
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-lg-6">
                       <div className="input-box">
                         <label htmlFor="email">Email</label>
                         <input
@@ -363,11 +367,14 @@ function Cart() {
                       </div>
                     </div>
 
-                    <div className="col-6">
+                    <div className="col-lg-6">
                       <div className="input-box">
                         <label htmlFor="countryCode">Mobile Number</label>
                         <div className="mobile-input">
-                          <PhoneNumberInput onCodeChange={handleCodeChange} />
+                          <CountryCode
+                              CountryCodeChange={CountryCodeChange}
+                              defaultCountryCode={profile.countryCode}
+                          />
                           <input
                             type="text"
                             id="mobile"
@@ -387,7 +394,7 @@ function Cart() {
 
                       </div>
                     </div>
-                    <div className="col-6 p-0">
+                    <div className="col-lg-6 p-0">
                       <div className="">
                         <label htmlFor="date" className="dob-label">DOB</label>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -408,13 +415,13 @@ function Cart() {
                           />
                         </LocalizationProvider>
                         {formError.dob && (
-                          <div style={{ color: 'red', fontSize: '10px', position: 'absolute', top: '327px', left: '31px' }}>
+                          <div style={{ color: 'red', fontSize: '10px', position: 'absolute', top: '346px', left: '31px' }}>
                             {formError.dob}
                           </div>
                         )}
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-lg-6">
                       <div className="input-box">
                         <h6>Gender</h6>
                         <div className="gender">

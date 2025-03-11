@@ -659,3 +659,215 @@ margin-bottom: 20px;
     font-family: futuramdbt;
     top: 0px;
 }
+.sidebar-menu{
+    display: none;
+}
+
+@media (max-width:992px) {
+    .profile .dob .dobLabal {
+        font-family: futuramdbt;
+        top: 0px;
+        margin: 15px 0 12px;
+    }
+     .header {
+        margin-top: 90px !important;
+    }
+    .accordion-button .header {
+        margin-top: 10px !important;
+        padding: 15px;
+    }
+    .header h2 {
+        color: #fff;
+        font-family: 'futuramdbt';
+        font-size: 15px;
+        margin: 0;
+    }
+    .header h2 svg {
+        font-size: 17px;
+        margin-right: 6px;
+    }
+    .profile .edit-button{
+        font-size: 13px;
+    }
+    .profile .edit-button svg {
+        font-size: 17px;
+    }
+    .profile, .address {
+        padding: 1px 30px 40px !important;
+    }
+    .address h3{
+        margin-top: 10px;
+    }
+    .my-profile .mailing , .my-profile .footer{
+        top: 0 !important;
+    }
+    .my-profile     .mailing h2 {
+        font-size: 15px !important;
+    }
+    .sidbar ul{
+        padding-left: 0 !important;
+        padding-right: 20px;
+    }
+    .sidebar-menu{
+        border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .sidbar ul li {
+        display: flex;
+        align-items: center;
+        border: 1px solid #6963638a;
+        padding: 7px 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+    .sidbar ul li img {
+        margin-right: 10px;
+        height: 20px;
+    }
+    .sidbar ul li p {
+        font-size: 12px;
+    }
+    .my-booking .header h2 {
+        font-size: 16px;
+    }
+    .maincategory {
+        font-size: 14px !important;
+    }
+    .my-booking .header p {
+        font-size: 12px;
+        margin: 1px 0;
+    }
+    .my-booking .features-box {
+        margin: 10px 0;
+    }
+    .my-booking .features-box {
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px 0px #d9d6d6ae;
+        padding: 13px 18px;
+        font-family: 'futuramdbt';
+        color: #000000a8;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .my-booking .features-box p{
+        margin-bottom: 0  !important;
+    }
+    .my-booking .features-box h2 {
+        font-size: 14px;
+    }
+    .my-booking .status-box button, .my-booking .Trainer-box button{
+        font-size: 12px;
+    }
+    .pricing h5 {
+        font-size: 15px;
+    }
+    .offcanvas-backdrop{
+        background: transparent !important;
+    }  
+    .my-Links button {
+        border-radius: 7px;
+        box-shadow: 1px 1px 5px 0px #d9d6d6ae;
+        padding: 13px 18px;
+        font-family: 'futuramdbt';
+        color: #000000a8;
+        margin: 12px 0;
+        border: none;
+        width: 99%;
+        font-size: 13px;
+    }  
+    .banner-header img {
+        position: absolute;
+        top: 18px;
+        left: 19px;
+        height: 100px;
+        width: 100px;
+    }
+    .banner-header h2 {
+        color: #fff;
+        font-family: 'futuramdbt';
+        font-size: 17px;
+        position: absolute;
+        left: 138px;
+        top: 29px;
+    }
+    .banner-header p {
+        color: #ffffffc2;
+        font-family: 'futuramdbt';
+        font-size: 9px;
+        position: absolute;
+        top: 55px;
+        left: 137px;
+        line-height: 14px;
+    }
+    .about-trainer h3 {
+        font-size: 15px;
+        margin: 15px;
+    }
+    .about-trainer p {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .In{
+        margin: 10px 0;
+    }
+    .In h2{
+        font-size: 15px;
+    }
+    .Speciality button {
+        background-color: #DEE9AC;
+        color: #666666;
+        border: none;
+        margin: 3px 5px;
+        padding: 4px 25px 6px;
+        border-radius: 20px;
+        font-family: futuramdbt;
+        font-size: 10px;
+    }
+    .teachingExperience h2 {
+        font-family: futuramdbt;
+        color: #4f5052;
+        font-size: 15px;
+    }
+    .teachingExperience p {
+        font-family: futuramdbt;
+        color: #666666;
+        font-size: 12px;
+        margin-top: 0px !important;
+    }
+    .teachingExperience {
+        margin-bottom: 13px;
+    }
+
+    .myBookingMain .mailing , .myBookingMain .footer{
+        top: 0px !important;
+    }
+    .mailing h2 {
+        font-size: 19px !important;
+    }
+    .my-booking .header button {
+        background-color: #EBFFFB;
+        border: 1px solid #006D5A;
+        border-radius: 5px;
+        width: 100%;
+        padding: 2px 8px 3px;
+        font-family: 'futuramdbt';
+        color: #0000009c;
+        margin-top: 10px;
+        font-size: 8px;
+    }
+    .my-booking .header h3 {
+        font-size: 16px;
+    }
+    .gender .genderOpt{
+        margin-right: 8px;
+    }
+    .myTrainer{
+        padding-top: 24px;
+    }
+}

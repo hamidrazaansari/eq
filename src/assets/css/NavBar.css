@@ -15,9 +15,6 @@
     color: #000 !important;
     margin: 0 15px;
 }
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-    /* filter: drop-shadow(0px 2px 2px grey); */
-}
 .signup-btn {
     background-color: #006d5a;
     color: #fff;
@@ -85,11 +82,58 @@
   .dropdown-content a:hover {
     background: #f3f3f3;
     color: #000;
-
   }
   
   .dropdown:hover  .dropdown-content {
     opacity: 1;
     display: block;
-
   }
+
+
+@media (max-width:768px) {
+    .navbar-toggler {
+        border: none !important;
+        color: #006D5A !important;
+        padding: 0 !important;
+        font-size: 19px !important;
+        margin-right: 10px;
+    }
+    .navbar-brand img {
+        height: 45px;
+        width: 45px;
+        margin: 4px 20px;
+        margin-right: 0px;
+    }
+
+    .account{
+        position:relative;
+        z-index: 44;
+    }
+    .account span{
+        display: none ;
+        position: absolute;
+        top: 23px;
+        right: 11px;
+    }
+    .account img {
+        position: absolute;
+        right: -51px;
+        bottom: -14px;
+        height: 19px;
+    }
+    
+    .navbar-brand img {
+        height: 45px;
+        width: 45px;
+        margin: 0px 9px !important;
+        /* margin-right: 50px; */
+    }
+    .offcanvas.offcanvas-end {
+        top: 73px !important;
+        padding-left: 17px !important;
+        padding-top: 19px !important;
+    }
+    .navbar-toggler:focus{
+        box-shadow: unset !important;
+    }
+}

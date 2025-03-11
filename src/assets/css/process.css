@@ -130,7 +130,8 @@
     border-radius: 6px;
     padding: 0 15px;
 }
-.select-search .select-search-input{
+
+.select-search .select-search-input {
     border-right: none !important;
     padding: 0 !important;
 }
@@ -275,12 +276,19 @@ input[type="radio"] {
     right: 20px;
     width: 20px;
     height: 20px;
-    border: 1px solid #006D5A;
+    border: 1px solid #006D5A !important;
     /* Custom border */
     border-radius: 50%;
-    display: inline-block;
+    display: inline-block !important;
     transition: background-color 0.3s, border-color 0.3s;
 
+}
+
+.range-box input[type="radio"] {
+    position: unset;
+    opacity: unset;
+    width: unset;
+    height: unset;
 }
 
 /* Custom radio button checked state */
@@ -296,7 +304,7 @@ input[type="radio"]:checked+.custom-radio {
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: white;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s;
 }
 
@@ -382,7 +390,6 @@ input[type="radio"]:checked+.custom-radio::after {
     text-overflow: unset !important;
     line-height: 48px !important;
     letter-spacing: 0.01rem;
-    -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
     border-right: 1px solid #006D5A !important;
     height: 70px !important;
@@ -440,28 +447,33 @@ input[type="radio"]:checked+.custom-radio::after {
     background-repeat: no-repeat;
     background-size: contain;
 }
+
 .newLoading {
     height: 100vh;
     width: 100%;
-    background-color: #006d5bcf; /* Semi-transparent overlay */
+    background-color: #006d5bcf;
+    /* Semi-transparent overlay */
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1000; /* Ensure it is above other content */
+    z-index: 1000;
+    /* Ensure it is above other content */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
 }
+
 .newLoading img {
     height: 60px;
-    animation: rotateInfinite 1s linear infinite; 
+    animation: rotateInfinite 1s linear infinite;
 }
 
 @keyframes rotateInfinite {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -469,10 +481,11 @@ input[type="radio"]:checked+.custom-radio::after {
 
 .step7 {
     position: relative;
-    z-index: 1; /* Ensure it's below the loading screen */
+    z-index: 1;
+    /* Ensure it's below the loading screen */
 }
 
-.slotSubmitBtn{
+.slotSubmitBtn {
     float: right;
     background-color: #006D5A;
     border: none;
@@ -483,5 +496,277 @@ input[type="radio"]:checked+.custom-radio::after {
     bottom: 20px;
     border-radius: 5px;
     font-family: futuramdbt !important;
+}
+
+
+.select-search .form-control {
+    border-radius: 7px !important;
+    border-color: #00000065 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 47px !important;
+}
+
+.select-search .react-tel-input {
+    width: 25%;
+    height: 47px;
+}
+
+/* Hide default radio button */
+.age-box input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Custom radio button (outer circle) */
+.age-box .custom-radio-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #888;
+    /* Default border color */
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Change color when selected */
+.age-box input[type="radio"]:checked+.custom-radio-btn {
+    background-color: #006D5A;
+    /* Green when selected */
+    border-color: #006D5A;
+    position: absolute;
+    right: 4px;
+    top: 14px;
+}
+
+/* White inner dot when selected */
+.age-box input[type="radio"]:checked+.custom-radio-btn::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* Style for the whole box */
+.age-box {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    border: 1px solid #5f5f5fa7;
+    transition: 0.3s;
+    border-radius: 5px;
+    margin: 10px 0;
+    position: relative;
+
+}
+
+.age-box .custom-radio-btn {
+    position: absolute;
+    right: 4px;
+    top: 14px;
+}
+
+
+/* Highlight selected box */
+.age-box.selected {
+    border: 1px solid #006D5A;
+    border-radius: 5px;
+}
+
+.age-box label {
+    font-family: futuramdbt;
+}
+
+@media (max-width:768px) {
+
+    .age-range-form,
+    .injury-permision {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .process-heading h2 {
+        font-size: 25px;
+        width: 85%;
+        margin: 30px auto;
+    }
+
+    .custome-width {
+        width: 85%;
+    }
+    .age-range-form, .injury-permision {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+}
+
+@media (max-width:512px) {
+    .help-btn {
+        display: none;
+    }
+
+    .mobile-padding {
+        padding: 0 !important;
+    }
+
+    .mobile-padding .step {
+        margin: 30px 0 !important;
+    }
+
+    .item {
+        height: 130px;
+        width: 140px;
+        border: 1px solid #006D5A;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 11px;
+        margin: 15px 4px;
+    }
+
+    .item img {
+        width: 40px;
+    }
+
+    .item p {
+        margin-top: 12px;
+        font-size: 13px;
+    }
+
+    .process-footer button,
+    .submit-btn {
+        border-radius: 5px;
+        font-size: 11px;
+        height: 28px;
+        margin: 25px;
+        padding: 0 20px;
+    }
+
+    .process-footer {
+        height: 65px;
+    }
+
+    .age-range-form,
+    .injury-permision {
+        width: 85%;
+    }
+
+    .range-box {
+        height: 47px;
+        width: 100%;
+        border: 1px solid #00000067;
+        margin: 30px 10px;
+    }
+
+    .range-box label {
+        line-height: 45px !important;
+        font-size: 15px;
+    }
+
+    .permisson-btn {
+        height: 50px;
+        width: 100%;
+        margin: 15px 0px;
+        font-size: 15px;
+    }
+
+    .step5 .item {
+        height: 119px;
+        width: 130px;
+        margin: 10px 5px;
+    }
+
+    .step5 .item p {
+        text-align: center;
+        font-family: futuramdbt;
+        margin-top: 9px;
+        font-size: 12px;
+    }
+
+    .step5 .item span {
+        font-size: 12px;
+    }
+
+    .custome-width {
+        width: 100% !important;
+    }
+
+    .permisson-btn {
+        height: 65px;
+    }
+
+    .permisson-btn p {
+        font-size: 13px;
+    }
+
+    .permisson-btn span {
+        font-size: 12px !important;
+        line-height: 13px;
+    }
+
+    .range-box .input-field {
+        width: 100%;
+        border: none;
+        color: #000 !important;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .range-box .phone-input {
+        font-size: 12px;
+    }
+
+    .step7 {
+        padding-top: 20px;
+    }
+
+    .preview {
+        width: 100%;
+    }
+
+    .preview .range-box p {
+        margin-bottom: 0 !important;
+        font-size: 12px;
+    }
+
+    .process-heading {
+        margin-top: 20px;
+    }
+
+    .process-heading p {
+        font-size: 12px;
+        margin-bottom: 0 !important;
+    }
+
+    .preview .submit-btn {
+        border: none;
+        border-radius: 5px;
+        font-size: 11px;
+        font-family: futuramdbt;
+        float: right;
+        height: 33px;
+        margin: 15px;
+        padding: 0px 7px;
+        line-height: 13px !important;
+        width: 198px !important;
+    }
+
+    .step2 .process-heading h2 {
+        margin-bottom: 10px !important;
+    }
 
 }

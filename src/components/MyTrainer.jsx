@@ -11,11 +11,20 @@ import { GoArrowLeft } from "react-icons/go";
 import NavBar from './NavBar';
 import Footer from './Footer';
 import { FaUserSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 
 function MyTrainer() {
   const [data, setData] = useState('')
+          const [show, setShow] = useState(false);
+      
+          const handleShow = () => setShow(true);
+          const handleClose = () => setShow(false);
+      
+          const navigate = useNavigate()
+
   const token = localStorage.getItem('authToken');
 
   // Fetch profile data
@@ -44,15 +53,18 @@ function MyTrainer() {
           <div className='myTrainer'>
             <div className="container">
               <div className="row">
-                <div className="col-3">
-                  <DashboardSidebar />
-                </div>
-                <div className="col-9">
-                  <div className="header">
-                    <h2>
-                      <GoArrowLeft /> My Trainers
-                    </h2>
-                  </div>
+              <div className="col-lg-3">
+                        <DashboardSidebar isActive="MyProfile" handleClose={() => setShow(false)} show={show} />
+                    </div>
+                    <div className="col-lg-9">
+                        <div className="header d-flex justify-content-between align-items-center">
+                            <h2>
+                                <GoArrowLeft onClick={() => navigate(-1)} /> My Trainer
+                            </h2>
+                            <button onClick={() => setShow(true)} className='sidebar-menu'>
+                                <BsThreeDotsVertical />
+                            </button>
+                        </div>
                   <div className="noTrainer">
                     <FaUserSlash />
                     <h2>Trainer Not Assigned Yet</h2>
@@ -75,14 +87,15 @@ function MyTrainer() {
                 <div className="myTrainer">
                   <div className="container">
                     <div className="row">
-                      <div className="col-3">
-                        <DashboardSidebar />
-                      </div>
-                      <div className="col-9">
-                        <div className="header">
-                          <h2>
-                            <GoArrowLeft /> My Trainers
-                          </h2>
+                    <div className="col-lg-3 ">
+                        <DashboardSidebar isActive={"MyProfile"} handleClose={handleClose} show={show} />
+                    </div>
+                    <div className="col-lg-9">
+                        <div className="header d-flex justify-content-between align-items-center">
+                            <h2>
+                                <GoArrowLeft onClick={()=>navigate(-1)} /> My Trainers
+                            </h2>
+                            <button onClick={handleShow} className='sidebar-menu'><BsThreeDotsVertical/></button>
                         </div>
                         <div className="trainer-banner">
                           <Link to={`/trainer-details/${item.trainer?._id}`}>

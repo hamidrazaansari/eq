@@ -6,10 +6,7 @@ import { API_URL } from '../utills/BaseUrl';
 function Calendally({ url, handleGoToNextStep , currentItemId , currentItemIsComp }) {
     const [profile, setProfile] = useState('')
 
-
     const token = localStorage.getItem('authToken');
-    console.log(profile);
-
 
     // Fetch profile data
     useEffect(() => {
@@ -53,7 +50,7 @@ function Calendally({ url, handleGoToNextStep , currentItemId , currentItemIsCom
                     email: profile.email,
                     firstName: profile.firstName,
                     lastName: profile.lastName,
-                    name: profile.firstName + profile.lastName,
+                    name: profile.firstName + '' + profile.lastName,
                     smsReminderNumber: "+1234567890",
                     
                 }}

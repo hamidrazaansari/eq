@@ -1,107 +1,129 @@
-
 .community-heading {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allows text to wrap on small screens */
 }
-.community{
+
+.community {
     position: relative;
     top: 695px;
     z-index: 5;
     background-color: #FFF;
-    padding-bottom: 20px;
-    height: 1000px;
+    padding: 20px;
+    min-height: 90vh; /* Responsive height */
 }
-.community-heading h2{
+
+/* Heading Styles */
+.community-heading h2 {
     text-transform: uppercase;
     font-family: PlayFireDisplay;
     font-weight: 600;
-    font-size: 46px;
+    font-size: clamp(24px, 5vw, 46px); /* Responsive font size */
     margin-right: 10px;
 }
-.community-heading h2 span{
-color: #006D5A;
+.community-heading h2 span {
+    color: #006D5A;
 }
-.community-heading h4{
+.community-heading h4 {
     font-family: latoRegular;
     color: #181515;
     -webkit-text-stroke: 1px #181515;
     margin-right: 10px;
+    font-size: clamp(12px, 2vw, 20px); /* Responsive font size */
 }
 
-.community-img1 img{
-    position: relative;
-    top: 76px;
-    left: 0px;
+/* Image Container */
+.community-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
-.community-img2 img{
-    position: relative;
-    top: 105px;
-    left: -66px;
+
+.community img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
-.community-img3 img {
-    position: relative;
-    left: 79px;
-    top: 7px;
-}
-.community-img4 img {
-    position: relative;
-    left: 192px;
-    top: 130px;
-}
-.community-img5 img {
-    position: relative;
-    left: 172px;
-    bottom: 28px;
-}
-.community-img6 img {
-    position: relative;
-    left: -32px;
-    top: 44px;
-}
-.community-img7 img {
-    position: relative;
-    left: 10px;
-    top: 100px;
-}
-.community-img8 img {
-    position: relative;
-    left: 52px;
-    bottom: 65px;
-}
-.community-img10 img {
-    position: relative;
-    top: 124px;
-    right: 73px;
-}
-.community-img9 img {
-    position: relative;
-    top: -139px;
-    left: 366px;
-    width: 300px;
-}
-  .last-active {
-    overflow: visible;
-    padding: 40px 0;
-  }
-  .last-active img{
-    transform: rotate(0deg);
-  }
-  .community .slick-dots li button:before {
-    background: #000000 ;
-    color: #1a1919 ;
-    height: 2px ;
-    width: 25px ;
-    border-radius: 0;
-    font-size: 0px ;
-    line-height: 22px ;
-    outline: none ;
-    position: absolute ;
-    top: 0 ;
-    right: 0 ;
-}
-.community .slick-dots{
+
+/* Slick Dots */
+.community .slick-dots {
     top: -80px !important;
     right: 0;
     width: 19% !important;
+}
+.community .slick-dots li button:before {
+    background: #000;
+    color: #1a1919;
+    height: 2px;
+    width: 25px;
+    border-radius: 0;
+    font-size: 0;
+    line-height: 22px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .community {
+        top: 90vh;
+        padding: 30px;
+    }
+    .community-heading {
+        flex-direction: column;
+        text-align: center;
+    }
+    .row.gap-1 {
+        gap: 0 !important; /* Removes the gap in mobile view */
+    }
+}
+
+@media (max-width: 768px) {
+    .community {
+        top: 90vh;
+        padding: 20px;
+    }
+    .community-heading h2 {
+        font-size: clamp(20px, 4vw, 36px);
+    }
+    .community-heading h4 {
+        font-size: clamp(12px, 3vw, 18px);
+    }
+    .community img {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 10px;
+    }
+    .community .slick-dots {
+        width: 40% !important;
+        top: -50px !important;
+    }
+    .community-heading {
+        flex-direction: row;
+        text-align: center;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .community {
+        padding-top: 30px;
+    }
+
+    .community h2 {
+        font-size: 18px;
+    }
+    .community h4 {
+        font-size: 14px;
+    }
+    .community img {
+        width: 120px !important;
+        height: 120px !important;
+    }
 }

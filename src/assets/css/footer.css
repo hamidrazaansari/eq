@@ -62,17 +62,17 @@
     z-index: 5 !important;
     background-color: #181515  !important;
     color: #fff !important;
-    padding-top: 60px !important;
+    padding-top: 60px ;
     padding-bottom: 30px !important;
     display: flex !important;
         align-items: center !important;
         justify-content: center !important;
 }
 .footer h2 {
-    font-size: 17px !important;
-    margin: 10px 30px !important;
+    font-size: 17px ;
+    margin: 10px 30px ;
     font-family: openSanceSemiBold !important;
-    margin-bottom: 23px !important;
+    margin-bottom: 23px ;
 }
 .footer li{
     list-style: none;

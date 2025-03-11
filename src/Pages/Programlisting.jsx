@@ -67,7 +67,35 @@ function Programlisting() {
         slidesToScroll: 3,
         initialSlide: 0,
         prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />
+        nextArrow: <NextArrow />,
+        responsive: [
+            {
+              breakpoint: 1024, // Large tablets & small desktops
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 768, // Tablets
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 480, // Mobile devices
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+              }
+            }
+          ]
+
       };
     
     return (
@@ -75,30 +103,30 @@ function Programlisting() {
             <UrlContainer/>
             <NavBar />
             <section >
-                <div className="container px-5">
+                <div className="container px-5 mobile-padding">
                     <h2>Personalized Training  <span>Program</span> </h2>
                     <div className="breadcrumb">
                         <a href="/">Homepage</a>  <span></span>
                         <a href="/">Personalized Training Program</a>
                     </div>
                 </div>
-                <div className="container px-5">
+                <div className="container px-5 mobile-padding">
                     <div className="row">
                         {
                             data && data.map((item)=>{
                                 const imageUrl = item.defaultImage ? getImageURL(item.defaultImage) : '';
                                 
                                 return(
-                                    <div className="col-lg-4 col-md-6 col-12">
+                                    <div className="col-lg-4 col-sm-6 col-12">
                                     <div className="program-box">
                                         <img src={imageUrl} className='program-img' alt="Personal Training Trail" />
                                         <h3>{item.name}</h3>
                                         <div className='para mb-4 mt-2'>{parse(item.descriptions.slice(0,200 ))}</div>
                                         <div className="point">
-                                            <div className="row  mb-3 px-3">
+                                            <div className="row  mb-3 px-3 point-row">
                                                 {item.usp && item.usp.map((usp)=>(
                                                     <>
-                                                <div className="col-6 p-0 py-2 d-flex align-items-center justify-content-start">
+                                                <div className="col-md-6 p-0 py-2 d-flex align-items-center justify-content-start">
                                                     <img src={Checkmarks} alt="" />
                                                     <p className=''>{usp}</p>
                                                 </div>
