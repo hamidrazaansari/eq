@@ -30,7 +30,7 @@ const Community = () => {
 
   const renderImages = () => {
     return images.map((img, index) => (
-      <div key={index} className="col-lg-2 col-6">
+      <div key={index} className="col-lg-3 col-6">
         <ScrollAnimation animateIn="fadeIn">
           <div className={`community-img${index + 1}`}>
             <img src={img} alt="yoga image of celebrity" />
@@ -62,7 +62,7 @@ const Community = () => {
       <Slider {...settings}>
         {Array(3).fill().map((_, i) => (
           <div key={i} className="container-slider">
-            <div className="row gap-1 mx-auto ">
+            <div className="row mx-auto ">
               {renderImages()}
             </div>
           </div>

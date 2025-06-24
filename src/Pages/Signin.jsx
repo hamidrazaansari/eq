@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import SignImage from "../assets/image/signin-image.png";
 import google from "../assets/image/google.png";
@@ -18,9 +18,13 @@ function Signin() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const { setIsLogin , login } = useIsLogin();
+  const { setIsLogin, login } = useIsLogin();
 
   const navigate = useNavigate()
+
+  const location = useLocation()
+  const { programid, previous } = location.state || {};
+  
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -29,20 +33,23 @@ function Signin() {
 
   // Handle user login
   const handleLoginUser = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(`${API_URL}/users/login`, { email, password });
-
       const userToken = response.data.body.token;
 
-      toast.success(response.data.message)
+      toast.success(response.data.message);
+      login(userToken);
 
-      login(userToken)
-      // Success alert and navigation
-      setTimeout(() => {
-        navigate(-2 , {replace:true} );
-      }, 800)
+      
+
+      if (previous && programid) {
+        navigate(`/cart/${programid}`);
+      } else {
+        navigate(`/`);
+      }
+
     } catch (error) {
       setIsLogin(false);
       if (error.response && error.response.data.errors) {
@@ -53,15 +60,15 @@ function Signin() {
       } else {
         toast.error("An unexpected error occurred. Please try again.");
       }
-    }
-    finally {
-      setLoading(false); // Stop loading
+    } finally {
+      setLoading(false);
     }
   };
 
+
   const HandleReplaceRoute = (e) => {
     e.preventDefault()
-    navigate('/signup', { replace: true });
+    navigate('/signup', { replace: true , state:{programid} });
 
   }
 
@@ -101,7 +108,7 @@ function Signin() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   {errors.email && (
-                    <div style={{ color: 'red', fontSize: "11px", position:"absolute" , top:"72px" }}>
+                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
                       {errors.email}
                     </div>
                   )}
@@ -129,10 +136,10 @@ function Signin() {
                     {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                   </span>
                   {errors.password && (
-                  <div style={{ color: 'red', fontSize: "11px", position:"absolute" , top:"72px"}}>
-                    {errors.password}
-                  </div>
-                )}
+                    <div style={{ color: 'red', fontSize: "11px", position: "absolute", top: "72px" }}>
+                      {errors.password}
+                    </div>
+                  )}
                 </div>
 
                 <div className="others">

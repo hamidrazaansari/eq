@@ -18,7 +18,7 @@ function DashboardSidebar({ handleClose, show }) {
   const handleLogout = () => {
     setIsLogin(false);
     localStorage.removeItem("authToken");
-    navigate("/signin");
+    navigate("/");
   };
   return (
     <>

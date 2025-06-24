@@ -450,6 +450,29 @@ padding: 80px;
     border-radius: 0 !important;
     border-right: 1px solid #b9b9b9 !important;
 }
+@media (max-width:1400px) {
+    .texts {
+        top: 160px;
+    }
+    .heading{
+        font-size: 55px;
+    }
+    .heading span{
+        font-size: 60px;
+    }
+    .texts .para {
+        font-size: 17px;
+        font-family: futuramdbt;
+        position: absolute;
+        left: 7px;
+        width: 100%;
+        top: 168px;
+    }
+    .btns {
+        position: absolute;
+        top: 235px;
+    }
+}
 
 @media (max-width:1024px) {
     .navbar-brand img {

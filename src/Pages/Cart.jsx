@@ -45,14 +45,6 @@ function Cart() {
   const token = localStorage.getItem('authToken');
   const navigate = useNavigate()
 
-  useEffect(()=>{
-    if (token) {
-      navigate(`/cart/${id}`)
-    }
-    else {
-      navigate('/signup')
-    }
-  } , [])
 
   const handleProgramChange = (value) => {
     setSelectedProgram(value);

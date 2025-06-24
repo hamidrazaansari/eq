@@ -5,7 +5,7 @@ import '../assets/css/signin.css';
 import LogoImg from '../assets/image/logo.png';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API_URL } from '../utills/BaseUrl';
@@ -32,6 +32,9 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    const location =  useLocation()
+    const {programid} = location.state || {};
+
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
@@ -46,7 +49,7 @@ function SignUp() {
             toast.success(response.data.message);
             const token = response.data.body.token;
             if (token) {
-                navigate('/otp', { state: { token, email, purpose: "verifyAccount" } });
+                navigate('/otp', { state: { token, email, purpose: "verifyAccount" , programid} });
             }
         } catch (error) {
 

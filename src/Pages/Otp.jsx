@@ -27,6 +27,7 @@ function Otp() {
 
     const email = location.state?.email
     const purpose = location.state?.purpose
+    const programid = location.state?.programid
 
     useEffect(() => {
       if (time > 0) {
@@ -89,8 +90,15 @@ function Otp() {
             localStorage.setItem("authToken", userToken);
             setIsLogin(true)
             setTimeout(()=>{
-              navigate(-2)
+              if(programid){
+                navigate(`/cart/${programid}`)
+              }
+              else{
+                navigate('/')
+              }
+
             }, 800)
+
 
         } catch (error) {
           // Log full error details
@@ -115,7 +123,6 @@ function Otp() {
           );
           setLoading(false)
             toast.success(response.data.message)
-            console.log(response)
 
             setIsLogin(true)
             setTimeout(()=>{

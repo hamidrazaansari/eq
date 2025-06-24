@@ -70,7 +70,17 @@ function Plan() {
     setActiveTab(tab);
   };
 
-  console.log(localStorage.getItem('urlHistory'));
+  const prevPathString = localStorage.getItem('urlHistory');
+
+  if (prevPathString) {
+    const prevPathObj = JSON.parse(prevPathString);  
+    var previous = prevPathObj.previous;
+  
+    console.log("Previous Path:", previous);
+  } else {
+    console.log("No history found in localStorage.");
+  }
+  
 
 
   const handleCompare = (programId, program) => {
@@ -90,8 +100,15 @@ function Plan() {
     }
   };
 
-  const handleGoToCart = (programid) => {
-      navigate(`/cart/${programid}`)
+
+
+  const handleGoToCart = (programid) => {      
+          if (token) {
+            navigate(`/cart/${programid}`)
+          }
+          else {
+            navigate('/signin' ,{state:{programid , previous}})
+          }
   }
   
 
