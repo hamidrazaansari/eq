@@ -18,6 +18,7 @@ import axios from 'axios';
 import parse from 'html-react-parser'
 import { API_URL } from '../utills/BaseUrl';
 import { UrlContainer } from '../context/UrlContainer';
+import getImageURL from '../utills/getImageURL';
 
 // Custom Prev Arrow
 const PrevArrow = (props) => {
@@ -138,6 +139,9 @@ function ProgramDetails() {
     { name: '1 year', value: 'n' },
 
   ];
+
+                                  const imageUrl = data.defaultImage ? getImageURL(data.defaultImage) : '';
+  
   return (
     <div className='progrmDetails'>
       <UrlContainer/>
@@ -148,7 +152,7 @@ function ProgramDetails() {
           <div className="row">
             <div className="col-lg-6 d-flex align-items-center justify-content-end flex-column">
               <div className="img-box">
-                <img src={data && data.defaultImage.replace('http://localhost:5500', 'http://13.233.121.43:5500')} alt={data.name} />
+                <img src={imageUrl} alt={data.name} />
               </div>
             </div>
             <div className="col-lg-6 d-flex align-items-center justify-content-center">
