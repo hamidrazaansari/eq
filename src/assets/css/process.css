@@ -605,7 +605,23 @@ input[type="radio"]:checked+.custom-radio::after {
     align-items: center;
     justify-content: center;
 }
+.step7 .select-search .react-tel-input {
+    width: 24%;
+    height: 70px;
+}
+.step7 .select-search .react-tel-input .form-control{
+    height: 100% !important;
+    width: 90% !important;
+    box-shadow: none !important;
+}
+.step7 .select-search .selected-flag.open:before {
+    box-shadow: none !important;
+    width: 80px !important;
+}
+.react-tel-input .selected-flag:focus:before, .react-tel-input .selected-flag.open:before {
+        box-shadow: none !important;
 
+}
 @media (max-width:768px) {
 
     .age-range-form,

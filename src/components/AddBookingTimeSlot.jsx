@@ -16,6 +16,8 @@ function AddBookingTimeSlot({ category, id }) {
     Sunday: false,
   });
 
+  
+
   const [startTimes, setStartTimes] = useState({});
   const [endTimes, setEndTimes] = useState({});
 
@@ -116,7 +118,6 @@ function AddBookingTimeSlot({ category, id }) {
       sundayEndTime: endTimes.Sunday,
       bookingTimeSlotId: id,
     };
-    console.log(requestData);
     
 
     try {
@@ -132,6 +133,9 @@ function AddBookingTimeSlot({ category, id }) {
       );
       console.log("Response:", response.data);
       toast.success("Time slot updated successfully!");
+      if(response.status ===200){
+        navigate(-1)
+      }
     } catch (error) {
       console.error("Error updating time slot:", error);
       toast.error("Failed to update time slot.");
