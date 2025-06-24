@@ -587,6 +587,24 @@ input[type="radio"]:checked+.custom-radio::after {
 .age-box label {
     font-family: futuramdbt;
 }
+.preview .onboarding-register-form .onboarding-modal .process-footer button, .submit-btn {
+    background-color: #006D5A;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: futuramdbt;
+    float: left;
+    height: 43px !important;
+    margin: 10px;
+    padding: 0 70px;
+    line-height: 30px;
+    width: 100% !important;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+}
 
 @media (max-width:768px) {
 

@@ -1,1 +1,1 @@
-export const API_URL = 'http://13.233.137.12/server/api/v1' ;
+export const API_URL = 'http://eq-api.esta-dev.com/api/v1' ;

@@ -113,6 +113,9 @@ const OnboardingProcess = ({ apiData: myData = [], programId, handleNeedRefresh,
         }
     };
 
+    console.log(apiData);
+    
+
     return (
         <div className="process-page">
             {currentItem && (
